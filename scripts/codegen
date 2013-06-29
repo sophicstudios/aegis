@@ -1,0 +1,52 @@
+#!/usr/bin/perl
+
+use Getopt::Long;
+
+# prints a help message that outlines how to use
+# this program, including command line parameters
+# and other useful tips
+sub printUsage() {
+    $usageString = "Usage: $0 [OPTIONS]
+
+OPTIONS:
+  -f, --file=FILENAME    Read input from FILENAME
+  -h, --help             Print this message
+
+";
+
+    print "$usageString";
+}
+
+# read command line parameters
+$help = 0;
+$filename = "";
+$result = 0;
+
+$result = GetOptions("f|file=s" => \$filename,
+                     "h|help" => \$help);
+
+if (!$result) {
+    printUsage();
+    return -1;
+}
+
+if ($help) {
+    printUsage();
+    return 0;
+}
+
+# check that the filename looks valid
+if ($filename eq "") {
+    print "Not a valid filename";
+    return -1;
+}
+
+open($file, "<", $filename) || die "Could not open '$filename'\n";
+
+# read in each line of the file. For each line, parse
+# the values
+foreach $line (<$file>) {
+    chomp($line);
+    print "$line\n";
+}
+
