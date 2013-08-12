@@ -6,7 +6,6 @@
 #include <aunit.h>
 #include <iostream>
 
-namespace aegis {
 namespace aftipc {
 
 class TestSharedMemory : public aunit::TestFixture
@@ -146,5 +145,4 @@ void TestSharedMemory::readMemory()
     }
 }
 
-} // namespace
 } // namespace

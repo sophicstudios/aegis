@@ -1,7 +1,6 @@
 #include <aftfs_path.h>
 #include <aunit.h>
 
-namespace aegis {
 namespace aftfs {
 
 class TestPath : public aunit::TestFixture
@@ -50,5 +49,4 @@ void TestPath::testConstruction()
     
 }
 
-} // namespace
 } // namespace

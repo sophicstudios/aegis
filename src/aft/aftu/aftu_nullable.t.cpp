@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <cstring>
 
-namespace aegis {
 namespace aftu {
 
 class MyString
@@ -93,5 +92,4 @@ void TestNullable::runTest()
     AUNIT_ASSERT(nullable.isNull());
 }
 
-} // namespace
 } // namespace

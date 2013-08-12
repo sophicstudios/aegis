@@ -2,7 +2,6 @@
 
 #if defined(ACTS_PLATFORM_WINTHREADS)
 
-namespace aegis {
 namespace actp {
 
 namespace {
@@ -74,7 +73,6 @@ bool Win32Thread::join()
     return false;
 }
 
-} // namespace
 } // namespace
 
 #endif // ACTS_PLATFORM

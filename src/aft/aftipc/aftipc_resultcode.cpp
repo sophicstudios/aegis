@@ -2,7 +2,6 @@
 #include <ostream>
 #include <cerrno>
 
-namespace aegis {
 namespace aftipc {
 
 ResultCode ResultUtil::fromErrno(int errnoValue)
@@ -50,5 +49,4 @@ std::ostream& operator<<(std::ostream& os, ResultCode resultCode)
     return os;
 }
 
-} // namespace
 } // namespace

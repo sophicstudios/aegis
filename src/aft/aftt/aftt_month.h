@@ -1,7 +1,6 @@
 #ifndef INCLUDED_AEGIS_AFTT_MONTH_H
 #define INCLUDED_AEGIS_AFTT_MONTH_H
 
-namespace aegis {
 namespace aftt {
 
 class Month
@@ -45,7 +44,6 @@ bool operator<=(Month const& lhs, Month const& rhs);
 bool operator>(Month const& lhs, Month const& rhs);
 bool operator>=(Month const& lhs, Month const& rhs);
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

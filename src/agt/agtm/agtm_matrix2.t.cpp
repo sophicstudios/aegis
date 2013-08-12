@@ -1,7 +1,6 @@
 #include <agtm_matrix2.h>
 #include <aunit.h>
 
-namespace aegis {
 namespace agtm {
 
 template<typename T>
@@ -63,5 +62,4 @@ void TestMatrix2<T>::testDeterminant()
 {
 }
 
-} // namespace
 } // namespace

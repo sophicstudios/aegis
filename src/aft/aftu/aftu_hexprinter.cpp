@@ -2,7 +2,6 @@
 #include <iomanip>
 #include <ostream>
 
-namespace aegis {
 namespace aftu {
 
 namespace {
@@ -131,6 +130,5 @@ std::ostream& operator<<(std::ostream& os, InlineHexPrinter const& printer)
     return os;
 }
 
-} // namespace
 } // namespace
 

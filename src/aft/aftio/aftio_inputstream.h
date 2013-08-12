@@ -5,7 +5,6 @@
 #include <cstddef>
 #include <stdint.h>
 
-namespace aegis {
 namespace aftio {
 
 class InputStream
@@ -33,7 +32,6 @@ private:
     virtual void seekImpl(size_t location) = 0;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

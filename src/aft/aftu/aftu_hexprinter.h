@@ -3,7 +3,6 @@
 
 #include <iosfwd>
 
-namespace aegis {
 namespace aftu {
 
 /**
@@ -49,7 +48,6 @@ std::ostream& operator<<(std::ostream& os, HexPrinter const& rhs);
 
 std::ostream& operator<<(std::ostream& os, InlineHexPrinter const& rhs);
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

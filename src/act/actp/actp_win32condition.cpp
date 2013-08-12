@@ -6,7 +6,6 @@
 
 #if defined(ACTS_PLATFORM_WINTHREADS)
 
-namespace aegis {
 namespace actp {
 
 Win32Condition::Win32Condition()
@@ -55,7 +54,6 @@ ConditionResult Win32Condition::signalAll()
     return ConditionResult_UNKNOWN;
 }
 
-} // namespace
 } // namespace
 
 #endif // ACTS_PLATFORM

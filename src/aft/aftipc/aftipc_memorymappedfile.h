@@ -7,7 +7,6 @@
 #include <aftio_permissions.h>
 #include <string>
 
-namespace aegis {
 namespace aftipc {
 
 class MemoryMappedFile : public aftipc::Mappable
@@ -66,7 +65,6 @@ private:
     aftio::Permissions m_permissions;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

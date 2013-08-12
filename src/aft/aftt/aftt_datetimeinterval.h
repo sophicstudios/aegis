@@ -11,7 +11,6 @@
 #include <afts_stdint.h>
 #include <iosfwd>
 
-namespace aegis {
 namespace aftt {
 
 class DatetimeInterval
@@ -21,7 +20,7 @@ class DatetimeInterval
 public:
     DatetimeInterval();
     
-    DatetimeInterval(Seconds const& seconds, Nanoseconds const& nanoseconds);
+    explicit DatetimeInterval(Seconds const& seconds, Nanoseconds const& nanoseconds = Nanoseconds(0));
     
     explicit DatetimeInterval(
         Days const& days,
@@ -101,7 +100,6 @@ bool operator>=(DatetimeInterval const& lhs, DatetimeInterval const& rhs);
 
 std::ostream& operator<<(std::ostream& os, DatetimeInterval const& rhs);
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

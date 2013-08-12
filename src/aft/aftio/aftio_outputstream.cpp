@@ -1,6 +1,5 @@
 #include <aftio_outputstream.h>
 
-namespace aegis {
 namespace aftio {
 
 OutputStream::OutputStream()
@@ -24,5 +23,4 @@ size_t OutputStream::write(std::vector<int8_t> const& buffer, size_t count)
     return writeImpl(buffer, count);
 }
 
-} // namespace
 } // namespace

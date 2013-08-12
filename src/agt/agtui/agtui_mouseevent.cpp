@@ -1,6 +1,5 @@
 #include <agtui_mouseevent.h>
 
-namespace aegis {
 namespace agtui {
 
 MouseEvent::MouseEvent(Type type, Button button, agtm::Point2d<float> const& location)
@@ -27,5 +26,4 @@ agtm::Point2d<float> const& MouseEvent::location() const
     return m_location;
 }
 
-} // namespace
 } // namespace

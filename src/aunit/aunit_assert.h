@@ -4,9 +4,8 @@
 #include <cstddef>
 
 #define AUNIT_ASSERT(x) \
-    aegis::aunit::AssertImpl::doAssert(reporter(), x, #x, __LINE__, __FILE__)
+    aunit::AssertImpl::doAssert(reporter(), x, #x, __LINE__, __FILE__)
 
-namespace aegis {
 namespace aunit {
 
 class Reporter;
@@ -21,7 +20,6 @@ struct AssertImpl
         char const* const fileName);
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

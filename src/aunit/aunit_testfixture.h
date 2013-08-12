@@ -1,7 +1,6 @@
 #ifndef INCLUDED_AEGIS_AUNIT_TESTFIXTURE_H
 #define INCLUDED_AEGIS_AUNIT_TESTFIXTURE_H
 
-namespace aegis {
 namespace aunit {
 
 class Reporter;
@@ -28,7 +27,6 @@ private:
     Reporter* m_reporter;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

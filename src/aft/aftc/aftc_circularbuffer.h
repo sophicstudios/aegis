@@ -1,13 +1,13 @@
 #ifndef INCLUDED_AEGIS_AFTC_CIRCULARBUFFER_H
 #define INCLUDED_AEGIS_AFTC_CIRCULARBUFFER_H
 
-#include <aftc_uninitialized.h>
+#include <aftc_circularbufferiterator.h>
 #include <aftc_construct.h>
+#include <aftc_uninitialized.h>
 #include <memory>
 #include <iterator>
 #include <cassert>
 
-namespace aegis {
 namespace aftc {
 
 /**
@@ -551,7 +551,6 @@ typename CircularBuffer<T, Alloc>::pointer CircularBuffer<T, Alloc>::allocateAnd
 	}
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

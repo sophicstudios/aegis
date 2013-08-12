@@ -5,7 +5,6 @@
 #include <aunit.h>
 #include <iostream>
 
-namespace aegis {
 namespace aftipc {
 
 namespace {
@@ -143,5 +142,4 @@ void TestMemoryMappedFile::readFile()
     
 }
 
-} // namespace
 } // namespace

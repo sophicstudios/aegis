@@ -3,7 +3,6 @@
 
 #if defined(ACTS_PLATFORM_PTHREADS)
 
-namespace aegis {
 namespace actp {
 
 namespace {
@@ -74,6 +73,8 @@ bool createThread(
         delete threadData;
         return false;
     }
+    
+    return true;
 }
 
 } // namespace
@@ -119,7 +120,6 @@ bool PosixThread::join()
     return result;
 }
 
-} // namespace
 } // namespace
 
 #endif // ACTS_PLATFORM

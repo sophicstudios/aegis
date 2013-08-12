@@ -3,7 +3,6 @@
 #include <exception>
 #include <memory>
 
-namespace aegis {
 namespace aftma {
 
 namespace {
@@ -55,5 +54,4 @@ void BlockAllocator::deallocate(void* ptr)
 {
 }
 
-} // namespace
 } // namespace

@@ -1,6 +1,5 @@
 #include <aunit_testconfiguration.h>
 
-namespace aegis {
 namespace aunit {
 
 TestConfiguration::TestConfiguration()
@@ -19,5 +18,4 @@ std::vector<std::string> const& TestConfiguration::testIdList() const
     return m_testIdList;
 }
 
-} // namespace
 } // namespace

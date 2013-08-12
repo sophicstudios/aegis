@@ -8,7 +8,6 @@
 #include <string>
 #include <windows.h>
 
-namespace aegis {
 namespace aftu {
 
 struct Win32Error
@@ -16,7 +15,6 @@ struct Win32Error
     static std::string systemErrorString(DWORD errorCode);
 };
 
-} // namespace
 } // namespace
 
 #endif // AFTS_OS

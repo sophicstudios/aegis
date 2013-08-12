@@ -1,7 +1,6 @@
 #include <agtg_colorrgba.h>
 #include <aunit.h>
 
-namespace aegis {
 namespace agtg {
 
 class TestColorRGBA : public aunit::TestFixture
@@ -46,5 +45,4 @@ void TestColorRGBA::testConstruction()
     AUNIT_ASSERT(darkGreenHalfAlpha.alpha() == 0.5);
 }
 
-} // namespace
 } // namespace

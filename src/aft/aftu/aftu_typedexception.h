@@ -4,7 +4,6 @@
 #include <aftu_exception.h>
 #include <string>
 
-namespace aegis {
 namespace aftu {
 
 /**
@@ -57,7 +56,6 @@ template<typename T>
 TypedException<T>::~TypedException() throw()
 {}
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

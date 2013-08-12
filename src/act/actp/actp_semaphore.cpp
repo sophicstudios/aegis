@@ -3,7 +3,6 @@
 #include <afts_assert.h>
 #include <iostream>
 
-namespace aegis {
 namespace actp {
 
 #if defined(ACTS_PLATFORM_PTHREADS)
@@ -12,12 +11,17 @@ Semaphore::Semaphore(unsigned int maxValue, unsigned int initialValue)
 : m_sem(NULL)
 {
     int result = sem_init(&m_sem, 0, initialValue);
+    if (result != 0) {
+        std::cerr << "sem_init failed ["
+            << " result: " << result
+            << " ]" << std::endl;
+    }
 }
     
 Semaphore::~Semaphore()
 {
     int result = sem_destroy(&m_sem);
-    AFTS_ASSERT_DEBUG(0 == result);
+    AFTS_ASSERT(0 == result);
 }
     
 Semaphore::ResultCode Semaphore::acquire()
@@ -120,5 +124,4 @@ Semaphore::ResultCode Semaphore::release(unsigned int count)
 
 #endif // ACTS_PLATFORM
 
-} // namespace
 } // namespace

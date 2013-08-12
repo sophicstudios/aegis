@@ -2,7 +2,6 @@
 #include <aftu_url.h>
 #include <iostream>
 
-namespace aegis {
 namespace aftu {
 
 class A
@@ -50,19 +49,18 @@ void TestUrl::testConstruction()
 {
     A a;
     
-    Url emptyUrl;
+    URL emptyUrl;
     AUNIT_ASSERT(!emptyUrl.isValid());
     
-    Url httpUrl1("http://www.google.com");
+    URL httpUrl1("http://www.google.com");
     AUNIT_ASSERT(httpUrl1.isValid());
     AUNIT_ASSERT(httpUrl1.scheme() == "http");
     
-    Url httpUrl2("http://www.google.com/");
-    Url httpUrl3("http://www.google.com/search");
-    Url httpUrl4("http://www.google.com/search/");
-    Url httpUrl5("http://www.google.com/search?term=test");
-    Url httpUrl6("http://www.google.com/search?term=test#ref");
+    URL httpUrl2("http://www.google.com/");
+    URL httpUrl3("http://www.google.com/search");
+    URL httpUrl4("http://www.google.com/search/");
+    URL httpUrl5("http://www.google.com/search?term=test");
+    URL httpUrl6("http://www.google.com/search?term=test#ref");
 }
 
-} // namespace
 } // namespace

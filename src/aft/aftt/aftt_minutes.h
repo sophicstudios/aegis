@@ -4,7 +4,6 @@
 #include <afts_stdint.h>
 #include <iosfwd>
 
-namespace aegis {
 namespace aftt {
 
 class Hours;
@@ -31,7 +30,6 @@ private:
 
 std::ostream& operator<<(std::ostream& os, Minutes const& minutes);
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

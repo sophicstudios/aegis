@@ -11,7 +11,6 @@
 
 #include <iosfwd>
 
-namespace aegis {
 namespace actp {
 
 /**
@@ -92,7 +91,6 @@ inline MutexResult Mutex::unlock()
     return m_nativeMutex.unlock();
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDE

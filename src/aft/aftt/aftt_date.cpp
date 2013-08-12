@@ -3,7 +3,6 @@
 #include <ostream>
 #include <iomanip>
 
-namespace aegis {
 namespace aftt {
 
 namespace {
@@ -23,14 +22,14 @@ struct MonthData
 {
     char const* const longName;
     char const* const shortName;
-    int days;
-    int daysBeforeMonth;
-    int daysThroughMonth;
-    int leapDays;
-    int leapDaysBeforeMonth;
-    int leapDaysThroughMonth;
-    int start;
-    int leapStart;
+    uint32_t days;
+    uint32_t daysBeforeMonth;
+    uint32_t daysThroughMonth;
+    uint32_t leapDays;
+    uint32_t leapDaysBeforeMonth;
+    uint32_t leapDaysThroughMonth;
+    uint32_t start;
+    uint32_t leapStart;
 };
 
 const MonthData MONTH_DATA_LIST[] = {
@@ -49,23 +48,23 @@ const MonthData MONTH_DATA_LIST[] = {
     {"December",  "Dec", 31, 334, 365, 31, 335, 366, 5, 5}
 };
 
-const int DAYS_PER_YEAR = 365;
-const int DAYS_PER_4_YEARS = (DAYS_PER_YEAR * 4 )+ 1;
-const int DAYS_PER_CENTURY = (DAYS_PER_YEAR * 100) + 24;
-const int DAYS_PER_4_CENTURY = (DAYS_PER_CENTURY * 4) + 1;
+const uint32_t DAYS_PER_YEAR = 365;
+const uint32_t DAYS_PER_4_YEARS = (DAYS_PER_YEAR * 4 )+ 1;
+const uint32_t DAYS_PER_CENTURY = (DAYS_PER_YEAR * 100) + 24;
+const uint32_t DAYS_PER_4_CENTURY = (DAYS_PER_CENTURY * 4) + 1;
 
-const int GREGORIAN_START_YEAR = 1752;
-const int GREGORIAN_START_MONTH = 9;
-const int JULIAN_END_DAY = 2;
-const int GREGORIAN_START_DAY = 14;
-const int GREGORIAN_ADJUST = GREGORIAN_START_DAY - JULIAN_END_DAY - 1;
+const uint32_t GREGORIAN_START_YEAR = 1752;
+const uint32_t GREGORIAN_START_MONTH = 9;
+const uint32_t JULIAN_END_DAY = 2;
+const uint32_t GREGORIAN_START_DAY = 14;
+const uint32_t GREGORIAN_ADJUST = GREGORIAN_START_DAY - JULIAN_END_DAY - 1;
 
 const uint64_t JAN_01_1601 = 584401;
 const uint64_t SEP_02_1752 = 639798;
 const uint64_t SEP_14_1752 = 639799;
 const uint64_t JAN_01_1753 = 639908;
 
-inline bool isLeapYear(int year)
+inline bool isLeapYear(uint32_t year)
 {
     // http://en.wikipedia.org/wiki/Leap_year
     // if $year mod 400 is 0 then leap
@@ -76,9 +75,9 @@ inline bool isLeapYear(int year)
     return (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0) || (year <= 1752));
 }
 
-size_t yearMonthDayToSerial(int year, int month, int day)
+uint64_t yearMonthDayToSerial(uint32_t year, uint32_t month, uint32_t day)
 {
-    size_t serial = 0;
+    uint64_t serial = 0;
     
     // 1752 is a strange year, in which 11 days are removed, so we have
     // special logic to handle this.
@@ -93,16 +92,16 @@ size_t yearMonthDayToSerial(int year, int month, int day)
         
         // This can be adjusted to:
         // 365*(Y) + (Y-1601)/4 - (Y-1601)/100 + (Y-1601)/400 + 25;
-        static const int LEAP_DAYS = 25;
+        static const uint32_t LEAP_DAYS = 25;
         
-        size_t x = year - 1601;
+        uint32_t x = year - 1601;
         serial = (DAYS_PER_YEAR * year) + (x/4) - (x/100) + (x/400) + LEAP_DAYS + MONTH_DATA_LIST[month].daysBeforeMonth + day;
         if (month > 2 && (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0))) {
             ++serial;
         }
     }
     else {
-        int prevYear = year - 1;
+        uint32_t prevYear = year - 1;
         serial = (DAYS_PER_YEAR * prevYear) + (prevYear/4) + MONTH_DATA_LIST[month].daysBeforeMonth + day;
 
         if (month > 2 && year % 4 == 0) {
@@ -117,168 +116,168 @@ size_t yearMonthDayToSerial(int year, int month, int day)
     return serial;
 }
 
-void serialToYearMonthDay(unsigned int* year, unsigned int* month, unsigned int* day, uint64_t serial)
+void serialToYearMonthDay(uint32_t* year, uint32_t* month, uint32_t* day, uint64_t serial)
 {
     if (serial >= SEP_14_1752) {
         serial = serial - JAN_01_1601 + 11;
 
         // Adjust for 400 year rule in leap year computation.
-        size_t s2 = serial - (serial+1) / DAYS_PER_4_CENTURY;
+        uint64_t s2 = serial - (serial + 1) / DAYS_PER_4_CENTURY;
 
         // Adjust for 100 year rule in leap year computation.
-        size_t s3 = s2 + (s2+1) / DAYS_PER_CENTURY - 1;  // 1700 has a leap day
+        uint64_t s3 = s2 + (s2 + 1) / DAYS_PER_CENTURY - 1;  // 1700 has a leap day
 
         // Compute year.
-        size_t y = (s3 - (s3+1) / DAYS_PER_4_YEARS) / DAYS_PER_YEAR;
-        *year = static_cast<int>(y + 1601);
+        uint32_t y = static_cast<uint32_t>((s3 - ((s3 + 1) / DAYS_PER_4_YEARS)) / DAYS_PER_YEAR);
+        *year = y + 1601;
 
         // Compute julian day.
-        size_t julianDay = serial -
-             (y * DAYS_PER_YEAR + y / 4 - y / 100 + y / 400 + 1);  // 1700 has a leap day
+        uint64_t julianDay = serial -
+             ((y * DAYS_PER_YEAR) + (y / 4) - (y / 100) + (y / 400) + 1);  // 1700 has a leap day
 
         // Compute adjustment for February, with and without a leap day.
-        size_t a = 2 - (3 == y % 4 && (99 != y % 100 || 399 == y % 400));
+        uint32_t a = 2 - (3 == y % 4 && (99 != y % 100 || 399 == y % 400));
 
         // Compute month.
-        size_t m = ((julianDay + a * (julianDay >= 59)) * 100 + 50) / 3057;
-        *month = static_cast<int>(m + 1);
+        uint32_t m = static_cast<uint32_t>(((julianDay + a * (julianDay >= 59)) * 100 + 50) / 3057);
+        *month = m + 1;
 
         // Compute day of month.
-        *day = static_cast<int>(julianDay - ((m * 3057 + 50) / 100 - a*(m >= 2)) + 1);
+        *day = static_cast<uint32_t>(julianDay - ((m * 3057 + 50) / 100 - a*(m >= 2)) + 1);
     }
     else {
         // Convert to days since JAN_01_0001.
         serial -= 1;
 
         // Compute year.
-        size_t y = (serial - (serial+1) / 1461) / 365;
-        *year = static_cast<int>(y + 1);
+        uint32_t y = static_cast<uint32_t>((serial - (serial+1) / 1461) / 365);
+        *year = y + 1;
 
         // Compute julian day.
-        size_t julianDay = serial - (y * 365 + y / 4);
+        uint64_t julianDay = serial - (y * 365 + y / 4);
 
         // Compute adjustment for February, with and without a leap day.
-        size_t a = 2 - (3 == y % 4);
+        uint32_t a = 2 - (3 == y % 4);
 
         // Compute month.
-        size_t m = ((julianDay + a * (julianDay >= 59)) * 100 + 50) / 3057;
-        *month = static_cast<int>(m + 1);
+        uint32_t m = static_cast<uint32_t>(((julianDay + a * (julianDay >= 59)) * 100 + 50) / 3057);
+        *month = m + 1;
 
         // Compute day of month.
-        *day = static_cast<int>(julianDay - ((m * 3057 + 50) / 100 - a*(m >= 2)) + 1);
+        *day = static_cast<uint32_t>(julianDay - ((m * 3057 + 50) / 100 - a*(m >= 2)) + 1);
     }
 }
 
-int serialToYear(size_t serial)
+uint32_t serialToYear(uint64_t serial)
 {
     if (serial >= SEP_14_1752) {
         serial = serial - JAN_01_1601 + 11;
 
         // Adjust for 400 year rule in leap year computation.
-        size_t s2 = serial - (serial+1) / DAYS_PER_4_CENTURY;
+        uint64_t s2 = serial - (serial+1) / DAYS_PER_4_CENTURY;
 
         // Adjust for 100 year rule in leap year computation.
-        size_t s3 = s2 + (s2+1) / DAYS_PER_CENTURY - 1;  // 1700 has a leap day
+        uint64_t s3 = s2 + (s2+1) / DAYS_PER_CENTURY - 1;  // 1700 has a leap day
 
         // Compute year.
-        return static_cast<int>((s3 - (s3+1) / DAYS_PER_4_YEARS) / DAYS_PER_YEAR + 1601);
+        return static_cast<uint32_t>((s3 - (s3+1) / DAYS_PER_4_YEARS) / DAYS_PER_YEAR + 1601);
     }
     else {
         // Convert to days since JAN_01_0001.
         serial -= 1;
 
         // Compute year.
-        return static_cast<int>((serial - (serial+1) / 1461) / 365 + 1);
+        return static_cast<uint32_t>((serial - (serial+1) / 1461) / 365 + 1);
     }
 }
 
-int serialToMonth(size_t serial)
+uint32_t serialToMonth(uint64_t serial)
 {
     if (serial >= SEP_14_1752) {
         serial = serial - JAN_01_1601 + 11;
 
         // Adjust for 400 year rule in leap year computation.
-        size_t s2 = serial - (serial+1) / DAYS_PER_4_CENTURY;
+        uint64_t s2 = serial - (serial+1) / DAYS_PER_4_CENTURY;
 
         // Adjust for 100 year rule in leap year computation.
-        size_t s3 = s2 + (s2+1) / DAYS_PER_CENTURY - 1;  // 1700 has a leap day
+        uint64_t s3 = s2 + (s2+1) / DAYS_PER_CENTURY - 1;  // 1700 has a leap day
 
         // Compute year.
-        size_t y = (s3 - (s3+1) / DAYS_PER_4_YEARS) / DAYS_PER_YEAR;
+        uint32_t y = static_cast<uint32_t>((s3 - (s3+1) / DAYS_PER_4_YEARS) / DAYS_PER_YEAR);
 
         // Compute julian day.
-        size_t julianDay = serial -
+        uint64_t julianDay = serial -
              (y * DAYS_PER_YEAR + y / 4 - y / 100 + y / 400 + 1);  // 1700 has a leap day
 
         // Compute adjustment for February, with and without a leap day.
-        size_t a = 2 - (3 == y % 4 && (99 != y % 100 || 399 == y % 400));
+        uint32_t a = 2 - (3 == y % 4 && (99 != y % 100 || 399 == y % 400));
 
         // Compute month.
-        return static_cast<int>(((julianDay + a * (julianDay >= 59)) * 100 + 50) / 3057 + 1);
+        return static_cast<uint32_t>(((julianDay + a * (julianDay >= 59)) * 100 + 50) / 3057 + 1);
     }
     else {
         // Convert to days since JAN_01_0001.
         serial -= 1;
 
         // Compute year.
-        size_t y = (serial - (serial+1) / 1461) / 365;
+        uint32_t y = static_cast<uint32_t>((serial - (serial+1) / 1461) / 365);
 
         // Compute julian day.
-        size_t julianDay = serial - (y * 365 + y / 4);
+        uint64_t julianDay = serial - (y * 365 + y / 4);
 
         // Compute adjustment for February, with and without a leap day.
-        size_t a = 2 - (3 == y % 4);
+        uint32_t a = 2 - (3 == y % 4);
 
         // Compute month.
-        return static_cast<int>(((julianDay + a * (julianDay >= 59)) * 100 + 50) / 3057 + 1);
+        return static_cast<uint32_t>(((julianDay + a * (julianDay >= 59)) * 100 + 50) / 3057 + 1);
     }
 }
 
-int serialToDay(size_t serial)
+uint32_t serialToDay(uint64_t serial)
 {
     if (serial >= SEP_14_1752) {
         serial = serial - JAN_01_1601 + 11;
 
         // Adjust for 400 year rule in leap year computation.
-        size_t s2 = serial - (serial+1) / DAYS_PER_4_CENTURY;
+        uint64_t s2 = serial - (serial+1) / DAYS_PER_4_CENTURY;
 
         // Adjust for 100 year rule in leap year computation.
-        size_t s3 = s2 + (s2+1) / DAYS_PER_CENTURY - 1;  // 1700 has a leap day
+        uint64_t s3 = s2 + (s2+1) / DAYS_PER_CENTURY - 1;  // 1700 has a leap day
 
         // Compute year.
-        size_t y = (s3 - (s3+1) / DAYS_PER_4_YEARS) / DAYS_PER_YEAR;
+        uint32_t y = static_cast<uint32_t>((s3 - (s3+1) / DAYS_PER_4_YEARS) / DAYS_PER_YEAR);
 
         // Compute julian day.
-        size_t julianDay = serial -
+        uint64_t julianDay = serial -
              (y * DAYS_PER_YEAR + y / 4 - y / 100 + y / 400 + 1);  // 1700 has a leap day
 
         // Compute adjustment for February, with and without a leap day.
-        size_t a = 2 - (3 == y % 4 && (99 != y % 100 || 399 == y % 400));
+        uint32_t a = 2 - (3 == y % 4 && (99 != y % 100 || 399 == y % 400));
 
         // Compute month.
-        size_t m = ((julianDay + a * (julianDay >= 59)) * 100 + 50) / 3057;
+        uint32_t m = static_cast<uint32_t>(((julianDay + a * (julianDay >= 59)) * 100 + 50) / 3057);
 
         // Compute day of month.
-        return static_cast<int>(julianDay - ((m * 3057 + 50) / 100 - a*(m >= 2)) + 1);
+        return static_cast<uint32_t>(julianDay - ((m * 3057 + 50) / 100 - a*(m >= 2)) + 1);
     }
     else {
         // Convert to days since JAN_01_0001.
         serial -= 1;
 
         // Compute year.
-        size_t y = (serial - (serial+1) / 1461) / 365;
+        uint32_t y = static_cast<uint32_t>((serial - (serial+1) / 1461) / 365);
 
         // Compute julian day.
-        size_t julianDay = serial - (y * 365 + y / 4);
+        uint64_t julianDay = serial - (y * 365 + y / 4);
 
         // Compute adjustment for February, with and without a leap day.
-        size_t a = 2 - (3 == y % 4);
+        uint32_t a = 2 - (3 == y % 4);
 
         // Compute month.
-        size_t m = ((julianDay + a * (julianDay >= 59)) * 100 + 50) / 3057;
+        uint32_t m = static_cast<uint32_t>(((julianDay + a * (julianDay >= 59)) * 100 + 50) / 3057);
 
         // Compute day of month.
-        return static_cast<int>(julianDay - ((m * 3057 + 50) / 100 - a*(m >= 2)) + 1);
+        return static_cast<uint32_t>(julianDay - ((m * 3057 + 50) / 100 - a*(m >= 2)) + 1);
     }
 }
 
@@ -286,9 +285,9 @@ int serialToDay(size_t serial)
 
 bool Date::isValid(Year const& year, Month const& month, Day const& day)
 {
-    unsigned int yearValue = year.value();
-    unsigned int monthValue = month.value();
-    unsigned int dayValue = day.value();
+    uint32_t yearValue = year.value();
+    uint32_t monthValue = month.value();
+    uint32_t dayValue = day.value();
     if (yearValue < 1 || yearValue > 9999 || monthValue < 1 || monthValue > 12) {
         return false;
     }
@@ -307,11 +306,11 @@ bool Date::isValid(Year const& year, Month const& month, Day const& day)
 
 // Initialize to 0001-01-01
 Date::Date()
-: m_date(1)
+: m_serial(1)
 {}
 
 Date::Date(Year const& year, Month const& month, Day const& day)
-: m_date(yearMonthDayToSerial(year.value(), month.value(), day.value()))
+: m_serial(yearMonthDayToSerial(year.value(), month.value(), day.value()))
 {
     AFTS_ASSERT_DEBUG(isValid(year, month, day));
 }
@@ -321,39 +320,39 @@ Date::~Date()
 
 Date& Date::operator+=(Days const& days)
 {
-    m_date += days.value();
+    m_serial += days.value();
     return *this;
 }
 
 Date& Date::operator-=(Days const& days)
 {
-    m_date -= days.value();
+    m_serial -= days.value();
     return *this;
 }
 
 Date& Date::operator++()
 {
-    ++m_date;
+    ++m_serial;
     return *this;
 }
 
 Date Date::operator++(int)
 {
     Date temp(*this);
-    ++m_date;
+    ++m_serial;
     return temp;
 }
 
 Date& Date::operator--()
 {
-    --m_date;
+    --m_serial;
     return *this;
 }
 
 Date Date::operator--(int)
 {
     Date temp(*this);
-    --m_date;
+    --m_serial;
     return temp;
 }
 
@@ -364,25 +363,25 @@ bool Date::validateAndSetDate(Year const& year, Month const& month, Day const& d
         return false;
     }
 
-    m_date = yearMonthDayToSerial(year.value(), month.value(), day.value());
+    m_serial = yearMonthDayToSerial(year.value(), month.value(), day.value());
 
     return true;
 }
 
 bool Date::setDate(Year const& year, Month const& month, Day const& day)
 {
-    m_date = yearMonthDayToSerial(year.value(), month.value(), day.value());
+    m_serial = yearMonthDayToSerial(year.value(), month.value(), day.value());
 
     return true;
 }
 
 void Date::getYearMonthDay(Year& year, Month& month, Day& day) const
 {
-    unsigned int yearValue = 0;
-    unsigned int monthValue = 0;
-    unsigned int dayValue = 0;
+    uint32_t yearValue = 0;
+    uint32_t monthValue = 0;
+    uint32_t dayValue = 0;
     
-    serialToYearMonthDay(&yearValue, &monthValue, &dayValue, m_date);
+    serialToYearMonthDay(&yearValue, &monthValue, &dayValue, m_serial);
     
     year = Year(yearValue);
     month = Month(monthValue);
@@ -391,23 +390,23 @@ void Date::getYearMonthDay(Year& year, Month& month, Day& day) const
 
 Year Date::year() const
 {
-    return Year(serialToYear(m_date));
+    return Year(serialToYear(m_serial));
 }
 
 Month Date::month() const
 {
-    return Month(serialToMonth(m_date));
+    return Month(serialToMonth(m_serial));
 }
 
 Day Date::day() const
 {
-    return Day(serialToDay(m_date));
+    return Day(serialToDay(m_serial));
 }
 
 std::ostream& Date::print(std::ostream& os) const
 {
-    unsigned int year, month, day;
-    serialToYearMonthDay(&year, &month, &day, m_date);
+    uint32_t year, month, day;
+    serialToYearMonthDay(&year, &month, &day, m_serial);
     
     os << std::setw(4) << std::setfill('0') << year
         << "-" << std::setw(2) << std::setfill('0') << MONTH_DATA_LIST[month].shortName
@@ -432,37 +431,37 @@ Date operator-(Date const& date, Days const& days)
 
 Days operator-(Date const& lhs, Date const& rhs)
 {
-    return Days(lhs.m_date - rhs.m_date);
+    return Days(static_cast<int64_t>(lhs.m_serial - rhs.m_serial));
 }
 
 bool operator==(Date const& lhs, Date const& rhs)
 {
-    return lhs.m_date == rhs.m_date;
+    return lhs.m_serial == rhs.m_serial;
 }
 
 bool operator!=(Date const& lhs, Date const& rhs)
 {
-    return lhs.m_date != rhs.m_date;
+    return lhs.m_serial != rhs.m_serial;
 }
 
 bool operator<(Date const& lhs, Date const& rhs)
 {
-    return lhs.m_date < rhs.m_date;
+    return lhs.m_serial < rhs.m_serial;
 }
 
 bool operator<=(Date const& lhs, Date const& rhs)
 {
-    return lhs.m_date <= rhs.m_date;
+    return lhs.m_serial <= rhs.m_serial;
 }
 
 bool operator>(Date const& lhs, Date const& rhs)
 {
-    return lhs.m_date > rhs.m_date;
+    return lhs.m_serial > rhs.m_serial;
 }
 
 bool operator>=(Date const& lhs, Date const& rhs)
 {
-    return lhs.m_date >= rhs.m_date;
+    return lhs.m_serial >= rhs.m_serial;
 }
 
 std::ostream& operator<<(std::ostream& os, Date const& date)
@@ -470,5 +469,4 @@ std::ostream& operator<<(std::ostream& os, Date const& date)
     return date.print(os);
 }
 
-} // namespace
 } // namespace

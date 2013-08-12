@@ -37,7 +37,6 @@
 #include <agtm_point2d.h>
 #include <agtm_size2d.h>
 
-namespace aegis {
 namespace agtm {
 
 // @class
@@ -52,6 +51,8 @@ template<typename T>
 class Rect
 {
 public:
+    Rect();
+    
     Rect(Point2d<T> const& origin, Size2d<T> const& size);
     
     Rect(T const& left, T const& right, T const& bottom, T const& top);
@@ -80,6 +81,10 @@ Rect<T> make_rect(Point2d<T> const& origin, Size2d<T> const& size);
 
 template<typename T>
 std::ostream& operator<<(std::ostream& os, Rect<T> const& rect);
+
+template<typename T>
+Rect<T>::Rect()
+{}
 
 template<typename T>
 Rect<T>::Rect(Point2d<T> const& origin, Size2d<T> const& size)
@@ -146,7 +151,6 @@ std::ostream& operator<<(std::ostream& os, Rect<T> const& rect)
     return os;
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

@@ -1,6 +1,5 @@
 #include <actp_thread.h>
 
-namespace aegis {
 namespace actp {
 
 Thread::Thread(ThreadFunction const& threadFunction)
@@ -14,6 +13,4 @@ Thread::Thread(ThreadFunction const& threadFunction, ThreadAttributes const& thr
 Thread::~Thread()
 {}
 
-
-} // namespace
 } // namespace

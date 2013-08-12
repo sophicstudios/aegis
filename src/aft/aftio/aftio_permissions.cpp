@@ -2,7 +2,6 @@
 #include <sys/stat.h>
 #include <ostream>
 
-namespace aegis {
 namespace aftio {
 
 Permissions::Permissions()
@@ -119,5 +118,4 @@ std::ostream& operator<<(std::ostream& os, Permissions const& perm)
     return os;
 }
 
-} // namespace
 } // namespace

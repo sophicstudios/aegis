@@ -7,7 +7,7 @@
 
 #include <afts_windows.h>
 
-#elif defined(AFTS_OS_MACOS)
+#elif defined(AFTS_OS_APPLE)
 
 #include <mach/clock.h>
 #include <mach/mach.h>
@@ -22,7 +22,8 @@
 
 #endif // AFTS_OS
 
-namespace aegis {
+#include <iostream>
+
 namespace aftt {
 
 namespace {
@@ -58,7 +59,7 @@ Datetime SystemTime::nowAsDatetimeLocal()
         Second(time.wSecond), Millisecond(time.wMilliseconds));
 }
 
-#elif defined(AFTS_OS_MACOS)
+#elif defined(AFTS_OS_APPLE)
 
 namespace {
 
@@ -75,17 +76,28 @@ DatetimeInterval SystemTime::now()
     clock_get_time(cclock, &mts);
     mach_port_deallocate(mach_task_self(), cclock);
     
-    return DatetimeInterval(
+    /*
+    std::cout << "SystemTime::now ["
+        << " cclock:" << cclock
+        << " tv_sec: " << mts.tv_sec
+        << " tv_nsec: " << mts.tv_nsec
+        << " ]" << std::endl;
+    */
+    
+    DatetimeInterval result(
         Days(0),
         Hours(0),
         Minutes(0),
         Seconds(mts.tv_sec),
         Nanoseconds(mts.tv_nsec));
+    
+    return result;
 }
 
 Datetime SystemTime::nowAsDatetimeUTC()
 {
-    return s_epoch + now();
+    Datetime result = s_epoch + now();
+    return result;
 }
 
 Datetime SystemTime::nowAsDatetimeLocal()
@@ -172,5 +184,4 @@ Datetime SystemTime::epochAsDatetimeUTC()
     return s_epoch;
 }
 
-} // namespace
 } // namespace

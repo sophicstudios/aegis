@@ -5,7 +5,6 @@
 #include <agtm_vector3.h>
 #include <agtg_colorrgba.h>
 
-namespace aegis {
 namespace agtg {
 
 template<typename T>
@@ -36,7 +35,6 @@ private:
     bool m_hasColor;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

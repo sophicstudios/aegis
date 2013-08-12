@@ -3,7 +3,6 @@
 
 #if defined(AFTS_OS_WIN32)
 
-namespace aegis {
 namespace afts {
 
 std::string Win32ErrorUtil::translateSystemError(DWORD errorCode)
@@ -47,7 +46,6 @@ std::string Win32ErrorUtil::translateSystemError(DWORD errorCode)
     return errorMessage;
 }
 
-} // namespace
 } // namespace
 
 #endif // AFTS_OS

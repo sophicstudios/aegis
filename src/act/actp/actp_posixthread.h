@@ -6,7 +6,6 @@
 
 #if defined(ACTS_PLATFORM_PTHREADS)
 
-namespace aegis {
 namespace actp {
 
 class PosixThread
@@ -29,7 +28,6 @@ private:
     bool m_joinable;
 };
 
-} // namespace
 } // namespace
 
 #endif // ACTS_PLATFORM

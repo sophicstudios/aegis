@@ -1,6 +1,5 @@
 #include <aftt_year.h>
 
-namespace aegis {
 namespace aftt {
 
 Year::Year()
@@ -49,5 +48,4 @@ bool operator>=(Year const& lhs, Year const& rhs)
     return lhs.value() >= rhs.value();
 }
 
-} // namespace
 } // namespace

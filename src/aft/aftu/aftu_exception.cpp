@@ -1,6 +1,5 @@
 #include <aftu_exception.h>
 
-namespace aegis {
 namespace aftu {
 
 Exception::Exception()
@@ -18,5 +17,4 @@ char const* Exception::what() const throw()
     return m_message.c_str();
 }
 
-} // namespace
 } // namespace

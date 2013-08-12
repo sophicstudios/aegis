@@ -8,6 +8,181 @@
 
 /* Begin PBXBuildFile section */
 		FA223AF6175A1B29000FE3E9 /* agtg_colorrgba.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA223AF5175A1B29000FE3E9 /* agtg_colorrgba.t.cpp */; };
+		FA2317611784742A0050DE3A /* aftc_construct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EE215A7AD520044283D /* aftc_construct.cpp */; };
+		FA231762178474340050DE3A /* aftc_packedstringmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EE415A7AD520044283D /* aftc_packedstringmap.cpp */; };
+		FA231763178474370050DE3A /* aftc_trie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EE615A7AD520044283D /* aftc_trie.cpp */; };
+		FA231764178474450050DE3A /* aftfs_directoryentry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EF415A90A990044283D /* aftfs_directoryentry.cpp */; };
+		FA231765178474480050DE3A /* aftfs_file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EF615A90A990044283D /* aftfs_file.cpp */; };
+		FA2317661784744F0050DE3A /* aftfs_filesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EF815A90A990044283D /* aftfs_filesystem.cpp */; };
+		FA231767178474530050DE3A /* aftfs_path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EFA15A90A990044283D /* aftfs_path.cpp */; };
+		FA231768178474580050DE3A /* aftfs_posixpath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EFC15A90A990044283D /* aftfs_posixpath.cpp */; };
+		FA2317691784747E0050DE3A /* afth_crc32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15F315AA70190017DCD5 /* afth_crc32.cpp */; };
+		FA23176A1784749F0050DE3A /* aftio_flags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158415A9DE900017DCD5 /* aftio_flags.cpp */; };
+		FA23176B178474A20050DE3A /* aftio_inputstream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158615A9DE900017DCD5 /* aftio_inputstream.cpp */; };
+		FA23176C178474A50050DE3A /* aftio_outputstream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158815A9DE900017DCD5 /* aftio_outputstream.cpp */; };
+		FA23176D178474A80050DE3A /* aftio_permission.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158A15A9DE900017DCD5 /* aftio_permission.cpp */; };
+		FA23176E178474AE0050DE3A /* aftio_permissions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158C15A9DE900017DCD5 /* aftio_permissions.cpp */; };
+		FA23176F178474FD0050DE3A /* aftipc_mappable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B159E15AA61F20017DCD5 /* aftipc_mappable.cpp */; };
+		FA231770178475000050DE3A /* aftipc_mappedregion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15A015AA61F20017DCD5 /* aftipc_mappedregion.cpp */; };
+		FA231771178475040050DE3A /* aftipc_memorymappedfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15A215AA61F20017DCD5 /* aftipc_memorymappedfile.cpp */; };
+		FA231772178475080050DE3A /* aftipc_resultcode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15A415AA61F20017DCD5 /* aftipc_resultcode.cpp */; };
+		FA2317731784750E0050DE3A /* aftipc_sharedmemory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15A615AA61F20017DCD5 /* aftipc_sharedmemory.cpp */; };
+		FA231774178475170050DE3A /* aftm_round.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15B215AA62350017DCD5 /* aftm_round.cpp */; };
+		FA2317751784751E0050DE3A /* aftma_allocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15B615AA624F0017DCD5 /* aftma_allocator.cpp */; };
+		FA231776178475200050DE3A /* aftma_blockallocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15B815AA624F0017DCD5 /* aftma_blockallocator.cpp */; };
+		FA2317771784752B0050DE3A /* afts_alignmentof.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E4D15A755340044283D /* afts_alignmentof.cpp */; };
+		FA2317781784752F0050DE3A /* afts_assert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E4F15A755340044283D /* afts_assert.cpp */; };
+		FA231779178475330050DE3A /* afts_byteorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E5115A755340044283D /* afts_byteorder.cpp */; };
+		FA23177A178475360050DE3A /* afts_comparisonutil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E5315A755340044283D /* afts_comparisonutil.cpp */; };
+		FA23177B1784753B0050DE3A /* afts_compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E5515A755340044283D /* afts_compiler.cpp */; };
+		FA23177C1784753E0050DE3A /* afts_errorutil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E5715A755340044283D /* afts_errorutil.cpp */; };
+		FA23177D178475450050DE3A /* afts_os.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E5915A755340044283D /* afts_os.cpp */; };
+		FA23177E1784754A0050DE3A /* afts_platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E5B15A755340044283D /* afts_platform.cpp */; };
+		FA23177F1784754F0050DE3A /* afts_win32errorutil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E5D15A755340044283D /* afts_win32errorutil.cpp */; };
+		FA231780178475560050DE3A /* afts_windows.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E5F15A755340044283D /* afts_windows.cpp */; };
+		FA231781178475760050DE3A /* aftt_date.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15BE15AA626C0017DCD5 /* aftt_date.cpp */; };
+		FA2317831784757D0050DE3A /* aftt_datetime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15C215AA626C0017DCD5 /* aftt_datetime.cpp */; };
+		FA231784178475820050DE3A /* aftt_datetimeinterval.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15C415AA626C0017DCD5 /* aftt_datetimeinterval.cpp */; };
+		FA231785178475AA0050DE3A /* aftt_dayofweek.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15C615AA626C0017DCD5 /* aftt_dayofweek.cpp */; };
+		FA231786178475C00050DE3A /* aftt_systemtime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15C815AA626C0017DCD5 /* aftt_systemtime.cpp */; };
+		FA231787178475C50050DE3A /* aftt_time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15CA15AA626C0017DCD5 /* aftt_time.cpp */; };
+		FA231788178475C90050DE3A /* aftt_timezone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15CE15AA626C0017DCD5 /* aftt_timezone.cpp */; };
+		FA231789178475D50050DE3A /* aftu_exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E2A15A753070044283D /* aftu_exception.cpp */; };
+		FA23178A178475DB0050DE3A /* aftu_hexprinter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E2C15A753070044283D /* aftu_hexprinter.cpp */; };
+		FA23178B178475E10050DE3A /* aftu_hexutil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E2E15A753070044283D /* aftu_hexutil.cpp */; };
+		FA23178C178475E70050DE3A /* aftu_stringref.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E3115A753070044283D /* aftu_stringref.cpp */; };
+		FA23178D178475ED0050DE3A /* aftu_stringutil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E3315A753070044283D /* aftu_stringutil.cpp */; };
+		FA23178E178475F20050DE3A /* aftu_url.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E3715A753070044283D /* aftu_url.cpp */; };
+		FA23178F178476090050DE3A /* aftu_win32error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E3915A753070044283D /* aftu_win32error.cpp */; };
+		FA231790178476510050DE3A /* aftu_exception.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E2B15A753070044283D /* aftu_exception.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA231791178476550050DE3A /* aftu_hexprinter.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E2D15A753070044283D /* aftu_hexprinter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317921784765C0050DE3A /* aftu_hexutil.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E2F15A753070044283D /* aftu_hexutil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317931784765F0050DE3A /* aftu_nullable.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E3015A753070044283D /* aftu_nullable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317941784766A0050DE3A /* aftu_stringref.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E3215A753070044283D /* aftu_stringref.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317951784766E0050DE3A /* aftu_stringutil.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E3415A753070044283D /* aftu_stringutil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA231796178476730050DE3A /* aftu_typedbuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E3515A753070044283D /* aftu_typedbuffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA231797178476770050DE3A /* aftu_typedexception.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E3615A753070044283D /* aftu_typedexception.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317981784767B0050DE3A /* aftu_url.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E3815A753070044283D /* aftu_url.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317991784767F0050DE3A /* aftu_win32error.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E3A15A753070044283D /* aftu_win32error.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA23179A178476900050DE3A /* aftt_timezone.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15CF15AA626C0017DCD5 /* aftt_timezone.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA23179B178476950050DE3A /* aftt_time.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15CB15AA626C0017DCD5 /* aftt_time.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA23179C178476990050DE3A /* aftt_systemtime.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15C915AA626C0017DCD5 /* aftt_systemtime.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA23179D178476AB0050DE3A /* aftt_dayofweek.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15C715AA626C0017DCD5 /* aftt_dayofweek.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA23179E178476B10050DE3A /* aftt_datetimeinterval.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15C515AA626C0017DCD5 /* aftt_datetimeinterval.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA23179F178476B50050DE3A /* aftt_datetime.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15C315AA626C0017DCD5 /* aftt_datetime.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317A1178476BC0050DE3A /* aftt_date.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15BF15AA626C0017DCD5 /* aftt_date.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317A2178476C10050DE3A /* aftc_circularbuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EE115A7AD520044283D /* aftc_circularbuffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317A3178476CA0050DE3A /* aftc_circularbufferiterator.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EDF15A7AD520044283D /* aftc_circularbufferiterator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317A4178477170050DE3A /* aftc_construct.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EE315A7AD520044283D /* aftc_construct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317A51784771A0050DE3A /* aftc_packedstringmap.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EE515A7AD520044283D /* aftc_packedstringmap.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317A61784771E0050DE3A /* aftc_trie.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EE715A7AD520044283D /* aftc_trie.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317A7178477200050DE3A /* aftc_uninitialized.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EF115A7AE370044283D /* aftc_uninitialized.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317A8178477340050DE3A /* afts_windows.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E6015A755340044283D /* afts_windows.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317A9178477380050DE3A /* afts_win32errorutil.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E5E15A755340044283D /* afts_win32errorutil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317AA1784773D0050DE3A /* afts_platform.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E5C15A755340044283D /* afts_platform.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317AB178477400050DE3A /* afts_os.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E5A15A755340044283D /* afts_os.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317AC178477430050DE3A /* afts_errorutil.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E5815A755340044283D /* afts_errorutil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317AD1784774A0050DE3A /* afts_compiler.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E5615A755340044283D /* afts_compiler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317AE178477510050DE3A /* afts_comparisonutil.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E5415A755340044283D /* afts_comparisonutil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317AF178477550050DE3A /* afts_byteorder.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E5215A755340044283D /* afts_byteorder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317B0178477680050DE3A /* afts_assert.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E5015A755340044283D /* afts_assert.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317B11784776C0050DE3A /* afts_alignmentof.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E4E15A755340044283D /* afts_alignmentof.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317B2178477750050DE3A /* aftma_blockallocator.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15B915AA624F0017DCD5 /* aftma_blockallocator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317B3178477780050DE3A /* aftma_allocator.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15B715AA624F0017DCD5 /* aftma_allocator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317B41784777D0050DE3A /* aftm_round.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15B315AA62350017DCD5 /* aftm_round.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317B5178477880050DE3A /* aftipc_sharedmemory.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15A715AA61F20017DCD5 /* aftipc_sharedmemory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317B61784778C0050DE3A /* aftipc_resultcode.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15A515AA61F20017DCD5 /* aftipc_resultcode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317B7178477910050DE3A /* aftipc_memorymappedfile.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15A315AA61F20017DCD5 /* aftipc_memorymappedfile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317B8178477950050DE3A /* aftipc_mappedregion.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15A115AA61F20017DCD5 /* aftipc_mappedregion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317B9178477980050DE3A /* aftipc_mappable.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B159F15AA61F20017DCD5 /* aftipc_mappable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317BA1784779F0050DE3A /* aftio_reader.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158E15A9DE900017DCD5 /* aftio_reader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317BB178477A50050DE3A /* aftio_permissions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158D15A9DE900017DCD5 /* aftio_permissions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317BC178477A70050DE3A /* aftio_permission.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158B15A9DE900017DCD5 /* aftio_permission.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317BD178477AA0050DE3A /* aftio_outputstream.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158915A9DE900017DCD5 /* aftio_outputstream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317BE178477AD0050DE3A /* aftio_inputstream.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158715A9DE900017DCD5 /* aftio_inputstream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317BF178477AF0050DE3A /* aftio_flags.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158515A9DE900017DCD5 /* aftio_flags.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317C0178477BA0050DE3A /* afth_crc32.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15F415AA70190017DCD5 /* afth_crc32.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317C1178477C30050DE3A /* aftfs_readonlyfilehandle.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EFE15A90A990044283D /* aftfs_readonlyfilehandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317C2178477C70050DE3A /* aftfs_posixpath.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EFD15A90A990044283D /* aftfs_posixpath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317C3178477CB0050DE3A /* aftfs_path.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EFB15A90A990044283D /* aftfs_path.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317C4178477CF0050DE3A /* aftfs_filesystem.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EF915A90A990044283D /* aftfs_filesystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317C5178477D30050DE3A /* aftfs_file.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EF715A90A990044283D /* aftfs_file.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317C6178477DB0050DE3A /* aftfs_directoryentry.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EF515A90A990044283D /* aftfs_directoryentry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318AA178DD22D0050DE3A /* agtui_mouseevent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5E9773176D0B760035F4D0 /* agtui_mouseevent.cpp */; };
+		FA2318AB178DD2380050DE3A /* agtm_matrix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CDB615DDB37400F480F0 /* agtm_matrix2.cpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318AC178DD2410050DE3A /* agtm_matrix3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CDB815DDB37400F480F0 /* agtm_matrix3.cpp */; };
+		FA2318AD178DD2480050DE3A /* agtm_matrix4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CDBA15DDB37400F480F0 /* agtm_matrix4.cpp */; };
+		FA2318AE178DD24D0050DE3A /* agtm_matrixutil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CDBC15DDB37400F480F0 /* agtm_matrixutil.cpp */; };
+		FA2318AF178DD37C0050DE3A /* agtg_colorrgba.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA424AB216F4D7CC00622AED /* agtg_colorrgba.cpp */; };
+		FA2318B0178DD3860050DE3A /* agtg_mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA424AAA16F4D6BF00622AED /* agtg_mesh.cpp */; };
+		FA2318B1178DD38A0050DE3A /* agtg_renderingcontext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FACBACAA17072885008B2004 /* agtg_renderingcontext.cpp */; };
+		FA2318B2178DD3930050DE3A /* agtg_vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA424AAE16F4D74600622AED /* agtg_vertex.cpp */; };
+		FA2318B3178DD3B00050DE3A /* agtg_colorrgba.h in Headers */ = {isa = PBXBuildFile; fileRef = FA424AB316F4D7CC00622AED /* agtg_colorrgba.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318B4178DD3B60050DE3A /* agtg_mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = FA424AAB16F4D6BF00622AED /* agtg_mesh.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318B5178DD3B90050DE3A /* agtg_renderingcontext.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBACA6170723ED008B2004 /* agtg_renderingcontext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318B6178DD3BD0050DE3A /* agtg_texture.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBAC8C16FE6742008B2004 /* agtg_texture.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318B7178DD3C10050DE3A /* agtg_vertex.h in Headers */ = {isa = PBXBuildFile; fileRef = FA424AAF16F4D74600622AED /* agtg_vertex.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318B8178DD3D60050DE3A /* agtm_point2d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CDC815DDB37400F480F0 /* agtm_point2d.cpp */; };
+		FA2318B9178DD3D90050DE3A /* agtm_point3d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CDCA15DDB37400F480F0 /* agtm_point3d.cpp */; };
+		FA2318BA178DD3DF0050DE3A /* agtm_quaternion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CDBE15DDB37400F480F0 /* agtm_quaternion.cpp */; };
+		FA2318BB178DD3E30050DE3A /* agtm_rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FACBAC9B16FE8D3E008B2004 /* agtm_rect.cpp */; };
+		FA2318BC178DD3E60050DE3A /* agtm_size2d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FACBAC9D16FE8D6B008B2004 /* agtm_size2d.cpp */; };
+		FA2318BD178DD3EA0050DE3A /* agtm_vector2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CDC015DDB37400F480F0 /* agtm_vector2.cpp */; };
+		FA2318BE178DD3EE0050DE3A /* agtm_vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CDC215DDB37400F480F0 /* agtm_vector3.cpp */; };
+		FA2318BF178DD3F00050DE3A /* agtm_vector4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CDC415DDB37400F480F0 /* agtm_vector4.cpp */; };
+		FA2318C0178DD3F50050DE3A /* agtm_vectorutil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CDC615DDB37400F480F0 /* agtm_vectorutil.cpp */; };
+		FA2318C1178DD40D0050DE3A /* agtm_matrix2.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA6CDB715DDB37400F480F0 /* agtm_matrix2.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318C2178DD4130050DE3A /* agtm_matrix3.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA6CDB915DDB37400F480F0 /* agtm_matrix3.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318C3178DD4170050DE3A /* agtm_matrix4.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA6CDBB15DDB37400F480F0 /* agtm_matrix4.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318C4178DD41C0050DE3A /* agtm_matrixutil.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA6CDBD15DDB37400F480F0 /* agtm_matrixutil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318C5178DD4210050DE3A /* agtm_point2d.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA6CDC915DDB37400F480F0 /* agtm_point2d.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318C6178DD4280050DE3A /* agtm_point3d.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA6CDCB15DDB37400F480F0 /* agtm_point3d.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318C7178DD42D0050DE3A /* agtm_quaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA6CDBF15DDB37400F480F0 /* agtm_quaternion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318C8178DD4310050DE3A /* agtm_rect.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBAC9716FE7C29008B2004 /* agtm_rect.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318C9178DD4380050DE3A /* agtm_size2d.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBAC9916FE8043008B2004 /* agtm_size2d.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318CA178DD43C0050DE3A /* agtm_vector2.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA6CDC115DDB37400F480F0 /* agtm_vector2.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318CB178DD4420050DE3A /* agtm_vector3.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA6CDC315DDB37400F480F0 /* agtm_vector3.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318CC178DD4450050DE3A /* agtm_vector4.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA6CDC515DDB37400F480F0 /* agtm_vector4.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318CD178DD4490050DE3A /* agtm_vectorutil.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA6CDC715DDB37400F480F0 /* agtm_vectorutil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318CE178DD44F0050DE3A /* agtr_image.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBAC9016FE6F03008B2004 /* agtr_image.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318CF178DD4550050DE3A /* agtru_imageloaderpng.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBAC9316FE70B7008B2004 /* agtru_imageloaderpng.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318D0178DD4600050DE3A /* agtru_imageloader.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBAC9516FE7665008B2004 /* agtru_imageloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318D1178DD4640050DE3A /* agtui_mouseevent.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5E9771176CCDCB0035F4D0 /* agtui_mouseevent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318E2178E2DDE0050DE3A /* agtui_touchevent.h in Headers */ = {isa = PBXBuildFile; fileRef = FA2318E1178E2DDE0050DE3A /* agtui_touchevent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318E3178E2DDE0050DE3A /* agtui_touchevent.h in Headers */ = {isa = PBXBuildFile; fileRef = FA2318E1178E2DDE0050DE3A /* agtui_touchevent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2318E5178E2E440050DE3A /* agtui_touchevent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA2318E4178E2E440050DE3A /* agtui_touchevent.cpp */; };
+		FA2318E6178E2E440050DE3A /* agtui_touchevent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA2318E4178E2E440050DE3A /* agtui_touchevent.cpp */; };
+		FA3B86C717A933CA0042C241 /* actp_condition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86AA17A933CA0042C241 /* actp_condition.cpp */; };
+		FA3B86C817A933CA0042C241 /* actp_condition.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86AB17A933CA0042C241 /* actp_condition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3B86C917A933CA0042C241 /* actp_conditionresult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86AC17A933CA0042C241 /* actp_conditionresult.cpp */; };
+		FA3B86CA17A933CA0042C241 /* actp_conditionresult.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86AD17A933CA0042C241 /* actp_conditionresult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3B86CB17A933CA0042C241 /* actp_mutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86AE17A933CA0042C241 /* actp_mutex.cpp */; };
+		FA3B86CC17A933CA0042C241 /* actp_mutex.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86AF17A933CA0042C241 /* actp_mutex.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3B86CD17A933CA0042C241 /* actp_mutexresult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86B017A933CA0042C241 /* actp_mutexresult.cpp */; };
+		FA3B86CE17A933CA0042C241 /* actp_mutexresult.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86B117A933CA0042C241 /* actp_mutexresult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3B86CF17A933CA0042C241 /* actp_posixcondition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86B217A933CA0042C241 /* actp_posixcondition.cpp */; };
+		FA3B86D017A933CA0042C241 /* actp_posixcondition.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86B317A933CA0042C241 /* actp_posixcondition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3B86D117A933CA0042C241 /* actp_posixmutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86B417A933CA0042C241 /* actp_posixmutex.cpp */; };
+		FA3B86D217A933CA0042C241 /* actp_posixmutex.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86B517A933CA0042C241 /* actp_posixmutex.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3B86D317A933CA0042C241 /* actp_posixthread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86B617A933CA0042C241 /* actp_posixthread.cpp */; };
+		FA3B86D417A933CA0042C241 /* actp_posixthread.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86B717A933CA0042C241 /* actp_posixthread.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3B86D517A933CA0042C241 /* actp_scopedlock.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86B817A933CA0042C241 /* actp_scopedlock.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3B86D617A933CA0042C241 /* actp_semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86B917A933CA0042C241 /* actp_semaphore.cpp */; };
+		FA3B86D717A933CA0042C241 /* actp_semaphore.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86BA17A933CA0042C241 /* actp_semaphore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3B86D817A933CA0042C241 /* actp_thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86BB17A933CA0042C241 /* actp_thread.cpp */; };
+		FA3B86D917A933CA0042C241 /* actp_thread.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86BC17A933CA0042C241 /* actp_thread.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3B86DA17A933CA0042C241 /* actp_threadattributes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86BD17A933CA0042C241 /* actp_threadattributes.cpp */; };
+		FA3B86DB17A933CA0042C241 /* actp_threadattributes.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86BE17A933CA0042C241 /* actp_threadattributes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3B86DC17A933CA0042C241 /* actp_threadutil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86BF17A933CA0042C241 /* actp_threadutil.cpp */; };
+		FA3B86DD17A933CA0042C241 /* actp_threadutil.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86C017A933CA0042C241 /* actp_threadutil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3B86DE17A933CA0042C241 /* actp_win32condition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86C117A933CA0042C241 /* actp_win32condition.cpp */; };
+		FA3B86DF17A933CA0042C241 /* actp_win32condition.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86C217A933CA0042C241 /* actp_win32condition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3B86E017A933CA0042C241 /* actp_win32mutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86C317A933CA0042C241 /* actp_win32mutex.cpp */; };
+		FA3B86E117A933CA0042C241 /* actp_win32mutex.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86C417A933CA0042C241 /* actp_win32mutex.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3B86E217A933CA0042C241 /* actp_win32thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86C517A933CA0042C241 /* actp_win32thread.cpp */; };
+		FA3B86E317A933CA0042C241 /* actp_win32thread.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86C617A933CA0042C241 /* actp_win32thread.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3B86E617A933FC0042C241 /* acts_platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86E417A933FC0042C241 /* acts_platform.cpp */; };
+		FA3B86E717A933FC0042C241 /* acts_platform.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86E517A933FC0042C241 /* acts_platform.h */; };
 		FA424AAC16F4D6BF00622AED /* agtg_mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA424AAA16F4D6BF00622AED /* agtg_mesh.cpp */; };
 		FA424AAD16F4D6BF00622AED /* agtg_mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = FA424AAB16F4D6BF00622AED /* agtg_mesh.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA424AB016F4D74600622AED /* agtg_vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA424AAE16F4D74600622AED /* agtg_vertex.cpp */; };
@@ -145,8 +320,6 @@
 		FA9B15BD15AA624F0017DCD5 /* aftma_blockallocator.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15B915AA624F0017DCD5 /* aftma_blockallocator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA9B15D015AA626C0017DCD5 /* aftt_date.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15BE15AA626C0017DCD5 /* aftt_date.cpp */; };
 		FA9B15D115AA626C0017DCD5 /* aftt_date.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15BF15AA626C0017DCD5 /* aftt_date.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA9B15D215AA626C0017DCD5 /* aftt_dateinterval.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15C015AA626C0017DCD5 /* aftt_dateinterval.cpp */; };
-		FA9B15D315AA626C0017DCD5 /* aftt_dateinterval.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15C115AA626C0017DCD5 /* aftt_dateinterval.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA9B15D415AA626C0017DCD5 /* aftt_datetime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15C215AA626C0017DCD5 /* aftt_datetime.cpp */; };
 		FA9B15D515AA626C0017DCD5 /* aftt_datetime.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15C315AA626C0017DCD5 /* aftt_datetime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA9B15D615AA626C0017DCD5 /* aftt_datetimeinterval.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15C415AA626C0017DCD5 /* aftt_datetimeinterval.cpp */; };
@@ -253,9 +426,28 @@
 		FACBACAB17072886008B2004 /* agtg_renderingcontext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FACBACAA17072885008B2004 /* agtg_renderingcontext.cpp */; };
 		FAE78A461687D82900EEBCE6 /* aftt_nanoseconds.h in Headers */ = {isa = PBXBuildFile; fileRef = FAE78A451687D82900EEBCE6 /* aftt_nanoseconds.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAE78A471687D82900EEBCE6 /* aftt_nanoseconds.h in Headers */ = {isa = PBXBuildFile; fileRef = FAE78A451687D82900EEBCE6 /* aftt_nanoseconds.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAFB3A4C17B338F6002510F9 /* aftfs_localfilesystem.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFB3A4B17B338F1002510F9 /* aftfs_localfilesystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAFB3A4D17B338F6002510F9 /* aftfs_localfilesystem.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFB3A4B17B338F1002510F9 /* aftfs_localfilesystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAFB3A4F17B33A08002510F9 /* aftfs_localfilesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFB3A4E17B33A05002510F9 /* aftfs_localfilesystem.cpp */; };
+		FAFB3A5017B33A08002510F9 /* aftfs_localfilesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFB3A4E17B33A05002510F9 /* aftfs_localfilesystem.cpp */; };
+		FAFB3A5317B7C527002510F9 /* aftfs_localfilesystem.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFB3A5117B7C514002510F9 /* aftfs_localfilesystem.t.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		FA2318D2178DD58A0050DE3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA833E1715A7501D0044283D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA875BC915E099D800C5E50B;
+			remoteInfo = "aft-ios";
+		};
+		FA3B86A817A933830042C241 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA833E1715A7501D0044283D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA833E2115A752430044283D;
+			remoteInfo = "aft-macosx";
+		};
 		FA833EC815A75DA30044283D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA833E1715A7501D0044283D /* Project object */;
@@ -323,6 +515,41 @@
 
 /* Begin PBXFileReference section */
 		FA223AF5175A1B29000FE3E9 /* agtg_colorrgba.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtg_colorrgba.t.cpp; path = ../../../src/agt/agtg/agtg_colorrgba.t.cpp; sourceTree = "<group>"; };
+		FA2318A9178DD1CD0050DE3A /* libagt-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libagt-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA2318E1178E2DDE0050DE3A /* agtui_touchevent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtui_touchevent.h; path = ../../../src/agt/agtui/agtui_touchevent.h; sourceTree = "<group>"; };
+		FA2318E4178E2E440050DE3A /* agtui_touchevent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtui_touchevent.cpp; path = ../../../src/agt/agtui/agtui_touchevent.cpp; sourceTree = "<group>"; };
+		FA3B86A717A9333C0042C241 /* libact-macosx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libact-macosx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA3B86AA17A933CA0042C241 /* actp_condition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_condition.cpp; path = ../../../src/act/actp/actp_condition.cpp; sourceTree = "<group>"; };
+		FA3B86AB17A933CA0042C241 /* actp_condition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_condition.h; path = ../../../src/act/actp/actp_condition.h; sourceTree = "<group>"; };
+		FA3B86AC17A933CA0042C241 /* actp_conditionresult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_conditionresult.cpp; path = ../../../src/act/actp/actp_conditionresult.cpp; sourceTree = "<group>"; };
+		FA3B86AD17A933CA0042C241 /* actp_conditionresult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_conditionresult.h; path = ../../../src/act/actp/actp_conditionresult.h; sourceTree = "<group>"; };
+		FA3B86AE17A933CA0042C241 /* actp_mutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_mutex.cpp; path = ../../../src/act/actp/actp_mutex.cpp; sourceTree = "<group>"; };
+		FA3B86AF17A933CA0042C241 /* actp_mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_mutex.h; path = ../../../src/act/actp/actp_mutex.h; sourceTree = "<group>"; };
+		FA3B86B017A933CA0042C241 /* actp_mutexresult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_mutexresult.cpp; path = ../../../src/act/actp/actp_mutexresult.cpp; sourceTree = "<group>"; };
+		FA3B86B117A933CA0042C241 /* actp_mutexresult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_mutexresult.h; path = ../../../src/act/actp/actp_mutexresult.h; sourceTree = "<group>"; };
+		FA3B86B217A933CA0042C241 /* actp_posixcondition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_posixcondition.cpp; path = ../../../src/act/actp/actp_posixcondition.cpp; sourceTree = "<group>"; };
+		FA3B86B317A933CA0042C241 /* actp_posixcondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_posixcondition.h; path = ../../../src/act/actp/actp_posixcondition.h; sourceTree = "<group>"; };
+		FA3B86B417A933CA0042C241 /* actp_posixmutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_posixmutex.cpp; path = ../../../src/act/actp/actp_posixmutex.cpp; sourceTree = "<group>"; };
+		FA3B86B517A933CA0042C241 /* actp_posixmutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_posixmutex.h; path = ../../../src/act/actp/actp_posixmutex.h; sourceTree = "<group>"; };
+		FA3B86B617A933CA0042C241 /* actp_posixthread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_posixthread.cpp; path = ../../../src/act/actp/actp_posixthread.cpp; sourceTree = "<group>"; };
+		FA3B86B717A933CA0042C241 /* actp_posixthread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_posixthread.h; path = ../../../src/act/actp/actp_posixthread.h; sourceTree = "<group>"; };
+		FA3B86B817A933CA0042C241 /* actp_scopedlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_scopedlock.h; path = ../../../src/act/actp/actp_scopedlock.h; sourceTree = "<group>"; };
+		FA3B86B917A933CA0042C241 /* actp_semaphore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_semaphore.cpp; path = ../../../src/act/actp/actp_semaphore.cpp; sourceTree = "<group>"; };
+		FA3B86BA17A933CA0042C241 /* actp_semaphore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_semaphore.h; path = ../../../src/act/actp/actp_semaphore.h; sourceTree = "<group>"; };
+		FA3B86BB17A933CA0042C241 /* actp_thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_thread.cpp; path = ../../../src/act/actp/actp_thread.cpp; sourceTree = "<group>"; };
+		FA3B86BC17A933CA0042C241 /* actp_thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_thread.h; path = ../../../src/act/actp/actp_thread.h; sourceTree = "<group>"; };
+		FA3B86BD17A933CA0042C241 /* actp_threadattributes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_threadattributes.cpp; path = ../../../src/act/actp/actp_threadattributes.cpp; sourceTree = "<group>"; };
+		FA3B86BE17A933CA0042C241 /* actp_threadattributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_threadattributes.h; path = ../../../src/act/actp/actp_threadattributes.h; sourceTree = "<group>"; };
+		FA3B86BF17A933CA0042C241 /* actp_threadutil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_threadutil.cpp; path = ../../../src/act/actp/actp_threadutil.cpp; sourceTree = "<group>"; };
+		FA3B86C017A933CA0042C241 /* actp_threadutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_threadutil.h; path = ../../../src/act/actp/actp_threadutil.h; sourceTree = "<group>"; };
+		FA3B86C117A933CA0042C241 /* actp_win32condition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_win32condition.cpp; path = ../../../src/act/actp/actp_win32condition.cpp; sourceTree = "<group>"; };
+		FA3B86C217A933CA0042C241 /* actp_win32condition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_win32condition.h; path = ../../../src/act/actp/actp_win32condition.h; sourceTree = "<group>"; };
+		FA3B86C317A933CA0042C241 /* actp_win32mutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_win32mutex.cpp; path = ../../../src/act/actp/actp_win32mutex.cpp; sourceTree = "<group>"; };
+		FA3B86C417A933CA0042C241 /* actp_win32mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_win32mutex.h; path = ../../../src/act/actp/actp_win32mutex.h; sourceTree = "<group>"; };
+		FA3B86C517A933CA0042C241 /* actp_win32thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_win32thread.cpp; path = ../../../src/act/actp/actp_win32thread.cpp; sourceTree = "<group>"; };
+		FA3B86C617A933CA0042C241 /* actp_win32thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_win32thread.h; path = ../../../src/act/actp/actp_win32thread.h; sourceTree = "<group>"; };
+		FA3B86E417A933FC0042C241 /* acts_platform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = acts_platform.cpp; path = ../../../src/act/acts/acts_platform.cpp; sourceTree = "<group>"; };
+		FA3B86E517A933FC0042C241 /* acts_platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = acts_platform.h; path = ../../../src/act/acts/acts_platform.h; sourceTree = "<group>"; };
 		FA424AAA16F4D6BF00622AED /* agtg_mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtg_mesh.cpp; path = ../../../src/agt/agtg/agtg_mesh.cpp; sourceTree = "<group>"; };
 		FA424AAB16F4D6BF00622AED /* agtg_mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtg_mesh.h; path = ../../../src/agt/agtg/agtg_mesh.h; sourceTree = "<group>"; };
 		FA424AAE16F4D74600622AED /* agtg_vertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtg_vertex.cpp; path = ../../../src/agt/agtg/agtg_vertex.cpp; sourceTree = "<group>"; };
@@ -462,8 +689,6 @@
 		FA9B15B915AA624F0017DCD5 /* aftma_blockallocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftma_blockallocator.h; path = ../../../src/aft/aftma/aftma_blockallocator.h; sourceTree = "<group>"; };
 		FA9B15BE15AA626C0017DCD5 /* aftt_date.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftt_date.cpp; path = ../../../src/aft/aftt/aftt_date.cpp; sourceTree = "<group>"; };
 		FA9B15BF15AA626C0017DCD5 /* aftt_date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftt_date.h; path = ../../../src/aft/aftt/aftt_date.h; sourceTree = "<group>"; };
-		FA9B15C015AA626C0017DCD5 /* aftt_dateinterval.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftt_dateinterval.cpp; path = ../../../src/aft/aftt/aftt_dateinterval.cpp; sourceTree = "<group>"; };
-		FA9B15C115AA626C0017DCD5 /* aftt_dateinterval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftt_dateinterval.h; path = ../../../src/aft/aftt/aftt_dateinterval.h; sourceTree = "<group>"; };
 		FA9B15C215AA626C0017DCD5 /* aftt_datetime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftt_datetime.cpp; path = ../../../src/aft/aftt/aftt_datetime.cpp; sourceTree = "<group>"; };
 		FA9B15C315AA626C0017DCD5 /* aftt_datetime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftt_datetime.h; path = ../../../src/aft/aftt/aftt_datetime.h; sourceTree = "<group>"; };
 		FA9B15C415AA626C0017DCD5 /* aftt_datetimeinterval.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftt_datetimeinterval.cpp; path = ../../../src/aft/aftt/aftt_datetimeinterval.cpp; sourceTree = "<group>"; };
@@ -546,9 +771,26 @@
 		FACBACA6170723ED008B2004 /* agtg_renderingcontext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtg_renderingcontext.h; path = ../../../src/agt/agtg/agtg_renderingcontext.h; sourceTree = "<group>"; };
 		FACBACAA17072885008B2004 /* agtg_renderingcontext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtg_renderingcontext.cpp; path = ../../../src/agt/agtg/agtg_renderingcontext.cpp; sourceTree = "<group>"; };
 		FAE78A451687D82900EEBCE6 /* aftt_nanoseconds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftt_nanoseconds.h; path = ../../../src/aft/aftt/aftt_nanoseconds.h; sourceTree = "<group>"; };
+		FAFB3A4B17B338F1002510F9 /* aftfs_localfilesystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftfs_localfilesystem.h; path = ../../../src/aft/aftfs/aftfs_localfilesystem.h; sourceTree = "<group>"; };
+		FAFB3A4E17B33A05002510F9 /* aftfs_localfilesystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftfs_localfilesystem.cpp; path = ../../../src/aft/aftfs/aftfs_localfilesystem.cpp; sourceTree = "<group>"; };
+		FAFB3A5117B7C514002510F9 /* aftfs_localfilesystem.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftfs_localfilesystem.t.cpp; path = ../../../src/aft/aftfs/aftfs_localfilesystem.t.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FA231861178DD1CD0050DE3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA3B865F17A9333C0042C241 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA833E1F15A752430044283D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -599,11 +841,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA3B862017A92E670042C241 /* act */ = {
+			isa = PBXGroup;
+			children = (
+				FA3B862217A931390042C241 /* actp */,
+				FA3B862117A931280042C241 /* acts */,
+			);
+			name = act;
+			sourceTree = "<group>";
+		};
+		FA3B862117A931280042C241 /* acts */ = {
+			isa = PBXGroup;
+			children = (
+				FA3B86E417A933FC0042C241 /* acts_platform.cpp */,
+				FA3B86E517A933FC0042C241 /* acts_platform.h */,
+			);
+			name = acts;
+			sourceTree = "<group>";
+		};
+		FA3B862217A931390042C241 /* actp */ = {
+			isa = PBXGroup;
+			children = (
+				FA3B86AA17A933CA0042C241 /* actp_condition.cpp */,
+				FA3B86AB17A933CA0042C241 /* actp_condition.h */,
+				FA3B86AC17A933CA0042C241 /* actp_conditionresult.cpp */,
+				FA3B86AD17A933CA0042C241 /* actp_conditionresult.h */,
+				FA3B86AE17A933CA0042C241 /* actp_mutex.cpp */,
+				FA3B86AF17A933CA0042C241 /* actp_mutex.h */,
+				FA3B86B017A933CA0042C241 /* actp_mutexresult.cpp */,
+				FA3B86B117A933CA0042C241 /* actp_mutexresult.h */,
+				FA3B86B217A933CA0042C241 /* actp_posixcondition.cpp */,
+				FA3B86B317A933CA0042C241 /* actp_posixcondition.h */,
+				FA3B86B417A933CA0042C241 /* actp_posixmutex.cpp */,
+				FA3B86B517A933CA0042C241 /* actp_posixmutex.h */,
+				FA3B86B617A933CA0042C241 /* actp_posixthread.cpp */,
+				FA3B86B717A933CA0042C241 /* actp_posixthread.h */,
+				FA3B86B817A933CA0042C241 /* actp_scopedlock.h */,
+				FA3B86B917A933CA0042C241 /* actp_semaphore.cpp */,
+				FA3B86BA17A933CA0042C241 /* actp_semaphore.h */,
+				FA3B86BB17A933CA0042C241 /* actp_thread.cpp */,
+				FA3B86BC17A933CA0042C241 /* actp_thread.h */,
+				FA3B86BD17A933CA0042C241 /* actp_threadattributes.cpp */,
+				FA3B86BE17A933CA0042C241 /* actp_threadattributes.h */,
+				FA3B86BF17A933CA0042C241 /* actp_threadutil.cpp */,
+				FA3B86C017A933CA0042C241 /* actp_threadutil.h */,
+				FA3B86C117A933CA0042C241 /* actp_win32condition.cpp */,
+				FA3B86C217A933CA0042C241 /* actp_win32condition.h */,
+				FA3B86C317A933CA0042C241 /* actp_win32mutex.cpp */,
+				FA3B86C417A933CA0042C241 /* actp_win32mutex.h */,
+				FA3B86C517A933CA0042C241 /* actp_win32thread.cpp */,
+				FA3B86C617A933CA0042C241 /* actp_win32thread.h */,
+			);
+			name = actp;
+			sourceTree = "<group>";
+		};
 		FA5E976F176CCD600035F4D0 /* agtui */ = {
 			isa = PBXGroup;
 			children = (
-				FA5E9771176CCDCB0035F4D0 /* agtui_mouseevent.h */,
 				FA5E9773176D0B760035F4D0 /* agtui_mouseevent.cpp */,
+				FA5E9771176CCDCB0035F4D0 /* agtui_mouseevent.h */,
+				FA2318E4178E2E440050DE3A /* agtui_touchevent.cpp */,
+				FA2318E1178E2DDE0050DE3A /* agtui_touchevent.h */,
 			);
 			name = agtui;
 			sourceTree = "<group>";
@@ -626,6 +924,8 @@
 				FAA6CDB215DDB28400F480F0 /* libagt-macosx.a */,
 				FA875BA015DF1B6C00C5E50B /* test_agt-macosx */,
 				FA875BCA15E099D800C5E50B /* libaft-ios.a */,
+				FA2318A9178DD1CD0050DE3A /* libagt-ios.a */,
+				FA3B86A717A9333C0042C241 /* libact-macosx.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -633,6 +933,7 @@
 		FA833E2715A7526A0044283D /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				FA3B862017A92E670042C241 /* act */,
 				FA833E2815A752740044283D /* aft */,
 				FAA6CD9215DDACD500F480F0 /* agt */,
 				FAA6CD8F15D8A01800F480F0 /* aat */,
@@ -751,13 +1052,13 @@
 			isa = PBXGroup;
 			children = (
 				FA833EE015A7AD520044283D /* aftc_circularbuffer.cpp */,
-				FA833EE215A7AD520044283D /* aftc_construct.cpp */,
-				FA833EE415A7AD520044283D /* aftc_packedstringmap.cpp */,
-				FA833EE615A7AD520044283D /* aftc_trie.cpp */,
 				FA833EE115A7AD520044283D /* aftc_circularbuffer.h */,
 				FA833EDF15A7AD520044283D /* aftc_circularbufferiterator.h */,
+				FA833EE215A7AD520044283D /* aftc_construct.cpp */,
 				FA833EE315A7AD520044283D /* aftc_construct.h */,
+				FA833EE415A7AD520044283D /* aftc_packedstringmap.cpp */,
 				FA833EE515A7AD520044283D /* aftc_packedstringmap.h */,
+				FA833EE615A7AD520044283D /* aftc_trie.cpp */,
 				FA833EE715A7AD520044283D /* aftc_trie.h */,
 				FA833EF115A7AE370044283D /* aftc_uninitialized.h */,
 			);
@@ -780,6 +1081,9 @@
 				FA833EFC15A90A990044283D /* aftfs_posixpath.cpp */,
 				FA833EFD15A90A990044283D /* aftfs_posixpath.h */,
 				FA833EFE15A90A990044283D /* aftfs_readonlyfilehandle.h */,
+				FAFB3A4B17B338F1002510F9 /* aftfs_localfilesystem.h */,
+				FAFB3A4E17B33A05002510F9 /* aftfs_localfilesystem.cpp */,
+				FAFB3A5117B7C514002510F9 /* aftfs_localfilesystem.t.cpp */,
 			);
 			name = aftfs;
 			sourceTree = "<group>";
@@ -796,15 +1100,15 @@
 			isa = PBXGroup;
 			children = (
 				FA9B158415A9DE900017DCD5 /* aftio_flags.cpp */,
+				FA9B158515A9DE900017DCD5 /* aftio_flags.h */,
 				FA9B158615A9DE900017DCD5 /* aftio_inputstream.cpp */,
+				FA9B158715A9DE900017DCD5 /* aftio_inputstream.h */,
 				FA9B158815A9DE900017DCD5 /* aftio_outputstream.cpp */,
+				FA9B158915A9DE900017DCD5 /* aftio_outputstream.h */,
 				FA9B158A15A9DE900017DCD5 /* aftio_permission.cpp */,
+				FA9B158B15A9DE900017DCD5 /* aftio_permission.h */,
 				FA9B15F715AA738B0017DCD5 /* aftio_permission.t.cpp */,
 				FA9B158C15A9DE900017DCD5 /* aftio_permissions.cpp */,
-				FA9B158515A9DE900017DCD5 /* aftio_flags.h */,
-				FA9B158715A9DE900017DCD5 /* aftio_inputstream.h */,
-				FA9B158915A9DE900017DCD5 /* aftio_outputstream.h */,
-				FA9B158B15A9DE900017DCD5 /* aftio_permission.h */,
 				FA9B158D15A9DE900017DCD5 /* aftio_permissions.h */,
 				FA9B158E15A9DE900017DCD5 /* aftio_reader.h */,
 			);
@@ -856,8 +1160,6 @@
 				FA9B15BE15AA626C0017DCD5 /* aftt_date.cpp */,
 				FA9B15BF15AA626C0017DCD5 /* aftt_date.h */,
 				FA9B15E215AA6E9D0017DCD5 /* aftt_date.t.cpp */,
-				FA9B15C015AA626C0017DCD5 /* aftt_dateinterval.cpp */,
-				FA9B15C115AA626C0017DCD5 /* aftt_dateinterval.h */,
 				FA9B15C215AA626C0017DCD5 /* aftt_datetime.cpp */,
 				FA9B15C315AA626C0017DCD5 /* aftt_datetime.h */,
 				FA9B15E315AA6E9D0017DCD5 /* aftt_datetime.t.cpp */,
@@ -929,12 +1231,12 @@
 		FAA6CD9215DDACD500F480F0 /* agt */ = {
 			isa = PBXGroup;
 			children = (
-				FA5E976F176CCD600035F4D0 /* agtui */,
-				FACBAC9216FE7080008B2004 /* agtru */,
-				FACBAC8F16FE67CC008B2004 /* agtr */,
-				FAA6CD9415DDAD3B00F480F0 /* agtm */,
-				FAA6CD9315DDACDF00F480F0 /* agtg */,
 				FA875BC115E0330900C5E50B /* agt.t.cpp */,
+				FAA6CD9315DDACDF00F480F0 /* agtg */,
+				FAA6CD9415DDAD3B00F480F0 /* agtm */,
+				FACBAC8F16FE67CC008B2004 /* agtr */,
+				FACBAC9216FE7080008B2004 /* agtru */,
+				FA5E976F176CCD600035F4D0 /* agtui */,
 			);
 			name = agt;
 			sourceTree = "<group>";
@@ -1007,8 +1309,8 @@
 		FACBAC9216FE7080008B2004 /* agtru */ = {
 			isa = PBXGroup;
 			children = (
-				FACBAC9316FE70B7008B2004 /* agtru_imageloaderpng.h */,
 				FACBAC9516FE7665008B2004 /* agtru_imageloader.h */,
+				FACBAC9316FE70B7008B2004 /* agtru_imageloaderpng.h */,
 			);
 			name = agtru;
 			sourceTree = "<group>";
@@ -1016,6 +1318,59 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		FA231862178DD1CD0050DE3A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA2318B3178DD3B00050DE3A /* agtg_colorrgba.h in Headers */,
+				FA2318B4178DD3B60050DE3A /* agtg_mesh.h in Headers */,
+				FA2318B5178DD3B90050DE3A /* agtg_renderingcontext.h in Headers */,
+				FA2318B6178DD3BD0050DE3A /* agtg_texture.h in Headers */,
+				FA2318B7178DD3C10050DE3A /* agtg_vertex.h in Headers */,
+				FA2318C1178DD40D0050DE3A /* agtm_matrix2.h in Headers */,
+				FA2318C2178DD4130050DE3A /* agtm_matrix3.h in Headers */,
+				FA2318C3178DD4170050DE3A /* agtm_matrix4.h in Headers */,
+				FA2318C4178DD41C0050DE3A /* agtm_matrixutil.h in Headers */,
+				FA2318C5178DD4210050DE3A /* agtm_point2d.h in Headers */,
+				FA2318C6178DD4280050DE3A /* agtm_point3d.h in Headers */,
+				FA2318C7178DD42D0050DE3A /* agtm_quaternion.h in Headers */,
+				FA2318C8178DD4310050DE3A /* agtm_rect.h in Headers */,
+				FA2318C9178DD4380050DE3A /* agtm_size2d.h in Headers */,
+				FA2318CA178DD43C0050DE3A /* agtm_vector2.h in Headers */,
+				FA2318CB178DD4420050DE3A /* agtm_vector3.h in Headers */,
+				FA2318CC178DD4450050DE3A /* agtm_vector4.h in Headers */,
+				FA2318CD178DD4490050DE3A /* agtm_vectorutil.h in Headers */,
+				FA2318CE178DD44F0050DE3A /* agtr_image.h in Headers */,
+				FA2318D0178DD4600050DE3A /* agtru_imageloader.h in Headers */,
+				FA2318CF178DD4550050DE3A /* agtru_imageloaderpng.h in Headers */,
+				FA2318D1178DD4640050DE3A /* agtui_mouseevent.h in Headers */,
+				FA2318E3178E2DDE0050DE3A /* agtui_touchevent.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA3B866017A9333C0042C241 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA3B86C817A933CA0042C241 /* actp_condition.h in Headers */,
+				FA3B86CA17A933CA0042C241 /* actp_conditionresult.h in Headers */,
+				FA3B86CC17A933CA0042C241 /* actp_mutex.h in Headers */,
+				FA3B86CE17A933CA0042C241 /* actp_mutexresult.h in Headers */,
+				FA3B86D017A933CA0042C241 /* actp_posixcondition.h in Headers */,
+				FA3B86D217A933CA0042C241 /* actp_posixmutex.h in Headers */,
+				FA3B86D417A933CA0042C241 /* actp_posixthread.h in Headers */,
+				FA3B86D517A933CA0042C241 /* actp_scopedlock.h in Headers */,
+				FA3B86D717A933CA0042C241 /* actp_semaphore.h in Headers */,
+				FA3B86D917A933CA0042C241 /* actp_thread.h in Headers */,
+				FA3B86DB17A933CA0042C241 /* actp_threadattributes.h in Headers */,
+				FA3B86DD17A933CA0042C241 /* actp_threadutil.h in Headers */,
+				FA3B86DF17A933CA0042C241 /* actp_win32condition.h in Headers */,
+				FA3B86E117A933CA0042C241 /* actp_win32mutex.h in Headers */,
+				FA3B86E317A933CA0042C241 /* actp_win32thread.h in Headers */,
+				FA3B86E717A933FC0042C241 /* acts_platform.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA833E2015A752430044283D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1029,6 +1384,7 @@
 				FA833F0015A90A990044283D /* aftfs_directoryentry.h in Headers */,
 				FA833F0215A90A990044283D /* aftfs_file.h in Headers */,
 				FA833F0415A90A990044283D /* aftfs_filesystem.h in Headers */,
+				FAFB3A4C17B338F6002510F9 /* aftfs_localfilesystem.h in Headers */,
 				FA833F0615A90A990044283D /* aftfs_path.h in Headers */,
 				FA833F0815A90A990044283D /* aftfs_posixpath.h in Headers */,
 				FA833F0915A90A990044283D /* aftfs_readonlyfilehandle.h in Headers */,
@@ -1059,7 +1415,6 @@
 				FA833E7215A755340044283D /* afts_win32errorutil.h in Headers */,
 				FA833E7415A755340044283D /* afts_windows.h in Headers */,
 				FA9B15D115AA626C0017DCD5 /* aftt_date.h in Headers */,
-				FA9B15D315AA626C0017DCD5 /* aftt_dateinterval.h in Headers */,
 				FA9B15D515AA626C0017DCD5 /* aftt_datetime.h in Headers */,
 				FA9B15D715AA626C0017DCD5 /* aftt_datetimeinterval.h in Headers */,
 				FA9B15D915AA626C0017DCD5 /* aftt_dayofweek.h in Headers */,
@@ -1114,19 +1469,74 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAAEE5A51686155500F587BE /* aftt_seconds.h in Headers */,
+				FA2317A2178476C10050DE3A /* aftc_circularbuffer.h in Headers */,
+				FA2317A3178476CA0050DE3A /* aftc_circularbufferiterator.h in Headers */,
+				FA2317A4178477170050DE3A /* aftc_construct.h in Headers */,
+				FA2317A51784771A0050DE3A /* aftc_packedstringmap.h in Headers */,
+				FA2317A61784771E0050DE3A /* aftc_trie.h in Headers */,
+				FA2317A7178477200050DE3A /* aftc_uninitialized.h in Headers */,
+				FA2317C6178477DB0050DE3A /* aftfs_directoryentry.h in Headers */,
+				FA2317C5178477D30050DE3A /* aftfs_file.h in Headers */,
+				FA2317C4178477CF0050DE3A /* aftfs_filesystem.h in Headers */,
+				FAFB3A4D17B338F6002510F9 /* aftfs_localfilesystem.h in Headers */,
+				FA2317C3178477CB0050DE3A /* aftfs_path.h in Headers */,
+				FA2317C2178477C70050DE3A /* aftfs_posixpath.h in Headers */,
+				FA2317C1178477C30050DE3A /* aftfs_readonlyfilehandle.h in Headers */,
+				FA2317C0178477BA0050DE3A /* afth_crc32.h in Headers */,
+				FA2317BF178477AF0050DE3A /* aftio_flags.h in Headers */,
+				FA2317BE178477AD0050DE3A /* aftio_inputstream.h in Headers */,
+				FA2317BD178477AA0050DE3A /* aftio_outputstream.h in Headers */,
+				FA2317BC178477A70050DE3A /* aftio_permission.h in Headers */,
+				FA2317BB178477A50050DE3A /* aftio_permissions.h in Headers */,
+				FA2317BA1784779F0050DE3A /* aftio_reader.h in Headers */,
+				FA2317B9178477980050DE3A /* aftipc_mappable.h in Headers */,
+				FA2317B8178477950050DE3A /* aftipc_mappedregion.h in Headers */,
+				FA2317B7178477910050DE3A /* aftipc_memorymappedfile.h in Headers */,
+				FA2317B61784778C0050DE3A /* aftipc_resultcode.h in Headers */,
+				FA2317B5178477880050DE3A /* aftipc_sharedmemory.h in Headers */,
+				FA2317B41784777D0050DE3A /* aftm_round.h in Headers */,
+				FA2317B3178477780050DE3A /* aftma_allocator.h in Headers */,
+				FA2317B2178477750050DE3A /* aftma_blockallocator.h in Headers */,
+				FA2317B11784776C0050DE3A /* afts_alignmentof.h in Headers */,
+				FA2317B0178477680050DE3A /* afts_assert.h in Headers */,
+				FA2317AF178477550050DE3A /* afts_byteorder.h in Headers */,
+				FA2317AE178477510050DE3A /* afts_comparisonutil.h in Headers */,
+				FA2317AD1784774A0050DE3A /* afts_compiler.h in Headers */,
+				FA2317AC178477430050DE3A /* afts_errorutil.h in Headers */,
+				FA2317AB178477400050DE3A /* afts_os.h in Headers */,
+				FA2317AA1784773D0050DE3A /* afts_platform.h in Headers */,
+				FAA431BC168FDBBF00F2BAF3 /* afts_stdint.h in Headers */,
+				FA2317A9178477380050DE3A /* afts_win32errorutil.h in Headers */,
+				FA2317A8178477340050DE3A /* afts_windows.h in Headers */,
+				FA2317A1178476BC0050DE3A /* aftt_date.h in Headers */,
+				FA23179F178476B50050DE3A /* aftt_datetime.h in Headers */,
+				FA23179E178476B10050DE3A /* aftt_datetimeinterval.h in Headers */,
+				FAA0732316E96B4300015F1D /* aftt_day.h in Headers */,
+				FA23179D178476AB0050DE3A /* aftt_dayofweek.h in Headers */,
+				FAAEE5B41686195400F587BE /* aftt_days.h in Headers */,
+				FAAEE5B11686183C00F587BE /* aftt_hours.h in Headers */,
+				FAAEE5BD1686A69900F587BE /* aftt_microseconds.h in Headers */,
 				FAAEE5A81686168900F587BE /* aftt_milliseconds.h in Headers */,
 				FAAEE5AE1686174300F587BE /* aftt_minutes.h in Headers */,
-				FAAEE5B11686183C00F587BE /* aftt_hours.h in Headers */,
-				FAAEE5B41686195400F587BE /* aftt_days.h in Headers */,
-				FAAEE5B7168673F500F587BE /* aftt_weeks.h in Headers */,
-				FAAEE5BA168674A200F587BE /* aftt_years.h in Headers */,
-				FAAEE5BD1686A69900F587BE /* aftt_microseconds.h in Headers */,
-				FAE78A471687D82900EEBCE6 /* aftt_nanoseconds.h in Headers */,
-				FAA431BC168FDBBF00F2BAF3 /* afts_stdint.h in Headers */,
 				FAA0731616DA9DE800015F1D /* aftt_month.h in Headers */,
+				FAE78A471687D82900EEBCE6 /* aftt_nanoseconds.h in Headers */,
+				FAAEE5A51686155500F587BE /* aftt_seconds.h in Headers */,
+				FA23179C178476990050DE3A /* aftt_systemtime.h in Headers */,
+				FA23179B178476950050DE3A /* aftt_time.h in Headers */,
+				FA23179A178476900050DE3A /* aftt_timezone.h in Headers */,
+				FAAEE5B7168673F500F587BE /* aftt_weeks.h in Headers */,
 				FAA0731D16E9696F00015F1D /* aftt_year.h in Headers */,
-				FAA0732316E96B4300015F1D /* aftt_day.h in Headers */,
+				FAAEE5BA168674A200F587BE /* aftt_years.h in Headers */,
+				FA231790178476510050DE3A /* aftu_exception.h in Headers */,
+				FA231791178476550050DE3A /* aftu_hexprinter.h in Headers */,
+				FA2317921784765C0050DE3A /* aftu_hexutil.h in Headers */,
+				FA2317931784765F0050DE3A /* aftu_nullable.h in Headers */,
+				FA2317941784766A0050DE3A /* aftu_stringref.h in Headers */,
+				FA2317951784766E0050DE3A /* aftu_stringutil.h in Headers */,
+				FA231796178476730050DE3A /* aftu_typedbuffer.h in Headers */,
+				FA231797178476770050DE3A /* aftu_typedexception.h in Headers */,
+				FA2317981784767B0050DE3A /* aftu_url.h in Headers */,
+				FA2317991784767F0050DE3A /* aftu_win32error.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1134,9 +1544,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FACBAC9416FE70B7008B2004 /* agtru_imageloaderpng.h in Headers */,
-				FACBAC9616FE7666008B2004 /* agtru_imageloader.h in Headers */,
-				FACBAC9116FE6F03008B2004 /* agtr_image.h in Headers */,
+				FA424AB516F4D7CC00622AED /* agtg_colorrgba.h in Headers */,
+				FA424AAD16F4D6BF00622AED /* agtg_mesh.h in Headers */,
+				FACBACA7170723ED008B2004 /* agtg_renderingcontext.h in Headers */,
+				FACBAC8D16FE6742008B2004 /* agtg_texture.h in Headers */,
+				FA424AB116F4D74600622AED /* agtg_vertex.h in Headers */,
 				FAA6CDCD15DDB37400F480F0 /* agtm_matrix2.h in Headers */,
 				FAA6CDCF15DDB37400F480F0 /* agtm_matrix3.h in Headers */,
 				FAA6CDD115DDB37400F480F0 /* agtm_matrix4.h in Headers */,
@@ -1150,18 +1562,53 @@
 				FAA6CDD915DDB37400F480F0 /* agtm_vector3.h in Headers */,
 				FAA6CDDB15DDB37400F480F0 /* agtm_vector4.h in Headers */,
 				FAA6CDDD15DDB37400F480F0 /* agtm_vectorutil.h in Headers */,
-				FA424AB516F4D7CC00622AED /* agtg_colorrgba.h in Headers */,
-				FA424AAD16F4D6BF00622AED /* agtg_mesh.h in Headers */,
-				FACBACA7170723ED008B2004 /* agtg_renderingcontext.h in Headers */,
-				FACBAC8D16FE6742008B2004 /* agtg_texture.h in Headers */,
-				FA424AB116F4D74600622AED /* agtg_vertex.h in Headers */,
+				FACBAC9116FE6F03008B2004 /* agtr_image.h in Headers */,
+				FACBAC9616FE7666008B2004 /* agtru_imageloader.h in Headers */,
+				FACBAC9416FE70B7008B2004 /* agtru_imageloaderpng.h in Headers */,
 				FA5E9772176CCDCB0035F4D0 /* agtui_mouseevent.h in Headers */,
+				FA2318E2178E2DDE0050DE3A /* agtui_touchevent.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		FA231825178DD1CD0050DE3A /* agt-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA2318A6178DD1CD0050DE3A /* Build configuration list for PBXNativeTarget "agt-ios" */;
+			buildPhases = (
+				FA231826178DD1CD0050DE3A /* Sources */,
+				FA231861178DD1CD0050DE3A /* Frameworks */,
+				FA231862178DD1CD0050DE3A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA2318D3178DD58A0050DE3A /* PBXTargetDependency */,
+			);
+			name = "agt-ios";
+			productName = "aft-ios";
+			productReference = FA2318A9178DD1CD0050DE3A /* libagt-ios.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		FA3B862317A9333C0042C241 /* act-macosx */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA3B86A417A9333C0042C241 /* Build configuration list for PBXNativeTarget "act-macosx" */;
+			buildPhases = (
+				FA3B862417A9333C0042C241 /* Sources */,
+				FA3B865F17A9333C0042C241 /* Frameworks */,
+				FA3B866017A9333C0042C241 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA3B86A917A933830042C241 /* PBXTargetDependency */,
+			);
+			name = "act-macosx";
+			productName = aft;
+			productReference = FA3B86A717A9333C0042C241 /* libact-macosx.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		FA833E2115A752430044283D /* aft-macosx */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA833E2415A752430044283D /* Build configuration list for PBXNativeTarget "aft-macosx" */;
@@ -1292,37 +1739,70 @@
 			projectRoot = "";
 			targets = (
 				FA833E2115A752430044283D /* aft-macosx */,
+				FA875BC915E099D800C5E50B /* aft-ios */,
 				FAA6CDB115DDB28400F480F0 /* agt-macosx */,
+				FA231825178DD1CD0050DE3A /* agt-ios */,
 				FA833E9615A755A50044283D /* aunit-macosx */,
 				FA833EBB15A75C350044283D /* test_aft-macosx */,
 				FA875B9F15DF1B6C00C5E50B /* test_agt-macosx */,
-				FA875BC915E099D800C5E50B /* aft-ios */,
+				FA3B862317A9333C0042C241 /* act-macosx */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FA231826178DD1CD0050DE3A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA2318AF178DD37C0050DE3A /* agtg_colorrgba.cpp in Sources */,
+				FA2318B0178DD3860050DE3A /* agtg_mesh.cpp in Sources */,
+				FA2318B1178DD38A0050DE3A /* agtg_renderingcontext.cpp in Sources */,
+				FA2318B2178DD3930050DE3A /* agtg_vertex.cpp in Sources */,
+				FA2318AB178DD2380050DE3A /* agtm_matrix2.cpp in Sources */,
+				FA2318AC178DD2410050DE3A /* agtm_matrix3.cpp in Sources */,
+				FA2318AD178DD2480050DE3A /* agtm_matrix4.cpp in Sources */,
+				FA2318AE178DD24D0050DE3A /* agtm_matrixutil.cpp in Sources */,
+				FA2318B8178DD3D60050DE3A /* agtm_point2d.cpp in Sources */,
+				FA2318B9178DD3D90050DE3A /* agtm_point3d.cpp in Sources */,
+				FA2318BA178DD3DF0050DE3A /* agtm_quaternion.cpp in Sources */,
+				FA2318BB178DD3E30050DE3A /* agtm_rect.cpp in Sources */,
+				FA2318BC178DD3E60050DE3A /* agtm_size2d.cpp in Sources */,
+				FA2318BD178DD3EA0050DE3A /* agtm_vector2.cpp in Sources */,
+				FA2318BE178DD3EE0050DE3A /* agtm_vector3.cpp in Sources */,
+				FA2318BF178DD3F00050DE3A /* agtm_vector4.cpp in Sources */,
+				FA2318C0178DD3F50050DE3A /* agtm_vectorutil.cpp in Sources */,
+				FA2318AA178DD22D0050DE3A /* agtui_mouseevent.cpp in Sources */,
+				FA2318E6178E2E440050DE3A /* agtui_touchevent.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA3B862417A9333C0042C241 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA3B86C717A933CA0042C241 /* actp_condition.cpp in Sources */,
+				FA3B86C917A933CA0042C241 /* actp_conditionresult.cpp in Sources */,
+				FA3B86CB17A933CA0042C241 /* actp_mutex.cpp in Sources */,
+				FA3B86CD17A933CA0042C241 /* actp_mutexresult.cpp in Sources */,
+				FA3B86CF17A933CA0042C241 /* actp_posixcondition.cpp in Sources */,
+				FA3B86D117A933CA0042C241 /* actp_posixmutex.cpp in Sources */,
+				FA3B86D317A933CA0042C241 /* actp_posixthread.cpp in Sources */,
+				FA3B86D617A933CA0042C241 /* actp_semaphore.cpp in Sources */,
+				FA3B86D817A933CA0042C241 /* actp_thread.cpp in Sources */,
+				FA3B86DA17A933CA0042C241 /* actp_threadattributes.cpp in Sources */,
+				FA3B86DC17A933CA0042C241 /* actp_threadutil.cpp in Sources */,
+				FA3B86DE17A933CA0042C241 /* actp_win32condition.cpp in Sources */,
+				FA3B86E017A933CA0042C241 /* actp_win32mutex.cpp in Sources */,
+				FA3B86E217A933CA0042C241 /* actp_win32thread.cpp in Sources */,
+				FA3B86E617A933FC0042C241 /* acts_platform.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA833E1E15A752430044283D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA833E3B15A753070044283D /* aftu_exception.cpp in Sources */,
-				FA833E3D15A753070044283D /* aftu_hexprinter.cpp in Sources */,
-				FA833E3F15A753070044283D /* aftu_hexutil.cpp in Sources */,
-				FA833E4215A753070044283D /* aftu_stringref.cpp in Sources */,
-				FA833E4415A753070044283D /* aftu_stringutil.cpp in Sources */,
-				FA833E4815A753070044283D /* aftu_url.cpp in Sources */,
-				FA833E4A15A753070044283D /* aftu_win32error.cpp in Sources */,
-				FA833E6115A755340044283D /* afts_alignmentof.cpp in Sources */,
-				FA833E6315A755340044283D /* afts_assert.cpp in Sources */,
-				FA833E6515A755340044283D /* afts_byteorder.cpp in Sources */,
-				FA833E6715A755340044283D /* afts_comparisonutil.cpp in Sources */,
-				FA833E6915A755340044283D /* afts_compiler.cpp in Sources */,
-				FA833E6B15A755340044283D /* afts_errorutil.cpp in Sources */,
-				FA833E6D15A755340044283D /* afts_os.cpp in Sources */,
-				FA833E6F15A755340044283D /* afts_platform.cpp in Sources */,
-				FA833E7115A755340044283D /* afts_win32errorutil.cpp in Sources */,
-				FA833E7315A755340044283D /* afts_windows.cpp in Sources */,
 				FA833EEB15A7AD520044283D /* aftc_construct.cpp in Sources */,
 				FA833EED15A7AD520044283D /* aftc_packedstringmap.cpp in Sources */,
 				FA833EEF15A7AD520044283D /* aftc_trie.cpp in Sources */,
@@ -1331,6 +1811,7 @@
 				FA833F0315A90A990044283D /* aftfs_filesystem.cpp in Sources */,
 				FA833F0515A90A990044283D /* aftfs_path.cpp in Sources */,
 				FA833F0715A90A990044283D /* aftfs_posixpath.cpp in Sources */,
+				FA9B15F515AA70190017DCD5 /* afth_crc32.cpp in Sources */,
 				FA9B158F15A9DE900017DCD5 /* aftio_flags.cpp in Sources */,
 				FA9B159115A9DE900017DCD5 /* aftio_inputstream.cpp in Sources */,
 				FA9B159315A9DE900017DCD5 /* aftio_outputstream.cpp in Sources */,
@@ -1344,15 +1825,23 @@
 				FA9B15B415AA62350017DCD5 /* aftm_round.cpp in Sources */,
 				FA9B15BA15AA624F0017DCD5 /* aftma_allocator.cpp in Sources */,
 				FA9B15BC15AA624F0017DCD5 /* aftma_blockallocator.cpp in Sources */,
+				FA833E6115A755340044283D /* afts_alignmentof.cpp in Sources */,
+				FA833E6315A755340044283D /* afts_assert.cpp in Sources */,
+				FA833E6515A755340044283D /* afts_byteorder.cpp in Sources */,
+				FA833E6715A755340044283D /* afts_comparisonutil.cpp in Sources */,
+				FA833E6915A755340044283D /* afts_compiler.cpp in Sources */,
+				FA833E6B15A755340044283D /* afts_errorutil.cpp in Sources */,
+				FA833E6D15A755340044283D /* afts_os.cpp in Sources */,
+				FA833E6F15A755340044283D /* afts_platform.cpp in Sources */,
+				FA833E7115A755340044283D /* afts_win32errorutil.cpp in Sources */,
+				FA833E7315A755340044283D /* afts_windows.cpp in Sources */,
 				FA9B15D015AA626C0017DCD5 /* aftt_date.cpp in Sources */,
-				FA9B15D215AA626C0017DCD5 /* aftt_dateinterval.cpp in Sources */,
 				FA9B15D415AA626C0017DCD5 /* aftt_datetime.cpp in Sources */,
 				FA9B15D615AA626C0017DCD5 /* aftt_datetimeinterval.cpp in Sources */,
 				FA9B15D815AA626C0017DCD5 /* aftt_dayofweek.cpp in Sources */,
 				FA9B15DA15AA626C0017DCD5 /* aftt_systemtime.cpp in Sources */,
 				FA9B15DC15AA626C0017DCD5 /* aftt_time.cpp in Sources */,
 				FA9B15E015AA626C0017DCD5 /* aftt_timezone.cpp in Sources */,
-				FA9B15F515AA70190017DCD5 /* afth_crc32.cpp in Sources */,
 				FAAEE5AA1686170D00F587BE /* aftt_minutes.cpp in Sources */,
 				FAA431C5169A040700F2BAF3 /* aftt_years.cpp in Sources */,
 				FAA431C8169A044800F2BAF3 /* aftt_weeks.cpp in Sources */,
@@ -1365,6 +1854,14 @@
 				FAA0731916DAA59A00015F1D /* aftt_month.cpp in Sources */,
 				FAA0731F16E96AC900015F1D /* aftt_year.cpp in Sources */,
 				FAA0732516E96BBA00015F1D /* aftt_day.cpp in Sources */,
+				FA833E3B15A753070044283D /* aftu_exception.cpp in Sources */,
+				FA833E3D15A753070044283D /* aftu_hexprinter.cpp in Sources */,
+				FA833E3F15A753070044283D /* aftu_hexutil.cpp in Sources */,
+				FA833E4215A753070044283D /* aftu_stringref.cpp in Sources */,
+				FA833E4415A753070044283D /* aftu_stringutil.cpp in Sources */,
+				FA833E4815A753070044283D /* aftu_url.cpp in Sources */,
+				FA833E4A15A753070044283D /* aftu_win32error.cpp in Sources */,
+				FAFB3A4F17B33A08002510F9 /* aftfs_localfilesystem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1407,6 +1904,7 @@
 				FA9B15F815AA738B0017DCD5 /* aftio_permission.t.cpp in Sources */,
 				FA9B15FB15AA73AB0017DCD5 /* aftfs_filesystem.t.cpp in Sources */,
 				FA9B15FC15AA73AB0017DCD5 /* aftfs_path.t.cpp in Sources */,
+				FAFB3A5317B7C527002510F9 /* aftfs_localfilesystem.t.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1430,18 +1928,65 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAAEE5AB1686170D00F587BE /* aftt_minutes.cpp in Sources */,
-				FAA431C6169A040700F2BAF3 /* aftt_years.cpp in Sources */,
-				FAA431C9169A044800F2BAF3 /* aftt_weeks.cpp in Sources */,
+				FA2317611784742A0050DE3A /* aftc_construct.cpp in Sources */,
+				FA231762178474340050DE3A /* aftc_packedstringmap.cpp in Sources */,
+				FA231763178474370050DE3A /* aftc_trie.cpp in Sources */,
+				FA231764178474450050DE3A /* aftfs_directoryentry.cpp in Sources */,
+				FA231765178474480050DE3A /* aftfs_file.cpp in Sources */,
+				FA2317661784744F0050DE3A /* aftfs_filesystem.cpp in Sources */,
+				FA231767178474530050DE3A /* aftfs_path.cpp in Sources */,
+				FA231768178474580050DE3A /* aftfs_posixpath.cpp in Sources */,
+				FA2317691784747E0050DE3A /* afth_crc32.cpp in Sources */,
+				FA23176A1784749F0050DE3A /* aftio_flags.cpp in Sources */,
+				FA23176B178474A20050DE3A /* aftio_inputstream.cpp in Sources */,
+				FA23176C178474A50050DE3A /* aftio_outputstream.cpp in Sources */,
+				FA23176D178474A80050DE3A /* aftio_permission.cpp in Sources */,
+				FA23176E178474AE0050DE3A /* aftio_permissions.cpp in Sources */,
+				FA23176F178474FD0050DE3A /* aftipc_mappable.cpp in Sources */,
+				FA231770178475000050DE3A /* aftipc_mappedregion.cpp in Sources */,
+				FA231771178475040050DE3A /* aftipc_memorymappedfile.cpp in Sources */,
+				FA231772178475080050DE3A /* aftipc_resultcode.cpp in Sources */,
+				FA2317731784750E0050DE3A /* aftipc_sharedmemory.cpp in Sources */,
+				FA231774178475170050DE3A /* aftm_round.cpp in Sources */,
+				FA2317751784751E0050DE3A /* aftma_allocator.cpp in Sources */,
+				FA231776178475200050DE3A /* aftma_blockallocator.cpp in Sources */,
+				FA2317771784752B0050DE3A /* afts_alignmentof.cpp in Sources */,
+				FA2317781784752F0050DE3A /* afts_assert.cpp in Sources */,
+				FA231779178475330050DE3A /* afts_byteorder.cpp in Sources */,
+				FA23177A178475360050DE3A /* afts_comparisonutil.cpp in Sources */,
+				FA23177B1784753B0050DE3A /* afts_compiler.cpp in Sources */,
+				FA23177C1784753E0050DE3A /* afts_errorutil.cpp in Sources */,
+				FA23177D178475450050DE3A /* afts_os.cpp in Sources */,
+				FA23177E1784754A0050DE3A /* afts_platform.cpp in Sources */,
+				FA23177F1784754F0050DE3A /* afts_win32errorutil.cpp in Sources */,
+				FA231780178475560050DE3A /* afts_windows.cpp in Sources */,
+				FA231781178475760050DE3A /* aftt_date.cpp in Sources */,
+				FA2317831784757D0050DE3A /* aftt_datetime.cpp in Sources */,
+				FA231784178475820050DE3A /* aftt_datetimeinterval.cpp in Sources */,
+				FAA0732616E96BBA00015F1D /* aftt_day.cpp in Sources */,
+				FA231785178475AA0050DE3A /* aftt_dayofweek.cpp in Sources */,
 				FAA431CC169A0A1000F2BAF3 /* aftt_days.cpp in Sources */,
 				FAA431CF169A0B0700F2BAF3 /* aftt_hours.cpp in Sources */,
-				FAA431D2169A791500F2BAF3 /* aftt_seconds.cpp in Sources */,
-				FAA431D5169A7CCF00F2BAF3 /* aftt_milliseconds.cpp in Sources */,
 				FAA431D8169A801F00F2BAF3 /* aftt_microseconds.cpp in Sources */,
-				FAA431DB169A829200F2BAF3 /* aftt_nanoseconds.cpp in Sources */,
+				FAA431D5169A7CCF00F2BAF3 /* aftt_milliseconds.cpp in Sources */,
+				FAAEE5AB1686170D00F587BE /* aftt_minutes.cpp in Sources */,
 				FAA0731A16DAA59A00015F1D /* aftt_month.cpp in Sources */,
+				FAA431DB169A829200F2BAF3 /* aftt_nanoseconds.cpp in Sources */,
+				FAA431D2169A791500F2BAF3 /* aftt_seconds.cpp in Sources */,
+				FA231786178475C00050DE3A /* aftt_systemtime.cpp in Sources */,
+				FA231787178475C50050DE3A /* aftt_time.cpp in Sources */,
+				FA231788178475C90050DE3A /* aftt_timezone.cpp in Sources */,
+				FAA431C9169A044800F2BAF3 /* aftt_weeks.cpp in Sources */,
 				FAA0732016E96AC900015F1D /* aftt_year.cpp in Sources */,
-				FAA0732616E96BBA00015F1D /* aftt_day.cpp in Sources */,
+				FAA431C6169A040700F2BAF3 /* aftt_years.cpp in Sources */,
+				FA231789178475D50050DE3A /* aftu_exception.cpp in Sources */,
+				FA23178A178475DB0050DE3A /* aftu_hexprinter.cpp in Sources */,
+				FA23178B178475E10050DE3A /* aftu_hexutil.cpp in Sources */,
+				FA23178C178475E70050DE3A /* aftu_stringref.cpp in Sources */,
+				FA23178D178475ED0050DE3A /* aftu_stringutil.cpp in Sources */,
+				FA23178E178475F20050DE3A /* aftu_url.cpp in Sources */,
+				FA23178F178476090050DE3A /* aftu_win32error.cpp in Sources */,
+				FAFB3A5017B33A08002510F9 /* aftfs_localfilesystem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1449,30 +1994,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA424AB416F4D7CC00622AED /* agtg_colorrgba.cpp in Sources */,
+				FA424AAC16F4D6BF00622AED /* agtg_mesh.cpp in Sources */,
+				FACBACAB17072886008B2004 /* agtg_renderingcontext.cpp in Sources */,
+				FA424AB016F4D74600622AED /* agtg_vertex.cpp in Sources */,
 				FAA6CDCC15DDB37400F480F0 /* agtm_matrix2.cpp in Sources */,
 				FAA6CDCE15DDB37400F480F0 /* agtm_matrix3.cpp in Sources */,
+				FA5E9774176D0B760035F4D0 /* agtui_mouseevent.cpp in Sources */,
 				FAA6CDD015DDB37400F480F0 /* agtm_matrix4.cpp in Sources */,
 				FAA6CDD215DDB37400F480F0 /* agtm_matrixutil.cpp in Sources */,
+				FAA6CDDE15DDB37400F480F0 /* agtm_point2d.cpp in Sources */,
+				FAA6CDE015DDB37400F480F0 /* agtm_point3d.cpp in Sources */,
 				FAA6CDD415DDB37400F480F0 /* agtm_quaternion.cpp in Sources */,
+				FACBAC9C16FE8D3E008B2004 /* agtm_rect.cpp in Sources */,
+				FACBAC9E16FE8D6B008B2004 /* agtm_size2d.cpp in Sources */,
 				FAA6CDD615DDB37400F480F0 /* agtm_vector2.cpp in Sources */,
 				FAA6CDD815DDB37400F480F0 /* agtm_vector3.cpp in Sources */,
 				FAA6CDDA15DDB37400F480F0 /* agtm_vector4.cpp in Sources */,
 				FAA6CDDC15DDB37400F480F0 /* agtm_vectorutil.cpp in Sources */,
-				FAA6CDDE15DDB37400F480F0 /* agtm_point2d.cpp in Sources */,
-				FAA6CDE015DDB37400F480F0 /* agtm_point3d.cpp in Sources */,
-				FA424AAC16F4D6BF00622AED /* agtg_mesh.cpp in Sources */,
-				FA424AB016F4D74600622AED /* agtg_vertex.cpp in Sources */,
-				FA424AB416F4D7CC00622AED /* agtg_colorrgba.cpp in Sources */,
-				FACBAC9C16FE8D3E008B2004 /* agtm_rect.cpp in Sources */,
-				FACBAC9E16FE8D6B008B2004 /* agtm_size2d.cpp in Sources */,
-				FACBACAB17072886008B2004 /* agtg_renderingcontext.cpp in Sources */,
-				FA5E9774176D0B760035F4D0 /* agtui_mouseevent.cpp in Sources */,
+				FA2318E5178E2E440050DE3A /* agtui_touchevent.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		FA2318D3178DD58A0050DE3A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA875BC915E099D800C5E50B /* aft-ios */;
+			targetProxy = FA2318D2178DD58A0050DE3A /* PBXContainerItemProxy */;
+		};
+		FA3B86A917A933830042C241 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA833E2115A752430044283D /* aft-macosx */;
+			targetProxy = FA3B86A817A933830042C241 /* PBXContainerItemProxy */;
+		};
 		FA833EC915A75DA30044283D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FA833E2115A752430044283D /* aft-macosx */;
@@ -1506,13 +2062,83 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		FA2318A7178DD1CD0050DE3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "agt-ios";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FA2318A8178DD1CD0050DE3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "agt-ios";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FA3B86A517A9333C0042C241 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				EXECUTABLE_PREFIX = "$(inherited)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				PRODUCT_NAME = "act-macosx";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FA3B86A617A9333C0042C241 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				EXECUTABLE_PREFIX = "$(inherited)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				PRODUCT_NAME = "act-macosx";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		FA833E1C15A7501D0044283D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(BOOST_INCLUDE)",
 					"$(CONFIGURATION_BUILD_DIR)/**",
@@ -1526,10 +2152,15 @@
 		FA833E1D15A7501D0044283D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(BOOST_INCLUDE)",
 					"$(CONFIGURATION_BUILD_DIR)/**",
@@ -1542,25 +2173,16 @@
 		FA833E2515A752430044283D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				COPY_PHASE_STRIP = NO;
 				EXECUTABLE_PREFIX = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -1569,19 +2191,10 @@
 		FA833E2615A752430044283D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EXECUTABLE_PREFIX = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -1735,49 +2348,34 @@
 		FA875BD515E099D800C5E50B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/aft_ios.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "aft-ios/aft-ios-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		FA875BD615E099D800C5E50B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
-				DSTROOT = /tmp/aft_ios.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "aft-ios/aft-ios-Prefix.pch";
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1785,25 +2383,16 @@
 		FAA6CDB415DDB28400F480F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				COPY_PHASE_STRIP = NO;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -1812,19 +2401,10 @@
 		FAA6CDB515DDB28400F480F0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -1833,6 +2413,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FA2318A6178DD1CD0050DE3A /* Build configuration list for PBXNativeTarget "agt-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA2318A7178DD1CD0050DE3A /* Debug */,
+				FA2318A8178DD1CD0050DE3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA3B86A417A9333C0042C241 /* Build configuration list for PBXNativeTarget "act-macosx" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA3B86A517A9333C0042C241 /* Debug */,
+				FA3B86A617A9333C0042C241 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FA833E1A15A7501D0044283D /* Build configuration list for PBXProject "aegis" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

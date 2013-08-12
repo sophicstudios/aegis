@@ -2,7 +2,6 @@
 #include <aftt_days.h>
 #include <iostream>
 
-namespace aegis {
 namespace aftt {
 
 Hours::Hours()
@@ -30,5 +29,4 @@ std::ostream& operator<<(std::ostream& os, Hours const& hours)
     return os << hours.value();
 }
 
-} // namespace
 } // namespace

@@ -2,7 +2,6 @@
 #include <afts_assert.h>
 #include <cctype>
 
-namespace aegis {
 namespace aftu {
 
 void StringUtil::trim(std::string* s, char c)
@@ -264,5 +263,4 @@ void StringUtil::tokenize(
     }
 }
 
-} // namespace
 } // namespace

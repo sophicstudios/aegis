@@ -1,7 +1,6 @@
 #include <aunit_consolereporter.h>
 #include <iostream>
 
-namespace aegis {
 namespace aunit {
 
 namespace {
@@ -157,5 +156,4 @@ void ConsoleReporter::generateAndPublishReport(
     std::cout << std::endl;
 }
 
-} // namespace
 } // namespace

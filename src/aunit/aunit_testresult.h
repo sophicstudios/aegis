@@ -4,7 +4,6 @@
 #include <iosfwd>
 #include <string>
 
-namespace aegis {
 namespace aunit {
 
 class TestResult
@@ -47,7 +46,6 @@ private:
 
 std::ostream& operator<<(std::ostream& os, TestResult const& result);
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

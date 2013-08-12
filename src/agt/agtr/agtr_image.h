@@ -1,7 +1,6 @@
 #ifndef INCLUDED_AEGIS_AGTR_IMAGE_H
 #define INCLUDED_AEGIS_AGTR_IMAGE_H
 
-namespace aegis {
 namespace agtr {
 
 class Image
@@ -28,7 +27,6 @@ private:
     
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

@@ -4,7 +4,6 @@
 #include <aftt_days.h>
 #include <iostream>
 
-namespace aegis {
 namespace aftt {
 
 Seconds::Seconds()
@@ -118,5 +117,4 @@ std::ostream& operator<<(std::ostream& os, Seconds const& seconds)
     return os << seconds.value();
 }
 
-} // namespace
 } // namespace

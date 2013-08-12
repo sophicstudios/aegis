@@ -4,7 +4,6 @@
 #include <aftio_permission.h>
 #include <iosfwd>
 
-namespace aegis {
 namespace aftio {
 
 class Permissions
@@ -64,7 +63,6 @@ private:
 
 std::ostream& operator<<(std::ostream& os, Permissions const& perm);
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

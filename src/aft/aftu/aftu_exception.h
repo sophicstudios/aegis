@@ -12,7 +12,6 @@
     };                                                                  \
     typedef aftu::TypedException<ExceptionType##Name> Name;
 
-namespace aegis {
 namespace aftu {
 
 /**
@@ -89,7 +88,6 @@ Exception& Exception::operator<<(T const& value)
     return *this;
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

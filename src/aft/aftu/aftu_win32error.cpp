@@ -4,7 +4,6 @@
 
 #include <sstream>
 
-namespace aegis {
 namespace aftu {
 
 std::string Win32Error::systemErrorString(DWORD errorCode)
@@ -48,7 +47,6 @@ std::string Win32Error::systemErrorString(DWORD errorCode)
     return errorMessage;
 }
 
-} // namespace
 } // namespace
 
 #endif // AFTS_OS

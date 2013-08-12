@@ -6,7 +6,6 @@
 
 #if defined(ACTS_PLATFORM_PTHREADS)
 
-namespace aegis {
 namespace actp {
 
 PosixCondition::PosixCondition()
@@ -23,7 +22,7 @@ PosixCondition::PosixCondition()
 PosixCondition::~PosixCondition()
 {
     int result = pthread_cond_destroy(&m_cond);
-    AFTS_ASSERT_DEBUG(result == 0);
+    AFTS_ASSERT(result == 0);
 }
 
 ConditionResult PosixCondition::wait(PosixMutex& mutex)
@@ -59,7 +58,6 @@ ConditionResult PosixCondition::signalAll()
     return ConditionResult_OK;
 }
 
-} // namespace
 } // namespace
 
 #endif // ACTS_PLATFORM

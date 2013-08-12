@@ -6,7 +6,6 @@
 #include <memory>
 #include <vector>
 
-namespace aegis {
 namespace aunit {
 
 class Config;
@@ -54,7 +53,6 @@ private:
     Config* m_config;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

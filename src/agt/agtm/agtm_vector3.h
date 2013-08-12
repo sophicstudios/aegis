@@ -7,7 +7,6 @@
 #include <cmath>
 #include <iosfwd>
 
-namespace aegis {
 namespace agtm {
 
 template<typename T>
@@ -408,7 +407,6 @@ std::ostream& operator<<(std::ostream& os, Vector3<T> const& v)
     return os;
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

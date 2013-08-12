@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 
-namespace aegis {
 namespace aftfs {
 
 ///
@@ -52,7 +51,6 @@ private:
     bool m_isAbsolute;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

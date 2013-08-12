@@ -5,7 +5,6 @@
 #include <aftipc_resultcode.h>
 #include <cstdlib>
 
-namespace aegis {
 namespace aftipc {
 
 class MappedRegion
@@ -31,7 +30,6 @@ private:
     size_t m_dataLength;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

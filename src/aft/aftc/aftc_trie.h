@@ -4,7 +4,6 @@
 #include <aftc_packedstringmap.h>
 #include <ostream>
 
-namespace aegis {
 namespace aftc {
 
 template<typename T>
@@ -243,7 +242,6 @@ TrieIterator<T> TrieIterator<T>::operator++(int)
     return TrieIterator<T>();
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

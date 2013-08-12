@@ -23,9 +23,30 @@
 
 #elif defined(__APPLE__)
 
+#include <TargetConditionals.h>
+
+#if TARGET_OS_IPHONE
+
+#define AFTS_OS "iphone"
+#define AFTS_OS_APPLE
+#define AFTS_OS_IPHONE
+#define AFTS_OS_POSIX
+
+#elif TARGET_IPHONE_SIMULATOR
+
+#define AFTS_OS "iphone-simulator"
+#define AFTS_OS_APPLE
+#define AFTS_OS_IPHONE
+#define AFTS_OS_POSIX
+
+#elif TARGET_OS_MAC
+
 #define AFTS_OS "macos"
+#define AFTS_OS_APPLE
 #define AFTS_OS_MACOS
 #define AFTS_OS_POSIX
+
+#endif // TARGET_OS
 
 #else
 

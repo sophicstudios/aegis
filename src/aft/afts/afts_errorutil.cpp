@@ -3,7 +3,6 @@
 #include <sstream>
 #include <cstring>
 
-namespace aegis {
 namespace afts {
 
 namespace {
@@ -53,5 +52,4 @@ std::string ErrorUtil::translateErrno(int errnum)
 
 #endif // AFTS_COMPILER
 
-} // namespace
 } // namespace

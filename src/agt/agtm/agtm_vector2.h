@@ -6,7 +6,6 @@
 #include <cmath>
 #include <ostream>
 
-namespace aegis {
 namespace agtm {
 
 template<typename T>
@@ -366,7 +365,6 @@ std::ostream& operator<<(std::ostream& os, Vector2<T> const& v)
     return os;
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

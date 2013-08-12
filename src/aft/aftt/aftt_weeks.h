@@ -3,7 +3,6 @@
 
 #include <afts_stdint.h>
 
-namespace aegis {
 namespace aftt {
 
 class Weeks
@@ -11,17 +10,16 @@ class Weeks
 public:
     Weeks();
     
-    Weeks(int64_t weeks);
+    Weeks(int32_t weeks);
     
     ~Weeks();
     
-    int64_t value() const;
+    int32_t value() const;
     
 private:
-    int64_t m_weeks;
+    int32_t m_weeks;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

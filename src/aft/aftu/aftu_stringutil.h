@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 
-namespace aegis {
 namespace aftu {
 
 struct StringUtil
@@ -98,7 +97,6 @@ struct StringUtil
         
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

@@ -3,7 +3,6 @@
 
 #include <ostream>
 
-namespace aegis {
 namespace agtm {
 
 template<typename T>
@@ -72,7 +71,6 @@ std::ostream& operator<<(std::ostream& os, Size2d<T> const& size)
     return os;
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

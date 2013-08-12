@@ -3,7 +3,6 @@
 
 #include <afts_stdint.h>
 
-namespace aegis {
 namespace aftt {
 
 class Years
@@ -11,17 +10,16 @@ class Years
 public:
     Years();
     
-    Years(int64_t years);
+    Years(int32_t years);
 
     ~Years();
     
-    int64_t value() const;
+    int32_t value() const;
     
 private:
-    int64_t m_years;
+    int32_t m_years;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

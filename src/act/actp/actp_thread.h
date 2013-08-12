@@ -8,7 +8,6 @@
 #include <actp_posixthread.h>
 #endif
 
-namespace aegis {
 namespace actp {
 
 #if defined(ACTS_PLATFORM_PTHREADS)
@@ -39,7 +38,6 @@ inline bool Thread::join()
     return m_nativeThread.join();
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDE

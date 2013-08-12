@@ -7,7 +7,6 @@
 #include <string>
 #include <vector>
 
-namespace aegis {
 namespace aftc {
 
 #define PACKEDSTRINGMAP_DEBUG 1
@@ -624,7 +623,6 @@ bool operator!=(PackedStringMapIterator<T> const& lhs, PackedStringMapIterator<T
         || lhs.m_keyOffset != rhs.m_keyOffset;
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

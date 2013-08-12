@@ -8,7 +8,6 @@
 #include <sys/mman.h>
 #include <unistd.h>
 
-namespace aegis {
 namespace aftipc {
 
 namespace {
@@ -178,7 +177,7 @@ ResultCode MemoryMappedFile::map(
         pagesize = 4096;
     }
     
-    long pageOffset = (offset / pagesize) * pagesize;
+    off_t pageOffset = (offset / pagesize) * pagesize;
     size_t actualLength = static_cast<size_t>(offset + length);
     
     
@@ -230,5 +229,4 @@ ResultCode MemoryMappedFile::unmap(
     return aftipc::ResultCode_SUCCESS;
 }
 
-} // namespace
 } // namespace

@@ -8,7 +8,6 @@
 #include <string>
 #include <afts_windows.h>
 
-namespace aegis {
 namespace afts {
 
 struct Win32ErrorUtil
@@ -16,7 +15,6 @@ struct Win32ErrorUtil
     static std::string translateSystemError(DWORD errorCode);
 };
 
-} // namespace
 } // namespace
 
 #endif // AFTS_OS

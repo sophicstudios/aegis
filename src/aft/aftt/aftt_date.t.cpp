@@ -1,7 +1,6 @@
 #include <aftt_date.h>
 #include <aunit.h>
 
-namespace aegis {
 namespace aftt {
 
 class TestDate : public aunit::TestFixture
@@ -145,5 +144,4 @@ void TestDate::testSubtraction()
     AUNIT_ASSERT(equalDates(d2, 1752, 9, 2));
 }
 
-} // namespace
 } // namespace

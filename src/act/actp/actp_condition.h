@@ -11,7 +11,6 @@
 #include <actp_win32condition.h>
 #endif
 
-namespace aegis {
 namespace actp {
 
 #if defined(ACTS_PLATFORM_PTHREADS)
@@ -57,7 +56,6 @@ inline ConditionResult Condition::signalAll()
     return m_nativeCondition.signalAll();
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDE

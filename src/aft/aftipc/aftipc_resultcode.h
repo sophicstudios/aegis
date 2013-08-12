@@ -3,7 +3,6 @@
 
 #include <iosfwd>
 
-namespace aegis {
 namespace aftipc {
 
 enum ResultCode {
@@ -31,7 +30,6 @@ struct ResultUtil
 
 std::ostream& operator<<(std::ostream& os, ResultCode resultCode);
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

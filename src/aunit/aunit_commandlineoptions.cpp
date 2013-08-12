@@ -1,7 +1,6 @@
 #include <aunit_commandlineoptions.h>
 #include <ostream>
 
-namespace aegis {
 namespace aunit {
 
 struct ArgInfo
@@ -105,5 +104,4 @@ CommandLineOptions::TestIdList const& CommandLineOptions::testIdList() const
     return m_testIdList;
 }
 
-} // namespace
 } // namespace

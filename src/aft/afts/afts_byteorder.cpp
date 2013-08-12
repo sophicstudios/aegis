@@ -1,7 +1,6 @@
 #include <afts_byteorder.h>
 #include <boost/static_assert.hpp>
 
-namespace aegis {
 namespace afts {
 
 bool ByteOrder::isBigEndian()
@@ -17,5 +16,4 @@ bool ByteOrder::isLittleEndian()
     return !isBigEndian();
 }
 
-} // namespace
 } // namespace

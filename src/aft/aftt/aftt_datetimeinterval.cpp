@@ -10,7 +10,6 @@
 #include <ostream>
 #include <iomanip>
 
-namespace aegis {
 namespace aftt {
 
 namespace {
@@ -47,8 +46,8 @@ DatetimeInterval::DatetimeInterval()
 DatetimeInterval::DatetimeInterval(
     Seconds const& seconds,
     Nanoseconds const& nanoseconds)
-: m_seconds(seconds.value()),
-  m_nanoseconds(nanoseconds.value())
+: m_seconds(seconds.value() + (nanoseconds.value() / NANOSECONDS_PER_SECOND)),
+  m_nanoseconds(nanoseconds.value() % NANOSECONDS_PER_SECOND)
 {}
 
 DatetimeInterval::DatetimeInterval(
@@ -136,17 +135,17 @@ DatetimeInterval& DatetimeInterval::operator-=(DatetimeInterval const& rhs)
 
 Days DatetimeInterval::days() const
 {
-    return Days(m_seconds / SECONDS_PER_DAY);
+    return Days(static_cast<int32_t>(m_seconds / SECONDS_PER_DAY));
 }
 
 Hours DatetimeInterval::hours() const
 {
-    return Hours((m_seconds % SECONDS_PER_DAY) / SECONDS_PER_HOUR);
+    return Hours(static_cast<int32_t>((m_seconds % SECONDS_PER_DAY) / SECONDS_PER_HOUR));
 }
 
 Minutes DatetimeInterval::minutes() const
 {
-    return Minutes((m_seconds % SECONDS_PER_HOUR) / SECONDS_PER_MINUTE);
+    return Minutes(static_cast<int32_t>((m_seconds % SECONDS_PER_HOUR) / SECONDS_PER_MINUTE));
 }
 
 Seconds DatetimeInterval::seconds() const
@@ -213,7 +212,7 @@ bool operator<(DatetimeInterval const& lhs, DatetimeInterval const& rhs)
 
 bool operator<=(DatetimeInterval const& lhs, DatetimeInterval const& rhs)
 {
-    return !(rhs < lhs);
+    return !(rhs > lhs);
 }
 
 bool operator>(DatetimeInterval const& lhs, DatetimeInterval const& rhs)
@@ -224,7 +223,7 @@ bool operator>(DatetimeInterval const& lhs, DatetimeInterval const& rhs)
 
 bool operator>=(DatetimeInterval const& lhs, DatetimeInterval const& rhs)
 {
-    return !(rhs < lhs);
+    return !(lhs < rhs);
 }
 
 std::ostream& operator<<(std::ostream& os, DatetimeInterval const& rhs)
@@ -236,5 +235,4 @@ std::ostream& operator<<(std::ostream& os, DatetimeInterval const& rhs)
         << std::setw(9) << std::setfill('0') << rhs.nanoseconds();
 }
 
-} // namespace
 } // namespace

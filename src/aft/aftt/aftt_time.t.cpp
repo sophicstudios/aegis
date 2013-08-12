@@ -3,7 +3,6 @@
 #include <aunit.h>
 #include <iostream>
 
-namespace aegis {
 namespace aftt {
 
 class TestTime : public aunit::TestFixture
@@ -122,5 +121,4 @@ void TestTime::testSubtraction()
     AUNIT_ASSERT(count == 3);
 }
 
-} // namespace
 } // namespace

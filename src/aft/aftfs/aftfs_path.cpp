@@ -5,7 +5,6 @@
 #include <vector>
 #include <libgen.h>
 
-namespace aegis {
 namespace aftfs {
 
 
@@ -169,5 +168,4 @@ std::string Path::extension() const
     return m_extension;
 }
 
-} // namespace
 } // namespace

@@ -8,7 +8,6 @@
 
 #include <iosfwd>
 
-namespace aegis {
 namespace aftt {
 
 /**
@@ -64,7 +63,7 @@ private:
     friend bool operator>=(Date const& lhs, Date const& rhs);
     friend std::ostream& operator<<(std::ostream& os, Date const& date);
     
-    uint64_t m_date;
+    uint64_t m_serial;
 };
 
 Date operator+(Date const& date, Days const& days);
@@ -87,7 +86,6 @@ bool operator>=(Date const& lhs, Date const& rhs);
 
 std::ostream& operator<<(std::ostream& os, Date const& date);
 
-} // namespace
 } // namespace\
 
 #endif // INCLUDED

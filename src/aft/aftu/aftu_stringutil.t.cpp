@@ -1,7 +1,6 @@
 #include <aftu_stringutil.h>
 #include <aunit.h>
 
-namespace aegis {
 namespace aftu {
 
 class TestStringUtil
@@ -112,5 +111,4 @@ void TestStringUtil::testTokenize()
     AUNIT_ASSERT(tokenList1[4] == "");
 }
 
-} // namespace
 } // namespace

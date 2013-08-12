@@ -1,7 +1,6 @@
 #include <aunit_testfixture.h>
 #include <aunit_reporter.h>
 
-namespace aegis {
 namespace aunit {
 
 TestFixture::TestFixture()
@@ -29,5 +28,4 @@ Reporter& TestFixture::reporter()
     return *m_reporter;
 }
 
-} // namespace
 } // namespace

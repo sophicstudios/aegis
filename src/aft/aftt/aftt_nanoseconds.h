@@ -4,7 +4,6 @@
 #include <afts_stdint.h>
 #include <iosfwd>
 
-namespace aegis {
 namespace aftt {
 
 class Days;
@@ -76,7 +75,6 @@ bool operator>=(Nanoseconds const& lhs, Nanoseconds const& rhs);
 
 std::ostream& operator<<(std::ostream& os, Nanoseconds const& nanoseconds);
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

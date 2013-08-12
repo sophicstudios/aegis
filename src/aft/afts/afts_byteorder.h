@@ -3,7 +3,6 @@
 
 #include <netinet/in.h>
 
-namespace aegis {
 namespace afts {
 
 struct ByteOrder
@@ -46,7 +45,6 @@ inline int32_t ByteOrder::networkToHost(int32_t value)
     return ntohl(value);
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

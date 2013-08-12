@@ -3,7 +3,6 @@
 
 #include <iterator>
 
-namespace aegis {
 namespace aftc {
 
 // Forward declaration used by the iterator class
@@ -274,7 +273,6 @@ Diff operator-(CircularBufferIterator<T, RefL, PtrL, Diff, Alloc> const& lhs, Ci
     return 0;
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

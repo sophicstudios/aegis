@@ -1,7 +1,6 @@
 #include <agtm_vector2.h>
 #include <aunit.h>
 
-namespace aegis {
 namespace agtm {
 
 template<typename T>
@@ -162,5 +161,4 @@ void TestVector2<T>::testLength()
     AUNIT_ASSERT(v1.lengthSquared() == 25);
 }
 
-} // namespace
 } // namespace

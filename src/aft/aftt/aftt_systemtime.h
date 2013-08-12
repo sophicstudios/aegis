@@ -4,7 +4,6 @@
 #include <aftt_datetime.h>
 #include <aftt_datetimeinterval.h>
 
-namespace aegis {
 namespace aftt {
 
 struct SystemTime
@@ -31,7 +30,6 @@ struct SystemTime
     static Datetime epochAsDatetimeUTC();
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

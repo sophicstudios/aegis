@@ -3,7 +3,6 @@
 
 #include <string>
 
-namespace aegis {
 namespace aunit {
 
 struct StringUtil
@@ -15,7 +14,6 @@ struct StringUtil
     static void trimRight(std::string& str, char c = ' ');
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

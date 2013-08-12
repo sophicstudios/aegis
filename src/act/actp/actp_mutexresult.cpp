@@ -1,7 +1,6 @@
 #include <actp_mutexresult.h>
 #include <ostream>
 
-namespace aegis {
 namespace actp {
 
 std::ostream& operator<<(std::ostream& os, MutexResult const& result)
@@ -25,5 +24,4 @@ std::ostream& operator<<(std::ostream& os, MutexResult const& result)
     return os;
 }
 
-} // namespace
 } // namespace

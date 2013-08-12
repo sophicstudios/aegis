@@ -1,7 +1,6 @@
 #include <aftt_datetime.h>
 #include <ostream>
 
-namespace aegis {
 namespace aftt {
 
 Datetime::Datetime()
@@ -155,5 +154,4 @@ std::ostream& operator<<(std::ostream& os, Datetime const& dateTime)
     return os << dateTime.m_date << " " << dateTime.m_time;
 }
 
-} // namespace
 } // namespace

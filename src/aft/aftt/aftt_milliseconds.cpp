@@ -5,7 +5,6 @@
 #include <aftt_days.h>
 #include <iostream>
 
-namespace aegis {
 namespace aftt {
 
 Milliseconds::Milliseconds()
@@ -45,5 +44,4 @@ std::ostream& operator<<(std::ostream& os, Milliseconds const& milliseconds)
     return os << milliseconds.value();
 }
 
-} // namespace
 } // namespace

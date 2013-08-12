@@ -1,7 +1,11 @@
 #include <aftfs_filesystem.h>
 
-namespace aegis {
 namespace aftfs {
-        
-} // namespace
+
+Filesystem::Filesystem()
+{}
+
+Filesystem::~Filesystem()
+{}
+
 } // namespace

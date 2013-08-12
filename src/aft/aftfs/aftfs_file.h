@@ -3,10 +3,8 @@
 
 #include <aftfs_path.h>
 
-namespace aegis {
 namespace aftfs {
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

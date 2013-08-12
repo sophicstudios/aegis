@@ -3,7 +3,6 @@
 
 #include <cstdlib>
 
-namespace aegis {
 namespace aftma {
 
 class Allocator
@@ -18,7 +17,6 @@ public:
     virtual void deallocate(void* ptr) = 0;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

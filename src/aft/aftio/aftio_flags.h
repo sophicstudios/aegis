@@ -1,7 +1,6 @@
 #ifndef INCLUDED_AEGIS_AFTIO_FLAGS_H
 #define INCLUDED_AEGIS_AFTIO_FLAGS_H
 
-namespace aegis {
 namespace aftio {
 
 struct OpenFlags
@@ -23,7 +22,6 @@ struct AccessFlags
     static ReadWrite READ_WRITE;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

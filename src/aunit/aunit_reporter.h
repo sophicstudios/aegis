@@ -4,7 +4,6 @@
 #include <aunit_testresult.h>
 #include <vector>
 
-namespace aegis {
 namespace aunit {
 
 class Reporter
@@ -30,7 +29,6 @@ private:
     std::vector<TestResult> m_failureList;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

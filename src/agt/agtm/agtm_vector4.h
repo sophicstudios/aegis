@@ -6,7 +6,6 @@
 #include <algorithm>
 #include <iosfwd>
 
-namespace aegis {
 namespace agtm {
 
 template<typename T>
@@ -423,7 +422,6 @@ std::ostream& operator<<(std::ostream& os, Vector4<T> const& v)
     return os;
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

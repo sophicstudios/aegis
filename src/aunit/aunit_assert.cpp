@@ -2,7 +2,6 @@
 #include <aunit_reporter.h>
 #include <aunit_testresult.h>
 
-namespace aegis {
 namespace aunit {
 
 void AssertImpl::doAssert(
@@ -16,5 +15,4 @@ void AssertImpl::doAssert(
     reporter.addResult(result);
 }
 
-} 
-}
+} // namespace

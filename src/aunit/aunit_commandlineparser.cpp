@@ -3,7 +3,6 @@
 #include <ostream>
 #include <string>
 
-namespace aegis {
 namespace aunit {
 
 namespace {
@@ -104,5 +103,4 @@ CommandLineParser::TestConfigurationPtr CommandLineParser::parse(std::ostream& e
     return testConfiguration;
 }
 
-} // namespace
 } // namespace

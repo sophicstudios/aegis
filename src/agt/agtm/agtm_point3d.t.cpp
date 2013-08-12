@@ -2,9 +2,6 @@
 #include <afts_comparisonutil.h>
 #include <aunit.h>
 
-using namespace aegis;
-
-namespace aegis {
 namespace agtm {
 
 template<typename T>
@@ -144,5 +141,4 @@ void TestPoint3d<T>::testSubtraction()
 {
 }
 
-} // namespace
 } // namespace

@@ -6,7 +6,6 @@
 #include <iomanip>
 #include <cassert>
 
-namespace aegis {
 namespace aftt {
 
 namespace {
@@ -481,7 +480,7 @@ Time& Time::operator-=(DatetimeInterval const& interval)
 Days Time::add(DatetimeInterval const& interval)
 {
     int64_t totalIntervalSeconds = interval.m_seconds;
-    int64_t normalizedSeconds = totalIntervalSeconds % SECONDS_PER_DAY;
+    int32_t normalizedSeconds = static_cast<int32_t>(totalIntervalSeconds % SECONDS_PER_DAY);
     int64_t days = totalIntervalSeconds / SECONDS_PER_DAY;
     int64_t normalizedNanoseconds = (normalizedSeconds * NANOSECONDS_PER_SECOND) + interval.nanoseconds().value();
     
@@ -502,7 +501,7 @@ Days Time::add(DatetimeInterval const& interval)
 Days Time::subtract(DatetimeInterval const& interval)
 {
     int64_t totalIntervalSeconds = interval.m_seconds;
-    int64_t normalizedSeconds = totalIntervalSeconds % SECONDS_PER_DAY;
+    int32_t normalizedSeconds = static_cast<int32_t>(totalIntervalSeconds % SECONDS_PER_DAY);
     int64_t days = totalIntervalSeconds / SECONDS_PER_DAY;
     int64_t normalizedNanoseconds = (normalizedSeconds * NANOSECONDS_PER_SECOND) + interval.nanoseconds().value();
     
@@ -614,5 +613,4 @@ std::ostream& operator<<(std::ostream& os, Time const& time)
     return time.print(os);
 }
 
-} // namespace
 } // namespace

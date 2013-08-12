@@ -6,7 +6,6 @@
 #include <aftt_days.h>
 #include <iostream>
 
-namespace aegis {
 namespace aftt {
 
 Microseconds::Microseconds()
@@ -47,5 +46,4 @@ std::ostream& operator<<(std::ostream& os, Microseconds const& microseconds)
     return os << microseconds.value();
 }
 
-} // namespace
 } // namespace

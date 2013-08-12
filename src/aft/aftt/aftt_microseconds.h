@@ -4,7 +4,6 @@
 #include <afts_stdint.h>
 #include <iosfwd>
 
-namespace aegis {
 namespace aftt {
 
 class Days;
@@ -40,7 +39,6 @@ private:
 
 std::ostream& operator<<(std::ostream& os, Microseconds const& microseconds);
 
-} // namespace
 } // namespae
 
 #endif // INCLUDED

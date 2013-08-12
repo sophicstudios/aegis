@@ -6,7 +6,6 @@
 #include <iterator>
 #include <algorithm>
 
-namespace aegis {
 namespace aftc {
 
 namespace {
@@ -139,7 +138,6 @@ ForwardIterator uninitialized_copy_n(InputIterator first, SizeType n, ForwardIte
     return uninitialized_copy_n(first, n, result, boost::is_pod<value_type>());
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

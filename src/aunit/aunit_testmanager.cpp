@@ -1,7 +1,6 @@
 #include <aunit_testmanager.h>
 #include <aunit_testfixture.h>
 
-namespace aegis {
 namespace aunit {
 
 TestManager::TestManager(TestRegistry& testRegistry)
@@ -33,5 +32,4 @@ TestManager::Result TestManager::runTest(std::string const& testName, Reporter& 
     }
 }
 
-} // namespace
 } // namespace

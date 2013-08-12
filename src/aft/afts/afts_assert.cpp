@@ -3,7 +3,6 @@
 #include <exception>
 #include <cassert>
 
-namespace aegis {
 namespace afts {
 
 void defaultAssertFunc(bool value, char const* msg, int line, char const* filename)
@@ -23,5 +22,4 @@ void AssertUtil::assertFunc(bool value, char const* msg, int line, char const* f
     g_assertFunc(value, msg, line, filename);
 }
 
-} // namespace
 } // namespace

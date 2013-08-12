@@ -3,7 +3,6 @@
 
 #if defined(ACTS_PLATFORM_PTHREADS)
 
-namespace aegis {
 namespace actp {
 
 namespace {
@@ -45,7 +44,6 @@ MutexResult PosixMutex::unlock()
     return convertResult(result);
 }
 
-} // namespace
 } // namespace
 
 #endif // ACTS_PLATFORM

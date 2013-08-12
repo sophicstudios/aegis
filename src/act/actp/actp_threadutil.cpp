@@ -1,16 +1,17 @@
 #include <actp_threadutil.h>
 #include <acts_platform.h>
 
-namespace aegis {
 namespace actp {
 
 #if defined(ACTS_PLATFORM_PTHREADS)
 
-ThreadUtil::ResultCode ThreadUtil::sleep(aftt::TimeInterval const& interval)
+ThreadUtil::ResultCode ThreadUtil::sleep(aftt::DatetimeInterval const& interval)
 {
     struct timespec request;
-    request.tv_sec = interval.hours() * 3600 + interval.minutes() * 60 + interval.seconds();
-    request.tv_nsec = interval.nanoseconds();
+    request.tv_sec = interval.hours().value() * 3600
+        + interval.minutes().value() * 60
+        + interval.seconds().value();
+    request.tv_nsec = interval.nanoseconds().value();
 
     struct timespec remaining;
 
@@ -22,12 +23,14 @@ ThreadUtil::ResultCode ThreadUtil::sleep(aftt::TimeInterval const& interval)
 }
 
 ThreadUtil::ResultCode ThreadUtil::sleep(
-    aftt::TimeInterval const& interval,
-    aftt::TimeInterval* remainingInterval)
+    aftt::DatetimeInterval const& interval,
+    aftt::DatetimeInterval* remainingInterval)
 {
     struct timespec request;
-    request.tv_sec = interval.hours() * 3600 + interval.minutes() * 60 + interval.seconds();
-    request.tv_nsec = interval.nanoseconds();
+    request.tv_sec = interval.hours().value() * 3600
+        + interval.minutes().value() * 60
+        + interval.seconds().value();
+    request.tv_nsec = interval.nanoseconds().value();
 
     struct timespec remaining;
 
@@ -36,7 +39,12 @@ ThreadUtil::ResultCode ThreadUtil::sleep(
     }
 
     if (remainingInterval) {
-        *remainingInterval = aftt::TimeInterval(0, 0, remaining.tv_sec, 0, 0, remaining.tv_nsec);
+        *remainingInterval = aftt::DatetimeInterval(
+            aftt::Days(0),
+            aftt::Hours(0),
+            aftt::Minutes(0),
+            aftt::Seconds(remaining.tv_sec),
+            aftt::Nanoseconds(remaining.tv_nsec));
     }
     
     return ResultCode_OK;
@@ -44,12 +52,11 @@ ThreadUtil::ResultCode ThreadUtil::sleep(
 
 #elif defined(ACTS_PLATFORM_WINTHREADS)
 
-void ThreadUtil::sleep(aftt::TimeInterval const& interval)
+void ThreadUtil::sleep(aftt::DatetimeInterval const& interval)
 {
     ::Sleep(static_cast<DWORD>(interval.totalSeconds() * 1000));
 }
 
 #endif // ACTS_PLATFORM
 
-} // namespace
 } // namespace

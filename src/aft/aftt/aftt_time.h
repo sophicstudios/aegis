@@ -11,7 +11,6 @@
 //
 // @Author Lyell Haynes
 
-namespace aegis {
 namespace aftt {
 
 class DatetimeInterval;
@@ -264,7 +263,6 @@ bool operator>=(Time const& lhs, Time const& rhs);
 
 std::ostream& operator<<(std::ostream& os, Time const& time);
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

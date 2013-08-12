@@ -5,7 +5,6 @@
 #include <aftu_url.h>
 #include <tr1/memory>
 
-namespace aegis {
 namespace agtru {
 
 class ImageLoader
@@ -18,7 +17,6 @@ public:
     virtual std::tr1::shared_ptr<Image> load(aftu::Url const& url) = 0;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDES

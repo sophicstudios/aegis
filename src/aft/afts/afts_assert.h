@@ -8,19 +8,18 @@
  * Native C assert in both release and debug builds.
  */
 #define AFTS_ASSERT(x) \
-    aegis::afts::AssertUtil::assertFunc(x, #x, __LINE__, __FILE__);
+    afts::AssertUtil::assertFunc(x, #x, __LINE__, __FILE__);
 
 /**
  * Native C assert, but only for debug builds.
  */
 #if defined(AFTS_DEBUG)
 #define AFTS_ASSERT_DEBUG(x) \
-    aegis::afts::AssertUtil::assertFunc(x, #x, __LINE__, __FILE__);
+    afts::AssertUtil::assertFunc(x, #x, __LINE__, __FILE__);
 #else
 #define AFTS_ASSERT_DEBUG(x)
 #endif
 
-namespace aegis {
 namespace afts {
 
 struct AssertUtil
@@ -32,7 +31,6 @@ struct AssertUtil
     static void assertFunc(bool value, char const* msg, int line, char const* file);
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

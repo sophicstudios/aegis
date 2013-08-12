@@ -11,7 +11,6 @@
 #include <afts_windows.h>
 #endif
 
-namespace aegis {
 namespace actp {
 
 class Semaphore
@@ -46,7 +45,6 @@ private:
 
 std::ostream& operator<<(std::ostream& os, Semaphore::ResultCode resultCode);
 
-} // namespace
 } // namespace
 
 #endif // INCLUDE

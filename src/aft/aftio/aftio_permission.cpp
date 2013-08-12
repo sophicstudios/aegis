@@ -1,7 +1,6 @@
 #include <aftio_permission.h>
 #include <aftu_exception.h>
 
-namespace aegis {
 namespace aftio {
 
 Permission::Permission()
@@ -144,5 +143,4 @@ std::ostream& operator<<(std::ostream& os, Permission const& perm)
     return os;
 }
 
-} // namespace
 } // namespace

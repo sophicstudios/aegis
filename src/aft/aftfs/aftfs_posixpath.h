@@ -3,7 +3,6 @@
 
 #include <aftfs_path.h>
 
-namespace aegis {
 namespace aftfs {
 
 class PosixPath : public aftfs::Path
@@ -17,7 +16,6 @@ private:
     std::string m_pathname;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

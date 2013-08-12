@@ -3,7 +3,6 @@
 
 #include <aftipc_resultcode.h>
 
-namespace aegis {
 namespace aftipc {
 
 class Mappable
@@ -33,8 +32,6 @@ public:
     virtual aftipc::ResultCode unmap(MappedRegionInfo* regionInfo) = 0;
 };
 
-
-} // namespace
 } // namespace
 
 #endif // INCLUDED

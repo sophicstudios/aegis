@@ -2,7 +2,6 @@
 #include <aftio_permissions.h>
 #include <aunit.h>
 
-namespace aegis {
 namespace aftfs {
 
 class TestFileSystem : public aunit::TestFixture
@@ -66,5 +65,4 @@ void TestFileSystem::testDirectoryListing()
 */
 }
 
-} // namespace
 } // namespace

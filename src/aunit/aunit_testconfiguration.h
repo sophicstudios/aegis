@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 
-namespace aegis {
 namespace aunit {
 
 class TestConfiguration
@@ -22,7 +21,6 @@ private:
     std::vector<std::string> m_testIdList;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

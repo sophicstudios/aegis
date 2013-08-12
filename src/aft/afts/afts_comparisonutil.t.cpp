@@ -3,7 +3,6 @@
 #include <cstring>
 #include <limits>
 
-namespace aegis {
 namespace afts {
 
 class TestComparisonUtil : public aunit::TestFixture
@@ -62,5 +61,4 @@ void TestComparisonUtil::testDoubleULP()
     AUNIT_ASSERT(afts::ComparisonUtil::equalULP(d1, d2, 5));
 }
 
-} // namespace
 } // namespace

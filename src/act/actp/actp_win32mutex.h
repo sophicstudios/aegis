@@ -7,7 +7,6 @@
 
 #include <afts_windows.h>
 
-namespace aegis {
 namespace actp {
 
 class Win32Mutex
@@ -30,7 +29,6 @@ private:
     HANDLE m_handle;
 };
 
-} // namespace
 } // namespace
 
 #endif // ACTS_PLATFORM

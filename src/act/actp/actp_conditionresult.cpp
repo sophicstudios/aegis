@@ -1,7 +1,6 @@
 #include <actp_conditionresult.h>
 #include <iostream>
 
-namespace aegis {
 namespace actp {
 
 std::ostream& operator<<(std::ostream& os, ConditionResult const& result)
@@ -18,7 +17,8 @@ std::ostream& operator<<(std::ostream& os, ConditionResult const& result)
             os << "ConditionResult_UNKNOWN";
             break;
     }
+    
+    return os;
 }
 
-} // namespace
 } // namespace

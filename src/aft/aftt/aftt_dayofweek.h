@@ -1,7 +1,6 @@
 #ifndef INCLUDED_AEGIS_AFTT_DAYOFWEEK
 #define INCLUDED_AEGIS_AFTT_DAYOFWEEK
 
-namespace aegis {
 namespace aftt {
 
 class Date;
@@ -21,7 +20,6 @@ struct DayOfWeek
     Day getDay(Date const& date);
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

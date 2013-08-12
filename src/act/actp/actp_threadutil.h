@@ -2,9 +2,8 @@
 #define INCLUDE_AEGIS_ACTP_THREADUTIL_H
 
 #include <actp_thread.h>
-#include <aftt_timeinterval.h>
+#include <aftt_datetimeinterval.h>
 
-namespace aegis {
 namespace actp {
 
 struct ThreadUtil
@@ -21,7 +20,7 @@ struct ThreadUtil
      *
      * @param interval The time interval
      */
-    static ResultCode sleep(aftt::TimeInterval const& interval);
+    static ResultCode sleep(aftt::DatetimeInterval const& interval);
     
     /**
      * Suspends the current thread for the specified time intervale.
@@ -35,11 +34,10 @@ struct ThreadUtil
      * @param remaining The time remaining after the sleep ends
      */
     static ResultCode sleep(
-        aftt::TimeInterval const& interval,
-        aftt::TimeInterval* remainingInterval);
+        aftt::DatetimeInterval const& interval,
+        aftt::DatetimeInterval* remainingInterval);
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDE

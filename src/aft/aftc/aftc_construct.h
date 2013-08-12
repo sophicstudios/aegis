@@ -4,7 +4,6 @@
 #include <boost/type_traits/is_pod.hpp>
 #include <iterator>
 
-namespace aegis {
 namespace aftc {
 
 namespace {
@@ -50,7 +49,6 @@ void destroy(ForwardIterator first, ForwardIterator last)
     }
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

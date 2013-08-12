@@ -1,6 +1,5 @@
 #include <afth_crc32.h>
 
-namespace aegis {
 namespace afth {
 
 namespace {
@@ -63,5 +62,4 @@ uint32_t Crc32::compute(char const* const buffer, size_t length, uint32_t priorC
     return( crc32 ^ 0xFFFFFFFF );
 }
 
-} // namespace
 } // namespace

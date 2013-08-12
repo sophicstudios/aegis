@@ -2,7 +2,6 @@
 #include <aunit.h>
 #include <cstring>
 
-namespace aegis {
 namespace afth {
 
 class TestCrc32 : public aunit::TestFixture
@@ -39,5 +38,4 @@ void TestCrc32::runTest()
     AUNIT_ASSERT(crc1 == crc3);
 }
 
-} // namespace
 } // namespace

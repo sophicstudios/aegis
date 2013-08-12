@@ -5,7 +5,6 @@
 #include <aftt_time.h>
 #include <aftt_datetimeinterval.h>
 
-namespace aegis {
 namespace aftt {
 
 class Datetime
@@ -86,7 +85,6 @@ bool operator>=(Datetime const& lhs, Datetime const& rhs);
 
 std::ostream& operator<<(std::ostream& os, Datetime const& datetime);
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

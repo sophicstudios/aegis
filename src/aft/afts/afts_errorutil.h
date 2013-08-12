@@ -4,7 +4,6 @@
 #include <afts_os.h>
 #include <string>
 
-namespace aegis {
 namespace afts {
 
 struct ErrorUtil
@@ -12,7 +11,6 @@ struct ErrorUtil
     static std::string translateErrno(int errnum);
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

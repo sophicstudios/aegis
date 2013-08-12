@@ -4,7 +4,6 @@
 #include <afts_comparisonutil.h>
 #include <ostream>
 
-namespace aegis {
 namespace agtm {
 
 template<typename T>
@@ -141,6 +140,8 @@ Point2d<T>& Point2d<T>::operator=(Point2d<T> const& p)
 {
     m_x = p.m_x;
     m_y = p.m_y;
+    
+    return *this;
 }
 
 template<typename T> template<typename U>
@@ -284,7 +285,6 @@ std::ostream& operator<<(std::ostream& os, Point2d<T> const& p)
     return os;
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

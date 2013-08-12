@@ -4,7 +4,6 @@
 #include <aftu_exception.h>
 #include <string>
 
-namespace aegis {
 namespace aftio {
 
 class Permission
@@ -113,7 +112,6 @@ Permission unionOF(Permission const& lhs, Permission const& rhs);
 
 Permission intersectionOf(Permission const& lhs, Permission const& rhs);
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

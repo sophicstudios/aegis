@@ -3,7 +3,6 @@
 
 #include <inttypes.h>
 
-namespace aegis {
 namespace aftu {
 
 struct HexUtil
@@ -17,7 +16,6 @@ struct HexUtil
     static uint8_t convertHexByte(char hi, char lo);
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

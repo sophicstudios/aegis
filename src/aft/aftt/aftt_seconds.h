@@ -4,7 +4,6 @@
 #include <afts_stdint.h>
 #include <iosfwd>
 
-namespace aegis {
 namespace aftt {
 
 class Minutes;
@@ -66,7 +65,6 @@ bool operator>=(Seconds const& lhs, Seconds const& rhs);
 
 std::ostream& operator<<(std::ostream& os, Seconds const& seconds);
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

@@ -1,7 +1,6 @@
 #include <aftu_stringref.h>
 #include <aunit.h>
 
-namespace aegis {
 namespace aftu {
 
 template<typename T>
@@ -86,5 +85,4 @@ void TestStringRef::testComparison(TestStrings<T> const& testStrings)
     AUNIT_ASSERT(stlstringref == TestStrings<T>::S2);
 }
 
-} // namespace
 } // namespace

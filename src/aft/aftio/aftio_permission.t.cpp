@@ -1,7 +1,6 @@
 #include <aftio_permission.h>
 #include <aunit.h>
 
-namespace aegis {
 namespace aftio {
 
 class TestPermission : public aunit::TestFixture
@@ -71,5 +70,4 @@ void TestPermission::testOperators()
     AUNIT_ASSERT(!p.hasRead() && !p.hasWrite() && !p.hasExecute());
 }
 
-} // namespace
 } // namespace

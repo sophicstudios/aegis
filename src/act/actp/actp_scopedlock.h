@@ -1,7 +1,6 @@
 #ifndef INCLUDE_AEGIS_ACTP_SCOPEDLOCK_H
 #define INCLUDE_AEGIS_ACTP_SCOPEDLOCK_H
 
-namespace aegis {
 namespace actp {
 
 template<typename T>
@@ -29,7 +28,6 @@ inline ScopedLock<T>::~ScopedLock()
     m_mutex.unlock();
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDE

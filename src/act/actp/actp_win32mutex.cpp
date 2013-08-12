@@ -5,7 +5,6 @@
 
 #include <afts_win32errorutil.h>
 
-namespace aegis {
 namespace actp {
 
 namespace {
@@ -68,7 +67,6 @@ Mutex::ResultCode Mutex::unlock()
     return Mutex::ResultCode_OK;
 }
 
-} // namespace
 } // namespace
 
 #endif // ACTS_PLATFORM

@@ -1,6 +1,5 @@
 #include <aftu_url.h>
 
-namespace aegis {
 namespace aftu {
 
 namespace {
@@ -261,7 +260,7 @@ bool parse(
 
 } // namespace
 
-class Url::Impl
+class URL::Impl
 {
 public:
     Impl() {}
@@ -272,12 +271,12 @@ public:
     Components components;
 };
 
-Url::Url()
+URL::URL()
 : m_impl(new Impl())
 {
 }
 
-Url::Url(std::string const& urlString)
+URL::URL(std::string const& urlString)
 : m_impl(new Impl())
 {
     parse(
@@ -287,17 +286,17 @@ Url::Url(std::string const& urlString)
         &urlString[urlString.size()]);
 }
 
-Url::Url(Url const& url)
+URL::URL(URL const& url)
 : m_impl(new Impl(*(url.m_impl)))
 {
 }
 
-Url::~Url()
+URL::~URL()
 {
     delete m_impl;
 }
 
-Url& Url::operator=(Url const& url)
+URL& URL::operator=(URL const& url)
 {
     Impl* temp = new Impl(*(url.m_impl));
     delete m_impl;
@@ -305,55 +304,54 @@ Url& Url::operator=(Url const& url)
     return *this;
 }
 
-bool Url::isValid()
+bool URL::isValid()
 {
     return !m_impl->canonical.empty();
 }
 
-std::string Url::scheme() const
+std::string URL::scheme() const
 {
     return m_impl->components.scheme.str();
 }
 
-bool Url::hasAuthority() const
+bool URL::hasAuthority() const
 {
     return !m_impl->components.authority.isEmpty();
 }
 
-std::string Url::authority() const
+std::string URL::authority() const
 {
     return m_impl->components.authority.str();
 }
 
-bool Url::hasPath() const
+bool URL::hasPath() const
 {
     return !m_impl->components.path.isEmpty();
 }
 
-std::string Url::path() const
+std::string URL::path() const
 {
     return m_impl->components.path.str();
 }
 
-bool Url::hasQuery() const
+bool URL::hasQuery() const
 {
     return !m_impl->components.query.isEmpty();
 }
 
-std::string Url::query() const
+std::string URL::query() const
 {
     return m_impl->components.query.str();
 }
 
-bool Url::hasFragment() const
+bool URL::hasFragment() const
 {
     return !m_impl->components.fragment.isEmpty();
 }
 
-std::string Url::fragment() const
+std::string URL::fragment() const
 {
     return m_impl->components.fragment.str();
 }
 
-} // namespace
 } // namespace

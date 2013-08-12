@@ -7,7 +7,6 @@
 #include <boost/cstdint.hpp>
 #include <exception>
 
-namespace aegis {
 namespace aftu {
 
 template<typename T>
@@ -165,7 +164,6 @@ T& Nullable<T>::value() throw (std::exception)
 	return *m_ptr;
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

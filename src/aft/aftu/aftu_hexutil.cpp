@@ -1,6 +1,5 @@
 #include <aftu_hexutil.h>
 
-namespace aegis {
 namespace aftu {
 
 uint8_t HexUtil::convertHexChar(char c)
@@ -40,5 +39,4 @@ uint8_t HexUtil::convertHexByte(char hi, char lo)
     return (HexUtil::convertHexChar(hi) << 4) | HexUtil::convertHexChar(lo);
 }
 
-} // namespace
 } // namespace

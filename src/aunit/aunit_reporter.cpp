@@ -1,6 +1,5 @@
 #include <aunit_reporter.h>
 
-namespace aegis {
 namespace aunit {
 
 Reporter::Reporter()
@@ -29,5 +28,4 @@ void Reporter::publishReport()
 void Reporter::onAddResult(TestResult const& result)
 {}
 
-} // namespace
 } // namespace

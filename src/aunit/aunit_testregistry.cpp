@@ -1,7 +1,6 @@
 #include <aunit_testregistry.h>
 #include <aunit_testfixture.h>
 
-namespace aegis {
 namespace aunit {
 
 TestRegistry* TestRegistry::m_instance = NULL;
@@ -57,5 +56,4 @@ TestRegistry::const_iterator TestRegistry::end() const
     return m_factoryFuncList.end();
 }
 
-} // namespace
 } // namespace

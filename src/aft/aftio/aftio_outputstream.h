@@ -5,7 +5,6 @@
 #include <cstddef>
 #include <stdint.h>
 
-namespace aegis {
 namespace aftio {
 
 class OutputStream
@@ -29,7 +28,6 @@ private:
     virtual size_t writeImpl(std::vector<int8_t> const& buffer, size_t count) = 0;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

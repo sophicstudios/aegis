@@ -1,7 +1,6 @@
 #ifndef INCLUDED_AEGIS_AFTT_TIMEZONE
 #define INCLUDED_AEGIS_AFTT_TIMEZONE
 
-namespace aegis {
 namespace aftt {
 
 struct Timezone
@@ -21,7 +20,6 @@ struct Timezone
     static int currentOffset(Region region, bool& isDST);
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

@@ -3,7 +3,6 @@
 
 #include <boost/cstdint.hpp>
 
-namespace aegis {
 namespace aftu {
 
 template<typename T>
@@ -42,7 +41,6 @@ boost::uint8_t* TypedBuffer<T>::data()
     return m_buffer;
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDE

@@ -11,20 +11,19 @@
  * @param TestType the test class type.
  */
 #define AUNIT_REGISTERTEST(TestFixtureType) \
-    aegis::aunit::RegisterTest<TestFixtureType > register_##TestFixtureType( \
-        aegis::aunit::TestRegistry::instance(), \
+    aunit::RegisterTest<TestFixtureType > register_##TestFixtureType( \
+        aunit::TestRegistry::instance(), \
         #TestFixtureType, \
-        aegis::aunit::TestRegistry::FactoryFunc(\
-            aegis::aunit::TestFixtureFactory<TestFixtureType >::create))
+        aunit::TestRegistry::FactoryFunc(\
+            aunit::TestFixtureFactory<TestFixtureType >::create))
 
 #define AUNIT_REGISTERTESTID(TestFixtureType, id) \
-    aegis::aunit::RegisterTest<TestFixtureType > register_##id( \
-        aegis::aunit::TestRegistry::instance(), \
+    aunit::RegisterTest<TestFixtureType > register_##id( \
+        aunit::TestRegistry::instance(), \
         #id, \
-        aegis::aunit::TestRegistry::FactoryFunc(\
-            aegis::aunit::TestFixtureFactory<TestFixtureType >::create))
+        aunit::TestRegistry::FactoryFunc(\
+            aunit::TestFixtureFactory<TestFixtureType >::create))
 
-namespace aegis {
 namespace aunit {
 
 class TestFixture;
@@ -130,7 +129,6 @@ template<typename T>
 RegisterTest<T>::~RegisterTest()
 {}
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

@@ -5,7 +5,6 @@
 #include <afts_stdint.h>
 #include <string>
 
-namespace aegis {
 namespace agtg {
 
 template<typename T>
@@ -163,7 +162,6 @@ std::string ColorRGBA<T>::asCSSHex() const
     return std::string("#000000ff");
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

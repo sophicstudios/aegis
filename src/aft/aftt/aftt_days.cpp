@@ -2,7 +2,6 @@
 #include <aftt_weeks.h>
 #include <iostream>
 
-namespace aegis {
 namespace aftt {
 
 Days::Days()
@@ -60,5 +59,4 @@ std::ostream& operator<<(std::ostream& os, Days const& days)
     return os << days.value();
 }
 
-} // namespace
 } // namespace

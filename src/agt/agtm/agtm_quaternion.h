@@ -5,7 +5,6 @@
 #include <algorithm>
 #include <iosfwd>
 
-namespace aegis {
 namespace agtm {
 
 template<typename T>
@@ -40,7 +39,6 @@ private:
     };
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

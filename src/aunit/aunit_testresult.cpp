@@ -1,7 +1,6 @@
 #include <aunit_testresult.h>
 #include <iostream>
 
-namespace aegis {
 namespace aunit {
 
 TestResult::TestResult()
@@ -86,5 +85,4 @@ std::ostream& operator<<(std::ostream& os, TestResult const& result)
     return os;
 }
 
-} // namespace
 } // namespace

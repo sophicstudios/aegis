@@ -4,7 +4,6 @@
 #include <boost/shared_ptr.hpp>
 #include <iosfwd>
 
-namespace aegis {
 namespace aunit {
 
 class TestConfiguration;
@@ -16,7 +15,6 @@ struct CommandLineParser
     static TestConfigurationPtr parse(std::ostream& errorStream, int argc, char** argv);
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

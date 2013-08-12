@@ -1,7 +1,6 @@
 #include <aftt_month.h>
 #include <aftu_exception.h>
 
-namespace aegis {
 namespace aftt {
 
 namespace {
@@ -105,5 +104,4 @@ bool operator>=(Month const& lhs, Month const& rhs)
     return lhs.value() >= rhs.value();
 }
 
-} // namespace
 } // namespace

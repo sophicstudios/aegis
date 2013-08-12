@@ -5,7 +5,6 @@
 #include <string>
 #include <vector>
 
-namespace aegis {
 namespace aunit {
 
 class CommandLineOptions
@@ -42,7 +41,6 @@ private:
     TestIdList m_testIdList;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

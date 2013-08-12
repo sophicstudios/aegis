@@ -4,7 +4,6 @@
 #include <algorithm>
 #include <string>
 
-namespace aegis {
 namespace aftu {
 
 /**
@@ -400,129 +399,128 @@ template<typename T>
 bool operator==(StringRef<T> const& lhs, StringRef<T> const& rhs)
 {
     return lhs.size() == rhs.size()
-        && std::equal(lhs.m_beg, lhs.m_end, rhs.m_beg);
+        && std::equal(lhs.begin(), lhs.end(), rhs.begin());
 }
 
 template<typename T>
 bool operator==(StringRef<T> const& lhs, T const* const rhs)
 {
     return lhs.size() == std::char_traits<T>::length(rhs)
-        && std::equal(lhs.m_beg, lhs.m_end, rhs);
+        && std::equal(lhs.begin(), lhs.end(), rhs);
 }
 
 template<typename T>
 bool operator==(T const* const lhs, StringRef<T> const& rhs)
 {
     return std::char_traits<T>::length(lhs) == rhs.size()
-        && std::equal(rhs.m_beg, rhs.m_end, lhs);
+        && std::equal(rhs.begin(), rhs.end(), lhs);
 }
 
 template<typename CharT>
 bool operator==(StringRef<std::basic_string<CharT> > const& lhs, std::basic_string<CharT> const& rhs)
 {
     return lhs.size() == rhs.size()
-        && std::equal(lhs.m_beg, lhs.m_end, rhs.begin());
+        && std::equal(lhs.begin(), lhs.end(), rhs.begin());
 }
 
 template<typename CharT>
 bool operator==(std::basic_string<CharT> const& lhs, StringRef<std::basic_string<CharT> > const& rhs)
 {
     return lhs.size() == rhs.size()
-        && std::equal(lhs.begin(), lhs.end(), rhs.m_beg);
+        && std::equal(lhs.begin(), lhs.end(), rhs.begin());
 }
 
 template<typename CharT>
 bool operator==(StringRef<std::basic_string<CharT> > const& lhs, CharT const* const rhs)
 {
     return lhs.size() == std::char_traits<CharT>::length(rhs)
-        && std::equal(lhs.m_beg, lhs.m_end, rhs);
+        && std::equal(lhs.begin(), lhs.end(), rhs);
 }
 
 template<typename CharT>
 bool operator==(CharT const* const lhs, StringRef<std::basic_string<CharT> > const& rhs)
 {
     return std::char_traits<CharT>::length(lhs) == rhs.size()
-        && std::equal(rhs.m_beg, rhs.m_end, lhs);
+        && std::equal(rhs.begin(), rhs.end(), lhs);
 }
 
 template<typename CharT>
 bool operator==(StringRef<CharT> const& lhs, std::basic_string<CharT> const& rhs)
 {
     return lhs.size() == rhs.size()
-        && std::equal(lhs.m_beg, lhs.m_end, rhs.begin());
+        && std::equal(lhs.begin(), lhs.end(), rhs.begin());
 }
 
 template<typename CharT>
 bool operator==(std::basic_string<CharT> const& lhs, StringRef<CharT> const& rhs)
 {
     return lhs.size() == rhs.size()
-        && std::equal(lhs.begin(), lhs.end(), rhs.m_beg);
+        && std::equal(lhs.begin(), lhs.end(), rhs.begin());
 }
 
 template<typename T>
 bool operator!=(StringRef<T> const& lhs, StringRef<T> const& rhs)
 {
     return lhs.size() != rhs.size()
-        || !std::equal(lhs.m_beg, lhs.m_end, rhs.m_beg);
+        || !std::equal(lhs.begin(), lhs.end(), rhs.begin());
 }
 
 template<typename T>
 bool operator!=(StringRef<T> const& lhs, T const* const rhs)
 {
     return lhs.size() != std::char_traits<T>::length(rhs)
-        || !std::equal(lhs.m_beg, lhs.m_end, rhs);
+        || !std::equal(lhs.begin(), lhs.end(), rhs);
 }
 
 template<typename T>
 bool operator!=(T const* const lhs, StringRef<T> const& rhs)
 {
     return std::char_traits<T>::length(lhs) != rhs.size()
-        || !std::equal(rhs.m_beg, rhs.m_end, lhs);
+        || !std::equal(rhs.begin(), rhs.end(), lhs);
 }
 
 template<typename CharT>
 bool operator!=(StringRef<std::basic_string<CharT> > const& lhs, std::basic_string<CharT> const& rhs)
 {
     return lhs.size() != rhs.size()
-        || !std::equal(lhs.m_beg, lhs.m_end, rhs.begin());
+        || !std::equal(lhs.begin(), lhs.end(), rhs.begin());
 }
 
 template<typename CharT>
 bool operator!=(std::basic_string<CharT> const& lhs, StringRef<std::basic_string<CharT> > const& rhs)
 {
     return lhs.size() != rhs.size()
-        || !std::equal(lhs.begin(), lhs.end(), rhs.m_beg);
+        || !std::equal(lhs.begin(), lhs.end(), rhs.begin());
 }
 
 template<typename CharT>
 bool operator!=(StringRef<std::basic_string<CharT> > const& lhs, CharT const* const rhs)
 {
     return lhs.size() != std::char_traits<CharT>::length(rhs)
-        || !std::equal(lhs.m_beg, lhs.m_end, rhs);
+        || !std::equal(lhs.begin(), lhs.end(), rhs);
 }
 
 template<typename CharT>
 bool operator!=(CharT const* const lhs, StringRef<std::basic_string<CharT> > const& rhs)
 {
     return std::char_traits<CharT>::length(lhs) != rhs.size()
-        || !std::equal(rhs.m_beg, rhs.m_end, lhs);
+        || !std::equal(rhs.begin(), rhs.end(), lhs);
 }
 
 template<typename CharT>
 bool operator!=(StringRef<CharT> const& lhs, std::basic_string<CharT> const& rhs)
 {
     return lhs.size() != rhs.size()
-        || !std::equal(lhs.m_beg, lhs.m_end, rhs.begin());
+        || !std::equal(lhs.begin(), lhs.end(), rhs.begin());
 }
 
 template<typename CharT>
 bool operator!=(std::basic_string<CharT> const& lhs, StringRef<CharT> const& rhs)
 {
     return lhs.size() != rhs.size()
-        || !std::equal(lhs.begin(), lhs.end(), rhs.m_beg);
+        || !std::equal(lhs.begin(), lhs.end(), rhs.begin());
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

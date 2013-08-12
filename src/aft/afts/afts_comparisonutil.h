@@ -1,7 +1,6 @@
 #ifndef INCLUDED_AEGIS_AFTS_COMPARISONUTIL_H
 #define INCLUDED_AEGIS_AFTS_COMPARISONUTIL_H
 
-namespace aegis {
 namespace afts {
 
 struct ComparisonUtil
@@ -105,7 +104,6 @@ bool ComparisonUtil::equalULP<double>(double lhs, double rhs);
 template<>
 bool ComparisonUtil::equalULP<double>(double lhs, double rhs, unsigned int maxULP);
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

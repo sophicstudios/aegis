@@ -3,7 +3,6 @@
 
 #include <iosfwd>
 
-namespace aegis {
 namespace actp {
 
 enum MutexResult {
@@ -15,7 +14,6 @@ enum MutexResult {
 
 std::ostream& operator<<(std::ostream& os, MutexResult const& result);
 
-} // namespace
 } // namespace
 
 #endif // INCLUDE

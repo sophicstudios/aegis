@@ -1,7 +1,6 @@
 #include <aftt_datetimeinterval.h>
 #include <aunit.h>
 
-namespace aegis {
 namespace aftt {
 
 class TestDatetimeInterval : public aunit::TestFixture
@@ -46,6 +45,5 @@ void TestDatetimeInterval::testSubtraction()
 {
 }
 
-} // namespace
 } // namespace
 

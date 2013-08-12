@@ -4,7 +4,6 @@
 #include <aftma_allocator.h>
 #include <map>
 
-namespace aegis {
 namespace aftma {
 
 class BlockAllocator
@@ -33,7 +32,6 @@ private:
     PoolMap m_poolMap;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

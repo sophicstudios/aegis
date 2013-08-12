@@ -4,7 +4,6 @@
 #include <aftfs_path.h>
 #include <aftio_permissions.h>
 
-namespace aegis {
 namespace aftfs {
 
 class DirectoryEntry
@@ -19,25 +18,25 @@ public:
 
     DirectoryEntry();
     
-   virtual  ~DirectoryEntry();
+    ~DirectoryEntry();
     
-    virtual std::string name() = 0;
+    std::string name();
     
-    virtual aftfs::Path path() = 0;
+    aftfs::Path path();
     
-    virtual aftio::Permissions permissions() = 0;
+    aftio::Permissions permissions();
     
-    virtual Type type() const = 0;
+    Type type() const;
     
-    virtual bool isFile() const = 0;
+    bool isFile() const;
     
-    virtual bool isDirectory() const = 0;
+    bool isDirectory() const;
     
-    virtual bool isLink() const = 0;
+    bool isLink() const;
 
-    virtual bool setName(std::string const& name) = 0;
+    bool setName(std::string const& name);
     
-    virtual bool setPermissions(aftio::Permissions const& permissions) = 0;
+    bool setPermissions(aftio::Permissions const& permissions);
     
 // remove - accept void, return bool (success)
 // move - accept Path (destination
@@ -47,7 +46,6 @@ private:
     Type m_type;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

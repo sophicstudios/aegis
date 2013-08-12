@@ -4,7 +4,6 @@
 #include <boost/static_assert.hpp>
 #include <cstddef>
 
-namespace aegis {
 namespace afts {
 
 template<int Size> struct AlignmentSize { BOOST_STATIC_ASSERT(true); };
@@ -23,7 +22,6 @@ struct AlignmentOf
     typedef typename AlignmentSize<Size>::Type Type;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

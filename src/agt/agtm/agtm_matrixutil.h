@@ -8,7 +8,6 @@
 #include <agtm_vector3.h>
 #include <agtm_vector4.h>
 
-namespace aegis {
 namespace agtm {
 
 struct MatrixUtil
@@ -214,7 +213,6 @@ T MatrixUtil::determinant(Matrix4<T> const& m)
     return det00 - det01 + det02 - det03;
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

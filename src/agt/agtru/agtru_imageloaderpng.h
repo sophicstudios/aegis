@@ -7,7 +7,6 @@
 #include <aftu_url.h>
 #include <tr1/memory>
 
-namespace aegis {
 namespace agtru {
 
 class ImageLoaderPng
@@ -25,7 +24,6 @@ private:
     std::tr1::shared_ptr<aftfs::FileSystem> fileSystem;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

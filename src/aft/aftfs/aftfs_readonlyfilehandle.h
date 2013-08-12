@@ -4,7 +4,6 @@
 #include <aftio_outputstream.h>
 #include <tr1/memory>
 
-namespace aegis {
 namespace aftfs {
 
 class ReadOnlyFileHandle
@@ -24,7 +23,6 @@ private:
     struct ReadOnlyFileHandleImpl* m_impl;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED_AEGIS_AFTFS_FILEHANDLE_H

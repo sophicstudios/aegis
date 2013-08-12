@@ -1,6 +1,5 @@
 #include <aftio_inputstream.h>
 
-namespace aegis {
 namespace aftio {
 
 InputStream::InputStream()
@@ -29,5 +28,4 @@ void InputStream::seek(size_t location)
     seekImpl(location);
 }
 
-} // namespace
 } // namespace

@@ -1,7 +1,6 @@
 #ifndef INCLUDED_AEGIS_AFTT_YEAR_H
 #define INCLUDED_AEGIS_AFTT_YEAR_H
 
-namespace aegis {
 namespace aftt {
 
 class Year
@@ -26,7 +25,6 @@ bool operator<=(Year const& lhs, Year const& rhs);
 bool operator>(Year const& lhs, Year const& rhs);
 bool operator>=(Year const& lhs, Year const& rhs);
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

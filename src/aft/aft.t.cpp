@@ -1,7 +1,5 @@
 #include <aunit.h>
 
-using namespace aegis;
-
 int main(int argc, char** argv)
 {
     aunit::TestManager testManager;

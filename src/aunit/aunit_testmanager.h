@@ -3,7 +3,6 @@
 
 #include <aunit_testregistry.h>
 
-namespace aegis {
 namespace aunit {
 
 class Reporter;
@@ -32,7 +31,6 @@ private:
     TestRegistry& m_testRegistry;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

@@ -5,7 +5,6 @@
 #include <cassert>
 #include <iostream>
 
-namespace aegis {
 namespace afts {
 
 namespace {
@@ -173,5 +172,4 @@ bool ComparisonUtil::equalULP<double>(double lhs, double rhs, unsigned int maxUL
     return equalULPImp(lhs, rhs, maxULP);
 }
 
-} // namespace
 } // namespace

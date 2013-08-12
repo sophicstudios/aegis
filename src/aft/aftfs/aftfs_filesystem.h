@@ -4,10 +4,9 @@
 #include <aftfs_path.h>
 #include <aftfs_directoryentry.h>
 
-namespace aegis {
 namespace aftfs {
 
-class FileSystem
+class Filesystem
 {
 public:
     enum Status {
@@ -15,23 +14,17 @@ public:
         Status_UNKNOWN
     };
     
-    ~FileSystem();
+    Filesystem();
 
-    static bool setCurrentWorkingDirectory(aftfs::Path const& path);
+    virtual ~Filesystem();
     
-    static aftfs::Path currentWorkingDirectory();
+    virtual void listDirectory(std::vector<DirectoryEntry>& entries) = 0;
     
-    void listDirectory(std::vector<DirectoryEntry>& entries);
+    virtual void listDirectory(std::vector<DirectoryEntry>& entries, aftfs::Path const& path) = 0;
     
-    void listDirectory(std::vector<DirectoryEntry>& entries, aftfs::Path const& path);
-    
-    void listDirectory(std::vector<DirectoryEntry>& entries, DirectoryEntry const& dir);
-    
-private:
-    FileSystem();
+    virtual void listDirectory(std::vector<DirectoryEntry>& entries, DirectoryEntry const& dir) = 0;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

@@ -4,7 +4,6 @@
 #include <exception>
 #include <iostream>
 
-namespace aegis {
 namespace aftipc {
 
 MappedRegion::MappedRegion(aftipc::Mappable& mappable, off_t offset, size_t length)
@@ -61,5 +60,4 @@ void* MappedRegion::data(off_t offset)
     return reinterpret_cast<char*>(m_data) + offset;
 }
 
-} // namespace
 } // namespace

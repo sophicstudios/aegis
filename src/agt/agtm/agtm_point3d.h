@@ -4,7 +4,6 @@
 #include <afts_comparisonutil.h>
 #include <iosfwd>
 
-namespace aegis {
 namespace agtm {
 
 template<typename T>
@@ -331,7 +330,6 @@ Point3d<T> operator-(Point3d<T> const& lhs, Point3d<T> const& rhs)
         lhs.z() - rhs.z());
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

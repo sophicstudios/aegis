@@ -7,7 +7,6 @@
 #include <aftt_days.h>
 #include <iostream>
 
-namespace aegis {
 namespace aftt {
 
 Nanoseconds::Nanoseconds()
@@ -133,5 +132,4 @@ std::ostream& operator<<(std::ostream& os, Nanoseconds const& nanoseconds)
     return os << nanoseconds.value();
 }
 
-} // namespace
 } // namespace

@@ -4,7 +4,6 @@
 #include <boost/function.hpp>
 #include <cstdlib>
 
-namespace aegis {
 namespace actp {
 
 typedef boost::function<void (void)> ThreadFunction;
@@ -28,7 +27,6 @@ ThreadAttributes::ThreadAttributes(CreateType ct, size_t ss)
 : createType(ct), stackSize(ss)
 {}
 
-} // namespace
 } // namespace
 
 #endif // INCLUDE

@@ -1,6 +1,5 @@
 #include <aunit_stringutil.h>
 
-namespace aegis {
 namespace aunit {
 
 void StringUtil::trim(std::string& str, char c)
@@ -31,5 +30,4 @@ void StringUtil::trimRight(std::string& str, char c)
     }
 }
 
-} // namespace
 } // namespace

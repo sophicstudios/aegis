@@ -8,7 +8,6 @@
 
 #include <afts_windows.h>
 
-namespace aegis {
 namespace actp {
 
 class Win32Thread
@@ -28,7 +27,6 @@ private:
     bool m_joinable;
 };
 
-} // namespace
 } // namespace
 
 #endif // ACTS_PLATFORM

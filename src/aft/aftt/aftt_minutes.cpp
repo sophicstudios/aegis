@@ -3,7 +3,6 @@
 #include <aftt_days.h>
 #include <iostream>
 
-namespace aegis {
 namespace aftt {
 
 Minutes::Minutes()
@@ -35,5 +34,4 @@ std::ostream& operator<<(std::ostream& os, Minutes const& minutes)
     return os << minutes.value();
 }
 
-} // namespace
 } // namespace

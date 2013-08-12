@@ -3,7 +3,6 @@
 #include <iostream>
 #include <limits>
 
-namespace aegis {
 namespace aftu {
 
 struct Struct
@@ -64,5 +63,4 @@ void TestHexPrinter::testPrint()
     std::cout << aftu::InlineHexPrinter(reinterpret_cast<const char*>(&t2), sizeof(t2)) << std::endl;
 }
 
-} // namespace
 } // namespace

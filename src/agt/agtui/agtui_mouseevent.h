@@ -3,7 +3,6 @@
 
 #include <agtm_point2d.h>
 
-namespace aegis {
 namespace agtui {
 
 class MouseEvent
@@ -47,7 +46,6 @@ private:
     agtm::Point2d<float> m_location;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

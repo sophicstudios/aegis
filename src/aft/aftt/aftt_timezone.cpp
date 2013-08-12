@@ -1,7 +1,6 @@
 #include <aftt_timezone.h>
 #include <ctime>
 
-namespace aegis {
 namespace aftt {
 
 bool Timezone::isDST(Region region)
@@ -22,5 +21,4 @@ int Timezone::currentOffset(Region region, bool& isDST)
     return 0;
 }
 
-} // namespace
 } // namespace

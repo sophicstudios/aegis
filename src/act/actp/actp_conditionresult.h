@@ -3,7 +3,6 @@
 
 #include <iosfwd>
 
-namespace aegis {
 namespace actp {
 
 enum ConditionResult {
@@ -14,7 +13,6 @@ enum ConditionResult {
 
 std::ostream& operator<<(std::ostream& os, ConditionResult const& result);
 
-} // namespace
 } // namespace
 
 #endif // INCLUDE

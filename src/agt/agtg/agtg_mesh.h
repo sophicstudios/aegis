@@ -4,7 +4,6 @@
 #include <agtg_vertex.h>
 #include <vector>
 
-namespace aegis {
 namespace agtg {
 
 template<typename T>
@@ -26,6 +25,5 @@ private:
 };
 
 } // namespace 
-} // namespace
 
 #endif // INCLUDED

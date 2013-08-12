@@ -3,7 +3,6 @@
 
 #include <agtm_vector3.h>
 
-namespace aegis {
 namespace agtm {
 
 /**
@@ -54,7 +53,6 @@ inline agtm::Vector3<T> VectorUtil::crossProduct(
         (vec1.x() * vec2.y()) - (vec1.y() * vec2.x()));
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

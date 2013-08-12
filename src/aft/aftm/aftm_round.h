@@ -26,7 +26,6 @@
 // @AUTHOR
 // Lyell Haynes
 
-namespace aegis {
 namespace aftm {
 
 struct Round
@@ -56,7 +55,6 @@ T Round::halfDown(T value, int decimals)
     return (value < static_cast<T>(0.0) ? -result : result);
 }
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

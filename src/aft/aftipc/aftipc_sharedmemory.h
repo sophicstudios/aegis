@@ -6,7 +6,6 @@
 #include <aftio_permissions.h>
 #include <string>
 
-namespace aegis {
 namespace aftipc {
 
 class SharedMemory : public aftipc::Mappable
@@ -71,7 +70,6 @@ private:
     aftio::Permissions m_permissions;
 };
 
-} // namespace
 } // namespace
 
 #endif // INCLUDED

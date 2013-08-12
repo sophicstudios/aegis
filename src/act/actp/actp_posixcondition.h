@@ -8,7 +8,6 @@
 
 #include <pthread.h>
 
-namespace aegis {
 namespace actp {
 
 class PosixMutex;
@@ -48,7 +47,6 @@ private:
     pthread_cond_t m_cond;
 };
 
-} // namespace
 } // namespace
 
 #endif // ACTS_PLATFORM
