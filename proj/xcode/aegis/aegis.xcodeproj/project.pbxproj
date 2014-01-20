@@ -12,14 +12,12 @@
 		FA231762178474340050DE3A /* aftc_packedstringmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EE415A7AD520044283D /* aftc_packedstringmap.cpp */; };
 		FA231763178474370050DE3A /* aftc_trie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EE615A7AD520044283D /* aftc_trie.cpp */; };
 		FA231764178474450050DE3A /* aftfs_directoryentry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EF415A90A990044283D /* aftfs_directoryentry.cpp */; };
-		FA231765178474480050DE3A /* aftfs_file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EF615A90A990044283D /* aftfs_file.cpp */; };
 		FA2317661784744F0050DE3A /* aftfs_filesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EF815A90A990044283D /* aftfs_filesystem.cpp */; };
 		FA231767178474530050DE3A /* aftfs_path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EFA15A90A990044283D /* aftfs_path.cpp */; };
-		FA231768178474580050DE3A /* aftfs_posixpath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EFC15A90A990044283D /* aftfs_posixpath.cpp */; };
 		FA2317691784747E0050DE3A /* afth_crc32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15F315AA70190017DCD5 /* afth_crc32.cpp */; };
 		FA23176A1784749F0050DE3A /* aftio_flags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158415A9DE900017DCD5 /* aftio_flags.cpp */; };
-		FA23176B178474A20050DE3A /* aftio_inputstream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158615A9DE900017DCD5 /* aftio_inputstream.cpp */; };
-		FA23176C178474A50050DE3A /* aftio_outputstream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158815A9DE900017DCD5 /* aftio_outputstream.cpp */; };
+		FA23176B178474A20050DE3A /* aftio_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158615A9DE900017DCD5 /* aftio_reader.cpp */; };
+		FA23176C178474A50050DE3A /* aftio_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158815A9DE900017DCD5 /* aftio_writer.cpp */; };
 		FA23176D178474A80050DE3A /* aftio_permission.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158A15A9DE900017DCD5 /* aftio_permission.cpp */; };
 		FA23176E178474AE0050DE3A /* aftio_permissions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158C15A9DE900017DCD5 /* aftio_permissions.cpp */; };
 		FA23176F178474FD0050DE3A /* aftipc_mappable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B159E15AA61F20017DCD5 /* aftipc_mappable.cpp */; };
@@ -95,18 +93,14 @@
 		FA2317B7178477910050DE3A /* aftipc_memorymappedfile.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15A315AA61F20017DCD5 /* aftipc_memorymappedfile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA2317B8178477950050DE3A /* aftipc_mappedregion.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15A115AA61F20017DCD5 /* aftipc_mappedregion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA2317B9178477980050DE3A /* aftipc_mappable.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B159F15AA61F20017DCD5 /* aftipc_mappable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA2317BA1784779F0050DE3A /* aftio_reader.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158E15A9DE900017DCD5 /* aftio_reader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA2317BB178477A50050DE3A /* aftio_permissions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158D15A9DE900017DCD5 /* aftio_permissions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA2317BC178477A70050DE3A /* aftio_permission.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158B15A9DE900017DCD5 /* aftio_permission.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA2317BD178477AA0050DE3A /* aftio_outputstream.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158915A9DE900017DCD5 /* aftio_outputstream.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA2317BE178477AD0050DE3A /* aftio_inputstream.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158715A9DE900017DCD5 /* aftio_inputstream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317BD178477AA0050DE3A /* aftio_writer.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158915A9DE900017DCD5 /* aftio_writer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2317BE178477AD0050DE3A /* aftio_reader.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158715A9DE900017DCD5 /* aftio_reader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA2317BF178477AF0050DE3A /* aftio_flags.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158515A9DE900017DCD5 /* aftio_flags.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA2317C0178477BA0050DE3A /* afth_crc32.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15F415AA70190017DCD5 /* afth_crc32.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA2317C1178477C30050DE3A /* aftfs_readonlyfilehandle.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EFE15A90A990044283D /* aftfs_readonlyfilehandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA2317C2178477C70050DE3A /* aftfs_posixpath.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EFD15A90A990044283D /* aftfs_posixpath.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA2317C3178477CB0050DE3A /* aftfs_path.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EFB15A90A990044283D /* aftfs_path.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA2317C4178477CF0050DE3A /* aftfs_filesystem.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EF915A90A990044283D /* aftfs_filesystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA2317C5178477D30050DE3A /* aftfs_file.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EF715A90A990044283D /* aftfs_file.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA2317C6178477DB0050DE3A /* aftfs_directoryentry.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EF515A90A990044283D /* aftfs_directoryentry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA2318AA178DD22D0050DE3A /* agtui_mouseevent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA5E9773176D0B760035F4D0 /* agtui_mouseevent.cpp */; };
 		FA2318AB178DD2380050DE3A /* agtm_matrix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CDB615DDB37400F480F0 /* agtm_matrix2.cpp */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -271,15 +265,10 @@
 		FA833EF215A7AE370044283D /* aftc_uninitialized.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EF115A7AE370044283D /* aftc_uninitialized.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA833EFF15A90A990044283D /* aftfs_directoryentry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EF415A90A990044283D /* aftfs_directoryentry.cpp */; };
 		FA833F0015A90A990044283D /* aftfs_directoryentry.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EF515A90A990044283D /* aftfs_directoryentry.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA833F0115A90A990044283D /* aftfs_file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EF615A90A990044283D /* aftfs_file.cpp */; };
-		FA833F0215A90A990044283D /* aftfs_file.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EF715A90A990044283D /* aftfs_file.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA833F0315A90A990044283D /* aftfs_filesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EF815A90A990044283D /* aftfs_filesystem.cpp */; };
 		FA833F0415A90A990044283D /* aftfs_filesystem.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EF915A90A990044283D /* aftfs_filesystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA833F0515A90A990044283D /* aftfs_path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EFA15A90A990044283D /* aftfs_path.cpp */; };
 		FA833F0615A90A990044283D /* aftfs_path.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EFB15A90A990044283D /* aftfs_path.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA833F0715A90A990044283D /* aftfs_posixpath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EFC15A90A990044283D /* aftfs_posixpath.cpp */; };
-		FA833F0815A90A990044283D /* aftfs_posixpath.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EFD15A90A990044283D /* aftfs_posixpath.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA833F0915A90A990044283D /* aftfs_readonlyfilehandle.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833EFE15A90A990044283D /* aftfs_readonlyfilehandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA875BB115DF1B9800C5E50B /* agtm_matrix2.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA875BAA15DF1B9800C5E50B /* agtm_matrix2.t.cpp */; };
 		FA875BB215DF1B9800C5E50B /* agtm_matrix4.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA875BAB15DF1B9800C5E50B /* agtm_matrix4.t.cpp */; };
 		FA875BB315DF1B9800C5E50B /* agtm_quaternion.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA875BAC15DF1B9800C5E50B /* agtm_quaternion.t.cpp */; };
@@ -293,15 +282,14 @@
 		FA875BC215E0330900C5E50B /* agt.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA875BC115E0330900C5E50B /* agt.t.cpp */; };
 		FA9B158F15A9DE900017DCD5 /* aftio_flags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158415A9DE900017DCD5 /* aftio_flags.cpp */; };
 		FA9B159015A9DE900017DCD5 /* aftio_flags.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158515A9DE900017DCD5 /* aftio_flags.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA9B159115A9DE900017DCD5 /* aftio_inputstream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158615A9DE900017DCD5 /* aftio_inputstream.cpp */; };
-		FA9B159215A9DE900017DCD5 /* aftio_inputstream.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158715A9DE900017DCD5 /* aftio_inputstream.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA9B159315A9DE900017DCD5 /* aftio_outputstream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158815A9DE900017DCD5 /* aftio_outputstream.cpp */; };
-		FA9B159415A9DE900017DCD5 /* aftio_outputstream.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158915A9DE900017DCD5 /* aftio_outputstream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA9B159115A9DE900017DCD5 /* aftio_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158615A9DE900017DCD5 /* aftio_reader.cpp */; };
+		FA9B159215A9DE900017DCD5 /* aftio_reader.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158715A9DE900017DCD5 /* aftio_reader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA9B159315A9DE900017DCD5 /* aftio_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158815A9DE900017DCD5 /* aftio_writer.cpp */; };
+		FA9B159415A9DE900017DCD5 /* aftio_writer.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158915A9DE900017DCD5 /* aftio_writer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA9B159515A9DE900017DCD5 /* aftio_permission.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158A15A9DE900017DCD5 /* aftio_permission.cpp */; };
 		FA9B159615A9DE900017DCD5 /* aftio_permission.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158B15A9DE900017DCD5 /* aftio_permission.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA9B159715A9DE900017DCD5 /* aftio_permissions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158C15A9DE900017DCD5 /* aftio_permissions.cpp */; };
 		FA9B159815A9DE900017DCD5 /* aftio_permissions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158D15A9DE900017DCD5 /* aftio_permissions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA9B159915A9DE900017DCD5 /* aftio_reader.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158E15A9DE900017DCD5 /* aftio_reader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA9B15A815AA61F20017DCD5 /* aftipc_mappable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B159E15AA61F20017DCD5 /* aftipc_mappable.cpp */; };
 		FA9B15A915AA61F20017DCD5 /* aftipc_mappable.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B159F15AA61F20017DCD5 /* aftipc_mappable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA9B15AA15AA61F20017DCD5 /* aftipc_mappedregion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15A015AA61F20017DCD5 /* aftipc_mappedregion.cpp */; };
@@ -640,15 +628,10 @@
 		FA833EF115A7AE370044283D /* aftc_uninitialized.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftc_uninitialized.h; path = ../../../src/aft/aftc/aftc_uninitialized.h; sourceTree = "<group>"; };
 		FA833EF415A90A990044283D /* aftfs_directoryentry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftfs_directoryentry.cpp; path = ../../../src/aft/aftfs/aftfs_directoryentry.cpp; sourceTree = "<group>"; };
 		FA833EF515A90A990044283D /* aftfs_directoryentry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftfs_directoryentry.h; path = ../../../src/aft/aftfs/aftfs_directoryentry.h; sourceTree = "<group>"; };
-		FA833EF615A90A990044283D /* aftfs_file.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftfs_file.cpp; path = ../../../src/aft/aftfs/aftfs_file.cpp; sourceTree = "<group>"; };
-		FA833EF715A90A990044283D /* aftfs_file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftfs_file.h; path = ../../../src/aft/aftfs/aftfs_file.h; sourceTree = "<group>"; };
 		FA833EF815A90A990044283D /* aftfs_filesystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftfs_filesystem.cpp; path = ../../../src/aft/aftfs/aftfs_filesystem.cpp; sourceTree = "<group>"; };
 		FA833EF915A90A990044283D /* aftfs_filesystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftfs_filesystem.h; path = ../../../src/aft/aftfs/aftfs_filesystem.h; sourceTree = "<group>"; };
 		FA833EFA15A90A990044283D /* aftfs_path.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftfs_path.cpp; path = ../../../src/aft/aftfs/aftfs_path.cpp; sourceTree = "<group>"; };
 		FA833EFB15A90A990044283D /* aftfs_path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftfs_path.h; path = ../../../src/aft/aftfs/aftfs_path.h; sourceTree = "<group>"; };
-		FA833EFC15A90A990044283D /* aftfs_posixpath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftfs_posixpath.cpp; path = ../../../src/aft/aftfs/aftfs_posixpath.cpp; sourceTree = "<group>"; };
-		FA833EFD15A90A990044283D /* aftfs_posixpath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftfs_posixpath.h; path = ../../../src/aft/aftfs/aftfs_posixpath.h; sourceTree = "<group>"; };
-		FA833EFE15A90A990044283D /* aftfs_readonlyfilehandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftfs_readonlyfilehandle.h; path = ../../../src/aft/aftfs/aftfs_readonlyfilehandle.h; sourceTree = "<group>"; };
 		FA875BA015DF1B6C00C5E50B /* test_agt-macosx */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "test_agt-macosx"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA875BAA15DF1B9800C5E50B /* agtm_matrix2.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtm_matrix2.t.cpp; path = ../../../src/agt/agtm/agtm_matrix2.t.cpp; sourceTree = "<group>"; };
 		FA875BAB15DF1B9800C5E50B /* agtm_matrix4.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtm_matrix4.t.cpp; path = ../../../src/agt/agtm/agtm_matrix4.t.cpp; sourceTree = "<group>"; };
@@ -662,15 +645,14 @@
 		FA875BCC15E099D800C5E50B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FA9B158415A9DE900017DCD5 /* aftio_flags.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftio_flags.cpp; path = ../../../src/aft/aftio/aftio_flags.cpp; sourceTree = "<group>"; };
 		FA9B158515A9DE900017DCD5 /* aftio_flags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftio_flags.h; path = ../../../src/aft/aftio/aftio_flags.h; sourceTree = "<group>"; };
-		FA9B158615A9DE900017DCD5 /* aftio_inputstream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftio_inputstream.cpp; path = ../../../src/aft/aftio/aftio_inputstream.cpp; sourceTree = "<group>"; };
-		FA9B158715A9DE900017DCD5 /* aftio_inputstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftio_inputstream.h; path = ../../../src/aft/aftio/aftio_inputstream.h; sourceTree = "<group>"; };
-		FA9B158815A9DE900017DCD5 /* aftio_outputstream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftio_outputstream.cpp; path = ../../../src/aft/aftio/aftio_outputstream.cpp; sourceTree = "<group>"; };
-		FA9B158915A9DE900017DCD5 /* aftio_outputstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftio_outputstream.h; path = ../../../src/aft/aftio/aftio_outputstream.h; sourceTree = "<group>"; };
+		FA9B158615A9DE900017DCD5 /* aftio_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftio_reader.cpp; path = ../../../src/aft/aftio/aftio_reader.cpp; sourceTree = "<group>"; };
+		FA9B158715A9DE900017DCD5 /* aftio_reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftio_reader.h; path = ../../../src/aft/aftio/aftio_reader.h; sourceTree = "<group>"; };
+		FA9B158815A9DE900017DCD5 /* aftio_writer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftio_writer.cpp; path = ../../../src/aft/aftio/aftio_writer.cpp; sourceTree = "<group>"; };
+		FA9B158915A9DE900017DCD5 /* aftio_writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftio_writer.h; path = ../../../src/aft/aftio/aftio_writer.h; sourceTree = "<group>"; };
 		FA9B158A15A9DE900017DCD5 /* aftio_permission.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftio_permission.cpp; path = ../../../src/aft/aftio/aftio_permission.cpp; sourceTree = "<group>"; };
 		FA9B158B15A9DE900017DCD5 /* aftio_permission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftio_permission.h; path = ../../../src/aft/aftio/aftio_permission.h; sourceTree = "<group>"; };
 		FA9B158C15A9DE900017DCD5 /* aftio_permissions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftio_permissions.cpp; path = ../../../src/aft/aftio/aftio_permissions.cpp; sourceTree = "<group>"; };
 		FA9B158D15A9DE900017DCD5 /* aftio_permissions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftio_permissions.h; path = ../../../src/aft/aftio/aftio_permissions.h; sourceTree = "<group>"; };
-		FA9B158E15A9DE900017DCD5 /* aftio_reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftio_reader.h; path = ../../../src/aft/aftio/aftio_reader.h; sourceTree = "<group>"; };
 		FA9B159E15AA61F20017DCD5 /* aftipc_mappable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftipc_mappable.cpp; path = ../../../src/aft/aftipc/aftipc_mappable.cpp; sourceTree = "<group>"; };
 		FA9B159F15AA61F20017DCD5 /* aftipc_mappable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftipc_mappable.h; path = ../../../src/aft/aftipc/aftipc_mappable.h; sourceTree = "<group>"; };
 		FA9B15A015AA61F20017DCD5 /* aftipc_mappedregion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftipc_mappedregion.cpp; path = ../../../src/aft/aftipc/aftipc_mappedregion.cpp; sourceTree = "<group>"; };
@@ -1070,17 +1052,12 @@
 			children = (
 				FA833EF415A90A990044283D /* aftfs_directoryentry.cpp */,
 				FA833EF515A90A990044283D /* aftfs_directoryentry.h */,
-				FA833EF615A90A990044283D /* aftfs_file.cpp */,
-				FA833EF715A90A990044283D /* aftfs_file.h */,
 				FA833EF815A90A990044283D /* aftfs_filesystem.cpp */,
 				FA833EF915A90A990044283D /* aftfs_filesystem.h */,
 				FA9B15F915AA73AB0017DCD5 /* aftfs_filesystem.t.cpp */,
 				FA833EFA15A90A990044283D /* aftfs_path.cpp */,
 				FA833EFB15A90A990044283D /* aftfs_path.h */,
 				FA9B15FA15AA73AB0017DCD5 /* aftfs_path.t.cpp */,
-				FA833EFC15A90A990044283D /* aftfs_posixpath.cpp */,
-				FA833EFD15A90A990044283D /* aftfs_posixpath.h */,
-				FA833EFE15A90A990044283D /* aftfs_readonlyfilehandle.h */,
 				FAFB3A4B17B338F1002510F9 /* aftfs_localfilesystem.h */,
 				FAFB3A4E17B33A05002510F9 /* aftfs_localfilesystem.cpp */,
 				FAFB3A5117B7C514002510F9 /* aftfs_localfilesystem.t.cpp */,
@@ -1101,16 +1078,15 @@
 			children = (
 				FA9B158415A9DE900017DCD5 /* aftio_flags.cpp */,
 				FA9B158515A9DE900017DCD5 /* aftio_flags.h */,
-				FA9B158615A9DE900017DCD5 /* aftio_inputstream.cpp */,
-				FA9B158715A9DE900017DCD5 /* aftio_inputstream.h */,
-				FA9B158815A9DE900017DCD5 /* aftio_outputstream.cpp */,
-				FA9B158915A9DE900017DCD5 /* aftio_outputstream.h */,
+				FA9B158615A9DE900017DCD5 /* aftio_reader.cpp */,
+				FA9B158715A9DE900017DCD5 /* aftio_reader.h */,
+				FA9B158815A9DE900017DCD5 /* aftio_writer.cpp */,
+				FA9B158915A9DE900017DCD5 /* aftio_writer.h */,
 				FA9B158A15A9DE900017DCD5 /* aftio_permission.cpp */,
 				FA9B158B15A9DE900017DCD5 /* aftio_permission.h */,
 				FA9B15F715AA738B0017DCD5 /* aftio_permission.t.cpp */,
 				FA9B158C15A9DE900017DCD5 /* aftio_permissions.cpp */,
 				FA9B158D15A9DE900017DCD5 /* aftio_permissions.h */,
-				FA9B158E15A9DE900017DCD5 /* aftio_reader.h */,
 			);
 			name = aftio;
 			sourceTree = "<group>";
@@ -1382,19 +1358,15 @@
 				FA833EF015A7AD520044283D /* aftc_trie.h in Headers */,
 				FA833EF215A7AE370044283D /* aftc_uninitialized.h in Headers */,
 				FA833F0015A90A990044283D /* aftfs_directoryentry.h in Headers */,
-				FA833F0215A90A990044283D /* aftfs_file.h in Headers */,
 				FA833F0415A90A990044283D /* aftfs_filesystem.h in Headers */,
 				FAFB3A4C17B338F6002510F9 /* aftfs_localfilesystem.h in Headers */,
 				FA833F0615A90A990044283D /* aftfs_path.h in Headers */,
-				FA833F0815A90A990044283D /* aftfs_posixpath.h in Headers */,
-				FA833F0915A90A990044283D /* aftfs_readonlyfilehandle.h in Headers */,
 				FA9B15F615AA70190017DCD5 /* afth_crc32.h in Headers */,
 				FA9B159015A9DE900017DCD5 /* aftio_flags.h in Headers */,
-				FA9B159215A9DE900017DCD5 /* aftio_inputstream.h in Headers */,
-				FA9B159415A9DE900017DCD5 /* aftio_outputstream.h in Headers */,
+				FA9B159215A9DE900017DCD5 /* aftio_reader.h in Headers */,
+				FA9B159415A9DE900017DCD5 /* aftio_writer.h in Headers */,
 				FA9B159615A9DE900017DCD5 /* aftio_permission.h in Headers */,
 				FA9B159815A9DE900017DCD5 /* aftio_permissions.h in Headers */,
-				FA9B159915A9DE900017DCD5 /* aftio_reader.h in Headers */,
 				FA9B15A915AA61F20017DCD5 /* aftipc_mappable.h in Headers */,
 				FA9B15AB15AA61F20017DCD5 /* aftipc_mappedregion.h in Headers */,
 				FA9B15AD15AA61F20017DCD5 /* aftipc_memorymappedfile.h in Headers */,
@@ -1476,19 +1448,15 @@
 				FA2317A61784771E0050DE3A /* aftc_trie.h in Headers */,
 				FA2317A7178477200050DE3A /* aftc_uninitialized.h in Headers */,
 				FA2317C6178477DB0050DE3A /* aftfs_directoryentry.h in Headers */,
-				FA2317C5178477D30050DE3A /* aftfs_file.h in Headers */,
 				FA2317C4178477CF0050DE3A /* aftfs_filesystem.h in Headers */,
 				FAFB3A4D17B338F6002510F9 /* aftfs_localfilesystem.h in Headers */,
 				FA2317C3178477CB0050DE3A /* aftfs_path.h in Headers */,
-				FA2317C2178477C70050DE3A /* aftfs_posixpath.h in Headers */,
-				FA2317C1178477C30050DE3A /* aftfs_readonlyfilehandle.h in Headers */,
 				FA2317C0178477BA0050DE3A /* afth_crc32.h in Headers */,
 				FA2317BF178477AF0050DE3A /* aftio_flags.h in Headers */,
-				FA2317BE178477AD0050DE3A /* aftio_inputstream.h in Headers */,
-				FA2317BD178477AA0050DE3A /* aftio_outputstream.h in Headers */,
+				FA2317BE178477AD0050DE3A /* aftio_reader.h in Headers */,
+				FA2317BD178477AA0050DE3A /* aftio_writer.h in Headers */,
 				FA2317BC178477A70050DE3A /* aftio_permission.h in Headers */,
 				FA2317BB178477A50050DE3A /* aftio_permissions.h in Headers */,
-				FA2317BA1784779F0050DE3A /* aftio_reader.h in Headers */,
 				FA2317B9178477980050DE3A /* aftipc_mappable.h in Headers */,
 				FA2317B8178477950050DE3A /* aftipc_mappedregion.h in Headers */,
 				FA2317B7178477910050DE3A /* aftipc_memorymappedfile.h in Headers */,
@@ -1807,14 +1775,12 @@
 				FA833EED15A7AD520044283D /* aftc_packedstringmap.cpp in Sources */,
 				FA833EEF15A7AD520044283D /* aftc_trie.cpp in Sources */,
 				FA833EFF15A90A990044283D /* aftfs_directoryentry.cpp in Sources */,
-				FA833F0115A90A990044283D /* aftfs_file.cpp in Sources */,
 				FA833F0315A90A990044283D /* aftfs_filesystem.cpp in Sources */,
 				FA833F0515A90A990044283D /* aftfs_path.cpp in Sources */,
-				FA833F0715A90A990044283D /* aftfs_posixpath.cpp in Sources */,
 				FA9B15F515AA70190017DCD5 /* afth_crc32.cpp in Sources */,
 				FA9B158F15A9DE900017DCD5 /* aftio_flags.cpp in Sources */,
-				FA9B159115A9DE900017DCD5 /* aftio_inputstream.cpp in Sources */,
-				FA9B159315A9DE900017DCD5 /* aftio_outputstream.cpp in Sources */,
+				FA9B159115A9DE900017DCD5 /* aftio_reader.cpp in Sources */,
+				FA9B159315A9DE900017DCD5 /* aftio_writer.cpp in Sources */,
 				FA9B159515A9DE900017DCD5 /* aftio_permission.cpp in Sources */,
 				FA9B159715A9DE900017DCD5 /* aftio_permissions.cpp in Sources */,
 				FA9B15A815AA61F20017DCD5 /* aftipc_mappable.cpp in Sources */,
@@ -1932,14 +1898,12 @@
 				FA231762178474340050DE3A /* aftc_packedstringmap.cpp in Sources */,
 				FA231763178474370050DE3A /* aftc_trie.cpp in Sources */,
 				FA231764178474450050DE3A /* aftfs_directoryentry.cpp in Sources */,
-				FA231765178474480050DE3A /* aftfs_file.cpp in Sources */,
 				FA2317661784744F0050DE3A /* aftfs_filesystem.cpp in Sources */,
 				FA231767178474530050DE3A /* aftfs_path.cpp in Sources */,
-				FA231768178474580050DE3A /* aftfs_posixpath.cpp in Sources */,
 				FA2317691784747E0050DE3A /* afth_crc32.cpp in Sources */,
 				FA23176A1784749F0050DE3A /* aftio_flags.cpp in Sources */,
-				FA23176B178474A20050DE3A /* aftio_inputstream.cpp in Sources */,
-				FA23176C178474A50050DE3A /* aftio_outputstream.cpp in Sources */,
+				FA23176B178474A20050DE3A /* aftio_reader.cpp in Sources */,
+				FA23176C178474A50050DE3A /* aftio_writer.cpp in Sources */,
 				FA23176D178474A80050DE3A /* aftio_permission.cpp in Sources */,
 				FA23176E178474AE0050DE3A /* aftio_permissions.cpp in Sources */,
 				FA23176F178474FD0050DE3A /* aftipc_mappable.cpp in Sources */,
@@ -2100,10 +2064,8 @@
 		FA3B86A517A9333C0042C241 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				EXECUTABLE_PREFIX = "$(inherited)";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -2111,19 +2073,15 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				PRODUCT_NAME = "act-macosx";
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		FA3B86A617A9333C0042C241 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				EXECUTABLE_PREFIX = "$(inherited)";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				PRODUCT_NAME = "act-macosx";
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -2131,10 +2089,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
@@ -2143,8 +2102,9 @@
 					"$(BOOST_INCLUDE)",
 					"$(CONFIGURATION_BUILD_DIR)/**",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = "";
 				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -2153,10 +2113,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -2165,7 +2126,8 @@
 					"$(BOOST_INCLUDE)",
 					"$(CONFIGURATION_BUILD_DIR)/**",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
@@ -2173,7 +2135,6 @@
 		FA833E2515A752430044283D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				EXECUTABLE_PREFIX = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2184,19 +2145,16 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		FA833E2615A752430044283D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				EXECUTABLE_PREFIX = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -2204,9 +2162,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
-				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = NO;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2218,13 +2173,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -2232,21 +2181,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
-				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -2254,13 +2194,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
-				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2268,13 +2203,8 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -2282,20 +2212,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
-				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -2303,25 +2223,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
-				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -2329,19 +2239,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
-				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -2383,7 +2283,6 @@
 		FAA6CDB415DDB28400F480F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2394,19 +2293,16 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		FAA6CDB515DDB28400F480F0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};

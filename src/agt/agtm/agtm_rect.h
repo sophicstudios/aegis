@@ -36,6 +36,7 @@
 
 #include <agtm_point2d.h>
 #include <agtm_size2d.h>
+#include <ostream>
 
 namespace agtm {
 
@@ -147,7 +148,7 @@ Rect<T> make_rect(Point2d<T> const& origin, Size2d<T> const& size)
 template<typename T>
 std::ostream& operator<<(std::ostream& os, Rect<T> const& rect)
 {
-    os << "[ " << rect.origin() << " " << rect.size() << " ]";
+    os << "[" << rect.origin() << " " << rect.size() << "]";
     return os;
 }
 

@@ -135,7 +135,7 @@ bool ComparisonUtil::equalRelative<float>(float lhs, float rhs, float maxRelativ
         return true;
     }
     
-    return std::fabs(lhs - rhs) / lhs < maxRelativeError;
+    return std::fabs(lhs - rhs) / (std::fabs(lhs) + std::fabs(rhs)) < maxRelativeError;
 }
 
 template<>
@@ -145,7 +145,7 @@ bool ComparisonUtil::equalRelative<double>(double lhs, double rhs, double maxRel
         return true;
     }
     
-    return std::fabs(lhs - rhs) / rhs < maxRelativeError;
+    return std::fabs(lhs - rhs) / (std::fabs(lhs) + std::fabs(rhs)) < maxRelativeError;
 }
 
 template<>

@@ -188,7 +188,7 @@ StringRef<T>::StringRef()
 template<typename T>
 StringRef<T>::StringRef(T const* const orig)
 : m_beg(orig),
-  m_end(std::char_traits<T>::length(orig))
+  m_end(orig + std::char_traits<T>::length(orig))
 {}
 
 template<typename T>

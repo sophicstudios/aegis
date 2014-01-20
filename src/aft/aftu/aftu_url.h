@@ -24,7 +24,16 @@ public:
 
     // constructs a URL from the supplied string.
     explicit URL(std::string const& urlString);
+
+    // constructs a URL from the individual components
+    URL(
+        std::string const& scheme,
+        std::string const& authority,
+        std::string const& path,
+        std::string const& query,
+        std::string const& fragment);
     
+    // copy constructor
     URL(URL const& url);
     
     ~URL();
@@ -37,6 +46,8 @@ public:
      * valid, just that the URL is structured correctly
      */
     bool isValid();
+    
+    std::string const& canonical() const;
     
     /**
      * Returns the scheme portion of the URL, i.e. http, file, ssh
@@ -55,23 +66,26 @@ public:
     std::string authority() const;
     
     /**
-     * Indicates whether the path section of the URL exists
-     */
-    bool hasPath() const;
-    
-    /**
-     * Returns the path portion of the URL. If it does not exists, then
-     * the result string is empty
+     * Returns the path portion of the URL. A path is always defined for
+     * a URL, but may be empty
      */
     std::string path() const;
+
+    void setPath(std::string const& path);
     
     bool hasQuery() const;
     
     std::string query() const;
+
+    void setQuery(std::string const& query);
     
     bool hasFragment() const;
     
     std::string fragment() const;
+    
+    bool isRelative() const;
+    
+    bool isAbsolute() const;
     
 private:
     class Impl;

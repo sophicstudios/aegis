@@ -360,7 +360,7 @@ inline Vector2<T> operator/(Vector2<T> const& lhs, U const& rhs)
 template<typename T>
 std::ostream& operator<<(std::ostream& os, Vector2<T> const& v)
 {
-    os << "[ " << v.x() << " " << v.y() << " ]";
+    os << "[" << v.x() << " " << v.y() << "]";
 
     return os;
 }

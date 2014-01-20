@@ -281,7 +281,7 @@ Point2d<T> operator-(Point2d<T> const& lhs, Point2d<T> const& rhs)
 template<typename T>
 std::ostream& operator<<(std::ostream& os, Point2d<T> const& p)
 {
-    os << "[ " << p.x() << " " << p.y() << " ]";
+    os << "[" << p.x() << " " << p.y() << "]";
     return os;
 }
 

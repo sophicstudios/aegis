@@ -1,16 +1,25 @@
 #ifndef INCLUDED_AEGIS_AFTFS_FILESYSTEM_H
 #define INCLUDED_AEGIS_AFTFS_FILESYSTEM_H
 
-#include <aftfs_path.h>
 #include <aftfs_directoryentry.h>
+#include <aftio_reader.h>
+#include <aftu_url.h>
+#include <tr1/memory>
+#include <vector>
 
 namespace aftfs {
 
 class Filesystem
 {
 public:
+    typedef std::tr1::shared_ptr<aftfs::DirectoryEntry> DirectoryEntryPtr;
+    typedef std::tr1::shared_ptr<aftio::Reader> FileReaderPtr;
+    
     enum Status {
         Status_OK,
+        Status_ERROR,
+        Status_DIRECTORY_NOT_FOUND,
+        Status_FILE_NOT_FOUND,
         Status_UNKNOWN
     };
     
@@ -18,11 +27,17 @@ public:
 
     virtual ~Filesystem();
     
-    virtual void listDirectory(std::vector<DirectoryEntry>& entries) = 0;
+    virtual aftu::URL getCurrentDirectory(Status* status = NULL) = 0;
     
-    virtual void listDirectory(std::vector<DirectoryEntry>& entries, aftfs::Path const& path) = 0;
+    virtual Status setCurrentDirectory(aftu::URL const& url) = 0;
     
-    virtual void listDirectory(std::vector<DirectoryEntry>& entries, DirectoryEntry const& dir) = 0;
+    virtual Status listDirectory(std::vector<aftu::URL>& results) = 0;
+    
+    virtual Status listDirectory(std::vector<aftu::URL>& results, aftu::URL const& url) = 0;
+    
+    virtual DirectoryEntryPtr directoryEntry(aftu::URL const& url, Status* status = NULL) = 0;
+    
+    virtual FileReaderPtr openFileReader(aftu::URL const& url, Status* status = NULL) = 0;
 };
 
 } // namespace

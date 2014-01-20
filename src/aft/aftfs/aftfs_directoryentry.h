@@ -1,8 +1,8 @@
 #ifndef INCLUDED_AEGIS_AFTFS_DIRECTORYENTRY_H
 #define INCLUDED_AEGIS_AFTFS_DIRECTORYENTRY_H
 
-#include <aftfs_path.h>
 #include <aftio_permissions.h>
+#include <aftu_url.h>
 
 namespace aftfs {
 
@@ -18,32 +18,21 @@ public:
 
     DirectoryEntry();
     
-    ~DirectoryEntry();
+    virtual ~DirectoryEntry();
     
-    std::string name();
+    virtual aftu::URL url() = 0;
     
-    aftfs::Path path();
+    virtual aftio::Permissions permissions() = 0;
     
-    aftio::Permissions permissions();
+    virtual Type type() const = 0;
     
-    Type type() const;
+    virtual bool isFile() const = 0;
     
-    bool isFile() const;
+    virtual bool isDirectory() const = 0;
     
-    bool isDirectory() const;
+    virtual bool isLink() const = 0;
     
-    bool isLink() const;
-
-    bool setName(std::string const& name);
-    
-    bool setPermissions(aftio::Permissions const& permissions);
-    
-// remove - accept void, return bool (success)
-// move - accept Path (destination
-// copy - accept Path object (destination)
-
-private:
-    Type m_type;
+    virtual size_t size() const = 0;
 };
 
 } // namespace

@@ -2,11 +2,14 @@
 #define INCLUDED_AEGIS_AGTUI_MOUSEEVENT_H
 
 #include <agtm_point2d.h>
+#include <iosfwd>
 
 namespace agtui {
 
 class MouseEvent
 {
+    friend std::ostream& operator<<(std::ostream&, MouseEvent const&);
+    
 public:
     enum Button {
         Button_NONE = 0,
@@ -17,7 +20,11 @@ public:
         Button_MIDDLE,
         Button_3 = 3,
         Button_4 = 4,
-        Button_5 = 5
+        Button_5 = 5,
+        Button_6 = 6,
+        Button_7 = 7,
+        Button_8 = 8,
+        Button_9 = 9
     };
     
     enum Type {
@@ -45,6 +52,8 @@ private:
     Button m_button;
     agtm::Point2d<float> m_location;
 };
+
+std::ostream& operator<<(std::ostream& os, MouseEvent const& event);
 
 } // namespace
 

@@ -2,7 +2,7 @@
 #define INCLUDED_AEGIS_AGTM_POINT3D_H
 
 #include <afts_comparisonutil.h>
-#include <iosfwd>
+#include <ostream>
 
 namespace agtm {
 
@@ -136,6 +136,9 @@ Point3d<T> operator+(Point3d<T> const& lhs, Point3d<T> const& rhs);
 
 template<typename T>
 Point3d<T> operator-(Point3d<T> const& lhs, Point3d<T> const& rhs);
+
+template<typename T>
+std::ostream& operator<<(std::ostream& os, Point3d<T> const& p);
 
 template<typename T>
 Point3d<T>::Point3d()
@@ -328,6 +331,13 @@ Point3d<T> operator-(Point3d<T> const& lhs, Point3d<T> const& rhs)
         lhs.x() - rhs.x(),
         lhs.y() - rhs.y(),
         lhs.z() - rhs.z());
+}
+
+template<typename T>
+std::ostream& operator<<(std::ostream& os, Point3d<T> const& p)
+{
+    os << "[" << p.x() << " " << p.y() << " " << p.z() << "]";
+    return os;
 }
 
 } // namespace

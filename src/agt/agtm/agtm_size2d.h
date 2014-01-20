@@ -67,7 +67,7 @@ Size2d<T> make_size(T const& width, T const& height)
 template<typename T>
 std::ostream& operator<<(std::ostream& os, Size2d<T> const& size)
 {
-    os << "[ " << size.width() << " " << size.height() << " ]";
+    os << "[" << size.width() << " " << size.height() << "]";
     return os;
 }
 

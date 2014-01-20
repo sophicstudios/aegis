@@ -67,7 +67,7 @@ enum CharType {
     CharType_PATH = 32,
     CharType_QUERY = 64,
     CharType_FRAGMENT = 128,
-    CharType_
+    CharType_AUTHORITY = 256,
 };
     
 uint16_t CharacterTypes[] = {
@@ -78,17 +78,17 @@ CharType_RESERVED | CharType_SUBDELIM,          // 0x21 !
 0,                                              // 0x22 "
 CharType_RESERVED | CharType_GENDELIM,          // 0x23 #
 CharType_RESERVED | CharType_SUBDELIM,          // 0x24 $
-0,                                              // 0x25 %
+CharType_PATH | CharType_QUERY | CharType_FRAGMENT, // 0x25 %
 CharType_RESERVED | CharType_SUBDELIM,          // 0x26 &
 CharType_RESERVED | CharType_SUBDELIM,          // 0x27 '
 CharType_RESERVED | CharType_SUBDELIM,          // 0x28 (
 CharType_RESERVED | CharType_SUBDELIM,          // 0x29 )
 CharType_RESERVED | CharType_SUBDELIM,          // 0x2A *
-CharType_RESERVED | CharType_SUBDELIM | CharType_SCHEME,          // 0x2B +
+CharType_RESERVED | CharType_SUBDELIM | CharType_SCHEME, // 0x2B +
 CharType_RESERVED | CharType_SUBDELIM,          // 0x2C ,
 CharType_UNRESERVED | CharType_SCHEME, // 0x2D -
 CharType_UNRESERVED | CharType_SCHEME, // 0x2E .
-CharType_RESERVED | CharType_GENDELIM, // 0x2F /
+CharType_RESERVED | CharType_GENDELIM | CharType_PATH | CharType_QUERY | CharType_FRAGMENT, // 0x2F /
 CharType_UNRESERVED | CharType_SCHEME, // 0x30 0
 CharType_UNRESERVED | CharType_SCHEME, // 0x31 1
 CharType_UNRESERVED | CharType_SCHEME, // 0x32 2
@@ -99,13 +99,13 @@ CharType_UNRESERVED | CharType_SCHEME, // 0x36 6
 CharType_UNRESERVED | CharType_SCHEME, // 0x37 7
 CharType_UNRESERVED | CharType_SCHEME, // 0x38 8
 CharType_UNRESERVED | CharType_SCHEME, // 0x39 9
-0, // 0x3A :
-0, // 0x3B ;
+CharType_PATH | CharType_QUERY | CharType_FRAGMENT, // 0x3A :
+CharType_SUBDELIM, // 0x3B ;
 0, // 0x3C <
-0, // 0x3D =
+CharType_SUBDELIM, // 0x3D =
 0, // 0x3E >
-0, // 0x3F ?
-0, // 0x40 @
+CharType_QUERY | CharType_FRAGMENT, // 0x3F ?
+CharType_PATH | CharType_QUERY | CharType_FRAGMENT, // 0x40 @
 CharType_UNRESERVED | CharType_SCHEME, // 0x41 A
 CharType_UNRESERVED | CharType_SCHEME, // 0x42 B
 CharType_UNRESERVED | CharType_SCHEME, // 0x43 C
@@ -132,9 +132,9 @@ CharType_UNRESERVED | CharType_SCHEME, // 0x57 W
 CharType_UNRESERVED | CharType_SCHEME, // 0x58 X
 CharType_UNRESERVED | CharType_SCHEME, // 0x59 Y
 CharType_UNRESERVED | CharType_SCHEME, // 0x5A Z
-0, // 0x5B [
+CharType_AUTHORITY, // 0x5B [
 0, // 0x5C '\'
-0, // 0x5D ]
+CharType_AUTHORITY, // 0x5D ]
 0, // 0x5E ^
 0, // 0x5F _
 0, // 0x60 `
@@ -185,11 +185,11 @@ CharType_UNRESERVED | CharType_SCHEME, // 0x7A z
 // hier-part = "//" authority path-abempty
 struct Components
 {
-    aftu::StringRef<std::string> scheme;
-    aftu::StringRef<std::string> authority;
-    aftu::StringRef<std::string> path;
-    aftu::StringRef<std::string> query;
-    aftu::StringRef<std::string> fragment;
+    std::string scheme;
+    std::string authority;
+    std::string path;
+    std::string query;
+    std::string fragment;
 };
 
 bool isCharOfType(uint16_t mask, char c)
@@ -198,16 +198,28 @@ bool isCharOfType(uint16_t mask, char c)
     return type & mask;
 }
 
-// the parse routine takes an input string that supposedly holds a URL,
-// transforms the URL into its canonical form and at the same time
-// splits the canonical URL into its components. If for any reason,
-// the URL is unable to be parsed, the routine returns false
 bool parseScheme(
     std::string* canonical,
     Components* components,
-    char const* begin,
-    char const* end)
+    std::string::const_iterator& begin,
+    std::string::const_iterator end)
 {
+    bool foundColon = false;
+    std::string::const_iterator it = begin;
+    while (it != end && *it != '/') {
+        if (*it == ':') {
+            foundColon = true;
+            break;
+        }
+        
+        ++it;
+    }
+    
+    // no scheme, this must be a relative reference
+    if (!foundColon) {
+        return true;
+    }
+    
     // assumes the input is a valid scheme, terminating in a ':' character
     // walks through the characters until it hits the terminator,
     // creates a canonical version of it and assigns the component.
@@ -223,7 +235,8 @@ bool parseScheme(
     }
     
     if (*begin == ':') {
-        components->scheme.assign(*canonical, 0, canonical->size());
+        components->scheme.assign(canonical->begin(), canonical->end());
+        canonical->push_back(':');
         ++begin; // move to the next spot after the ':'
         return true;
     }
@@ -234,18 +247,168 @@ bool parseScheme(
 bool parseAuthority(
     std::string* canonical,
     Components* components,
-    char const* begin,
-    char const* end)
+    std::string::const_iterator& begin,
+    std::string::const_iterator end)
 {
+    std::string::const_iterator it = begin;
+    if (it != end) {
+        int slashCount = 0;
+        // authority must start with '//'
+        while (*it == '/' && slashCount < 2) {
+            ++it;
+            ++slashCount;
+        }
+
+        if (slashCount == 2) {
+            // we have an authority, so append "//" to the canonical
+            // and start reading until the next '/' or '?' or '#'
+            canonical->append("//");
+            size_t authorityStart = canonical->size();
+
+            while (it != end) {
+                char c = *it;
+                if (c == '/' || c == '?' || c == '#') {
+                    break;
+                }
+                
+                if (!isCharOfType(CharType_AUTHORITY | CharType_UNRESERVED, c)) {
+                    components->authority.assign(canonical->begin() + authorityStart, canonical->end());
+                    return false;
+                }
+                
+                canonical->push_back(tolower(c));
+                ++it;
+            }
+
+            components->authority.assign(canonical->begin() + authorityStart, canonical->end());
+            
+            begin = it;
+        }
+        else {
+            // no authority, so quit out of this part of parsing
+            return true;
+        }
+    }
     
     return true;
 }
 
+bool parsePath(
+    std::string* canonical,
+    Components* components,
+    std::string::const_iterator& begin,
+    std::string::const_iterator end)
+{
+    std::string::const_iterator it = begin;
+    if (it != end) {
+        size_t pathStart = canonical->size();
+        while (it != end) {
+            char c = *it;
+            if (c == '?' || c == '#') {
+                break;
+            }
+            
+            if (!isCharOfType(CharType_UNRESERVED | CharType_PATH | CharType_SUBDELIM, c)) {
+                components->path.assign(canonical->begin() + pathStart, canonical->end());
+                return false;
+            }
+            
+            canonical->push_back(c);
+            ++it;
+        }
+
+        components->path.assign(canonical->begin() + pathStart, canonical->end());
+        
+        begin = it;
+    }
+
+    return true;
+}
+
+bool parseQuery(
+    std::string* canonical,
+    Components* components,
+    std::string::const_iterator& begin,
+    std::string::const_iterator end)
+{
+    std::string::const_iterator it = begin;
+    if (it != end) {
+        if (*it != '?') {
+            return false;
+        }
+        
+        canonical->push_back('?');
+        ++it;
+        
+        size_t queryStart = canonical->size();
+        while (it != end) {
+            char c = *it;
+
+            if (c == '#') {
+                break;
+            }
+            
+            if (!isCharOfType(CharType_UNRESERVED | CharType_QUERY | CharType_SUBDELIM, c)) {
+                components->query.assign(canonical->begin() + queryStart, canonical->end());
+                return false;
+            }
+            
+            canonical->push_back(c);
+            ++it;
+        }
+        
+        components->query.assign(canonical->begin() + queryStart, canonical->end());
+        
+        begin = it;
+    }
+    
+    return true;
+}
+
+bool parseFragment(
+    std::string* canonical,
+    Components* components,
+    std::string::const_iterator& begin,
+    std::string::const_iterator end)
+{
+    std::string::const_iterator it = begin;
+    if (it != end) {
+        if (*it != '#') { // not really possible, but anyway...
+            return false;
+        }
+        
+        canonical->push_back('#');
+        ++it;
+
+        size_t fragmentStart = canonical->size();
+        while (it != end) {
+            char c = *it;
+            if (!isCharOfType(CharType_UNRESERVED | CharType_FRAGMENT | CharType_SUBDELIM, c)) {
+                components->query.assign(canonical->begin() + fragmentStart, canonical->end());
+                return false;
+            }
+            
+            canonical->push_back(c);
+            ++it;
+        }
+        
+        components->fragment.assign(canonical->begin() + fragmentStart, canonical->end());
+        
+        begin = it;
+    }
+    
+    return true;
+}
+
+// the parse routine takes an input string that supposedly holds a URL,
+// transforms the URL into its canonical form and at the same time
+// splits the canonical URL into its components. If for any reason,
+// the URL is unable to be parsed, the routine returns false
 bool parse(
     std::string* canonical,
     Components* components,
-    char const* begin,
-    char const* end)
+    std::string::const_iterator& begin,
+    std::string::const_iterator end)
 {
     if (!parseScheme(canonical, components, begin, end)) {
         return false;
@@ -255,6 +418,18 @@ bool parse(
         return false;
     }
     
+    if (!parsePath(canonical, components, begin, end)) {
+        return false;
+    }
+    
+    if (!parseQuery(canonical, components, begin, end)) {
+        return false;
+    }
+
+    if (!parseFragment(canonical, components, begin, end)) {
+        return false;
+    }
+
     return true;
 }
 
@@ -279,11 +454,12 @@ URL::URL()
 URL::URL(std::string const& urlString)
 : m_impl(new Impl())
 {
+    std::string::const_iterator begin = urlString.begin();
     parse(
         &m_impl->canonical,
         &m_impl->components,
-        &urlString[0],
-        &urlString[urlString.size()]);
+        begin,
+        urlString.end());
 }
 
 URL::URL(URL const& url)
@@ -309,49 +485,49 @@ bool URL::isValid()
     return !m_impl->canonical.empty();
 }
 
+std::string const& URL::canonical() const
+{
+    return m_impl->canonical;
+}
+
 std::string URL::scheme() const
 {
-    return m_impl->components.scheme.str();
+    return m_impl->components.scheme;
 }
 
 bool URL::hasAuthority() const
 {
-    return !m_impl->components.authority.isEmpty();
+    return !m_impl->components.authority.empty();
 }
 
 std::string URL::authority() const
 {
-    return m_impl->components.authority.str();
-}
-
-bool URL::hasPath() const
-{
-    return !m_impl->components.path.isEmpty();
+    return m_impl->components.authority;
 }
 
 std::string URL::path() const
 {
-    return m_impl->components.path.str();
+    return m_impl->components.path;
 }
 
 bool URL::hasQuery() const
 {
-    return !m_impl->components.query.isEmpty();
+    return !m_impl->components.query.empty();
 }
 
 std::string URL::query() const
 {
-    return m_impl->components.query.str();
+    return m_impl->components.query;
 }
 
 bool URL::hasFragment() const
 {
-    return !m_impl->components.fragment.isEmpty();
+    return !m_impl->components.fragment.empty();
 }
 
 std::string URL::fragment() const
 {
-    return m_impl->components.fragment.str();
+    return m_impl->components.fragment;
 }
 
 } // namespace

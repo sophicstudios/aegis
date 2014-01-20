@@ -4,7 +4,7 @@
 #include <agtm_vector2.h>
 #include <afts_comparisonutil.h>
 #include <algorithm>
-#include <iosfwd>
+#include <ostream>
 
 namespace agtm {
 

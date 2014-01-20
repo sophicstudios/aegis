@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <iosfwd>
 
 namespace aftfs {
 
@@ -15,7 +16,7 @@ namespace aftfs {
 ///
 /// == Construction ==
 /// A Path is constructed by either providing a path string in the native
-/// format of the host, a POSIX format of the form "/directory/directory/../name"
+/// format of the host, a POSIX path of the form "/directory/directory/../name"
 /// or by passing a URL of the form "file://host/directory/directory/../name"
 ///
 
@@ -31,11 +32,13 @@ public:
     Path& operator=(Path const& path);
     
     // Returns a path string in the native format of the system.
-    std::string nativePathString() const;
+    std::string nativeStr() const;
     
     // returns the hostname of the path, or blank if none exists, in which
     // case the hostname can be considered to be 'localhost'
     std::string hostname() const;
+    
+    std::string volume() const;
     
     std::string dirname() const;
 
@@ -43,13 +46,18 @@ public:
 
     std::string extension() const;
     
+    bool isAbsolute() const;
+    
 private:
-    std::string m_hostname;
-    std::vector<std::string> m_directories;
-    std::string m_basename;
-    std::string m_extension;
+    std::string m_normalized;
+    //aftu::StringRef m_hostname;
+    //aftu::StringRef m_dirname;
+    //aftu::StringRef m_basename;
+    //aftu::StringRef m_extension;
     bool m_isAbsolute;
 };
+
+std::ostream& operator<<(std::ostream& os, Path const& path);
 
 } // namespace
 

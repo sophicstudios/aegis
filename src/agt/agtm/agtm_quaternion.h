@@ -3,7 +3,7 @@
 
 #include <afts_comparisonutil.h>
 #include <algorithm>
-#include <iosfwd>
+#include <ostream>
 
 namespace agtm {
 
@@ -38,6 +38,9 @@ private:
         };
     };
 };
+
+template<typename T>
+std::ostream& operator<<(std::ostream& os, Quaternion<T> const& quaternion);
 
 } // namespace
 

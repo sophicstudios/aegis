@@ -4,26 +4,6 @@
 
 namespace aftu {
 
-class A
-{
-public:
-    A();
-    ~A();
-    
-private:
-    int m_i;
-};
-
-A::A()
-{
-    std::cout << "A:A()" << std::endl;
-    m_i = 5;
-}
-
-A::~A()
-{
-}
-
 class TestUrl : public aunit::TestFixture
 {
 public:
@@ -35,32 +15,74 @@ protected:
     virtual void runTest();
 
 private:
-    void testConstruction();
+    void testHttpConstruction();
+    void testFileConstruction();
+    
+    void checkUrl(
+        std::string const& urlStr,
+        bool isValid,
+        std::string const& scheme,
+        std::string const& authority,
+        std::string const& path,
+        std::string const& query,
+        std::string const& fragment);
 };
 
 AUNIT_REGISTERTEST(TestUrl);
 
 void TestUrl::runTest()
 {
-    testConstruction();
+    testHttpConstruction();
+    testFileConstruction();
 }
 
-void TestUrl::testConstruction()
+void TestUrl::checkUrl(
+    std::string const& urlStr,
+    bool isValid,
+    std::string const& scheme,
+    std::string const& authority,
+    std::string const& path,
+    std::string const& query,
+    std::string const& fragment)
 {
-    A a;
+    URL url(urlStr);
+    AUNIT_ASSERT(url.isValid() == isValid);
     
-    URL emptyUrl;
-    AUNIT_ASSERT(!emptyUrl.isValid());
-    
-    URL httpUrl1("http://www.google.com");
-    AUNIT_ASSERT(httpUrl1.isValid());
-    AUNIT_ASSERT(httpUrl1.scheme() == "http");
-    
-    URL httpUrl2("http://www.google.com/");
-    URL httpUrl3("http://www.google.com/search");
-    URL httpUrl4("http://www.google.com/search/");
-    URL httpUrl5("http://www.google.com/search?term=test");
-    URL httpUrl6("http://www.google.com/search?term=test#ref");
+    if (isValid) {
+        AUNIT_ASSERT(url.scheme() == scheme);
+        
+        AUNIT_ASSERT(url.hasAuthority() == !authority.empty());
+        AUNIT_ASSERT(url.authority() == authority);
+        
+        AUNIT_ASSERT(url.path() == path);
+        
+        AUNIT_ASSERT(url.hasQuery() == !query.empty());
+        AUNIT_ASSERT(url.query() == query);
+        
+        AUNIT_ASSERT(url.hasFragment() == !fragment.empty());
+        AUNIT_ASSERT(url.fragment() == fragment);
+    }
+}
+
+void TestUrl::testHttpConstruction()
+{
+    checkUrl("", false, "", "", "", "", "");
+    checkUrl("http://www.google.com", true, "http", "www.google.com", "", "", "");
+    checkUrl("http://www.google.com/", true, "http", "www.google.com", "/", "", "");
+    checkUrl("http://www.google.com/search", true, "http", "www.google.com", "/search", "", "");
+    checkUrl("http://www.google.com/search/", true, "http", "www.google.com", "/search/", "", "");
+    checkUrl("http://www.google.com/search?term=test", true, "http", "www.google.com", "/search", "term=test", "");
+    checkUrl("http://www.google.com/search?term=test#ref", true, "http", "www.google.com", "/search", "term=test", "ref");
+}
+
+void TestUrl::testFileConstruction()
+{
+    checkUrl("file://localhost/usr/local", true, "file", "localhost", "/usr/local", "", "");
+    checkUrl("file://localhost/usr/local/", true, "file", "localhost", "/usr/local/", "", "");
+    checkUrl("file:///usr/local", true, "file", "", "/usr/local", "", "");
+    checkUrl("file:///local/file.txt", true, "file", "", "/local/file.txt", "", "");
+    checkUrl("file.txt", true, "", "", "file.txt", "", "");
+    checkUrl("./file.txt", true, "", "", "./file.txt", "", "");
 }
 
 } // namespace

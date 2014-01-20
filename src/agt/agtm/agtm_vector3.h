@@ -5,7 +5,7 @@
 #include <afts_comparisonutil.h>
 #include <algorithm>
 #include <cmath>
-#include <iosfwd>
+#include <ostream>
 
 namespace agtm {
 
@@ -403,7 +403,7 @@ inline Vector3<T> operator/(Vector3<T> const& lhs, U const& rhs)
 template<typename T>
 std::ostream& operator<<(std::ostream& os, Vector3<T> const& v)
 {
-    os << "[ " << v.x() << " " << v.y() << " " << v.z() << " ]";
+    os << "[" << v.x() << " " << v.y() << " " << v.z() << "]";
     return os;
 }
 

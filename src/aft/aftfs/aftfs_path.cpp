@@ -28,20 +28,20 @@ Path::Path(std::string const& pathString)
     // Note: because of the empty check above, begin and end are
     // guaranteed not to be the same and this is valid
     std::string::const_iterator it1 = end-1;
-    std::string::const_iterator it2 = it1;
+    std::string::const_iterator it2 = end;
     bool foundSep = false;
     std::string pathEntry;
     while (it1 != beg) {
         if ((*it1) == '/') {
             if (it1 != it2) {
-                pathEntry.assign(it1+1, it2+1);
+                pathEntry.assign(it1+1, it2);
             }
             foundSep = true;
             break;
         }
         else if ((*it1) == '.') {
             if (it1 != it2) {
-                m_extension.assign(it1+1, it2+1);
+                //m_extension.assign(it1+1, it2);
                 it2 = it1;
             }
         }
@@ -50,11 +50,11 @@ Path::Path(std::string const& pathString)
     }
 
     if (foundSep && !pathEntry.empty()) {
-        m_basename = pathEntry;
+        //m_basename = pathEntry;
     }
     else if (!foundSep) {
         // we are done
-        m_basename = pathEntry;
+        //m_basename = pathEntry;
     }
     
     end = it1;
@@ -81,7 +81,7 @@ Path::Path(std::string const& pathString)
         
         if (it1 != it2) {
             pathEntry.assign(it1, it2);
-            m_directories.push_back(pathEntry);
+            //m_directories.push_back(pathEntry);
         }
         
         while (*it2 == '/' && it2 != end) {
@@ -93,6 +93,7 @@ Path::Path(std::string const& pathString)
 }
 
 Path::Path(Path const& path)
+: m_isAbsolute(path.m_isAbsolute)
 {
 }
 
@@ -102,16 +103,18 @@ Path::~Path()
 
 Path& Path::operator=(Path const& path)
 {
+    m_isAbsolute = path.m_isAbsolute;
+    
     return *this;
 }
 
-std::string Path::nativePathString() const
+std::string Path::nativeStr() const
 {
     std::string path;
     if (m_isAbsolute) {
         path.append("/");
     }
-    
+/*
     std::vector<std::string>::const_iterator it, end = m_directories.end();
     for (it = m_directories.begin(); it != end; ++it) {
         path.append(*it);
@@ -131,13 +134,13 @@ std::string Path::nativePathString() const
             path.append(".").append(m_extension);
         }
     }
-        
+*/        
     return path;
 }
 
 std::string Path::hostname() const
 {
-    return m_hostname;
+    return "";//m_hostname;
 }
 
 std::string Path::dirname() const
@@ -146,7 +149,7 @@ std::string Path::dirname() const
     if (m_isAbsolute) {
         dirname.append("/");
     }
-    
+/*
     std::vector<std::string>::const_iterator it, end = m_directories.end();
     for (it = m_directories.begin(); it != end; ++it) {
         dirname.append(*it);
@@ -154,18 +157,28 @@ std::string Path::dirname() const
             dirname.append("/");
         }
     }
-    
+*/    
     return dirname;
 }
 
 std::string Path::basename() const
 {
-    return m_basename;
+    return "";//m_basename;
 }
 
 std::string Path::extension() const
 {
-    return m_extension;
+    return "";//m_extension;
+}
+
+bool Path::isAbsolute() const
+{
+    return false;
+}
+
+std::ostream& operator<<(std::ostream& os, Path const& path)
+{
+    return os << path.nativeStr();
 }
 
 } // namespace
