@@ -60,17 +60,29 @@ public:
     
     ~Rect();
     
-    T x() const;
+    T const& x() const;
     
-    T y() const;
+    Rect<T>& x(T const& x);
     
-    T width() const;
+    T const& y() const;
     
-    T height() const;
+    Rect<T>& y(T const& y);
+    
+    T const& width() const;
+    
+    Rect<T>& width(T const& width);
+    
+    T const& height() const;
+    
+    Rect<T>& height(T const& height);
     
     Point2d<T> const& origin() const;
+
+    Rect<T>& origin(Point2d<T> const& origin);
     
     Size2d<T> const& size() const;
+    
+    Rect<T>& size(Size2d<T> const& size);
         
 private:
     Point2d<T> m_origin;
@@ -104,27 +116,55 @@ Rect<T>::~Rect()
 {}
 
 template<typename T>
-T Rect<T>::x() const
+T const& Rect<T>::x() const
 {
     return m_origin.x();
 }
 
 template<typename T>
-T Rect<T>::y() const
+Rect<T>& Rect<T>::x(T const& x)
+{
+    m_origin.x(x);
+    return *this;
+}
+
+template<typename T>
+T const& Rect<T>::y() const
 {
     return m_origin.y();
 }
 
 template<typename T>
-T Rect<T>::width() const
+Rect<T>& Rect<T>::y(T const& y)
+{
+    m_origin.y(y);
+    return *this;
+}
+
+template<typename T>
+T const& Rect<T>::width() const
 {
     return m_size.width();
 }
 
 template<typename T>
-T Rect<T>::height() const
+Rect<T>& Rect<T>::width(T const& width)
+{
+    m_size.width(width);
+    return *this;
+}
+
+template<typename T>
+T const& Rect<T>::height() const
 {
     return m_size.height();
+}
+
+template<typename T>
+Rect<T>& Rect<T>::height(T const& height)
+{
+    m_size.height(height);
+    return &this;
 }
 
 template<typename T>
@@ -134,9 +174,23 @@ Point2d<T> const& Rect<T>::origin() const
 }
 
 template<typename T>
+Rect<T>& Rect<T>::origin(Point2d<T> const& origin)
+{
+    m_origin = origin;
+    return *this;
+}
+
+template<typename T>
 Size2d<T> const& Rect<T>::size() const
 {
     return m_size;
+}
+
+template<typename T>
+Rect<T>& Rect<T>::size(Size2d<T> const& size)
+{
+    m_size = size;
+    return *this;
 }
 
 template<typename T>

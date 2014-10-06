@@ -1,27 +1,32 @@
 #ifndef INCLUDED_AEGIS_AGTR_IMAGE_H
 #define INCLUDED_AEGIS_AGTR_IMAGE_H
 
+#include <agtm_size2d.h>
+
 namespace agtr {
 
 class Image
 {
 public:
-    enum Format {
-        Format_RGB8,
-        Format_RGBA8,
-        Format_RGB16,
-        Format_RGBA16
+    enum ColorType {
+        ColorType_RGB,
+        ColorType_RGBA,
+        ColorType_GRAY,
+        ColorType_GRAY_ALPHA,
+        ColorType_PALETTE
     };
 
     Image();
     
-    Image(Format format, std::vector<uint8_t> const& data, Extent const& size);
-
     ~Image();
 
-    Extent const& size() const;
+    virtual ColorType colorType() const = 0;
     
-    std::vector<uint8_t> const& data() const;
+    virtual uint32_t bitDepth() const = 0;
+    
+    virtual agtm::Size2d const& size() const = 0;
+    
+    virtual std::vector<uint8_t> const& data() const = 0;
 
 private:
     

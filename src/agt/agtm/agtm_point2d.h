@@ -49,8 +49,12 @@ public:
     Point2d<T>& operator-=(Point2d const& point);
     
     T const& x() const;
+    
+    Point2d<T>& x(T const& x);
         
     T const& y() const;
+    
+    Point2d<T>& y(T const& y);
     
 private:
     T m_x;
@@ -205,9 +209,23 @@ inline T const& Point2d<T>::x() const
 }
 
 template<typename T>
+inline Point2d<T>& Point2d<T>::x(T const& x)
+{
+    m_x = x;
+    return *this;
+}
+
+template<typename T>
 inline T const& Point2d<T>::y() const
 {
     return m_y;
+}
+
+template<typename T>
+inline Point2d<T>& Point2d<T>::y(T const& y)
+{
+    m_y = y;
+    return *this;
 }
 
 template<typename T>

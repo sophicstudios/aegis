@@ -419,6 +419,20 @@
 		FAFB3A4F17B33A08002510F9 /* aftfs_localfilesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFB3A4E17B33A05002510F9 /* aftfs_localfilesystem.cpp */; };
 		FAFB3A5017B33A08002510F9 /* aftfs_localfilesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFB3A4E17B33A05002510F9 /* aftfs_localfilesystem.cpp */; };
 		FAFB3A5317B7C527002510F9 /* aftfs_localfilesystem.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFB3A5117B7C514002510F9 /* aftfs_localfilesystem.t.cpp */; };
+		FAFD77C11895B66E00734186 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFD77C01895B66D00734186 /* boost.framework */; };
+		FAFD77C21895B66E00734186 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFD77C01895B66D00734186 /* boost.framework */; };
+		FAFD77C31895B66E00734186 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFD77C01895B66D00734186 /* boost.framework */; };
+		FAFD77C41895B66E00734186 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFD77C01895B66D00734186 /* boost.framework */; };
+		FAFD77C51895B66E00734186 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFD77C01895B66D00734186 /* boost.framework */; };
+		FAFD77C61895B66E00734186 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFD77C01895B66D00734186 /* boost.framework */; };
+		FAFD77C81895B69300734186 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFD77C71895B69300734186 /* boost.framework */; };
+		FAFD77C91895B69300734186 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFD77C71895B69300734186 /* boost.framework */; };
+		FAFD77CB189D419F00734186 /* agtui_container.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFD77CA189D419F00734186 /* agtui_container.h */; };
+		FAFD77CC189D419F00734186 /* agtui_container.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFD77CA189D419F00734186 /* agtui_container.h */; };
+		FAFD77CE189D466300734186 /* agtui_widget.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFD77CD189D466300734186 /* agtui_widget.h */; };
+		FAFD77CF189D466300734186 /* agtui_widget.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFD77CD189D466300734186 /* agtui_widget.h */; };
+		FAFD77D1189D4B6200734186 /* agtui_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFD77D0189D4B6200734186 /* agtui_widget.cpp */; };
+		FAFD77D2189D4B6200734186 /* agtui_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFD77D0189D4B6200734186 /* agtui_widget.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -756,6 +770,11 @@
 		FAFB3A4B17B338F1002510F9 /* aftfs_localfilesystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftfs_localfilesystem.h; path = ../../../src/aft/aftfs/aftfs_localfilesystem.h; sourceTree = "<group>"; };
 		FAFB3A4E17B33A05002510F9 /* aftfs_localfilesystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftfs_localfilesystem.cpp; path = ../../../src/aft/aftfs/aftfs_localfilesystem.cpp; sourceTree = "<group>"; };
 		FAFB3A5117B7C514002510F9 /* aftfs_localfilesystem.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftfs_localfilesystem.t.cpp; path = ../../../src/aft/aftfs/aftfs_localfilesystem.t.cpp; sourceTree = "<group>"; };
+		FAFD77C01895B66D00734186 /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = ../../../../../../sdks/boost_1_55_0/osx/framework/boost.framework; sourceTree = "<group>"; };
+		FAFD77C71895B69300734186 /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = ../../../../../../sdks/boost_1_55_0/ios/framework/boost.framework; sourceTree = "<group>"; };
+		FAFD77CA189D419F00734186 /* agtui_container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtui_container.h; path = ../../../src/agt/agtui/agtui_container.h; sourceTree = "<group>"; };
+		FAFD77CD189D466300734186 /* agtui_widget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtui_widget.h; path = ../../../src/agt/agtui/agtui_widget.h; sourceTree = "<group>"; };
+		FAFD77D0189D4B6200734186 /* agtui_widget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtui_widget.cpp; path = ../../../src/agt/agtui/agtui_widget.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -763,6 +782,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAFD77C91895B69300734186 /* boost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,6 +790,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAFD77C61895B66E00734186 /* boost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -777,6 +798,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAFD77C11895B66E00734186 /* boost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,6 +806,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAFD77C31895B66E00734186 /* boost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,6 +815,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA833ECD15A790660044283D /* libaunit-macosx.a in Frameworks */,
+				FAFD77C41895B66E00734186 /* boost.framework in Frameworks */,
 				FA833ECC15A790600044283D /* libaft-macosx.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -802,6 +826,7 @@
 			files = (
 				FA875BBF15DF1BBE00C5E50B /* libagt-macosx.a in Frameworks */,
 				FA875BC015DF1BBE00C5E50B /* libaunit-macosx.a in Frameworks */,
+				FAFD77C51895B66E00734186 /* boost.framework in Frameworks */,
 				FA875BBE15DF1BB800C5E50B /* libaft-macosx.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -810,6 +835,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAFD77C81895B69300734186 /* boost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -817,6 +843,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAFD77C21895B66E00734186 /* boost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -884,6 +911,9 @@
 				FA5E9771176CCDCB0035F4D0 /* agtui_mouseevent.h */,
 				FA2318E4178E2E440050DE3A /* agtui_touchevent.cpp */,
 				FA2318E1178E2DDE0050DE3A /* agtui_touchevent.h */,
+				FAFD77CA189D419F00734186 /* agtui_container.h */,
+				FAFD77CD189D466300734186 /* agtui_widget.h */,
+				FAFD77D0189D4B6200734186 /* agtui_widget.cpp */,
 			);
 			name = agtui;
 			sourceTree = "<group>";
@@ -1068,6 +1098,8 @@
 		FA875BCB15E099D800C5E50B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FAFD77C71895B69300734186 /* boost.framework */,
+				FAFD77C01895B66D00734186 /* boost.framework */,
 				FA875BCC15E099D800C5E50B /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -1303,6 +1335,7 @@
 				FA2318B5178DD3B90050DE3A /* agtg_renderingcontext.h in Headers */,
 				FA2318B6178DD3BD0050DE3A /* agtg_texture.h in Headers */,
 				FA2318B7178DD3C10050DE3A /* agtg_vertex.h in Headers */,
+				FAFD77CF189D466300734186 /* agtui_widget.h in Headers */,
 				FA2318C1178DD40D0050DE3A /* agtm_matrix2.h in Headers */,
 				FA2318C2178DD4130050DE3A /* agtm_matrix3.h in Headers */,
 				FA2318C3178DD4170050DE3A /* agtm_matrix4.h in Headers */,
@@ -1317,6 +1350,7 @@
 				FA2318CC178DD4450050DE3A /* agtm_vector4.h in Headers */,
 				FA2318CD178DD4490050DE3A /* agtm_vectorutil.h in Headers */,
 				FA2318CE178DD44F0050DE3A /* agtr_image.h in Headers */,
+				FAFD77CC189D419F00734186 /* agtui_container.h in Headers */,
 				FA2318D0178DD4600050DE3A /* agtru_imageloader.h in Headers */,
 				FA2318CF178DD4550050DE3A /* agtru_imageloaderpng.h in Headers */,
 				FA2318D1178DD4640050DE3A /* agtui_mouseevent.h in Headers */,
@@ -1517,6 +1551,7 @@
 				FACBACA7170723ED008B2004 /* agtg_renderingcontext.h in Headers */,
 				FACBAC8D16FE6742008B2004 /* agtg_texture.h in Headers */,
 				FA424AB116F4D74600622AED /* agtg_vertex.h in Headers */,
+				FAFD77CE189D466300734186 /* agtui_widget.h in Headers */,
 				FAA6CDCD15DDB37400F480F0 /* agtm_matrix2.h in Headers */,
 				FAA6CDCF15DDB37400F480F0 /* agtm_matrix3.h in Headers */,
 				FAA6CDD115DDB37400F480F0 /* agtm_matrix4.h in Headers */,
@@ -1531,6 +1566,7 @@
 				FAA6CDDB15DDB37400F480F0 /* agtm_vector4.h in Headers */,
 				FAA6CDDD15DDB37400F480F0 /* agtm_vectorutil.h in Headers */,
 				FACBAC9116FE6F03008B2004 /* agtr_image.h in Headers */,
+				FAFD77CB189D419F00734186 /* agtui_container.h in Headers */,
 				FACBAC9616FE7666008B2004 /* agtru_imageloader.h in Headers */,
 				FACBAC9416FE70B7008B2004 /* agtru_imageloaderpng.h in Headers */,
 				FA5E9772176CCDCB0035F4D0 /* agtui_mouseevent.h in Headers */,
@@ -1725,6 +1761,7 @@
 			files = (
 				FA2318AF178DD37C0050DE3A /* agtg_colorrgba.cpp in Sources */,
 				FA2318B0178DD3860050DE3A /* agtg_mesh.cpp in Sources */,
+				FAFD77D2189D4B6200734186 /* agtui_widget.cpp in Sources */,
 				FA2318B1178DD38A0050DE3A /* agtg_renderingcontext.cpp in Sources */,
 				FA2318B2178DD3930050DE3A /* agtg_vertex.cpp in Sources */,
 				FA2318AB178DD2380050DE3A /* agtm_matrix2.cpp in Sources */,
@@ -1960,6 +1997,7 @@
 			files = (
 				FA424AB416F4D7CC00622AED /* agtg_colorrgba.cpp in Sources */,
 				FA424AAC16F4D6BF00622AED /* agtg_mesh.cpp in Sources */,
+				FAFD77D1189D4B6200734186 /* agtui_widget.cpp in Sources */,
 				FACBACAB17072886008B2004 /* agtg_renderingcontext.cpp in Sources */,
 				FA424AB016F4D74600622AED /* agtg_vertex.cpp in Sources */,
 				FAA6CDCC15DDB37400F480F0 /* agtm_matrix2.cpp in Sources */,
@@ -2031,6 +2069,11 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+					/Users/fizban/development/sdks/boost_1_55_0/ios/framework,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2051,6 +2094,11 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+					/Users/fizban/development/sdks/boost_1_55_0/ios/framework,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = "-ObjC";
@@ -2066,6 +2114,10 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				EXECUTABLE_PREFIX = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -2081,6 +2133,10 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				EXECUTABLE_PREFIX = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+				);
 				PRODUCT_NAME = "act-macosx";
 			};
 			name = Release;
@@ -2089,7 +2145,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2103,7 +2159,7 @@
 					"$(CONFIGURATION_BUILD_DIR)/**",
 				);
 				MACOSX_DEPLOYMENT_TARGET = "";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -2113,7 +2169,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2137,6 +2193,10 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				EXECUTABLE_PREFIX = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2153,6 +2213,10 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				EXECUTABLE_PREFIX = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -2164,6 +2228,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -2184,6 +2252,10 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2195,6 +2267,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2214,6 +2290,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -2224,6 +2304,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2241,6 +2325,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -2248,8 +2336,12 @@
 		FA875BD515E099D800C5E50B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+					/Users/fizban/development/sdks/boost_1_55_0/ios/framework,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2257,7 +2349,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2268,10 +2360,14 @@
 		FA875BD615E099D800C5E50B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+					/Users/fizban/development/sdks/boost_1_55_0/ios/framework,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2285,6 +2381,10 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2301,6 +2401,10 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

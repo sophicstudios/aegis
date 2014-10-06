@@ -17,7 +17,11 @@ public:
     
     T const& width() const;
     
+    Size2d<T>& width(T const& width);
+    
     T const& height() const;
+
+    Size2d<T>& height(T const& height);
     
 private:
     T m_width;
@@ -53,9 +57,23 @@ T const& Size2d<T>::width() const
 }
 
 template<typename T>
+Size2d<T>& Size2d<T>::width(T const& width)
+{
+    m_width = width;
+    return *this;
+}
+
+template<typename T>
 T const& Size2d<T>::height() const
 {
     return m_height;
+}
+
+template<typename T>
+Size2d<T>& Size2d<T>::height(T const& height)
+{
+    m_height = height;
+    return *this;
 }
 
 template<typename T>
