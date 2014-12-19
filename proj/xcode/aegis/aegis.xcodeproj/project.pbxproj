@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA14A0AA19E6088C0058A4CA /* agtr_resource.h in Headers */ = {isa = PBXBuildFile; fileRef = FA14A0A919E6088C0058A4CA /* agtr_resource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA14A0AB19E6088C0058A4CA /* agtr_resource.h in Headers */ = {isa = PBXBuildFile; fileRef = FA14A0A919E6088C0058A4CA /* agtr_resource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA223AF6175A1B29000FE3E9 /* agtg_colorrgba.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA223AF5175A1B29000FE3E9 /* agtg_colorrgba.t.cpp */; };
 		FA2317611784742A0050DE3A /* aftc_construct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EE215A7AD520044283D /* aftc_construct.cpp */; };
 		FA231762178474340050DE3A /* aftc_packedstringmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EE415A7AD520044283D /* aftc_packedstringmap.cpp */; };
@@ -139,8 +141,6 @@
 		FA2318CC178DD4450050DE3A /* agtm_vector4.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA6CDC515DDB37400F480F0 /* agtm_vector4.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA2318CD178DD4490050DE3A /* agtm_vectorutil.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA6CDC715DDB37400F480F0 /* agtm_vectorutil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA2318CE178DD44F0050DE3A /* agtr_image.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBAC9016FE6F03008B2004 /* agtr_image.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA2318CF178DD4550050DE3A /* agtru_imageloaderpng.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBAC9316FE70B7008B2004 /* agtru_imageloaderpng.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA2318D0178DD4600050DE3A /* agtru_imageloader.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBAC9516FE7665008B2004 /* agtru_imageloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA2318D1178DD4640050DE3A /* agtui_mouseevent.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5E9771176CCDCB0035F4D0 /* agtui_mouseevent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA2318E2178E2DDE0050DE3A /* agtui_touchevent.h in Headers */ = {isa = PBXBuildFile; fileRef = FA2318E1178E2DDE0050DE3A /* agtui_touchevent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA2318E3178E2DDE0050DE3A /* agtui_touchevent.h in Headers */ = {isa = PBXBuildFile; fileRef = FA2318E1178E2DDE0050DE3A /* agtui_touchevent.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -177,6 +177,26 @@
 		FA3B86E317A933CA0042C241 /* actp_win32thread.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86C617A933CA0042C241 /* actp_win32thread.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA3B86E617A933FC0042C241 /* acts_platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86E417A933FC0042C241 /* acts_platform.cpp */; };
 		FA3B86E717A933FC0042C241 /* acts_platform.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86E517A933FC0042C241 /* acts_platform.h */; };
+		FA3E4D351A2D45CF00E58703 /* agta_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3E4D331A2D45CF00E58703 /* agta_engine.cpp */; };
+		FA3E4D361A2D45CF00E58703 /* agta_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3E4D331A2D45CF00E58703 /* agta_engine.cpp */; };
+		FA3E4D371A2D45CF00E58703 /* agta_engine.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E4D341A2D45CF00E58703 /* agta_engine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3E4D381A2D45CF00E58703 /* agta_engine.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E4D341A2D45CF00E58703 /* agta_engine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3E4D3B1A2D482400E58703 /* agta_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3E4D391A2D482400E58703 /* agta_system.cpp */; };
+		FA3E4D3C1A2D482400E58703 /* agta_system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3E4D391A2D482400E58703 /* agta_system.cpp */; };
+		FA3E4D3D1A2D482400E58703 /* agta_system.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E4D3A1A2D482400E58703 /* agta_system.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3E4D3E1A2D482400E58703 /* agta_system.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E4D3A1A2D482400E58703 /* agta_system.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3E4D411A2EAA3100E58703 /* agta_transform2dcomponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3E4D3F1A2EAA3100E58703 /* agta_transform2dcomponent.cpp */; };
+		FA3E4D421A2EAA3100E58703 /* agta_transform2dcomponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3E4D3F1A2EAA3100E58703 /* agta_transform2dcomponent.cpp */; };
+		FA3E4D431A2EAA3100E58703 /* agta_transform2dcomponent.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E4D401A2EAA3100E58703 /* agta_transform2dcomponent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3E4D441A2EAA3100E58703 /* agta_transform2dcomponent.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E4D401A2EAA3100E58703 /* agta_transform2dcomponent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3E4D471A2EAFE800E58703 /* agta_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3E4D451A2EAFE800E58703 /* agta_component.cpp */; };
+		FA3E4D481A2EAFE800E58703 /* agta_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3E4D451A2EAFE800E58703 /* agta_component.cpp */; };
+		FA3E4D491A2EAFE800E58703 /* agta_component.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E4D461A2EAFE800E58703 /* agta_component.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3E4D4A1A2EAFE800E58703 /* agta_component.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E4D461A2EAFE800E58703 /* agta_component.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3E4D511A32BB5600E58703 /* agta_rendersystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3E4D4F1A32BB5600E58703 /* agta_rendersystem.cpp */; };
+		FA3E4D521A32BB5600E58703 /* agta_rendersystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3E4D4F1A32BB5600E58703 /* agta_rendersystem.cpp */; };
+		FA3E4D531A32BB5600E58703 /* agta_rendersystem.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E4D501A32BB5600E58703 /* agta_rendersystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA3E4D541A32BB5600E58703 /* agta_rendersystem.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3E4D501A32BB5600E58703 /* agta_rendersystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA424AAC16F4D6BF00622AED /* agtg_mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA424AAA16F4D6BF00622AED /* agtg_mesh.cpp */; };
 		FA424AAD16F4D6BF00622AED /* agtg_mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = FA424AAB16F4D6BF00622AED /* agtg_mesh.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA424AB016F4D74600622AED /* agtg_vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA424AAE16F4D74600622AED /* agtg_vertex.cpp */; };
@@ -402,10 +422,16 @@
 		FAAEE5BA168674A200F587BE /* aftt_years.h in Headers */ = {isa = PBXBuildFile; fileRef = FAAEE5B8168674A100F587BE /* aftt_years.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAAEE5BC1686A69900F587BE /* aftt_microseconds.h in Headers */ = {isa = PBXBuildFile; fileRef = FAAEE5BB1686A69800F587BE /* aftt_microseconds.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAAEE5BD1686A69900F587BE /* aftt_microseconds.h in Headers */ = {isa = PBXBuildFile; fileRef = FAAEE5BB1686A69800F587BE /* aftt_microseconds.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAC45A8E19E9A31000329DAB /* agtr_resource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAC45A8D19E9A31000329DAB /* agtr_resource.cpp */; };
+		FAC45A8F19E9A31000329DAB /* agtr_resource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAC45A8D19E9A31000329DAB /* agtr_resource.cpp */; };
+		FAC45A9119EF795B00329DAB /* agtr_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAC45A9019EF795B00329DAB /* agtr_image.cpp */; };
+		FAC45A9219EF795B00329DAB /* agtr_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAC45A9019EF795B00329DAB /* agtr_image.cpp */; };
+		FAC45A9519EF79C900329DAB /* agtr_imageloaderpng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAC45A9319EF79C900329DAB /* agtr_imageloaderpng.cpp */; };
+		FAC45A9619EF79C900329DAB /* agtr_imageloaderpng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAC45A9319EF79C900329DAB /* agtr_imageloaderpng.cpp */; };
+		FAC45A9719EF79C900329DAB /* agtr_imageloaderpng.h in Headers */ = {isa = PBXBuildFile; fileRef = FAC45A9419EF79C900329DAB /* agtr_imageloaderpng.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAC45A9819EF79C900329DAB /* agtr_imageloaderpng.h in Headers */ = {isa = PBXBuildFile; fileRef = FAC45A9419EF79C900329DAB /* agtr_imageloaderpng.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FACBAC8D16FE6742008B2004 /* agtg_texture.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBAC8C16FE6742008B2004 /* agtg_texture.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FACBAC9116FE6F03008B2004 /* agtr_image.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBAC9016FE6F03008B2004 /* agtr_image.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FACBAC9416FE70B7008B2004 /* agtru_imageloaderpng.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBAC9316FE70B7008B2004 /* agtru_imageloaderpng.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FACBAC9616FE7666008B2004 /* agtru_imageloader.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBAC9516FE7665008B2004 /* agtru_imageloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FACBAC9816FE7C29008B2004 /* agtm_rect.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBAC9716FE7C29008B2004 /* agtm_rect.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FACBAC9A16FE8043008B2004 /* agtm_size2d.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBAC9916FE8043008B2004 /* agtm_size2d.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FACBAC9C16FE8D3E008B2004 /* agtm_rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FACBAC9B16FE8D3E008B2004 /* agtm_rect.cpp */; };
@@ -419,18 +445,10 @@
 		FAFB3A4F17B33A08002510F9 /* aftfs_localfilesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFB3A4E17B33A05002510F9 /* aftfs_localfilesystem.cpp */; };
 		FAFB3A5017B33A08002510F9 /* aftfs_localfilesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFB3A4E17B33A05002510F9 /* aftfs_localfilesystem.cpp */; };
 		FAFB3A5317B7C527002510F9 /* aftfs_localfilesystem.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFB3A5117B7C514002510F9 /* aftfs_localfilesystem.t.cpp */; };
-		FAFD77C11895B66E00734186 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFD77C01895B66D00734186 /* boost.framework */; };
-		FAFD77C21895B66E00734186 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFD77C01895B66D00734186 /* boost.framework */; };
-		FAFD77C31895B66E00734186 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFD77C01895B66D00734186 /* boost.framework */; };
-		FAFD77C41895B66E00734186 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFD77C01895B66D00734186 /* boost.framework */; };
-		FAFD77C51895B66E00734186 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFD77C01895B66D00734186 /* boost.framework */; };
-		FAFD77C61895B66E00734186 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFD77C01895B66D00734186 /* boost.framework */; };
-		FAFD77C81895B69300734186 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFD77C71895B69300734186 /* boost.framework */; };
-		FAFD77C91895B69300734186 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFD77C71895B69300734186 /* boost.framework */; };
-		FAFD77CB189D419F00734186 /* agtui_container.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFD77CA189D419F00734186 /* agtui_container.h */; };
-		FAFD77CC189D419F00734186 /* agtui_container.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFD77CA189D419F00734186 /* agtui_container.h */; };
-		FAFD77CE189D466300734186 /* agtui_widget.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFD77CD189D466300734186 /* agtui_widget.h */; };
-		FAFD77CF189D466300734186 /* agtui_widget.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFD77CD189D466300734186 /* agtui_widget.h */; };
+		FAFD77CB189D419F00734186 /* agtui_container.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFD77CA189D419F00734186 /* agtui_container.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAFD77CC189D419F00734186 /* agtui_container.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFD77CA189D419F00734186 /* agtui_container.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAFD77CE189D466300734186 /* agtui_widget.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFD77CD189D466300734186 /* agtui_widget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAFD77CF189D466300734186 /* agtui_widget.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFD77CD189D466300734186 /* agtui_widget.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAFD77D1189D4B6200734186 /* agtui_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFD77D0189D4B6200734186 /* agtui_widget.cpp */; };
 		FAFD77D2189D4B6200734186 /* agtui_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFD77D0189D4B6200734186 /* agtui_widget.cpp */; };
 /* End PBXBuildFile section */
@@ -516,6 +534,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FA14A0A919E6088C0058A4CA /* agtr_resource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtr_resource.h; path = ../../../src/agt/agtr/agtr_resource.h; sourceTree = "<group>"; };
 		FA223AF5175A1B29000FE3E9 /* agtg_colorrgba.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtg_colorrgba.t.cpp; path = ../../../src/agt/agtg/agtg_colorrgba.t.cpp; sourceTree = "<group>"; };
 		FA2318A9178DD1CD0050DE3A /* libagt-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libagt-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA2318E1178E2DDE0050DE3A /* agtui_touchevent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtui_touchevent.h; path = ../../../src/agt/agtui/agtui_touchevent.h; sourceTree = "<group>"; };
@@ -552,6 +571,16 @@
 		FA3B86C617A933CA0042C241 /* actp_win32thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_win32thread.h; path = ../../../src/act/actp/actp_win32thread.h; sourceTree = "<group>"; };
 		FA3B86E417A933FC0042C241 /* acts_platform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = acts_platform.cpp; path = ../../../src/act/acts/acts_platform.cpp; sourceTree = "<group>"; };
 		FA3B86E517A933FC0042C241 /* acts_platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = acts_platform.h; path = ../../../src/act/acts/acts_platform.h; sourceTree = "<group>"; };
+		FA3E4D331A2D45CF00E58703 /* agta_engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_engine.cpp; path = ../../../src/agt/agta/agta_engine.cpp; sourceTree = "<group>"; };
+		FA3E4D341A2D45CF00E58703 /* agta_engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_engine.h; path = ../../../src/agt/agta/agta_engine.h; sourceTree = "<group>"; };
+		FA3E4D391A2D482400E58703 /* agta_system.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_system.cpp; path = ../../../src/agt/agta/agta_system.cpp; sourceTree = "<group>"; };
+		FA3E4D3A1A2D482400E58703 /* agta_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_system.h; path = ../../../src/agt/agta/agta_system.h; sourceTree = "<group>"; };
+		FA3E4D3F1A2EAA3100E58703 /* agta_transform2dcomponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_transform2dcomponent.cpp; path = ../../../src/agt/agta/agta_transform2dcomponent.cpp; sourceTree = "<group>"; };
+		FA3E4D401A2EAA3100E58703 /* agta_transform2dcomponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_transform2dcomponent.h; path = ../../../src/agt/agta/agta_transform2dcomponent.h; sourceTree = "<group>"; };
+		FA3E4D451A2EAFE800E58703 /* agta_component.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_component.cpp; path = ../../../src/agt/agta/agta_component.cpp; sourceTree = "<group>"; };
+		FA3E4D461A2EAFE800E58703 /* agta_component.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_component.h; path = ../../../src/agt/agta/agta_component.h; sourceTree = "<group>"; };
+		FA3E4D4F1A32BB5600E58703 /* agta_rendersystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_rendersystem.cpp; path = ../../../src/agt/agta/agta_rendersystem.cpp; sourceTree = "<group>"; };
+		FA3E4D501A32BB5600E58703 /* agta_rendersystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_rendersystem.h; path = ../../../src/agt/agta/agta_rendersystem.h; sourceTree = "<group>"; };
 		FA424AAA16F4D6BF00622AED /* agtg_mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtg_mesh.cpp; path = ../../../src/agt/agtg/agtg_mesh.cpp; sourceTree = "<group>"; };
 		FA424AAB16F4D6BF00622AED /* agtg_mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtg_mesh.h; path = ../../../src/agt/agtg/agtg_mesh.h; sourceTree = "<group>"; };
 		FA424AAE16F4D74600622AED /* agtg_vertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtg_vertex.cpp; path = ../../../src/agt/agtg/agtg_vertex.cpp; sourceTree = "<group>"; };
@@ -656,7 +685,6 @@
 		FA875BB015DF1B9800C5E50B /* agtm_point3d.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtm_point3d.t.cpp; path = ../../../src/agt/agtm/agtm_point3d.t.cpp; sourceTree = "<group>"; };
 		FA875BC115E0330900C5E50B /* agt.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agt.t.cpp; path = ../../../src/agt/agt.t.cpp; sourceTree = "<group>"; };
 		FA875BCA15E099D800C5E50B /* libaft-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libaft-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA875BCC15E099D800C5E50B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FA9B158415A9DE900017DCD5 /* aftio_flags.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftio_flags.cpp; path = ../../../src/aft/aftio/aftio_flags.cpp; sourceTree = "<group>"; };
 		FA9B158515A9DE900017DCD5 /* aftio_flags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftio_flags.h; path = ../../../src/aft/aftio/aftio_flags.h; sourceTree = "<group>"; };
 		FA9B158615A9DE900017DCD5 /* aftio_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftio_reader.cpp; path = ../../../src/aft/aftio/aftio_reader.cpp; sourceTree = "<group>"; };
@@ -756,10 +784,12 @@
 		FAAEE5B5168673F400F587BE /* aftt_weeks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftt_weeks.h; path = ../../../src/aft/aftt/aftt_weeks.h; sourceTree = "<group>"; };
 		FAAEE5B8168674A100F587BE /* aftt_years.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftt_years.h; path = ../../../src/aft/aftt/aftt_years.h; sourceTree = "<group>"; };
 		FAAEE5BB1686A69800F587BE /* aftt_microseconds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftt_microseconds.h; path = ../../../src/aft/aftt/aftt_microseconds.h; sourceTree = "<group>"; };
+		FAC45A8D19E9A31000329DAB /* agtr_resource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtr_resource.cpp; path = ../../../src/agt/agtr/agtr_resource.cpp; sourceTree = "<group>"; };
+		FAC45A9019EF795B00329DAB /* agtr_image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtr_image.cpp; path = ../../../src/agt/agtr/agtr_image.cpp; sourceTree = "<group>"; };
+		FAC45A9319EF79C900329DAB /* agtr_imageloaderpng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtr_imageloaderpng.cpp; path = ../../../src/agt/agtr/agtr_imageloaderpng.cpp; sourceTree = "<group>"; };
+		FAC45A9419EF79C900329DAB /* agtr_imageloaderpng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtr_imageloaderpng.h; path = ../../../src/agt/agtr/agtr_imageloaderpng.h; sourceTree = "<group>"; };
 		FACBAC8C16FE6742008B2004 /* agtg_texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtg_texture.h; path = ../../../src/agt/agtg/agtg_texture.h; sourceTree = "<group>"; };
 		FACBAC9016FE6F03008B2004 /* agtr_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtr_image.h; path = ../../../src/agt/agtr/agtr_image.h; sourceTree = "<group>"; };
-		FACBAC9316FE70B7008B2004 /* agtru_imageloaderpng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtru_imageloaderpng.h; path = ../../../src/agt/agtru/agtru_imageloaderpng.h; sourceTree = "<group>"; };
-		FACBAC9516FE7665008B2004 /* agtru_imageloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtru_imageloader.h; path = ../../../src/agt/agtru/agtru_imageloader.h; sourceTree = "<group>"; };
 		FACBAC9716FE7C29008B2004 /* agtm_rect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtm_rect.h; path = ../../../src/agt/agtm/agtm_rect.h; sourceTree = "<group>"; };
 		FACBAC9916FE8043008B2004 /* agtm_size2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtm_size2d.h; path = ../../../src/agt/agtm/agtm_size2d.h; sourceTree = "<group>"; };
 		FACBAC9B16FE8D3E008B2004 /* agtm_rect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtm_rect.cpp; path = ../../../src/agt/agtm/agtm_rect.cpp; sourceTree = "<group>"; };
@@ -770,8 +800,6 @@
 		FAFB3A4B17B338F1002510F9 /* aftfs_localfilesystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftfs_localfilesystem.h; path = ../../../src/aft/aftfs/aftfs_localfilesystem.h; sourceTree = "<group>"; };
 		FAFB3A4E17B33A05002510F9 /* aftfs_localfilesystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftfs_localfilesystem.cpp; path = ../../../src/aft/aftfs/aftfs_localfilesystem.cpp; sourceTree = "<group>"; };
 		FAFB3A5117B7C514002510F9 /* aftfs_localfilesystem.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftfs_localfilesystem.t.cpp; path = ../../../src/aft/aftfs/aftfs_localfilesystem.t.cpp; sourceTree = "<group>"; };
-		FAFD77C01895B66D00734186 /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = ../../../../../../sdks/boost_1_55_0/osx/framework/boost.framework; sourceTree = "<group>"; };
-		FAFD77C71895B69300734186 /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = ../../../../../../sdks/boost_1_55_0/ios/framework/boost.framework; sourceTree = "<group>"; };
 		FAFD77CA189D419F00734186 /* agtui_container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtui_container.h; path = ../../../src/agt/agtui/agtui_container.h; sourceTree = "<group>"; };
 		FAFD77CD189D466300734186 /* agtui_widget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtui_widget.h; path = ../../../src/agt/agtui/agtui_widget.h; sourceTree = "<group>"; };
 		FAFD77D0189D4B6200734186 /* agtui_widget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtui_widget.cpp; path = ../../../src/agt/agtui/agtui_widget.cpp; sourceTree = "<group>"; };
@@ -782,7 +810,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAFD77C91895B69300734186 /* boost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -790,7 +817,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAFD77C61895B66E00734186 /* boost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -798,7 +824,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAFD77C11895B66E00734186 /* boost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -806,7 +831,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAFD77C31895B66E00734186 /* boost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -815,7 +839,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA833ECD15A790660044283D /* libaunit-macosx.a in Frameworks */,
-				FAFD77C41895B66E00734186 /* boost.framework in Frameworks */,
 				FA833ECC15A790600044283D /* libaft-macosx.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -826,7 +849,6 @@
 			files = (
 				FA875BBF15DF1BBE00C5E50B /* libagt-macosx.a in Frameworks */,
 				FA875BC015DF1BBE00C5E50B /* libaunit-macosx.a in Frameworks */,
-				FAFD77C51895B66E00734186 /* boost.framework in Frameworks */,
 				FA875BBE15DF1BB800C5E50B /* libaft-macosx.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -835,7 +857,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAFD77C81895B69300734186 /* boost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -843,7 +864,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAFD77C21895B66E00734186 /* boost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -902,6 +922,23 @@
 				FA3B86C617A933CA0042C241 /* actp_win32thread.h */,
 			);
 			name = actp;
+			sourceTree = "<group>";
+		};
+		FA3E4D321A2D447E00E58703 /* agta */ = {
+			isa = PBXGroup;
+			children = (
+				FA3E4D341A2D45CF00E58703 /* agta_engine.h */,
+				FA3E4D331A2D45CF00E58703 /* agta_engine.cpp */,
+				FA3E4D3A1A2D482400E58703 /* agta_system.h */,
+				FA3E4D391A2D482400E58703 /* agta_system.cpp */,
+				FA3E4D401A2EAA3100E58703 /* agta_transform2dcomponent.h */,
+				FA3E4D3F1A2EAA3100E58703 /* agta_transform2dcomponent.cpp */,
+				FA3E4D461A2EAFE800E58703 /* agta_component.h */,
+				FA3E4D451A2EAFE800E58703 /* agta_component.cpp */,
+				FA3E4D501A32BB5600E58703 /* agta_rendersystem.h */,
+				FA3E4D4F1A32BB5600E58703 /* agta_rendersystem.cpp */,
+			);
+			name = agta;
 			sourceTree = "<group>";
 		};
 		FA5E976F176CCD600035F4D0 /* agtui */ = {
@@ -1098,9 +1135,8 @@
 		FA875BCB15E099D800C5E50B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FAFD77C71895B69300734186 /* boost.framework */,
-				FAFD77C01895B66D00734186 /* boost.framework */,
-				FA875BCC15E099D800C5E50B /* Foundation.framework */,
+				FAC45A8A19E99F7B00329DAB /* macosx */,
+				FAC45A8919E99F7500329DAB /* ios */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1240,6 +1276,7 @@
 			isa = PBXGroup;
 			children = (
 				FA875BC115E0330900C5E50B /* agt.t.cpp */,
+				FA3E4D321A2D447E00E58703 /* agta */,
 				FAA6CD9315DDACDF00F480F0 /* agtg */,
 				FAA6CD9415DDAD3B00F480F0 /* agtm */,
 				FACBAC8F16FE67CC008B2004 /* agtr */,
@@ -1306,10 +1343,29 @@
 			name = agtm;
 			sourceTree = "<group>";
 		};
+		FAC45A8919E99F7500329DAB /* ios */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ios;
+			sourceTree = "<group>";
+		};
+		FAC45A8A19E99F7B00329DAB /* macosx */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = macosx;
+			sourceTree = "<group>";
+		};
 		FACBAC8F16FE67CC008B2004 /* agtr */ = {
 			isa = PBXGroup;
 			children = (
 				FACBAC9016FE6F03008B2004 /* agtr_image.h */,
+				FAC45A9019EF795B00329DAB /* agtr_image.cpp */,
+				FA14A0A919E6088C0058A4CA /* agtr_resource.h */,
+				FAC45A8D19E9A31000329DAB /* agtr_resource.cpp */,
+				FAC45A9319EF79C900329DAB /* agtr_imageloaderpng.cpp */,
+				FAC45A9419EF79C900329DAB /* agtr_imageloaderpng.h */,
 			);
 			name = agtr;
 			sourceTree = "<group>";
@@ -1317,8 +1373,6 @@
 		FACBAC9216FE7080008B2004 /* agtru */ = {
 			isa = PBXGroup;
 			children = (
-				FACBAC9516FE7665008B2004 /* agtru_imageloader.h */,
-				FACBAC9316FE70B7008B2004 /* agtru_imageloaderpng.h */,
 			);
 			name = agtru;
 			sourceTree = "<group>";
@@ -1335,7 +1389,6 @@
 				FA2318B5178DD3B90050DE3A /* agtg_renderingcontext.h in Headers */,
 				FA2318B6178DD3BD0050DE3A /* agtg_texture.h in Headers */,
 				FA2318B7178DD3C10050DE3A /* agtg_vertex.h in Headers */,
-				FAFD77CF189D466300734186 /* agtui_widget.h in Headers */,
 				FA2318C1178DD40D0050DE3A /* agtm_matrix2.h in Headers */,
 				FA2318C2178DD4130050DE3A /* agtm_matrix3.h in Headers */,
 				FA2318C3178DD4170050DE3A /* agtm_matrix4.h in Headers */,
@@ -1349,10 +1402,16 @@
 				FA2318CB178DD4420050DE3A /* agtm_vector3.h in Headers */,
 				FA2318CC178DD4450050DE3A /* agtm_vector4.h in Headers */,
 				FA2318CD178DD4490050DE3A /* agtm_vectorutil.h in Headers */,
+				FAFD77CF189D466300734186 /* agtui_widget.h in Headers */,
+				FAC45A9819EF79C900329DAB /* agtr_imageloaderpng.h in Headers */,
+				FA3E4D541A32BB5600E58703 /* agta_rendersystem.h in Headers */,
+				FA3E4D441A2EAA3100E58703 /* agta_transform2dcomponent.h in Headers */,
+				FA3E4D3E1A2D482400E58703 /* agta_system.h in Headers */,
+				FA3E4D381A2D45CF00E58703 /* agta_engine.h in Headers */,
+				FA3E4D4A1A2EAFE800E58703 /* agta_component.h in Headers */,
+				FA14A0AB19E6088C0058A4CA /* agtr_resource.h in Headers */,
 				FA2318CE178DD44F0050DE3A /* agtr_image.h in Headers */,
 				FAFD77CC189D419F00734186 /* agtui_container.h in Headers */,
-				FA2318D0178DD4600050DE3A /* agtru_imageloader.h in Headers */,
-				FA2318CF178DD4550050DE3A /* agtru_imageloaderpng.h in Headers */,
 				FA2318D1178DD4640050DE3A /* agtui_mouseevent.h in Headers */,
 				FA2318E3178E2DDE0050DE3A /* agtui_touchevent.h in Headers */,
 			);
@@ -1551,7 +1610,6 @@
 				FACBACA7170723ED008B2004 /* agtg_renderingcontext.h in Headers */,
 				FACBAC8D16FE6742008B2004 /* agtg_texture.h in Headers */,
 				FA424AB116F4D74600622AED /* agtg_vertex.h in Headers */,
-				FAFD77CE189D466300734186 /* agtui_widget.h in Headers */,
 				FAA6CDCD15DDB37400F480F0 /* agtm_matrix2.h in Headers */,
 				FAA6CDCF15DDB37400F480F0 /* agtm_matrix3.h in Headers */,
 				FAA6CDD115DDB37400F480F0 /* agtm_matrix4.h in Headers */,
@@ -1564,11 +1622,17 @@
 				FAA6CDD715DDB37400F480F0 /* agtm_vector2.h in Headers */,
 				FAA6CDD915DDB37400F480F0 /* agtm_vector3.h in Headers */,
 				FAA6CDDB15DDB37400F480F0 /* agtm_vector4.h in Headers */,
+				FA14A0AA19E6088C0058A4CA /* agtr_resource.h in Headers */,
+				FAC45A9719EF79C900329DAB /* agtr_imageloaderpng.h in Headers */,
 				FAA6CDDD15DDB37400F480F0 /* agtm_vectorutil.h in Headers */,
+				FA3E4D531A32BB5600E58703 /* agta_rendersystem.h in Headers */,
+				FA3E4D431A2EAA3100E58703 /* agta_transform2dcomponent.h in Headers */,
+				FA3E4D3D1A2D482400E58703 /* agta_system.h in Headers */,
+				FA3E4D371A2D45CF00E58703 /* agta_engine.h in Headers */,
+				FA3E4D491A2EAFE800E58703 /* agta_component.h in Headers */,
 				FACBAC9116FE6F03008B2004 /* agtr_image.h in Headers */,
+				FAFD77CE189D466300734186 /* agtui_widget.h in Headers */,
 				FAFD77CB189D419F00734186 /* agtui_container.h in Headers */,
-				FACBAC9616FE7666008B2004 /* agtru_imageloader.h in Headers */,
-				FACBAC9416FE70B7008B2004 /* agtru_imageloaderpng.h in Headers */,
 				FA5E9772176CCDCB0035F4D0 /* agtui_mouseevent.h in Headers */,
 				FA2318E2178E2DDE0050DE3A /* agtui_touchevent.h in Headers */,
 			);
@@ -1761,16 +1825,24 @@
 			files = (
 				FA2318AF178DD37C0050DE3A /* agtg_colorrgba.cpp in Sources */,
 				FA2318B0178DD3860050DE3A /* agtg_mesh.cpp in Sources */,
+				FA3E4D361A2D45CF00E58703 /* agta_engine.cpp in Sources */,
+				FA3E4D481A2EAFE800E58703 /* agta_component.cpp in Sources */,
 				FAFD77D2189D4B6200734186 /* agtui_widget.cpp in Sources */,
 				FA2318B1178DD38A0050DE3A /* agtg_renderingcontext.cpp in Sources */,
 				FA2318B2178DD3930050DE3A /* agtg_vertex.cpp in Sources */,
 				FA2318AB178DD2380050DE3A /* agtm_matrix2.cpp in Sources */,
+				FAC45A8F19E9A31000329DAB /* agtr_resource.cpp in Sources */,
+				FAC45A9219EF795B00329DAB /* agtr_image.cpp in Sources */,
 				FA2318AC178DD2410050DE3A /* agtm_matrix3.cpp in Sources */,
 				FA2318AD178DD2480050DE3A /* agtm_matrix4.cpp in Sources */,
+				FA3E4D421A2EAA3100E58703 /* agta_transform2dcomponent.cpp in Sources */,
+				FA3E4D3C1A2D482400E58703 /* agta_system.cpp in Sources */,
 				FA2318AE178DD24D0050DE3A /* agtm_matrixutil.cpp in Sources */,
 				FA2318B8178DD3D60050DE3A /* agtm_point2d.cpp in Sources */,
+				FAC45A9619EF79C900329DAB /* agtr_imageloaderpng.cpp in Sources */,
 				FA2318B9178DD3D90050DE3A /* agtm_point3d.cpp in Sources */,
 				FA2318BA178DD3DF0050DE3A /* agtm_quaternion.cpp in Sources */,
+				FA3E4D521A32BB5600E58703 /* agta_rendersystem.cpp in Sources */,
 				FA2318BB178DD3E30050DE3A /* agtm_rect.cpp in Sources */,
 				FA2318BC178DD3E60050DE3A /* agtm_size2d.cpp in Sources */,
 				FA2318BD178DD3EA0050DE3A /* agtm_vector2.cpp in Sources */,
@@ -1997,16 +2069,24 @@
 			files = (
 				FA424AB416F4D7CC00622AED /* agtg_colorrgba.cpp in Sources */,
 				FA424AAC16F4D6BF00622AED /* agtg_mesh.cpp in Sources */,
+				FA3E4D351A2D45CF00E58703 /* agta_engine.cpp in Sources */,
+				FA3E4D471A2EAFE800E58703 /* agta_component.cpp in Sources */,
 				FAFD77D1189D4B6200734186 /* agtui_widget.cpp in Sources */,
 				FACBACAB17072886008B2004 /* agtg_renderingcontext.cpp in Sources */,
 				FA424AB016F4D74600622AED /* agtg_vertex.cpp in Sources */,
 				FAA6CDCC15DDB37400F480F0 /* agtm_matrix2.cpp in Sources */,
+				FAC45A8E19E9A31000329DAB /* agtr_resource.cpp in Sources */,
+				FAC45A9119EF795B00329DAB /* agtr_image.cpp in Sources */,
 				FAA6CDCE15DDB37400F480F0 /* agtm_matrix3.cpp in Sources */,
 				FA5E9774176D0B760035F4D0 /* agtui_mouseevent.cpp in Sources */,
+				FA3E4D411A2EAA3100E58703 /* agta_transform2dcomponent.cpp in Sources */,
+				FA3E4D3B1A2D482400E58703 /* agta_system.cpp in Sources */,
 				FAA6CDD015DDB37400F480F0 /* agtm_matrix4.cpp in Sources */,
 				FAA6CDD215DDB37400F480F0 /* agtm_matrixutil.cpp in Sources */,
+				FAC45A9519EF79C900329DAB /* agtr_imageloaderpng.cpp in Sources */,
 				FAA6CDDE15DDB37400F480F0 /* agtm_point2d.cpp in Sources */,
 				FAA6CDE015DDB37400F480F0 /* agtm_point3d.cpp in Sources */,
+				FA3E4D511A32BB5600E58703 /* agta_rendersystem.cpp in Sources */,
 				FAA6CDD415DDB37400F480F0 /* agtm_quaternion.cpp in Sources */,
 				FACBAC9C16FE8D3E008B2004 /* agtm_rect.cpp in Sources */,
 				FACBAC9E16FE8D6B008B2004 /* agtm_size2d.cpp in Sources */,
@@ -2067,13 +2147,7 @@
 		FA2318A7178DD1CD0050DE3A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
-					/Users/fizban/development/sdks/boost_1_55_0/ios/framework,
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2081,6 +2155,12 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/fizban/development/sdks/include,
+					"$(CONFIGURATION_BUILD_DIR)/**",
+					/opt/local/include,
+					/usr/local/include,
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "agt-ios";
@@ -2092,14 +2172,14 @@
 		FA2318A8178DD1CD0050DE3A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
-					/Users/fizban/development/sdks/boost_1_55_0/ios/framework,
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				HEADER_SEARCH_PATHS = (
+					/Users/fizban/development/sdks/include,
+					"$(CONFIGURATION_BUILD_DIR)/**",
+					/opt/local/include,
+					/usr/local/include,
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "agt-ios";
@@ -2144,10 +2224,10 @@
 		FA833E1C15A7501D0044283D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
-				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_CXX_LIBRARY = "libc++";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -2155,10 +2235,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(BOOST_INCLUDE)",
 					"$(CONFIGURATION_BUILD_DIR)/**",
+					/opt/local/include,
+					/usr/local/include,
 				);
-				MACOSX_DEPLOYMENT_TARGET = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -2168,10 +2250,10 @@
 		FA833E1D15A7501D0044283D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
-				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_CXX_LIBRARY = "libc++";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -2179,10 +2261,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(BOOST_INCLUDE)",
 					"$(CONFIGURATION_BUILD_DIR)/**",
+					/opt/local/include,
+					/usr/local/include,
 				);
-				MACOSX_DEPLOYMENT_TARGET = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -2193,11 +2277,7 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				EXECUTABLE_PREFIX = "$(inherited)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -2213,11 +2293,7 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				EXECUTABLE_PREFIX = "$(inherited)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -2315,6 +2391,11 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+					/usr/local/include,
+					"$(CONFIGURATION_BUILD_DIR)/**",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2329,6 +2410,11 @@
 					"$(inherited)",
 					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
 				);
+				HEADER_SEARCH_PATHS = (
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+					/usr/local/include,
+					"$(CONFIGURATION_BUILD_DIR)/**",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -2337,11 +2423,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
-					/Users/fizban/development/sdks/boost_1_55_0/ios/framework,
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2361,11 +2442,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
-					/Users/fizban/development/sdks/boost_1_55_0/ios/framework,
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
@@ -2381,10 +2457,7 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				EXECUTABLE_PREFIX = lib;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2392,6 +2465,12 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/fizban/development/sdks/include,
+					"$(CONFIGURATION_BUILD_DIR)/**",
+					/opt/local/include,
+					/usr/local/include,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2401,11 +2480,14 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				EXECUTABLE_PREFIX = lib;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				HEADER_SEARCH_PATHS = (
+					/Users/fizban/development/sdks/include,
+					"$(CONFIGURATION_BUILD_DIR)/**",
+					/opt/local/include,
+					/usr/local/include,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

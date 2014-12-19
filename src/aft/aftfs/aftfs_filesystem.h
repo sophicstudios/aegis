@@ -4,7 +4,7 @@
 #include <aftfs_directoryentry.h>
 #include <aftio_reader.h>
 #include <aftu_url.h>
-#include <tr1/memory>
+#include <memory>
 #include <vector>
 
 namespace aftfs {
@@ -12,8 +12,8 @@ namespace aftfs {
 class Filesystem
 {
 public:
-    typedef std::tr1::shared_ptr<aftfs::DirectoryEntry> DirectoryEntryPtr;
-    typedef std::tr1::shared_ptr<aftio::Reader> FileReaderPtr;
+    typedef std::shared_ptr<aftfs::DirectoryEntry> DirectoryEntryPtr;
+    typedef std::shared_ptr<aftio::Reader> FileReaderPtr;
     
     enum Status {
         Status_OK,

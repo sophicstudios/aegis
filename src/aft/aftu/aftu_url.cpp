@@ -100,9 +100,9 @@ CharType_UNRESERVED | CharType_SCHEME, // 0x37 7
 CharType_UNRESERVED | CharType_SCHEME, // 0x38 8
 CharType_UNRESERVED | CharType_SCHEME, // 0x39 9
 CharType_PATH | CharType_QUERY | CharType_FRAGMENT, // 0x3A :
-CharType_SUBDELIM, // 0x3B ;
+CharType_QUERY | CharType_SUBDELIM, // 0x3B ;
 0, // 0x3C <
-CharType_SUBDELIM, // 0x3D =
+CharType_QUERY | CharType_SUBDELIM, // 0x3D =
 0, // 0x3E >
 CharType_QUERY | CharType_FRAGMENT, // 0x3F ?
 CharType_PATH | CharType_QUERY | CharType_FRAGMENT, // 0x40 @
@@ -132,12 +132,12 @@ CharType_UNRESERVED | CharType_SCHEME, // 0x57 W
 CharType_UNRESERVED | CharType_SCHEME, // 0x58 X
 CharType_UNRESERVED | CharType_SCHEME, // 0x59 Y
 CharType_UNRESERVED | CharType_SCHEME, // 0x5A Z
-CharType_AUTHORITY, // 0x5B [
-0, // 0x5C '\'
-CharType_AUTHORITY, // 0x5D ]
-0, // 0x5E ^
+CharType_QUERY | CharType_AUTHORITY, // 0x5B [
+CharType_QUERY, // 0x5C '\'
+CharType_QUERY | CharType_AUTHORITY, // 0x5D ]
+CharType_QUERY, // 0x5E ^
 0, // 0x5F _
-0, // 0x60 `
+CharType_QUERY, // 0x60 `
 CharType_UNRESERVED | CharType_SCHEME, // 0x61 a
 CharType_UNRESERVED | CharType_SCHEME, // 0x62 b
 CharType_UNRESERVED | CharType_SCHEME, // 0x63 c
@@ -164,10 +164,10 @@ CharType_UNRESERVED | CharType_SCHEME, // 0x77 w
 CharType_UNRESERVED | CharType_SCHEME, // 0x78 x
 CharType_UNRESERVED | CharType_SCHEME, // 0x79 y
 CharType_UNRESERVED | CharType_SCHEME, // 0x7A z
-0, // 0x7B {
-0, // 0x7C |
-0, // 0x7D }
-0, // 0x7E ~
+CharType_QUERY, // 0x7B {
+CharType_QUERY, // 0x7C |
+CharType_QUERY, // 0x7D }
+CharType_UNRESERVED, // 0x7E ~
 0, // 0x7F DEL
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 0x80 - 0x8F
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 0x90 - 0x9F
@@ -190,6 +190,7 @@ struct Components
     std::string path;
     std::string query;
     std::string fragment;
+    bool isRelative;
 };
 
 bool isCharOfType(uint16_t mask, char c)
@@ -205,6 +206,7 @@ bool parseScheme(
     std::string::const_iterator end)
 {
     bool foundColon = false;
+    components->isRelative = false;
     std::string::const_iterator it = begin;
     while (it != end && *it != '/') {
         if (*it == ':') {
@@ -217,6 +219,7 @@ bool parseScheme(
     
     // no scheme, this must be a relative reference
     if (!foundColon) {
+        components->isRelative = true;
         return true;
     }
     
@@ -528,6 +531,16 @@ bool URL::hasFragment() const
 std::string URL::fragment() const
 {
     return m_impl->components.fragment;
+}
+
+bool URL::isRelative() const
+{
+    return m_impl->components.isRelative;
+}
+
+bool URL::isAbsolute() const
+{
+    return !m_impl->components.isRelative;
 }
 
 } // namespace

@@ -62,7 +62,7 @@ const uint32_t GREGORIAN_ADJUST = GREGORIAN_START_DAY - JULIAN_END_DAY - 1;
 const uint64_t JAN_01_1601 = 584401;
 const uint64_t SEP_02_1752 = 639798;
 const uint64_t SEP_14_1752 = 639799;
-const uint64_t JAN_01_1753 = 639908;
+//const uint64_t JAN_01_1753 = 639908;
 
 inline bool isLeapYear(uint32_t year)
 {
@@ -81,7 +81,7 @@ uint64_t yearMonthDayToSerial(uint32_t year, uint32_t month, uint32_t day)
     
     // 1752 is a strange year, in which 11 days are removed, so we have
     // special logic to handle this.
-    if (year > 1752) {
+    if (year > GREGORIAN_START_YEAR) {
         // Actual calculation for number of days up to the specified year:
         // 365*(Y-1) + ((Y-1)-1600)/4 - ((Y-1)-1600)/100 + ((Y-1)-1600)/400 + a1 - a2 + a3
 
@@ -109,7 +109,7 @@ uint64_t yearMonthDayToSerial(uint32_t year, uint32_t month, uint32_t day)
         }
         
         if (serial > SEP_02_1752) {
-            serial -= 11;
+            serial -= GREGORIAN_ADJUST;
         }
     }
     
@@ -119,7 +119,7 @@ uint64_t yearMonthDayToSerial(uint32_t year, uint32_t month, uint32_t day)
 void serialToYearMonthDay(uint32_t* year, uint32_t* month, uint32_t* day, uint64_t serial)
 {
     if (serial >= SEP_14_1752) {
-        serial = serial - JAN_01_1601 + 11;
+        serial = serial - JAN_01_1601 + GREGORIAN_ADJUST;
 
         // Adjust for 400 year rule in leap year computation.
         uint64_t s2 = serial - (serial + 1) / DAYS_PER_4_CENTURY;
@@ -171,7 +171,7 @@ void serialToYearMonthDay(uint32_t* year, uint32_t* month, uint32_t* day, uint64
 uint32_t serialToYear(uint64_t serial)
 {
     if (serial >= SEP_14_1752) {
-        serial = serial - JAN_01_1601 + 11;
+        serial = serial - JAN_01_1601 + GREGORIAN_ADJUST;
 
         // Adjust for 400 year rule in leap year computation.
         uint64_t s2 = serial - (serial+1) / DAYS_PER_4_CENTURY;
@@ -194,7 +194,7 @@ uint32_t serialToYear(uint64_t serial)
 uint32_t serialToMonth(uint64_t serial)
 {
     if (serial >= SEP_14_1752) {
-        serial = serial - JAN_01_1601 + 11;
+        serial = serial - JAN_01_1601 + GREGORIAN_ADJUST;
 
         // Adjust for 400 year rule in leap year computation.
         uint64_t s2 = serial - (serial+1) / DAYS_PER_4_CENTURY;
@@ -236,7 +236,7 @@ uint32_t serialToMonth(uint64_t serial)
 uint32_t serialToDay(uint64_t serial)
 {
     if (serial >= SEP_14_1752) {
-        serial = serial - JAN_01_1601 + 11;
+        serial = serial - JAN_01_1601 + GREGORIAN_ADJUST;
 
         // Adjust for 400 year rule in leap year computation.
         uint64_t s2 = serial - (serial+1) / DAYS_PER_4_CENTURY;
@@ -288,12 +288,18 @@ bool Date::isValid(Year const& year, Month const& month, Day const& day)
     uint32_t yearValue = year.value();
     uint32_t monthValue = month.value();
     uint32_t dayValue = day.value();
+
     if (yearValue < 1 || yearValue > 9999 || monthValue < 1 || monthValue > 12) {
         return false;
     }
 
     bool isLeap = isLeapYear(yearValue);
-    if (isLeap && yearValue == 1752 && monthValue == 9 && dayValue > 2 && dayValue < 14) {
+    
+    if (isLeap && yearValue == GREGORIAN_START_YEAR
+            && monthValue == GREGORIAN_START_MONTH
+            && dayValue > JULIAN_END_DAY
+            && dayValue < GREGORIAN_START_DAY)
+    {
         return false;
     }
 

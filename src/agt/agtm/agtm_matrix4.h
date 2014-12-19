@@ -58,6 +58,8 @@ public:
     Vector4<T> col(size_t i) const;
     
     Matrix4<T>& transpose();
+
+    T const* const arr() const;
     
 private:
     union {
@@ -391,6 +393,12 @@ inline Matrix4<T>& Matrix4<T>::transpose()
     std::swap(m_r1c2, m_r2c1);
     std::swap(m_r1c3, m_r3c1);
     std::swap(m_r2c3, m_r3c2);
+}
+
+template<typename T>
+inline T const* const Matrix4<T>::arr() const
+{
+    return m_arr;
 }
 
 template<typename T>

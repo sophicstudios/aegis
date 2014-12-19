@@ -17,6 +17,7 @@ protected:
 private:
     void testHttpConstruction();
     void testFileConstruction();
+    void testRelativeAbsolute();
     
     void checkUrl(
         std::string const& urlStr,
@@ -34,6 +35,7 @@ void TestUrl::runTest()
 {
     testHttpConstruction();
     testFileConstruction();
+    testRelativeAbsolute();
 }
 
 void TestUrl::checkUrl(
@@ -83,6 +85,29 @@ void TestUrl::testFileConstruction()
     checkUrl("file:///local/file.txt", true, "file", "", "/local/file.txt", "", "");
     checkUrl("file.txt", true, "", "", "file.txt", "", "");
     checkUrl("./file.txt", true, "", "", "./file.txt", "", "");
+}
+
+void TestUrl::testRelativeAbsolute()
+{
+    URL relative1("~user/dir1");
+
+    AUNIT_ASSERT(relative1.isRelative());
+    AUNIT_ASSERT(!relative1.isAbsolute());
+
+    URL relative2("file.txt");
+    
+    AUNIT_ASSERT(relative2.isRelative());
+    AUNIT_ASSERT(!relative2.isAbsolute());
+    
+    URL absolute1("file:///~user/dir1");
+    
+    AUNIT_ASSERT(absolute1.isAbsolute());
+    AUNIT_ASSERT(!absolute1.isRelative());
+
+    URL absolute2("file:///file.txt");
+    
+    AUNIT_ASSERT(absolute2.isAbsolute());
+    AUNIT_ASSERT(!absolute2.isRelative());
 }
 
 } // namespace
