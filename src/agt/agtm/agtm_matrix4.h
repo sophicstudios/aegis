@@ -150,6 +150,7 @@ template<typename T>
 inline Matrix4<T>& Matrix4<T>::operator=(Matrix4<T> const& m)
 {
     std::copy(m.m_arr, m.m_arr + 16, m_arr);
+    return *this;
 }
 
 template<typename T>

@@ -300,6 +300,14 @@
 		FA875BBF15DF1BBE00C5E50B /* libagt-macosx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA6CDB215DDB28400F480F0 /* libagt-macosx.a */; };
 		FA875BC015DF1BBE00C5E50B /* libaunit-macosx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA833E9715A755A50044283D /* libaunit-macosx.a */; };
 		FA875BC215E0330900C5E50B /* agt.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA875BC115E0330900C5E50B /* agt.t.cpp */; };
+		FA90ECA81AAB7AC600DB0A34 /* agta_glwindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA90ECA61AAB7AC600DB0A34 /* agta_glwindow.cpp */; };
+		FA90ECA91AAB7AC600DB0A34 /* agta_glwindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA90ECA61AAB7AC600DB0A34 /* agta_glwindow.cpp */; };
+		FA90ECAA1AAB7AC600DB0A34 /* agta_glwindow.h in Headers */ = {isa = PBXBuildFile; fileRef = FA90ECA71AAB7AC600DB0A34 /* agta_glwindow.h */; };
+		FA90ECAB1AAB7AC600DB0A34 /* agta_glwindow.h in Headers */ = {isa = PBXBuildFile; fileRef = FA90ECA71AAB7AC600DB0A34 /* agta_glwindow.h */; };
+		FA90ECAE1AAB7B5300DB0A34 /* agta_displaytimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA90ECAC1AAB7B5300DB0A34 /* agta_displaytimer.cpp */; };
+		FA90ECAF1AAB7B5300DB0A34 /* agta_displaytimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA90ECAC1AAB7B5300DB0A34 /* agta_displaytimer.cpp */; };
+		FA90ECB01AAB7B5300DB0A34 /* agta_displaytimer.h in Headers */ = {isa = PBXBuildFile; fileRef = FA90ECAD1AAB7B5300DB0A34 /* agta_displaytimer.h */; };
+		FA90ECB11AAB7B5300DB0A34 /* agta_displaytimer.h in Headers */ = {isa = PBXBuildFile; fileRef = FA90ECAD1AAB7B5300DB0A34 /* agta_displaytimer.h */; };
 		FA9B158F15A9DE900017DCD5 /* aftio_flags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158415A9DE900017DCD5 /* aftio_flags.cpp */; };
 		FA9B159015A9DE900017DCD5 /* aftio_flags.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158515A9DE900017DCD5 /* aftio_flags.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA9B159115A9DE900017DCD5 /* aftio_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158615A9DE900017DCD5 /* aftio_reader.cpp */; };
@@ -404,6 +412,18 @@
 		FAA6CDDF15DDB37400F480F0 /* agtm_point2d.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA6CDC915DDB37400F480F0 /* agtm_point2d.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAA6CDE015DDB37400F480F0 /* agtm_point3d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CDCA15DDB37400F480F0 /* agtm_point3d.cpp */; };
 		FAA6CDE115DDB37400F480F0 /* agtm_point3d.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA6CDCB15DDB37400F480F0 /* agtm_point3d.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAA99BBF1A62F7EE00A0A52E /* agta_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA99BBD1A62F7EE00A0A52E /* agta_entity.cpp */; };
+		FAA99BC01A62F7EE00A0A52E /* agta_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA99BBD1A62F7EE00A0A52E /* agta_entity.cpp */; };
+		FAA99BC11A62F7EE00A0A52E /* agta_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA99BBE1A62F7EE00A0A52E /* agta_entity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAA99BC21A62F7EE00A0A52E /* agta_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA99BBE1A62F7EE00A0A52E /* agta_entity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAA99BC51A6AE52000A0A52E /* agta_space.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA99BC31A6AE52000A0A52E /* agta_space.cpp */; };
+		FAA99BC61A6AE52000A0A52E /* agta_space.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA99BC31A6AE52000A0A52E /* agta_space.cpp */; };
+		FAA99BC71A6AE52000A0A52E /* agta_space.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA99BC41A6AE52000A0A52E /* agta_space.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAA99BC81A6AE52000A0A52E /* agta_space.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA99BC41A6AE52000A0A52E /* agta_space.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAA99BCB1A6AF60900A0A52E /* agta_componentmanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA99BC91A6AF60900A0A52E /* agta_componentmanager.cpp */; };
+		FAA99BCC1A6AF60900A0A52E /* agta_componentmanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA99BC91A6AF60900A0A52E /* agta_componentmanager.cpp */; };
+		FAA99BCD1A6AF60900A0A52E /* agta_componentmanager.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA99BCA1A6AF60900A0A52E /* agta_componentmanager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAA99BCE1A6AF60900A0A52E /* agta_componentmanager.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA99BCA1A6AF60900A0A52E /* agta_componentmanager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAAEE5A41686155500F587BE /* aftt_seconds.h in Headers */ = {isa = PBXBuildFile; fileRef = FAAEE5A31686155400F587BE /* aftt_seconds.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAAEE5A51686155500F587BE /* aftt_seconds.h in Headers */ = {isa = PBXBuildFile; fileRef = FAAEE5A31686155400F587BE /* aftt_seconds.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAAEE5A71686168900F587BE /* aftt_milliseconds.h in Headers */ = {isa = PBXBuildFile; fileRef = FAAEE5A61686168900F587BE /* aftt_milliseconds.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -438,6 +458,10 @@
 		FACBAC9E16FE8D6B008B2004 /* agtm_size2d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FACBAC9D16FE8D6B008B2004 /* agtm_size2d.cpp */; };
 		FACBACA7170723ED008B2004 /* agtg_renderingcontext.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBACA6170723ED008B2004 /* agtg_renderingcontext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FACBACAB17072886008B2004 /* agtg_renderingcontext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FACBACAA17072885008B2004 /* agtg_renderingcontext.cpp */; };
+		FAD3F6BD1AA23D24005455B2 /* agta_platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAD3F6BB1AA23D24005455B2 /* agta_platform.cpp */; };
+		FAD3F6BE1AA23D24005455B2 /* agta_platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAD3F6BB1AA23D24005455B2 /* agta_platform.cpp */; };
+		FAD3F6BF1AA23D24005455B2 /* agta_platform.h in Headers */ = {isa = PBXBuildFile; fileRef = FAD3F6BC1AA23D24005455B2 /* agta_platform.h */; };
+		FAD3F6C01AA23D24005455B2 /* agta_platform.h in Headers */ = {isa = PBXBuildFile; fileRef = FAD3F6BC1AA23D24005455B2 /* agta_platform.h */; };
 		FAE78A461687D82900EEBCE6 /* aftt_nanoseconds.h in Headers */ = {isa = PBXBuildFile; fileRef = FAE78A451687D82900EEBCE6 /* aftt_nanoseconds.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAE78A471687D82900EEBCE6 /* aftt_nanoseconds.h in Headers */ = {isa = PBXBuildFile; fileRef = FAE78A451687D82900EEBCE6 /* aftt_nanoseconds.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAFB3A4C17B338F6002510F9 /* aftfs_localfilesystem.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFB3A4B17B338F1002510F9 /* aftfs_localfilesystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -685,6 +709,10 @@
 		FA875BB015DF1B9800C5E50B /* agtm_point3d.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtm_point3d.t.cpp; path = ../../../src/agt/agtm/agtm_point3d.t.cpp; sourceTree = "<group>"; };
 		FA875BC115E0330900C5E50B /* agt.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agt.t.cpp; path = ../../../src/agt/agt.t.cpp; sourceTree = "<group>"; };
 		FA875BCA15E099D800C5E50B /* libaft-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libaft-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA90ECA61AAB7AC600DB0A34 /* agta_glwindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_glwindow.cpp; path = ../../../src/agt/agta/agta_glwindow.cpp; sourceTree = "<group>"; };
+		FA90ECA71AAB7AC600DB0A34 /* agta_glwindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_glwindow.h; path = ../../../src/agt/agta/agta_glwindow.h; sourceTree = "<group>"; };
+		FA90ECAC1AAB7B5300DB0A34 /* agta_displaytimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_displaytimer.cpp; path = ../../../src/agt/agta/agta_displaytimer.cpp; sourceTree = "<group>"; };
+		FA90ECAD1AAB7B5300DB0A34 /* agta_displaytimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_displaytimer.h; path = ../../../src/agt/agta/agta_displaytimer.h; sourceTree = "<group>"; };
 		FA9B158415A9DE900017DCD5 /* aftio_flags.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftio_flags.cpp; path = ../../../src/aft/aftio/aftio_flags.cpp; sourceTree = "<group>"; };
 		FA9B158515A9DE900017DCD5 /* aftio_flags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftio_flags.h; path = ../../../src/aft/aftio/aftio_flags.h; sourceTree = "<group>"; };
 		FA9B158615A9DE900017DCD5 /* aftio_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftio_reader.cpp; path = ../../../src/aft/aftio/aftio_reader.cpp; sourceTree = "<group>"; };
@@ -775,6 +803,12 @@
 		FAA6CDC915DDB37400F480F0 /* agtm_point2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtm_point2d.h; path = ../../../src/agt/agtm/agtm_point2d.h; sourceTree = "<group>"; };
 		FAA6CDCA15DDB37400F480F0 /* agtm_point3d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtm_point3d.cpp; path = ../../../src/agt/agtm/agtm_point3d.cpp; sourceTree = "<group>"; };
 		FAA6CDCB15DDB37400F480F0 /* agtm_point3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtm_point3d.h; path = ../../../src/agt/agtm/agtm_point3d.h; sourceTree = "<group>"; };
+		FAA99BBD1A62F7EE00A0A52E /* agta_entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_entity.cpp; path = ../../../src/agt/agta/agta_entity.cpp; sourceTree = "<group>"; };
+		FAA99BBE1A62F7EE00A0A52E /* agta_entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_entity.h; path = ../../../src/agt/agta/agta_entity.h; sourceTree = "<group>"; };
+		FAA99BC31A6AE52000A0A52E /* agta_space.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_space.cpp; path = ../../../src/agt/agta/agta_space.cpp; sourceTree = "<group>"; };
+		FAA99BC41A6AE52000A0A52E /* agta_space.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_space.h; path = ../../../src/agt/agta/agta_space.h; sourceTree = "<group>"; };
+		FAA99BC91A6AF60900A0A52E /* agta_componentmanager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_componentmanager.cpp; path = ../../../src/agt/agta/agta_componentmanager.cpp; sourceTree = "<group>"; };
+		FAA99BCA1A6AF60900A0A52E /* agta_componentmanager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_componentmanager.h; path = ../../../src/agt/agta/agta_componentmanager.h; sourceTree = "<group>"; };
 		FAAEE5A31686155400F587BE /* aftt_seconds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftt_seconds.h; path = ../../../src/aft/aftt/aftt_seconds.h; sourceTree = "<group>"; };
 		FAAEE5A61686168900F587BE /* aftt_milliseconds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftt_milliseconds.h; path = ../../../src/aft/aftt/aftt_milliseconds.h; sourceTree = "<group>"; };
 		FAAEE5A91686170C00F587BE /* aftt_minutes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftt_minutes.cpp; path = ../../../src/aft/aftt/aftt_minutes.cpp; sourceTree = "<group>"; };
@@ -796,6 +830,8 @@
 		FACBAC9D16FE8D6B008B2004 /* agtm_size2d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtm_size2d.cpp; path = ../../../src/agt/agtm/agtm_size2d.cpp; sourceTree = "<group>"; };
 		FACBACA6170723ED008B2004 /* agtg_renderingcontext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtg_renderingcontext.h; path = ../../../src/agt/agtg/agtg_renderingcontext.h; sourceTree = "<group>"; };
 		FACBACAA17072885008B2004 /* agtg_renderingcontext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtg_renderingcontext.cpp; path = ../../../src/agt/agtg/agtg_renderingcontext.cpp; sourceTree = "<group>"; };
+		FAD3F6BB1AA23D24005455B2 /* agta_platform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_platform.cpp; path = ../../../src/agt/agta/agta_platform.cpp; sourceTree = "<group>"; };
+		FAD3F6BC1AA23D24005455B2 /* agta_platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_platform.h; path = ../../../src/agt/agta/agta_platform.h; sourceTree = "<group>"; };
 		FAE78A451687D82900EEBCE6 /* aftt_nanoseconds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftt_nanoseconds.h; path = ../../../src/aft/aftt/aftt_nanoseconds.h; sourceTree = "<group>"; };
 		FAFB3A4B17B338F1002510F9 /* aftfs_localfilesystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftfs_localfilesystem.h; path = ../../../src/aft/aftfs/aftfs_localfilesystem.h; sourceTree = "<group>"; };
 		FAFB3A4E17B33A05002510F9 /* aftfs_localfilesystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftfs_localfilesystem.cpp; path = ../../../src/aft/aftfs/aftfs_localfilesystem.cpp; sourceTree = "<group>"; };
@@ -937,6 +973,18 @@
 				FA3E4D451A2EAFE800E58703 /* agta_component.cpp */,
 				FA3E4D501A32BB5600E58703 /* agta_rendersystem.h */,
 				FA3E4D4F1A32BB5600E58703 /* agta_rendersystem.cpp */,
+				FAA99BBE1A62F7EE00A0A52E /* agta_entity.h */,
+				FAA99BBD1A62F7EE00A0A52E /* agta_entity.cpp */,
+				FAA99BC41A6AE52000A0A52E /* agta_space.h */,
+				FAA99BC31A6AE52000A0A52E /* agta_space.cpp */,
+				FAA99BCA1A6AF60900A0A52E /* agta_componentmanager.h */,
+				FAA99BC91A6AF60900A0A52E /* agta_componentmanager.cpp */,
+				FAD3F6BC1AA23D24005455B2 /* agta_platform.h */,
+				FAD3F6BB1AA23D24005455B2 /* agta_platform.cpp */,
+				FA90ECA71AAB7AC600DB0A34 /* agta_glwindow.h */,
+				FA90ECA61AAB7AC600DB0A34 /* agta_glwindow.cpp */,
+				FA90ECAD1AAB7B5300DB0A34 /* agta_displaytimer.h */,
+				FA90ECAC1AAB7B5300DB0A34 /* agta_displaytimer.cpp */,
 			);
 			name = agta;
 			sourceTree = "<group>";
@@ -1289,16 +1337,16 @@
 		FAA6CD9315DDACDF00F480F0 /* agtg */ = {
 			isa = PBXGroup;
 			children = (
-				FA424AB216F4D7CC00622AED /* agtg_colorrgba.cpp */,
 				FA424AB316F4D7CC00622AED /* agtg_colorrgba.h */,
+				FA424AB216F4D7CC00622AED /* agtg_colorrgba.cpp */,
 				FA223AF5175A1B29000FE3E9 /* agtg_colorrgba.t.cpp */,
-				FA424AAA16F4D6BF00622AED /* agtg_mesh.cpp */,
 				FA424AAB16F4D6BF00622AED /* agtg_mesh.h */,
-				FACBACAA17072885008B2004 /* agtg_renderingcontext.cpp */,
+				FA424AAA16F4D6BF00622AED /* agtg_mesh.cpp */,
 				FACBACA6170723ED008B2004 /* agtg_renderingcontext.h */,
+				FACBACAA17072885008B2004 /* agtg_renderingcontext.cpp */,
 				FACBAC8C16FE6742008B2004 /* agtg_texture.h */,
-				FA424AAE16F4D74600622AED /* agtg_vertex.cpp */,
 				FA424AAF16F4D74600622AED /* agtg_vertex.h */,
+				FA424AAE16F4D74600622AED /* agtg_vertex.cpp */,
 			);
 			name = agtg;
 			sourceTree = "<group>";
@@ -1306,39 +1354,39 @@
 		FAA6CD9415DDAD3B00F480F0 /* agtm */ = {
 			isa = PBXGroup;
 			children = (
-				FAA6CDB615DDB37400F480F0 /* agtm_matrix2.cpp */,
 				FAA6CDB715DDB37400F480F0 /* agtm_matrix2.h */,
+				FAA6CDB615DDB37400F480F0 /* agtm_matrix2.cpp */,
 				FA875BAA15DF1B9800C5E50B /* agtm_matrix2.t.cpp */,
-				FAA6CDB815DDB37400F480F0 /* agtm_matrix3.cpp */,
 				FAA6CDB915DDB37400F480F0 /* agtm_matrix3.h */,
-				FAA6CDBA15DDB37400F480F0 /* agtm_matrix4.cpp */,
+				FAA6CDB815DDB37400F480F0 /* agtm_matrix3.cpp */,
 				FAA6CDBB15DDB37400F480F0 /* agtm_matrix4.h */,
+				FAA6CDBA15DDB37400F480F0 /* agtm_matrix4.cpp */,
 				FA875BAB15DF1B9800C5E50B /* agtm_matrix4.t.cpp */,
-				FAA6CDBC15DDB37400F480F0 /* agtm_matrixutil.cpp */,
 				FAA6CDBD15DDB37400F480F0 /* agtm_matrixutil.h */,
-				FAA6CDC815DDB37400F480F0 /* agtm_point2d.cpp */,
+				FAA6CDBC15DDB37400F480F0 /* agtm_matrixutil.cpp */,
 				FAA6CDC915DDB37400F480F0 /* agtm_point2d.h */,
-				FAA6CDCA15DDB37400F480F0 /* agtm_point3d.cpp */,
+				FAA6CDC815DDB37400F480F0 /* agtm_point2d.cpp */,
 				FAA6CDCB15DDB37400F480F0 /* agtm_point3d.h */,
+				FAA6CDCA15DDB37400F480F0 /* agtm_point3d.cpp */,
 				FA875BB015DF1B9800C5E50B /* agtm_point3d.t.cpp */,
-				FAA6CDBE15DDB37400F480F0 /* agtm_quaternion.cpp */,
 				FAA6CDBF15DDB37400F480F0 /* agtm_quaternion.h */,
+				FAA6CDBE15DDB37400F480F0 /* agtm_quaternion.cpp */,
 				FA875BAC15DF1B9800C5E50B /* agtm_quaternion.t.cpp */,
-				FACBAC9B16FE8D3E008B2004 /* agtm_rect.cpp */,
 				FACBAC9716FE7C29008B2004 /* agtm_rect.h */,
-				FACBAC9D16FE8D6B008B2004 /* agtm_size2d.cpp */,
+				FACBAC9B16FE8D3E008B2004 /* agtm_rect.cpp */,
 				FACBAC9916FE8043008B2004 /* agtm_size2d.h */,
-				FAA6CDC015DDB37400F480F0 /* agtm_vector2.cpp */,
+				FACBAC9D16FE8D6B008B2004 /* agtm_size2d.cpp */,
 				FAA6CDC115DDB37400F480F0 /* agtm_vector2.h */,
+				FAA6CDC015DDB37400F480F0 /* agtm_vector2.cpp */,
 				FA875BAD15DF1B9800C5E50B /* agtm_vector2.t.cpp */,
-				FAA6CDC215DDB37400F480F0 /* agtm_vector3.cpp */,
 				FAA6CDC315DDB37400F480F0 /* agtm_vector3.h */,
+				FAA6CDC215DDB37400F480F0 /* agtm_vector3.cpp */,
 				FA875BAE15DF1B9800C5E50B /* agtm_vector3.t.cpp */,
-				FAA6CDC415DDB37400F480F0 /* agtm_vector4.cpp */,
 				FAA6CDC515DDB37400F480F0 /* agtm_vector4.h */,
+				FAA6CDC415DDB37400F480F0 /* agtm_vector4.cpp */,
 				FA875BAF15DF1B9800C5E50B /* agtm_vector4.t.cpp */,
-				FAA6CDC615DDB37400F480F0 /* agtm_vectorutil.cpp */,
 				FAA6CDC715DDB37400F480F0 /* agtm_vectorutil.h */,
+				FAA6CDC615DDB37400F480F0 /* agtm_vectorutil.cpp */,
 			);
 			name = agtm;
 			sourceTree = "<group>";
@@ -1386,6 +1434,7 @@
 			files = (
 				FA2318B3178DD3B00050DE3A /* agtg_colorrgba.h in Headers */,
 				FA2318B4178DD3B60050DE3A /* agtg_mesh.h in Headers */,
+				FAD3F6C01AA23D24005455B2 /* agta_platform.h in Headers */,
 				FA2318B5178DD3B90050DE3A /* agtg_renderingcontext.h in Headers */,
 				FA2318B6178DD3BD0050DE3A /* agtg_texture.h in Headers */,
 				FA2318B7178DD3C10050DE3A /* agtg_vertex.h in Headers */,
@@ -1395,25 +1444,30 @@
 				FA2318C4178DD41C0050DE3A /* agtm_matrixutil.h in Headers */,
 				FA2318C5178DD4210050DE3A /* agtm_point2d.h in Headers */,
 				FA2318C6178DD4280050DE3A /* agtm_point3d.h in Headers */,
+				FA90ECB11AAB7B5300DB0A34 /* agta_displaytimer.h in Headers */,
 				FA2318C7178DD42D0050DE3A /* agtm_quaternion.h in Headers */,
 				FA2318C8178DD4310050DE3A /* agtm_rect.h in Headers */,
 				FA2318C9178DD4380050DE3A /* agtm_size2d.h in Headers */,
 				FA2318CA178DD43C0050DE3A /* agtm_vector2.h in Headers */,
 				FA2318CB178DD4420050DE3A /* agtm_vector3.h in Headers */,
+				FA90ECAB1AAB7AC600DB0A34 /* agta_glwindow.h in Headers */,
 				FA2318CC178DD4450050DE3A /* agtm_vector4.h in Headers */,
 				FA2318CD178DD4490050DE3A /* agtm_vectorutil.h in Headers */,
-				FAFD77CF189D466300734186 /* agtui_widget.h in Headers */,
-				FAC45A9819EF79C900329DAB /* agtr_imageloaderpng.h in Headers */,
-				FA3E4D541A32BB5600E58703 /* agta_rendersystem.h in Headers */,
-				FA3E4D441A2EAA3100E58703 /* agta_transform2dcomponent.h in Headers */,
-				FA3E4D3E1A2D482400E58703 /* agta_system.h in Headers */,
-				FA3E4D381A2D45CF00E58703 /* agta_engine.h in Headers */,
-				FA3E4D4A1A2EAFE800E58703 /* agta_component.h in Headers */,
-				FA14A0AB19E6088C0058A4CA /* agtr_resource.h in Headers */,
-				FA2318CE178DD44F0050DE3A /* agtr_image.h in Headers */,
 				FAFD77CC189D419F00734186 /* agtui_container.h in Headers */,
-				FA2318D1178DD4640050DE3A /* agtui_mouseevent.h in Headers */,
+				FAFD77CF189D466300734186 /* agtui_widget.h in Headers */,
 				FA2318E3178E2DDE0050DE3A /* agtui_touchevent.h in Headers */,
+				FAC45A9819EF79C900329DAB /* agtr_imageloaderpng.h in Headers */,
+				FA3E4D4A1A2EAFE800E58703 /* agta_component.h in Headers */,
+				FAA99BCE1A6AF60900A0A52E /* agta_componentmanager.h in Headers */,
+				FA3E4D381A2D45CF00E58703 /* agta_engine.h in Headers */,
+				FAA99BC21A62F7EE00A0A52E /* agta_entity.h in Headers */,
+				FA2318CE178DD44F0050DE3A /* agtr_image.h in Headers */,
+				FA2318D1178DD4640050DE3A /* agtui_mouseevent.h in Headers */,
+				FA3E4D541A32BB5600E58703 /* agta_rendersystem.h in Headers */,
+				FA14A0AB19E6088C0058A4CA /* agtr_resource.h in Headers */,
+				FA3E4D3E1A2D482400E58703 /* agta_system.h in Headers */,
+				FA3E4D441A2EAA3100E58703 /* agta_transform2dcomponent.h in Headers */,
+				FAA99BC81A6AE52000A0A52E /* agta_space.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1607,6 +1661,7 @@
 			files = (
 				FA424AB516F4D7CC00622AED /* agtg_colorrgba.h in Headers */,
 				FA424AAD16F4D6BF00622AED /* agtg_mesh.h in Headers */,
+				FAD3F6BF1AA23D24005455B2 /* agta_platform.h in Headers */,
 				FACBACA7170723ED008B2004 /* agtg_renderingcontext.h in Headers */,
 				FACBAC8D16FE6742008B2004 /* agtg_texture.h in Headers */,
 				FA424AB116F4D74600622AED /* agtg_vertex.h in Headers */,
@@ -1616,11 +1671,13 @@
 				FAA6CDD315DDB37400F480F0 /* agtm_matrixutil.h in Headers */,
 				FAA6CDDF15DDB37400F480F0 /* agtm_point2d.h in Headers */,
 				FAA6CDE115DDB37400F480F0 /* agtm_point3d.h in Headers */,
+				FA90ECB01AAB7B5300DB0A34 /* agta_displaytimer.h in Headers */,
 				FAA6CDD515DDB37400F480F0 /* agtm_quaternion.h in Headers */,
 				FACBAC9816FE7C29008B2004 /* agtm_rect.h in Headers */,
 				FACBAC9A16FE8043008B2004 /* agtm_size2d.h in Headers */,
 				FAA6CDD715DDB37400F480F0 /* agtm_vector2.h in Headers */,
 				FAA6CDD915DDB37400F480F0 /* agtm_vector3.h in Headers */,
+				FA90ECAA1AAB7AC600DB0A34 /* agta_glwindow.h in Headers */,
 				FAA6CDDB15DDB37400F480F0 /* agtm_vector4.h in Headers */,
 				FA14A0AA19E6088C0058A4CA /* agtr_resource.h in Headers */,
 				FAC45A9719EF79C900329DAB /* agtr_imageloaderpng.h in Headers */,
@@ -1630,6 +1687,9 @@
 				FA3E4D3D1A2D482400E58703 /* agta_system.h in Headers */,
 				FA3E4D371A2D45CF00E58703 /* agta_engine.h in Headers */,
 				FA3E4D491A2EAFE800E58703 /* agta_component.h in Headers */,
+				FAA99BC11A62F7EE00A0A52E /* agta_entity.h in Headers */,
+				FAA99BC71A6AE52000A0A52E /* agta_space.h in Headers */,
+				FAA99BCD1A6AF60900A0A52E /* agta_componentmanager.h in Headers */,
 				FACBAC9116FE6F03008B2004 /* agtr_image.h in Headers */,
 				FAFD77CE189D466300734186 /* agtui_widget.h in Headers */,
 				FAFD77CB189D419F00734186 /* agtui_container.h in Headers */,
@@ -1826,14 +1886,19 @@
 				FA2318AF178DD37C0050DE3A /* agtg_colorrgba.cpp in Sources */,
 				FA2318B0178DD3860050DE3A /* agtg_mesh.cpp in Sources */,
 				FA3E4D361A2D45CF00E58703 /* agta_engine.cpp in Sources */,
+				FA90ECAF1AAB7B5300DB0A34 /* agta_displaytimer.cpp in Sources */,
+				FAD3F6BE1AA23D24005455B2 /* agta_platform.cpp in Sources */,
 				FA3E4D481A2EAFE800E58703 /* agta_component.cpp in Sources */,
+				FAA99BCC1A6AF60900A0A52E /* agta_componentmanager.cpp in Sources */,
 				FAFD77D2189D4B6200734186 /* agtui_widget.cpp in Sources */,
 				FA2318B1178DD38A0050DE3A /* agtg_renderingcontext.cpp in Sources */,
 				FA2318B2178DD3930050DE3A /* agtg_vertex.cpp in Sources */,
 				FA2318AB178DD2380050DE3A /* agtm_matrix2.cpp in Sources */,
 				FAC45A8F19E9A31000329DAB /* agtr_resource.cpp in Sources */,
+				FAA99BC61A6AE52000A0A52E /* agta_space.cpp in Sources */,
 				FAC45A9219EF795B00329DAB /* agtr_image.cpp in Sources */,
 				FA2318AC178DD2410050DE3A /* agtm_matrix3.cpp in Sources */,
+				FA90ECA91AAB7AC600DB0A34 /* agta_glwindow.cpp in Sources */,
 				FA2318AD178DD2480050DE3A /* agtm_matrix4.cpp in Sources */,
 				FA3E4D421A2EAA3100E58703 /* agta_transform2dcomponent.cpp in Sources */,
 				FA3E4D3C1A2D482400E58703 /* agta_system.cpp in Sources */,
@@ -1841,6 +1906,7 @@
 				FA2318B8178DD3D60050DE3A /* agtm_point2d.cpp in Sources */,
 				FAC45A9619EF79C900329DAB /* agtr_imageloaderpng.cpp in Sources */,
 				FA2318B9178DD3D90050DE3A /* agtm_point3d.cpp in Sources */,
+				FAA99BC01A62F7EE00A0A52E /* agta_entity.cpp in Sources */,
 				FA2318BA178DD3DF0050DE3A /* agtm_quaternion.cpp in Sources */,
 				FA3E4D521A32BB5600E58703 /* agta_rendersystem.cpp in Sources */,
 				FA2318BB178DD3E30050DE3A /* agtm_rect.cpp in Sources */,
@@ -2070,14 +2136,19 @@
 				FA424AB416F4D7CC00622AED /* agtg_colorrgba.cpp in Sources */,
 				FA424AAC16F4D6BF00622AED /* agtg_mesh.cpp in Sources */,
 				FA3E4D351A2D45CF00E58703 /* agta_engine.cpp in Sources */,
+				FA90ECAE1AAB7B5300DB0A34 /* agta_displaytimer.cpp in Sources */,
+				FAD3F6BD1AA23D24005455B2 /* agta_platform.cpp in Sources */,
 				FA3E4D471A2EAFE800E58703 /* agta_component.cpp in Sources */,
+				FAA99BCB1A6AF60900A0A52E /* agta_componentmanager.cpp in Sources */,
 				FAFD77D1189D4B6200734186 /* agtui_widget.cpp in Sources */,
 				FACBACAB17072886008B2004 /* agtg_renderingcontext.cpp in Sources */,
 				FA424AB016F4D74600622AED /* agtg_vertex.cpp in Sources */,
 				FAA6CDCC15DDB37400F480F0 /* agtm_matrix2.cpp in Sources */,
 				FAC45A8E19E9A31000329DAB /* agtr_resource.cpp in Sources */,
+				FAA99BC51A6AE52000A0A52E /* agta_space.cpp in Sources */,
 				FAC45A9119EF795B00329DAB /* agtr_image.cpp in Sources */,
 				FAA6CDCE15DDB37400F480F0 /* agtm_matrix3.cpp in Sources */,
+				FA90ECA81AAB7AC600DB0A34 /* agta_glwindow.cpp in Sources */,
 				FA5E9774176D0B760035F4D0 /* agtui_mouseevent.cpp in Sources */,
 				FA3E4D411A2EAA3100E58703 /* agta_transform2dcomponent.cpp in Sources */,
 				FA3E4D3B1A2D482400E58703 /* agta_system.cpp in Sources */,
@@ -2085,6 +2156,7 @@
 				FAA6CDD215DDB37400F480F0 /* agtm_matrixutil.cpp in Sources */,
 				FAC45A9519EF79C900329DAB /* agtr_imageloaderpng.cpp in Sources */,
 				FAA6CDDE15DDB37400F480F0 /* agtm_point2d.cpp in Sources */,
+				FAA99BBF1A62F7EE00A0A52E /* agta_entity.cpp in Sources */,
 				FAA6CDE015DDB37400F480F0 /* agtm_point3d.cpp in Sources */,
 				FA3E4D511A32BB5600E58703 /* agta_rendersystem.cpp in Sources */,
 				FAA6CDD415DDB37400F480F0 /* agtm_quaternion.cpp in Sources */,

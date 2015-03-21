@@ -11,7 +11,7 @@ namespace agta {
 class RenderSystem : public System
 {
 public:
-    RenderSystem();
+    RenderSystem(int updatePriority);
 
     virtual ~RenderSystem();
 

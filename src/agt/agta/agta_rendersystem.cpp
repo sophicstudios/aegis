@@ -2,7 +2,8 @@
 
 namespace agta {
 
-RenderSystem::RenderSystem()
+RenderSystem::RenderSystem(int updatePriority)
+: agta::System(updatePriority)
 {}
 
 RenderSystem::~RenderSystem()
@@ -10,7 +11,7 @@ RenderSystem::~RenderSystem()
 
 void RenderSystem::update()
 {
-    // get the list of entities
+    // get the list of renderable entities
 
     // sort by render states (should this already be sorted?)
 
