@@ -1,32 +1,31 @@
 #ifndef INCLUDED_AGTA_SYSTEM_H
 #define INCLUDED_AGTA_SYSTEM_H
 
-namespace agta {
+#include <agta_engine.h>
 
-class Engine;
-class Engine::Context;
+namespace agta {
 
 class System
 {
 public:
-    System(int updatePriority);
+    System(int updatePriority = 0);
 
     virtual ~System();
 
-    void preUpdate(Engine::Context& context);
+    void preUpdate(agta::Engine::Context& context);
 
-    void update(Engine::Context& context);
+    void update(agta::Engine::Context& context);
 
-    void postUpdate(Engine::Context& context);
+    void postUpdate(agta::Engine::Context& context);
 
     void updatePriority(int priority);
 
     int updatePriority() const;
 
 protected:
-    virtual void doPreUpdate(Engine::Context& context) = 0;
-    virtual void doUpdate(Engine::Context& context) = 0;
-    virtual void doPostUpdate(Engine::Context& context) = 0;
+    virtual void doPreUpdate(agta::Engine::Context& context) = 0;
+    virtual void doUpdate(agta::Engine::Context& context) = 0;
+    virtual void doPostUpdate(agta::Engine::Context& context) = 0;
 
 private:
     System();

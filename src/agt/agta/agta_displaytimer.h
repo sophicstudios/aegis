@@ -8,13 +8,13 @@ namespace agta {
 class DisplayTimer
 {
 public:
-    typedef std::function<void ()> DisplayTimerCallback;
+    typedef std::function<void ()> Callback;
     
     DisplayTimer();
     
     virtual ~DisplayTimer() = 0;
 
-    virtual void registerDisplayTimerCallback(DisplayTimerCallback const& callback) = 0;
+    virtual void registerCallback(Callback const& callback) = 0;
 
     virtual void start() = 0;
     

@@ -2,9 +2,9 @@
 
 namespace agta {
 
-Platform::Platform(FilesystemPtr filesystem, DisplayTimerPtr displayTimer)
+Platform::Platform(FilesystemPtr filesystem, GLWindowPtr glWindow)
 : m_filesystem(filesystem),
-  m_displayTimer(displayTimer)
+  m_glWindow(glWindow)
 {}
 
 Platform::~Platform()
@@ -15,9 +15,9 @@ Platform::FilesystemPtr Platform::filesystem() const
     return m_filesystem;
 }
 
-Platform::DisplayTimerPtr Platform::displayTimer() const
+Platform::GLWindowPtr Platform::glWindow() const
 {
-    return m_displayTimer;
+    return m_glWindow;
 }
 
 } // namespace

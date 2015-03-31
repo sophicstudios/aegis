@@ -1,22 +1,28 @@
-#ifndef INCLUDED_AGTA_WORLD_H
-#define INCLUDED_AGTA_WORLD_H
+#ifndef INCLUDED_AGTA_SPACE_H
+#define INCLUDED_AGTA_SPACE_H
 
+#include <string>
 #include <cstdint>
 
 namespace agta {
 
-class World
+class Space
 {
 public:
-    World(uint32_t maxEntities);
+    Space();
 
-    ~World();
+    ~Space();
 
-    uint32_t createEntity();
+    uint32_t createEntity(std::string const& name);
 
-    uint32_t deleteEntity(uint32_t entityId);
+    bool deleteEntity(std::string const& name);
+
+    bool deleteEntity(uint32_t entityId);
 
 private:
+    class Impl;
+    Impl* m_impl;
+
 };
 
 } // namespace

@@ -9,11 +9,6 @@ Transform2dComponent::Transform2dComponent(agtm::Matrix3<float> const& initialTr
 Transform2dComponent::~Transform2dComponent()
 {}
 
-void Transform2dComponent::update()
-{
-    // nothing to do
-}
-
 agtm::Matrix3<float> const& Transform2dComponent::transform() const
 {
     return m_transform;

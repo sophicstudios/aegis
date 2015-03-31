@@ -2,22 +2,25 @@
 #define INCLUDED_AGTA_RENDERSYSTEM_H
 
 #include <agta_system.h>
-#include <list>
-#include <map>
-#include <memory>
 
 namespace agta {
 
 class RenderSystem : public System
 {
 public:
-    RenderSystem(int updatePriority);
+    RenderSystem(int updatePriority = 0);
 
     virtual ~RenderSystem();
 
-    virtual void update();
+protected:
+    virtual void doPreUpdate(agta::Engine::Context& context);
+
+    virtual void doUpdate(agta::Engine::Context& context);
+
+    virtual void doPostUpdate(agta::Engine::Context& context);
 
 private:
+
 };
 
 } // namespace

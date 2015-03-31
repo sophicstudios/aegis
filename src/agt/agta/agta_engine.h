@@ -1,7 +1,6 @@
 #ifndef INCLUDED_AGTA_ENGINE_H
 #define INCLUDED_AGTA_ENGINE_H
 
-#include <actp_mutex.h>
 #include <memory>
 #include <vector>
 
@@ -19,9 +18,21 @@ public:
     class Context
     {
     public:
-        Context();
+        Context(PlatformPtr platform);
 
         ~Context();
+
+        void resetShouldUpdate();
+        
+        void flagUpdate();
+
+        bool shouldUpdate() const;
+
+        PlatformPtr platform() const;
+
+    private:
+        bool m_shouldUpdate;
+        PlatformPtr m_platform;
     };
 
     /**
@@ -75,11 +86,10 @@ private:
 
     void onDisplayTimer();
 
-    actp::Mutex m_mutex;
+    Context m_context;
     SystemList m_systems;
     PlatformPtr m_platform;
     bool m_running;
-    bool m_shouldStep;
 };
 
 } // namespace

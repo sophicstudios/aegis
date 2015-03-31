@@ -1,18 +1,50 @@
 #include <agta_engine.h>
+#include <agta_displaytimer.h>
+#include <agta_platform.h>
 #include <agta_system.h>
 #include <actp_scopedlock.h>
 #include <functional>
 
 namespace agta {
 
+Engine::Context::Context(Engine::PlatformPtr platform)
+: m_shouldUpdate(false),
+  m_platform(platform)
+{
+}
+
+Engine::Context::~Context()
+{
+}
+
+void Engine::Context::resetShouldUpdate()
+{
+    m_shouldUpdate = false;
+}
+
+void Engine::Context::flagUpdate()
+{
+    m_shouldUpdate = true;
+}
+
+bool Engine::Context::shouldUpdate() const
+{
+    return m_shouldUpdate;
+}
+
+Engine::PlatformPtr Engine::Context::platform() const
+{
+    return m_platform;
+}
+
 Engine::Engine(PlatformPtr platform)
-: m_platform(platform),
+: m_context(platform),
+  m_platform(platform),
   m_running(false)
 {
-    agta::DisplayTimer::DisplayTimerCallback callback =
-        std::bind(&Engine::onDisplayTimer, this);
+    agta::DisplayTimer::Callback callback = std::bind(&Engine::onDisplayTimer, this);
 
-    m_platform->displayTimer()->registerDisplayTimerCallback(<#const DisplayTimerCallback &callback#>);
+    m_platform->glWindow()->displayTimer().registerCallback(callback);
 }
 
 Engine::~Engine()
@@ -22,70 +54,71 @@ Engine::~Engine()
 
 void Engine::registerSystem(std::shared_ptr<agta::System> system)
 {
-    actp::ScopedLock<actp::Mutex> lock(m_mutex);
-
-    Systems::iterator it = m_systems.begin(), end = m_systems.end();
+    bool inserted = false;
+    SystemList::iterator it = m_systems.begin(), end = m_systems.end();
     while (it != end) {
         if ((*it)->updatePriority() > system->updatePriority()) {
             m_systems.insert(it, system);
+            inserted = true;
         }
+
+        ++it;
+    }
+
+    if (!inserted) {
+        m_systems.push_back(system);
     }
 }
 
 void Engine::run()
 {
-    actp::ScopedLock<actp::Mutex> lock(m_mutex);
-
     if (m_running) {
         return;
     }
 
     m_running = true;
-    m_platform->displayTimer()->start();
+    m_platform->glWindow()->displayTimer().start();
 }
 
 void Engine::stop()
 {
-    actp::ScopedLock<actp::Mutex> lock(m_mutex);
-
     if (!m_running) {
         return;
     }
 
     m_running = false;
-    m_platform->displayTimer()->stop();
+    m_platform->glWindow()->displayTimer().stop();
 }
 
 void Engine::step()
 {
-    actp::ScopedLock<actp::Mutex> lock(m_mutex);
-
     if (m_running) {
         return;
     }
 
-    m_shouldStep = true;
-    m_platform->displayTimer()->start();
+    m_context.flagUpdate();
+
+    m_platform->glWindow()->displayTimer().start();
 }
 
 void Engine::onDisplayTimer()
 {
-    if (!m_running || !m_shouldStep) {
+    if (!m_running && !m_context.shouldUpdate()) {
         return;
     }
 
-    m_shouldStep = false;
+    m_context.resetShouldUpdate();
 
-    Systems::iterator it = m_systems.begin();
-    System::iterator end = m_systems.end();
+    SystemList::iterator it = m_systems.begin();
+    SystemList::iterator end = m_systems.end();
 
     while (it != end) {
-        (*it)->update(*this);
+        (*it)->update(m_context);
         ++it;
     }
 
-    if (!m_running || !m_shouldStep) {
-        m_platform->displayTimer()->stop();
+    if (!m_running || !m_context.shouldUpdate()) {
+        m_platform->glWindow()->displayTimer().stop();
     }
 }
 
