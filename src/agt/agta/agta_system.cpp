@@ -14,9 +14,9 @@ void System::preUpdate(agta::Engine::Context& context)
     doPreUpdate(context);
 }
 
-void System::update(agta::Engine::Context& context)
+void System::update(agta::Engine::SpacePtr space, agta::Engine::Context& context)
 {
-    doUpdate(context);
+    doUpdate(space, context);
 }
 
 void System::postUpdate(agta::Engine::Context& context)

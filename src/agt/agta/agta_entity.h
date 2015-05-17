@@ -8,18 +8,18 @@ namespace agta {
 class Entity
 {
 public:
-    Entity(uint32_t id, std::string const& name);
+    Entity(size_t id, std::string const& name);
 
     ~Entity();
 
-    uint32_t id() const;
+    size_t id() const;
 
     std::string const& name() const;
 
 private:
     Entity();
 
-    uint32_t m_id;
+    size_t m_id;
     std::string m_name;
 };
 

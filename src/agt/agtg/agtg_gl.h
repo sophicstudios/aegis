@@ -11,12 +11,9 @@
 #elif defined(AFTS_OS_MACOS)
 
 #define RENDERER_OPENGL
-#include <OpenGL/gl.h>
+#include <OpenGL/gl3.h>
+#include <OpenGL/gl3ext.h>
 
 #endif // AFTS_OS
-
-namespace agtg {
-
-} // namespace
 
 #endif // INCLUDED

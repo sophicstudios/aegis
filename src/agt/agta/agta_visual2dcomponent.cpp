@@ -2,4 +2,10 @@
 
 namespace agta {
 
+Visual2dComponent::Visual2dComponent()
+{}
+
+Visual2dComponent::~Visual2dComponent()
+{}
+
 }

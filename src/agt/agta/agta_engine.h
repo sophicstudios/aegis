@@ -1,6 +1,11 @@
 #ifndef INCLUDED_AGTA_ENGINE_H
 #define INCLUDED_AGTA_ENGINE_H
 
+#include <agta_space.h>
+#include <actp_condition.h>
+#include <actp_mutex.h>
+#include <actp_thread.h>
+#include <atomic>
 #include <memory>
 #include <vector>
 
@@ -14,11 +19,13 @@ class Engine
 public:
     typedef std::shared_ptr<agta::System> SystemPtr;
     typedef std::shared_ptr<agta::Platform> PlatformPtr;
+    typedef std::shared_ptr<agta::Space> SpacePtr;
+    typedef std::vector<SpacePtr> SpaceList;
 
     class Context
     {
     public:
-        Context(PlatformPtr platform);
+        Context(PlatformPtr platform, actp::Mutex& mutex, actp::Condition& condition);
 
         ~Context();
 
@@ -31,8 +38,10 @@ public:
         PlatformPtr platform() const;
 
     private:
-        bool m_shouldUpdate;
+        std::atomic<bool> m_shouldUpdate;
         PlatformPtr m_platform;
+        actp::Mutex& m_mutex;
+        actp::Condition& m_condition;
     };
 
     /**
@@ -60,17 +69,14 @@ public:
     void registerSystem(SystemPtr system);
 
     /**
-     * Puts the Engine into a running state, where it will continuously
-     * update its Systems. The Engine can be stopped by calling the stop()
-     * method. If the Engine is already in a running state, this is a no-op.
+     * 
      */
-    void run();
+    void addSpace(std::string const& id, SpacePtr space);
 
     /**
-     * Takes the Engine out of a running state. If the Engine is already not
-     * in a running state, this is a no-op.
+     *
      */
-    void stop();
+    void removeSpace(std::string const& id);
 
     /**
      * Request a single update of the Engine's systems. This is to allow for
@@ -79,17 +85,28 @@ public:
      * be running, which can have greater energy savings. If the Engine is
      * already in a running state, this is a no-op.
      */
-    void step();
+    void update();
 
 private:
+    void onResizeEvent(agtm::Rect<float> const& rect);
+    void onDrawEvent();
+    
+    void threadFunc();
+    
     typedef std::vector<SystemPtr> SystemList;
+    typedef std::map<std::string, SpacePtr> SpaceMap;
 
-    void onDisplayTimer();
+    std::atomic<bool> m_running;
+    std::shared_ptr<actp::Thread> m_thread;
+    actp::Condition m_condition;
+    actp::Mutex m_mutex;
 
     Context m_context;
-    SystemList m_systems;
     PlatformPtr m_platform;
-    bool m_running;
+
+    SpaceList m_spaces;
+    SpaceMap m_spaceMap;
+    SystemList m_systems;
 };
 
 } // namespace

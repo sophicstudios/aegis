@@ -52,11 +52,13 @@ template<typename T>
 class Rect
 {
 public:
+    static Rect<T> fromLeftRightBottomTop(T const& l, T const& r, T const& b, T const& t);
+
+    static Rect<T> fromXYWidthHeight(T const& x, T const& y, T const& width, T const& height);
+
     Rect();
     
     Rect(Point2d<T> const& origin, Size2d<T> const& size);
-    
-    Rect(T const& left, T const& right, T const& bottom, T const& top);
     
     ~Rect();
     
@@ -96,6 +98,18 @@ template<typename T>
 std::ostream& operator<<(std::ostream& os, Rect<T> const& rect);
 
 template<typename T>
+Rect<T> Rect<T>::fromLeftRightBottomTop(T const& l, T const& r, T const& b, T const& t)
+{
+    return Rect<T>(Point2d<T>(l, b), Size2d<float>(r - l, t - b));
+}
+
+template<typename T>
+Rect<T> Rect<T>::fromXYWidthHeight(T const& x, T const& y, T const& width, T const& height)
+{
+    return Rect<T>(Point2d<float>(x, y), Size2d<float>(width, height));
+}
+
+template<typename T>
 Rect<T>::Rect()
 {}
 
@@ -103,12 +117,6 @@ template<typename T>
 Rect<T>::Rect(Point2d<T> const& origin, Size2d<T> const& size)
 : m_origin(origin),
   m_size(size)
-{}
-
-template<typename T>
-Rect<T>::Rect(T const& left, T const& right, T const& bottom, T const& top)
-: m_origin(left, bottom),
-  m_size(right - left, top - bottom)
 {}
 
 template<typename T>

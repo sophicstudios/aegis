@@ -14,7 +14,7 @@ public:
 
     void preUpdate(agta::Engine::Context& context);
 
-    void update(agta::Engine::Context& context);
+    void update(agta::Engine::SpacePtr space, agta::Engine::Context& context);
 
     void postUpdate(agta::Engine::Context& context);
 
@@ -24,7 +24,7 @@ public:
 
 protected:
     virtual void doPreUpdate(agta::Engine::Context& context) = 0;
-    virtual void doUpdate(agta::Engine::Context& context) = 0;
+    virtual void doUpdate(agta::Engine::SpacePtr space, agta::Engine::Context& context) = 0;
     virtual void doPostUpdate(agta::Engine::Context& context) = 0;
 
 private:

@@ -6,11 +6,17 @@
 #include <ostream>
 
 namespace agtm {
-
+/**
+ * @class Matrix4
+ *
+ * A 4x4 Matrix.
+ */
 template<typename T>
 class Matrix4
 {
 public:
+    static Matrix4<T> identity();
+
     Matrix4();
 
     Matrix4(
@@ -109,6 +115,16 @@ Matrix4<T> operator*(T const& lhs, Matrix4<T> const& rhs);
 
 template<typename T>
 std::ostream& operator<<(std::ostream& os, Matrix4<T> const& m);
+
+template<typename T>
+Matrix4<T> Matrix4<T>::identity()
+{
+    return Matrix4<T>(
+        T(1), T(0), T(0), T(0),
+        T(0), T(1), T(0), T(0),
+        T(0), T(0), T(1), T(0),
+        T(0), T(0), T(0), T(1));
+}
 
 template<typename T>
 inline Matrix4<T>::Matrix4()
@@ -394,6 +410,8 @@ inline Matrix4<T>& Matrix4<T>::transpose()
     std::swap(m_r1c2, m_r2c1);
     std::swap(m_r1c3, m_r3c1);
     std::swap(m_r2c3, m_r3c2);
+
+    return *this;
 }
 
 template<typename T>

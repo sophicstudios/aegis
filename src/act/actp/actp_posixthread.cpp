@@ -9,18 +9,14 @@ namespace {
 
 struct ThreadData
 {
-    ThreadData(ThreadFunction const& func)
-    : entryPoint(func)
-    {}
-
-    ThreadFunction entryPoint;
+    PosixThread::Callback callback;
 };
 
 void* threadEntry(void* data)
 {
     ThreadData* threadData = reinterpret_cast<ThreadData*>(data);
 
-    threadData->entryPoint();
+    threadData->callback();
 
     delete threadData;
 
@@ -33,17 +29,17 @@ void translateThreadAttributes(
 {
     switch (threadAttributes.createType)
     {
-    case ThreadAttributes::CreateType_DETACHED:
+    case CreateType_DETACHED:
         pthread_attr_setdetachstate(&pthreadAttr, PTHREAD_CREATE_DETACHED);
         break;
-    case ThreadAttributes::CreateType_JOINABLE:
+    case CreateType_JOINABLE:
         pthread_attr_setdetachstate(&pthreadAttr, PTHREAD_CREATE_JOINABLE);
         break;
     }
 }
 
 bool createThread(
-    ThreadFunction const& threadFunction,
+    PosixThread::Callback const& callback,
     ThreadAttributes const& threadAttributes,
     pthread_t* thread,
     bool* joinable)
@@ -58,11 +54,12 @@ bool createThread(
     translateThreadAttributes(threadAttributes, pthreadAttr);
 
     // Check whether the thread will be joinable or detached
-    *joinable = threadAttributes.createType == ThreadAttributes::CreateType_JOINABLE
+    *joinable = threadAttributes.createType == CreateType_JOINABLE
         ? true : false;
 
     // Create the thread, passing a structure that holds the actual thread function 
-    ThreadData* threadData = new ThreadData(threadFunction);
+    ThreadData* threadData = new ThreadData();
+    threadData->callback = callback;
     int result = pthread_create(thread, &pthreadAttr, threadEntry, threadData);
 
     // Destroy the attributes object
@@ -79,18 +76,18 @@ bool createThread(
 
 } // namespace
 
-PosixThread::PosixThread(ThreadFunction const& threadFunction)
+PosixThread::PosixThread(Callback const& callback)
 {
     ThreadAttributes threadAttributes;
 
-    if (!createThread(threadFunction, threadAttributes, &m_thread, &m_joinable)) {
+    if (!createThread(callback, threadAttributes, &m_thread, &m_joinable)) {
         throw aftu::Exception("createThread failed");
     }
 }
 
-PosixThread::PosixThread(ThreadFunction const& threadFunction, ThreadAttributes const& threadAttributes)
+PosixThread::PosixThread(Callback const& callback, ThreadAttributes const& threadAttributes)
 {
-    if (!createThread(threadFunction, threadAttributes, &m_thread, &m_joinable)) {
+    if (!createThread(callback, threadAttributes, &m_thread, &m_joinable)) {
         throw aftu::Exception("createThread failed");
     }
 }

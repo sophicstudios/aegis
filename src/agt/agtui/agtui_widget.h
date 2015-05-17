@@ -12,54 +12,45 @@ class Widget
 public:
     Widget();
     
-    Widget(int id);
-    
-    Widget(agtm::Rect<int> const& bounds);
-    
-    Widget(int id, agtm::Rect<int> const& bounds);
-    
     virtual ~Widget() = 0;
     
-    int id();
-    
-    void enable();
-    
-    void disable();
-    
-    bool isEnabled() const;
-    
-    agtm::Rect<int> const& bounds() const;
-    
-    void bounds(agtm::Rect<int> const& bounds);
+    bool enabled() const;
 
-    void position(agtm::Point2d<int> const& position);
-    
-    agtm::Point2d<int> position() const;
+    void enabled(bool enabled);
 
-    int x() const;
-    
-    void x(int x);
-    
-    int y() const;
-    
-    void y(int y);
-    
-    agtm::Size2d<int> size() const;
+    bool visible() const;
 
-    void size(agtm::Size2d<int> const& size);
+    void visible(bool visible);
+
+    agtm::Rect<float> const& bounds() const;
     
-    int width() const;
+    void bounds(agtm::Rect<float> const& bounds);
+
+    agtm::Size2d<float> size() const;
+
+    void size(agtm::Size2d<float> const& size);
+
+    agtm::Point2d<float> position() const;
+
+    void position(agtm::Point2d<float> const& position);
     
-    void width(int width);
+    agtm::Size2d<float> minSize() const;
+
+    agtm::Size2d<float> maxSize() const;
     
-    int height() const;
-    
-    void height(int height);
+    agtm::Size2d<float> preferredSize() const;
+
+protected:
+    virtual agtm::Size2d<float> doMinSize() const;
+
+    virtual agtm::Size2d<float> doMaxSize() const;
+
+    virtual agtm::Size2d<float> doPreferredSize() const;
     
 private:
-    int m_id;
     bool m_enabled;
-    agtm::Rect<int> m_bounds;
+    bool m_visible;
+    agtm::Rect<float> m_bounds;
 };
 
 } // namespace

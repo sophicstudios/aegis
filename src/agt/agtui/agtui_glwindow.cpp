@@ -1,6 +1,6 @@
-#include <agta_glwindow.h>
+#include <agtui_glwindow.h>
 
-namespace agta {
+namespace agtui {
 
 GLWindow::GLWindow()
 {}

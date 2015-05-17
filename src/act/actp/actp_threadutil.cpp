@@ -8,10 +8,10 @@ namespace actp {
 ThreadUtil::ResultCode ThreadUtil::sleep(aftt::DatetimeInterval const& interval)
 {
     struct timespec request;
-    request.tv_sec = interval.hours().value() * 3600
+    request.tv_sec = static_cast<time_t>(interval.hours().value() * 3600
         + interval.minutes().value() * 60
-        + interval.seconds().value();
-    request.tv_nsec = interval.nanoseconds().value();
+        + interval.seconds().value());
+    request.tv_nsec = static_cast<long>(interval.nanoseconds().value());
 
     struct timespec remaining;
 
@@ -27,10 +27,10 @@ ThreadUtil::ResultCode ThreadUtil::sleep(
     aftt::DatetimeInterval* remainingInterval)
 {
     struct timespec request;
-    request.tv_sec = interval.hours().value() * 3600
+    request.tv_sec = static_cast<time_t>(interval.hours().value() * 3600
         + interval.minutes().value() * 60
-        + interval.seconds().value();
-    request.tv_nsec = interval.nanoseconds().value();
+        + interval.seconds().value());
+    request.tv_nsec = static_cast<long>(interval.nanoseconds().value());
 
     struct timespec remaining;
 

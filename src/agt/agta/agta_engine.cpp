@@ -3,13 +3,18 @@
 #include <agta_platform.h>
 #include <agta_system.h>
 #include <actp_scopedlock.h>
+#include <aftu_exception.h>
 #include <functional>
+#include <iostream>
+#include <cassert>
 
 namespace agta {
 
-Engine::Context::Context(Engine::PlatformPtr platform)
+Engine::Context::Context(Engine::PlatformPtr platform, actp::Mutex& mutex, actp::Condition& condition)
 : m_shouldUpdate(false),
-  m_platform(platform)
+  m_platform(platform),
+  m_mutex(mutex),
+  m_condition(condition)
 {
 }
 
@@ -19,16 +24,29 @@ Engine::Context::~Context()
 
 void Engine::Context::resetShouldUpdate()
 {
+    std::cout << "resetShouldUpdate" << std::endl;
+
     m_shouldUpdate = false;
 }
 
 void Engine::Context::flagUpdate()
 {
+    std::cout << "flagUpdate" << std::endl;
+
+    if (m_shouldUpdate) {
+        return;
+    }
+    
     m_shouldUpdate = true;
+
+    m_mutex.lock();
+    m_condition.signalOne();
+    m_mutex.unlock();
 }
 
 bool Engine::Context::shouldUpdate() const
 {
+    std::cout << "shouldUpdate: " << m_shouldUpdate << std::endl;
     return m_shouldUpdate;
 }
 
@@ -38,18 +56,43 @@ Engine::PlatformPtr Engine::Context::platform() const
 }
 
 Engine::Engine(PlatformPtr platform)
-: m_context(platform),
+: m_context(platform, m_mutex, m_condition),
   m_platform(platform),
-  m_running(false)
+  m_running(true)
 {
-    agta::DisplayTimer::Callback callback = std::bind(&Engine::onDisplayTimer, this);
-
-    m_platform->glWindow()->displayTimer().registerCallback(callback);
+    std::cout << "Engine::Engine starting thread" << std::endl;
+    m_thread = std::make_shared<actp::Thread>(std::bind(&Engine::threadFunc, this));
 }
 
 Engine::~Engine()
 {
-    stop();
+    m_running = false;
+
+    m_mutex.lock();
+    m_condition.signalOne();
+    m_mutex.unlock();
+
+    std::cout << "Engine::~Engine joining thread" << std::endl;
+    m_thread->join();
+}
+
+void Engine::addSpace(std::string const& id, SpacePtr space)
+{
+    SpaceMap::iterator it = m_spaceMap.find(id);
+    if (it != m_spaceMap.end()) {
+        // space already exists with this id!
+        throw aftu::Exception("Space already exists with id: ") << id;
+    }
+
+    // add space to Space list
+    m_spaces.push_back(space);
+    m_spaceMap.insert(std::make_pair(id, space));
+}
+
+void Engine::removeSpace(std::string const& id)
+{
+    SpaceMap::size_type count = m_spaceMap.erase(id);
+    assert(count != 0);
 }
 
 void Engine::registerSystem(std::shared_ptr<agta::System> system)
@@ -70,55 +113,43 @@ void Engine::registerSystem(std::shared_ptr<agta::System> system)
     }
 }
 
-void Engine::run()
+void Engine::update()
 {
-    if (m_running) {
-        return;
-    }
-
-    m_running = true;
-    m_platform->glWindow()->displayTimer().start();
-}
-
-void Engine::stop()
-{
-    if (!m_running) {
-        return;
-    }
-
-    m_running = false;
-    m_platform->glWindow()->displayTimer().stop();
-}
-
-void Engine::step()
-{
-    if (m_running) {
-        return;
-    }
-
     m_context.flagUpdate();
-
-    m_platform->glWindow()->displayTimer().start();
 }
 
-void Engine::onDisplayTimer()
+void Engine::threadFunc()
 {
-    if (!m_running && !m_context.shouldUpdate()) {
-        return;
-    }
+    actp::ScopedLock<actp::Mutex> lock(m_mutex);
 
-    m_context.resetShouldUpdate();
+    while (true) {
+        std::cout << "Engine::threadFunc waiting..." << std::endl;
+        m_condition.wait(m_mutex);
+        std::cout << "Engine::threadFunc running" << std::endl;
 
-    SystemList::iterator it = m_systems.begin();
-    SystemList::iterator end = m_systems.end();
+        if (!m_running) {
+            std::cout << "Engine::threadFunc done" << std::endl;
+            break;
+        }
 
-    while (it != end) {
-        (*it)->update(m_context);
-        ++it;
-    }
+        // for each space
+            // for each system
+                // update each system with the space
 
-    if (!m_running || !m_context.shouldUpdate()) {
-        m_platform->glWindow()->displayTimer().stop();
+
+        SpaceList::iterator spaceIter = m_spaces.begin();
+        SpaceList::iterator spaceEnd = m_spaces.end();
+
+        for (; spaceIter != spaceEnd; ++spaceIter) {
+            SystemList::iterator systemIter = m_systems.begin();
+            SystemList::iterator systemEnd = m_systems.end();
+
+            for (; systemIter != systemEnd; ++systemIter) {
+                (*systemIter)->update(*spaceIter, m_context);
+            }
+        }
+
+        m_context.resetShouldUpdate();
     }
 }
 

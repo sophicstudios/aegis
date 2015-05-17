@@ -8,6 +8,8 @@
 #include <actp_posixthread.h>
 #endif
 
+#include <functional>
+
 namespace actp {
 
 #if defined(ACTS_PLATFORM_PTHREADS)
@@ -17,9 +19,11 @@ typedef PosixThread NativeThread;
 class Thread
 {
 public:
-    Thread(ThreadFunction const& threadFunction);
+    typedef std::function<void (void)> Callback;
 
-    Thread(ThreadFunction const& threadFunction, ThreadAttributes const& threadAttributes);
+    Thread(Callback const& callback);
+
+    Thread(Callback const& threadFunction, ThreadAttributes const& threadAttributes);
 
     ~Thread();
     

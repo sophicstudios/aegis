@@ -1,9 +1,9 @@
-#ifndef INCLUDED_AGTA_DISPLAYTIMER_H
-#define INCLUDED_AGTA_DISPLAYTIMER_H
+#ifndef INCLUDED_AGTUI_DISPLAYTIMER_H
+#define INCLUDED_AGTUI_DISPLAYTIMER_H
 
 #include <functional>
 
-namespace agta {
+namespace agtui {
 
 class DisplayTimer
 {

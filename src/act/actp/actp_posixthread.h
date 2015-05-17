@@ -6,14 +6,19 @@
 
 #if defined(ACTS_PLATFORM_PTHREADS)
 
+#include <pthread.h>
+#include <functional>
+
 namespace actp {
 
 class PosixThread
 {
 public:
-    PosixThread(ThreadFunction const& threadFunction);
+    typedef std::function<void (void)> Callback;
 
-    PosixThread(ThreadFunction const& threadFunction, ThreadAttributes const& threadAttributes);
+    PosixThread(Callback const& callback);
+
+    PosixThread(Callback const& callback, ThreadAttributes const& threadAttributes);
 
     ~PosixThread();
     

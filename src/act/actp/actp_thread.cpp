@@ -2,12 +2,12 @@
 
 namespace actp {
 
-Thread::Thread(ThreadFunction const& threadFunction)
-: m_nativeThread(threadFunction)
+Thread::Thread(Thread::Callback const& callback)
+: m_nativeThread(callback)
 {}
 
-Thread::Thread(ThreadFunction const& threadFunction, ThreadAttributes const& threadAttributes)
-: m_nativeThread(threadFunction, threadAttributes)
+Thread::Thread(Thread::Callback const& callback, ThreadAttributes const& threadAttributes)
+: m_nativeThread(callback, threadAttributes)
 {}
 
 Thread::~Thread()
