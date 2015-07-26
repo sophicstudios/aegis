@@ -6,50 +6,58 @@
 namespace agta {
 
 Space::Space()
+: m_uuid(afth::UUID::v4())
 {}
 
 Space::~Space()
 {}
 
-size_t Space::id() const
+afth::UUID const& Space::id() const
 {
-    return 0;
+    return m_uuid;
 }
 
-agta::Entity Space::createEntity(std::string const& name)
+Space::EntityPtr Space::createEntity()
 {
-    size_t entityId = 0;
+    size_t entityLoc = 0;
+    afth::UUID uuid = afth::UUID::v4();
+    EntityPtr entity(new agta::Entity(uuid));
 
     if (!m_freeEntities.empty()) {
-        // if there are entries in the free entity list, reuse the first id
-        entityId = *(m_freeEntities.begin());
+        // if there are entries in the free entity list, reuse the first available location
+        entityLoc = *(m_freeEntities.begin());
 
-        // remove the id from the free entity list
+        // remove the location from the free entity list
         m_freeEntities.erase(m_freeEntities.begin());
 
-        // mark the id as active in the active entity list
-        m_entities[entityId] = true;
+        // mark the location as active in the active entity list
+        m_entities[entityLoc] = true;
     }
     else {
         // get the next available entity id
-        entityId = m_entities.size();
+        entityLoc = m_entities.size();
 
         // add an entry to the active entity list
         m_entities.push_back(true);
     }
 
     // map the name to the entity id
-    m_entityMap.insert(std::make_pair(name, entityId));
-    m_reverseEntityMap.insert(std::make_pair(entityId, name));
+    m_entityMap.insert(std::make_pair(uuid, entityLoc));
+    m_reverseEntityMap.insert(std::make_pair(entityLoc, uuid));
 
     // return the allocated entityId
-    return agta::Entity(entityId, name);
+    return entity;
 }
 
-bool Space::removeEntity(std::string const& name)
+bool Space::removeEntity(EntityPtr entity)
+{
+    return removeEntity(entity->id());
+}
+
+bool Space::removeEntity(afth::UUID const& uuid)
 {
     // find the entityId in the entity map
-    EntityMap::iterator it = m_entityMap.find(name);
+    EntityMap::iterator it = m_entityMap.find(uuid);
     if (it == m_entityMap.end()) {
         return false;
     }
@@ -60,32 +68,6 @@ bool Space::removeEntity(std::string const& name)
     m_entityMap.erase(it);
 
     return true;
-}
-
-bool Space::removeEntity(size_t entityId)
-{
-    // find the name from the entityId
-    ReverseEntityMap::iterator it = m_reverseEntityMap.find(entityId);
-    if (it == m_reverseEntityMap.end()) {
-        return false;
-    }
-
-    m_freeEntities.insert(entityId);
-    m_entities[entityId] = false;
-    m_entityMap.erase(it->second);
-    m_reverseEntityMap.erase(it);
-
-    return true;
-}
-
-void Space::addCamera(CameraPtr camera)
-{
-    m_cameras.push_back(camera);
-}
-
-Space::CameraList const& Space::cameras() const
-{
-    return m_cameras;
 }
 
 } // namespace

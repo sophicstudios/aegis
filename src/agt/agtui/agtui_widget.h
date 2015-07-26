@@ -4,6 +4,7 @@
 #include <agtm_rect.h>
 #include <agtm_point2d.h>
 #include <agtm_size2d.h>
+#include <afth_uuid.h>
 
 namespace agtui {
 
@@ -11,9 +12,13 @@ class Widget
 {
 public:
     Widget();
+
+    Widget(afth::UUID const& id);
     
     virtual ~Widget() = 0;
-    
+
+    afth::UUID const& id() const;
+
     bool enabled() const;
 
     void enabled(bool enabled);
@@ -38,16 +43,16 @@ public:
 
     agtm::Size2d<float> maxSize() const;
     
-    agtm::Size2d<float> preferredSize() const;
+    agtm::Size2d<float> bestSize() const;
 
-protected:
+private:
     virtual agtm::Size2d<float> doMinSize() const;
 
     virtual agtm::Size2d<float> doMaxSize() const;
 
-    virtual agtm::Size2d<float> doPreferredSize() const;
+    virtual agtm::Size2d<float> doBestSize() const;
     
-private:
+    afth::UUID m_id;
     bool m_enabled;
     bool m_visible;
     agtm::Rect<float> m_bounds;

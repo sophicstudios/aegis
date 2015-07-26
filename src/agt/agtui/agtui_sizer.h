@@ -1,32 +1,37 @@
 #ifndef INCLUDED_AGTUI_SIZER_H
 #define INCLUDED_AGTUI_SIZER_H
 
-#include <agtui_widget.h>
-#include <agtm_rect.h>
-#include <memory>
-#include <string>
-#include <vector>
+#include <agtm_size2d.h>
 
 namespace agtui {
 
 class Sizer
 {
 public:
-    typedef std::shared_ptr<Widget> WidgetPtr;
-    typedef std::vector<WidgetPtr> WidgetList;
-    
     Sizer();
     
     virtual ~Sizer() = 0;
     
-    virtual bool addWidget(std::string const& id, WidgetPtr child);
-    
-    virtual WidgetPtr remove(std::string const& id);
+    agtm::Size2d<float> size() const;
 
-    virtual const WidgetPtr child(std::string const& id);
+    void size(agtm::Size2d<float> const& size);
 
-protected:
-    
+    agtm::Size2d<float> minSize() const;
+
+    agtm::Size2d<float> maxSize() const;
+
+    agtm::Size2d<float> bestSize() const;
+
+private:
+    virtual agtm::Size2d<float> doSize() const = 0;
+
+    virtual void doSize(agtm::Size2d<float> const& size) = 0;
+
+    virtual agtm::Size2d<float> doMinSize() const = 0;
+
+    virtual agtm::Size2d<float> doMaxSize() const = 0;
+
+    virtual agtm::Size2d<float> doBestSize() const = 0;
 };
 
 } // namespace

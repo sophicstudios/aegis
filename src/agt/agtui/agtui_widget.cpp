@@ -4,10 +4,20 @@
 namespace agtui {
 
 Widget::Widget()
+: m_id(afth::UUID::v4())
+{}
+
+Widget::Widget(afth::UUID const& id)
+: m_id(id)
 {}
 
 Widget::~Widget()
 {}
+
+afth::UUID const& Widget::id() const
+{
+    return m_id;
+}
 
 bool Widget::enabled() const
 {
@@ -69,9 +79,9 @@ agtm::Size2d<float> Widget::maxSize() const
     return doMaxSize();
 }
 
-agtm::Size2d<float> Widget::preferredSize() const
+agtm::Size2d<float> Widget::bestSize() const
 {
-    return doPreferredSize();
+    return doBestSize();
 }
 
 agtm::Size2d<float> Widget::doMinSize() const

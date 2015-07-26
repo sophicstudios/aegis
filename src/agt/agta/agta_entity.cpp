@@ -2,22 +2,20 @@
 
 namespace agta {
 
-Entity::Entity(size_t id, std::string const& name)
-: m_id(id),
-  m_name(name)
+Entity::Entity()
+: m_id(afth::UUID::v4())
+{}
+
+Entity::Entity(afth::UUID const& id)
+: m_id(id)
 {}
 
 Entity::~Entity()
 {}
 
-size_t Entity::id() const
+afth::UUID const& Entity::id() const
 {
     return m_id;
-}
-
-std::string const& Entity::name() const
-{
-    return m_name;
 }
 
 } // namespace

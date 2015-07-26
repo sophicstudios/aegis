@@ -1,6 +1,7 @@
 #ifndef INCLUDED_AGTA_ENTITY_H
 #define INCLUDED_AGTA_ENTITY_H
 
+#include <afth_uuid.h>
 #include <string>
 
 namespace agta {
@@ -8,19 +9,18 @@ namespace agta {
 class Entity
 {
 public:
-    Entity(size_t id, std::string const& name);
+    Entity();
+
+    Entity(afth::UUID const& id);
 
     ~Entity();
 
-    size_t id() const;
-
-    std::string const& name() const;
+    afth::UUID const& id() const;
 
 private:
     Entity();
 
-    size_t m_id;
-    std::string m_name;
+    afth::UUID m_id;
 };
 
 } // namespace
