@@ -7,7 +7,7 @@ namespace afth {
 
 using namespace aunit;
 
-describe("Test CRC32", []
+describe("afth_crc32", []
 {
     char const string1[] = "The quick brown fox jumps over the lazy dog";
     char const string2[] = "The quick brown fox jumps over the lazy dog.";

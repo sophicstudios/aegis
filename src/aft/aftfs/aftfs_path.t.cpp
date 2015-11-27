@@ -5,7 +5,7 @@ namespace aftfs {
 
 using namespace aunit;
 
-describe("Test Path", []
+describe("aftfs_path", []
 {
     it("Constructor - directory with no ending slash", [&]
     {

@@ -6,7 +6,7 @@
 
 namespace aftfs {
 
-describe("Test LocalFilesystem", []
+describe("aftfs_localfilesystem", []
 {
     it("List Directory", [&]
     {

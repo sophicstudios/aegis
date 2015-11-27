@@ -5,7 +5,7 @@ namespace aftio {
 
 using namespace aunit;
 
-describe("Test Permission", []
+describe("aftio_permission", []
 {
     it("Default Construction", [&]
     {

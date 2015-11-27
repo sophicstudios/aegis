@@ -41,7 +41,7 @@ bool uuidMatch(std::vector<char> const& bytes, std::string uuid)
 
 } // namespace
 
-describe("Test UUID", []
+describe("afth_uuid", []
 {
     const char* zeroUUID = "00000000-0000-0000-0000-000000000000";
 
