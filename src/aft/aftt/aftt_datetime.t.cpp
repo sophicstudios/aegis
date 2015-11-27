@@ -3,24 +3,7 @@
 
 namespace aftt {
 
-class TestDatetime : public aunit::TestFixture
-{
-public:
-    TestDatetime() {}
-    
-    virtual ~TestDatetime() {}
-    
-protected:
-    virtual void runTest();
-    
-private:
-    void testConstruction();
-    void testAssignment();
-    void testAddition();
-    void testSubtraction();
-};
-
-AUNIT_REGISTERTEST(TestDatetime);
+using namespace aunit;
 
 namespace {
 
@@ -48,39 +31,23 @@ bool verify(Datetime const& dt,
 
 } // namespace
 
-void TestDatetime::runTest()
+describe("aftt_datetime", []
 {
-    testConstruction();
-    testAssignment();
-    testAddition();
-    testSubtraction();
-}
+    it("Construction", [&]
+    {
+        Datetime dt1(2010, 10, 31);
 
-void TestDatetime::testConstruction()
-{
-    Datetime dt1(2010, 10, 31);
-    AUNIT_ASSERT(verify(dt1, 2010, 10, 31, 0, 0, 0, 0));
-    
-    Datetime dt2(2010, 10, 31, 5);
-    
-    Datetime dt3(2010, 10, 31, 5, 31);
-    
-    Datetime dt4(2010, 10, 31, 5, 31, 55);
-    
-    Datetime dt5(2010, 10, 31, 5, 31, 55, 999);
-}
-
-void TestDatetime::testAssignment()
-{
-}
-
-void TestDatetime::testAddition()
-{
-}
-
-void TestDatetime::testSubtraction()
-{
-}
+        expect(verify(dt1, 2010, 10, 31, 0, 0, 0, 0)).toBeTrue();
+        
+        Datetime dt2(2010, 10, 31, 5);
+        
+        Datetime dt3(2010, 10, 31, 5, 31);
+        
+        Datetime dt4(2010, 10, 31, 5, 31, 55);
+        
+        Datetime dt5(2010, 10, 31, 5, 31, 55, 999);
+    });
+});
 
 } // namespace
 
