@@ -1,10 +1,15 @@
 #include <aunit_testmanager.h>
 #include <aunit_testfixture.h>
+#include <aunit_testregistry.h>
+#include <aunit_fixtureregistry.h>
+#include <aunit_describe.h>
+#include <aunit_fixture.h>
 
 namespace aunit {
 
-TestManager::TestManager(TestRegistry& testRegistry)
-: m_testRegistry(testRegistry)
+TestManager::TestManager()
+: m_testRegistry(TestRegistry::instance()),
+  m_fixtureRegistry(FixtureRegistry::instance())
 {}
 
 TestManager::~TestManager()
@@ -29,6 +34,15 @@ TestManager::Result TestManager::runTest(std::string const& testName, Reporter& 
     }
     else {
         return TestManager::Result_TEST_NOT_FOUND;
+    }
+}
+
+void TestManager::run(Reporter& reporter)
+{
+    FixtureRegistry::iterator it = m_fixtureRegistry.begin();
+    FixtureRegistry::iterator end = m_fixtureRegistry.end();
+    for (; it != end; ++it) {
+        it->second->run(reporter);
     }
 }
 

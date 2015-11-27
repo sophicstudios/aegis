@@ -55,7 +55,8 @@ uint32_t Crc32::compute(char const* const buffer, size_t length, uint32_t priorC
 
     unsigned char const* const byteBuf = reinterpret_cast<unsigned char const* const>(buffer);
 
-    for (size_t i = 0; i < length; ++i) {
+    for (size_t i = 0; i < length; ++i)
+    {
         crc32 = (crc32 >> 8) ^ CRC_TABLE[(crc32 ^ byteBuf[i]) & 0xFF];
     }
 

@@ -3,23 +3,7 @@
 
 namespace aftt {
 
-class TestDate : public aunit::TestFixture
-{
-public:
-    TestDate() {}
-    virtual ~TestDate() {}
-
-protected:
-    virtual void runTest();
-
-private:
-    void testConstruction();
-    void testAssignment();
-    void testAddition();
-    void testSubtraction();
-};
-
-AUNIT_REGISTERTEST(TestDate);
+using namespace aunit;
 
 namespace {
 
@@ -56,92 +40,87 @@ bool equalDates(Date const& date, int year, int month, int day)
 
 } // namespace
 
-void TestDate::runTest()
+describe("aftt_date", []
 {
-    testConstruction();
-    testAssignment();
-    testAddition();
-    testSubtraction();
-}
+    it("Construction", [&]
+    {
+        bool allConstructionSucceeded = true;
+        for (int y = START_YEAR; y < END_YEAR; ++y) {
+            for (int m = 1; m <= 12; ++m) {
+                for (int d = 1; d < MONTH_INFO[m-1].days + 1; ++d) {
+                    if (y == 1752 && m == 9 && d > 2 && d < 14) {
+                        continue;
+                    }
 
-void TestDate::testConstruction()
-{
-    bool allConstructionSucceeded = true;
-    for (int y = START_YEAR; y < END_YEAR; ++y) {
-        for (int m = 1; m <= 12; ++m) {
-            for (int d = 1; d < MONTH_INFO[m-1].days + 1; ++d) {
-                if (y == 1752 && m == 9 && d > 2 && d < 14) {
-                    continue;
+                    Date date(y, m, d);
+                    allConstructionSucceeded &= equalDates(date, y, m, d);
                 }
-
-                Date date(y, m, d);
-                allConstructionSucceeded &= equalDates(date, y, m, d);
             }
         }
-    }
 
-    AUNIT_ASSERT(allConstructionSucceeded);
-}
+        expect(allConstructionSucceeded).toBeTrue();
+    });
 
-void TestDate::testAssignment()
-{
-    const int year = 1975;
-    const int month = 2;
-    const int day = 16;
-    
-    Date d1(year, month, day);
-    AUNIT_ASSERT(equalDates(d1, year, month, day));
-    
-    Date d2;
-    AUNIT_ASSERT(equalDates(d2, 1, 1, 1));
-    
-    d2 = d1;
-    AUNIT_ASSERT(equalDates(d2, year, month, day));
-}
+    it("Assignment", [&]
+    {
+        const int year = 1975;
+        const int month = 2;
+        const int day = 16;
+        
+        Date d1(year, month, day);
+        expect(equalDates(d1, year, month, day)).toBeTrue();
+        
+        Date d2;
+        expect(equalDates(d2, 1, 1, 1)).toBeTrue();
+        
+        d2 = d1;
+        expect(equalDates(d2, year, month, day)).toBeTrue();
+    });
 
-void TestDate::testAddition()
-{
-    Date d1(1975, 2, 16);
-    AUNIT_ASSERT(equalDates(d1, 1975, 2, 16));
-    
-    d1 += Days(1);
-    AUNIT_ASSERT(equalDates(d1, 1975, 2, 17));
-    
-    d1++;
-    AUNIT_ASSERT(equalDates(d1, 1975, 2, 18));
-    
-    ++d1;
-    AUNIT_ASSERT(equalDates(d1, 1975, 2, 19));
-    
-    d1 += Days(2);
-    AUNIT_ASSERT(equalDates(d1, 1975, 2, 21));
-    
-    Date d2(1752, 9, 2);
+    it("Addition", [&]
+    {
+        Date d1(1975, 2, 16);
+        expect(equalDates(d1, 1975, 2, 16)).toBeTrue();
+        
+        d1 += Days(1);
+        expect(equalDates(d1, 1975, 2, 17)).toBeTrue();
+        
+        d1++;
+        expect(equalDates(d1, 1975, 2, 18)).toBeTrue();
+        
+        ++d1;
+        expect(equalDates(d1, 1975, 2, 19)).toBeTrue();
+        
+        d1 += Days(2);
+        expect(equalDates(d1, 1975, 2, 21)).toBeTrue();
+        
+        Date d2(1752, 9, 2);
 
-    ++d2;
-    AUNIT_ASSERT(equalDates(d2, 1752, 9, 14));
-}
+        ++d2;
+        expect(equalDates(d2, 1752, 9, 14)).toBeTrue();
+    });
 
-void TestDate::testSubtraction()
-{
-    Date d1(1975, 2, 16);
-    
-    d1 -= Days(1);
-    AUNIT_ASSERT(equalDates(d1, 1975, 2, 15));
-    
-    d1--;
-    AUNIT_ASSERT(equalDates(d1, 1975, 2, 14));
-    
-    --d1;
-    AUNIT_ASSERT(equalDates(d1, 1975, 2, 13));
-    
-    d1 -= Days(2);
-    AUNIT_ASSERT(equalDates(d1, 1975, 2, 11));
-    
-    Date d2(1752, 9, 14);
-    
-    --d2;
-    AUNIT_ASSERT(equalDates(d2, 1752, 9, 2));
-}
+    it("Subtraction", [&]
+    {
+        Date d1(1975, 2, 16);
+        
+        d1 -= Days(1);
+        expect(equalDates(d1, 1975, 2, 15)).toBeTrue();
+        
+        d1--;
+        expect(equalDates(d1, 1975, 2, 14)).toBeTrue();
+        
+        --d1;
+        expect(equalDates(d1, 1975, 2, 13)).toBeTrue();
+        
+        d1 -= Days(2);
+        expect(equalDates(d1, 1975, 2, 11)).toBeTrue();
+        
+        Date d2(1752, 9, 14);
+        
+        --d2;
+        expect(equalDates(d2, 1752, 9, 2)).toBeTrue();
+    });
+});
 
 } // namespace

@@ -13,6 +13,8 @@
 		FA0E03A41ACEEE2400386511 /* agta_sprite2dmaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = FA0E03A01ACEEE2400386511 /* agta_sprite2dmaterial.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA14A0AA19E6088C0058A4CA /* agtr_resource.h in Headers */ = {isa = PBXBuildFile; fileRef = FA14A0A919E6088C0058A4CA /* agtr_resource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA14A0AB19E6088C0058A4CA /* agtr_resource.h in Headers */ = {isa = PBXBuildFile; fileRef = FA14A0A919E6088C0058A4CA /* agtr_resource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA1962671BC98CD300B94BC2 /* aunit_fixture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA1962651BC98CD300B94BC2 /* aunit_fixture.cpp */; settings = {ASSET_TAGS = (); }; };
+		FA1962681BC98CD300B94BC2 /* aunit_fixture.h in Headers */ = {isa = PBXBuildFile; fileRef = FA1962661BC98CD300B94BC2 /* aunit_fixture.h */; settings = {ASSET_TAGS = (); }; };
 		FA19D67F1ABEF037007C91E1 /* agta_visual2dcomponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA19D67D1ABEF037007C91E1 /* agta_visual2dcomponent.cpp */; };
 		FA19D6801ABEF037007C91E1 /* agta_visual2dcomponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA19D67D1ABEF037007C91E1 /* agta_visual2dcomponent.cpp */; };
 		FA19D6811ABEF037007C91E1 /* agta_visual2dcomponent.h in Headers */ = {isa = PBXBuildFile; fileRef = FA19D67E1ABEF037007C91E1 /* agta_visual2dcomponent.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -393,7 +395,6 @@
 		FA9B15F515AA70190017DCD5 /* afth_crc32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15F315AA70190017DCD5 /* afth_crc32.cpp */; };
 		FA9B15F615AA70190017DCD5 /* afth_crc32.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B15F415AA70190017DCD5 /* afth_crc32.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA9B15F815AA738B0017DCD5 /* aftio_permission.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15F715AA738B0017DCD5 /* aftio_permission.t.cpp */; };
-		FA9B15FB15AA73AB0017DCD5 /* aftfs_filesystem.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15F915AA73AB0017DCD5 /* aftfs_filesystem.t.cpp */; };
 		FA9B15FC15AA73AB0017DCD5 /* aftfs_path.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B15FA15AA73AB0017DCD5 /* aftfs_path.t.cpp */; };
 		FAA0731516DA9DE800015F1D /* aftt_month.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA0731416DA9DE800015F1D /* aftt_month.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAA0731616DA9DE800015F1D /* aftt_month.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA0731416DA9DE800015F1D /* aftt_month.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -425,6 +426,8 @@
 		FAA431D8169A801F00F2BAF3 /* aftt_microseconds.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA431D6169A801D00F2BAF3 /* aftt_microseconds.cpp */; };
 		FAA431DA169A829200F2BAF3 /* aftt_nanoseconds.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA431D9169A829000F2BAF3 /* aftt_nanoseconds.cpp */; };
 		FAA431DB169A829200F2BAF3 /* aftt_nanoseconds.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA431D9169A829000F2BAF3 /* aftt_nanoseconds.cpp */; };
+		FAA47C4B1BAE0C3F00514613 /* aunit_expect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA47C491BAE0C3F00514613 /* aunit_expect.cpp */; };
+		FAA47C4C1BAE0C3F00514613 /* aunit_expect.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA47C4A1BAE0C3F00514613 /* aunit_expect.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAA6CDCC15DDB37400F480F0 /* agtm_matrix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CDB615DDB37400F480F0 /* agtm_matrix2.cpp */; };
 		FAA6CDCD15DDB37400F480F0 /* agtm_matrix2.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA6CDB715DDB37400F480F0 /* agtm_matrix2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAA6CDCE15DDB37400F480F0 /* agtm_matrix3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CDB815DDB37400F480F0 /* agtm_matrix3.cpp */; };
@@ -493,6 +496,10 @@
 		FACBAC9E16FE8D6B008B2004 /* agtm_size2d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FACBAC9D16FE8D6B008B2004 /* agtm_size2d.cpp */; };
 		FACBACA7170723ED008B2004 /* agtg_renderingcontext.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBACA6170723ED008B2004 /* agtg_renderingcontext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FACBACAB17072886008B2004 /* agtg_renderingcontext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FACBACAA17072885008B2004 /* agtg_renderingcontext.cpp */; };
+		FACFF4DC1BB6ECE200FBB983 /* aunit_describe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FACFF4DA1BB6ECE200FBB983 /* aunit_describe.cpp */; };
+		FACFF4DD1BB6ECE200FBB983 /* aunit_describe.h in Headers */ = {isa = PBXBuildFile; fileRef = FACFF4DB1BB6ECE200FBB983 /* aunit_describe.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FACFF4E01BBB6D5C00FBB983 /* aunit_fixtureregistry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FACFF4DE1BBB6D5C00FBB983 /* aunit_fixtureregistry.cpp */; };
+		FACFF4E11BBB6D5C00FBB983 /* aunit_fixtureregistry.h in Headers */ = {isa = PBXBuildFile; fileRef = FACFF4DF1BBB6D5C00FBB983 /* aunit_fixtureregistry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAD3F6BD1AA23D24005455B2 /* agta_platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAD3F6BB1AA23D24005455B2 /* agta_platform.cpp */; };
 		FAD3F6BE1AA23D24005455B2 /* agta_platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAD3F6BB1AA23D24005455B2 /* agta_platform.cpp */; };
 		FAD3F6BF1AA23D24005455B2 /* agta_platform.h in Headers */ = {isa = PBXBuildFile; fileRef = FAD3F6BC1AA23D24005455B2 /* agta_platform.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -608,6 +615,8 @@
 		FA0E039F1ACEEE2400386511 /* agta_sprite2dmaterial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_sprite2dmaterial.cpp; path = ../../../src/agt/agta/agta_sprite2dmaterial.cpp; sourceTree = "<group>"; };
 		FA0E03A01ACEEE2400386511 /* agta_sprite2dmaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_sprite2dmaterial.h; path = ../../../src/agt/agta/agta_sprite2dmaterial.h; sourceTree = "<group>"; };
 		FA14A0A919E6088C0058A4CA /* agtr_resource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtr_resource.h; path = ../../../src/agt/agtr/agtr_resource.h; sourceTree = "<group>"; };
+		FA1962651BC98CD300B94BC2 /* aunit_fixture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aunit_fixture.cpp; path = ../../../src/aunit/aunit_fixture.cpp; sourceTree = "<group>"; };
+		FA1962661BC98CD300B94BC2 /* aunit_fixture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aunit_fixture.h; path = ../../../src/aunit/aunit_fixture.h; sourceTree = "<group>"; };
 		FA19D67D1ABEF037007C91E1 /* agta_visual2dcomponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_visual2dcomponent.cpp; path = ../../../src/agt/agta/agta_visual2dcomponent.cpp; sourceTree = "<group>"; };
 		FA19D67E1ABEF037007C91E1 /* agta_visual2dcomponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_visual2dcomponent.h; path = ../../../src/agt/agta/agta_visual2dcomponent.h; sourceTree = "<group>"; };
 		FA19D6831AC24EA8007C91E1 /* agtg_texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtg_texture.cpp; path = ../../../src/agt/agtg/agtg_texture.cpp; sourceTree = "<group>"; };
@@ -829,7 +838,6 @@
 		FA9B15F315AA70190017DCD5 /* afth_crc32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = afth_crc32.cpp; path = ../../../src/aft/afth/afth_crc32.cpp; sourceTree = "<group>"; };
 		FA9B15F415AA70190017DCD5 /* afth_crc32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = afth_crc32.h; path = ../../../src/aft/afth/afth_crc32.h; sourceTree = "<group>"; };
 		FA9B15F715AA738B0017DCD5 /* aftio_permission.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftio_permission.t.cpp; path = ../../../src/aft/aftio/aftio_permission.t.cpp; sourceTree = "<group>"; };
-		FA9B15F915AA73AB0017DCD5 /* aftfs_filesystem.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftfs_filesystem.t.cpp; path = ../../../src/aft/aftfs/aftfs_filesystem.t.cpp; sourceTree = "<group>"; };
 		FA9B15FA15AA73AB0017DCD5 /* aftfs_path.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftfs_path.t.cpp; path = ../../../src/aft/aftfs/aftfs_path.t.cpp; sourceTree = "<group>"; };
 		FAA0731416DA9DE800015F1D /* aftt_month.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftt_month.h; path = ../../../src/aft/aftt/aftt_month.h; sourceTree = "<group>"; };
 		FAA0731816DAA59A00015F1D /* aftt_month.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftt_month.cpp; path = ../../../src/aft/aftt/aftt_month.cpp; sourceTree = "<group>"; };
@@ -846,6 +854,8 @@
 		FAA431D3169A7CCD00F2BAF3 /* aftt_milliseconds.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftt_milliseconds.cpp; path = ../../../src/aft/aftt/aftt_milliseconds.cpp; sourceTree = "<group>"; };
 		FAA431D6169A801D00F2BAF3 /* aftt_microseconds.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftt_microseconds.cpp; path = ../../../src/aft/aftt/aftt_microseconds.cpp; sourceTree = "<group>"; };
 		FAA431D9169A829000F2BAF3 /* aftt_nanoseconds.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftt_nanoseconds.cpp; path = ../../../src/aft/aftt/aftt_nanoseconds.cpp; sourceTree = "<group>"; };
+		FAA47C491BAE0C3F00514613 /* aunit_expect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aunit_expect.cpp; path = ../../../src/aunit/aunit_expect.cpp; sourceTree = "<group>"; };
+		FAA47C4A1BAE0C3F00514613 /* aunit_expect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aunit_expect.h; path = ../../../src/aunit/aunit_expect.h; sourceTree = "<group>"; };
 		FAA6CDB215DDB28400F480F0 /* libagt-macosx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libagt-macosx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA6CDB615DDB37400F480F0 /* agtm_matrix2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtm_matrix2.cpp; path = ../../../src/agt/agtm/agtm_matrix2.cpp; sourceTree = "<group>"; };
 		FAA6CDB715DDB37400F480F0 /* agtm_matrix2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtm_matrix2.h; path = ../../../src/agt/agtm/agtm_matrix2.h; sourceTree = "<group>"; };
@@ -896,6 +906,10 @@
 		FACBAC9D16FE8D6B008B2004 /* agtm_size2d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtm_size2d.cpp; path = ../../../src/agt/agtm/agtm_size2d.cpp; sourceTree = "<group>"; };
 		FACBACA6170723ED008B2004 /* agtg_renderingcontext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtg_renderingcontext.h; path = ../../../src/agt/agtg/agtg_renderingcontext.h; sourceTree = "<group>"; };
 		FACBACAA17072885008B2004 /* agtg_renderingcontext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtg_renderingcontext.cpp; path = ../../../src/agt/agtg/agtg_renderingcontext.cpp; sourceTree = "<group>"; };
+		FACFF4DA1BB6ECE200FBB983 /* aunit_describe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aunit_describe.cpp; path = ../../../src/aunit/aunit_describe.cpp; sourceTree = "<group>"; };
+		FACFF4DB1BB6ECE200FBB983 /* aunit_describe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aunit_describe.h; path = ../../../src/aunit/aunit_describe.h; sourceTree = "<group>"; };
+		FACFF4DE1BBB6D5C00FBB983 /* aunit_fixtureregistry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aunit_fixtureregistry.cpp; path = ../../../src/aunit/aunit_fixtureregistry.cpp; sourceTree = "<group>"; };
+		FACFF4DF1BBB6D5C00FBB983 /* aunit_fixtureregistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aunit_fixtureregistry.h; path = ../../../src/aunit/aunit_fixtureregistry.h; sourceTree = "<group>"; };
 		FAD3F6BB1AA23D24005455B2 /* agta_platform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_platform.cpp; path = ../../../src/agt/agta/agta_platform.cpp; sourceTree = "<group>"; };
 		FAD3F6BC1AA23D24005455B2 /* agta_platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_platform.h; path = ../../../src/agt/agta/agta_platform.h; sourceTree = "<group>"; };
 		FADE7DC01AE47B4600280A14 /* agta_componententitymap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_componententitymap.cpp; path = ../../../src/agt/agta/agta_componententitymap.cpp; sourceTree = "<group>"; };
@@ -1228,6 +1242,14 @@
 				FA833E8B15A755850044283D /* aunit_testmanager.h */,
 				FA833E8D15A755850044283D /* aunit_testregistry.h */,
 				FA833E8F15A755850044283D /* aunit_testresult.h */,
+				FAA47C491BAE0C3F00514613 /* aunit_expect.cpp */,
+				FAA47C4A1BAE0C3F00514613 /* aunit_expect.h */,
+				FACFF4DA1BB6ECE200FBB983 /* aunit_describe.cpp */,
+				FACFF4DB1BB6ECE200FBB983 /* aunit_describe.h */,
+				FACFF4DE1BBB6D5C00FBB983 /* aunit_fixtureregistry.cpp */,
+				FACFF4DF1BBB6D5C00FBB983 /* aunit_fixtureregistry.h */,
+				FA1962651BC98CD300B94BC2 /* aunit_fixture.cpp */,
+				FA1962661BC98CD300B94BC2 /* aunit_fixture.h */,
 			);
 			name = aunit;
 			sourceTree = "<group>";
@@ -1256,7 +1278,6 @@
 				FA833EF515A90A990044283D /* aftfs_directoryentry.h */,
 				FA833EF815A90A990044283D /* aftfs_filesystem.cpp */,
 				FA833EF915A90A990044283D /* aftfs_filesystem.h */,
-				FA9B15F915AA73AB0017DCD5 /* aftfs_filesystem.t.cpp */,
 				FA833EFA15A90A990044283D /* aftfs_path.cpp */,
 				FA833EFB15A90A990044283D /* aftfs_path.h */,
 				FA9B15FA15AA73AB0017DCD5 /* aftfs_path.t.cpp */,
@@ -1681,12 +1702,16 @@
 				FA833EAA15A755EB0044283D /* aunit_commandlineoptions.h in Headers */,
 				FA833EAB15A755F00044283D /* aunit_commandlineparser.h in Headers */,
 				FA833EAC15A755F30044283D /* aunit_consolereporter.h in Headers */,
+				FAA47C4C1BAE0C3F00514613 /* aunit_expect.h in Headers */,
 				FA833EAD15A755F60044283D /* aunit_reporter.h in Headers */,
 				FA833EAF15A7560D0044283D /* aunit_stringutil.h in Headers */,
 				FA833EB115A756160044283D /* aunit_testconfiguration.h in Headers */,
 				FA833EB215A7561C0044283D /* aunit_testfixture.h in Headers */,
+				FACFF4DD1BB6ECE200FBB983 /* aunit_describe.h in Headers */,
 				FA833EB715A756340044283D /* aunit_testmanager.h in Headers */,
+				FACFF4E11BBB6D5C00FBB983 /* aunit_fixtureregistry.h in Headers */,
 				FA833EB615A7562C0044283D /* aunit_testregistry.h in Headers */,
+				FA1962681BC98CD300B94BC2 /* aunit_fixture.h in Headers */,
 				FA833EB515A756280044283D /* aunit_testresult.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2140,15 +2165,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA833E9B15A755C90044283D /* aunit_assert.cpp in Sources */,
+				FACFF4DC1BB6ECE200FBB983 /* aunit_describe.cpp in Sources */,
 				FA833E9C15A755C90044283D /* aunit_commandlineoptions.cpp in Sources */,
 				FA833E9D15A755C90044283D /* aunit_commandlineparser.cpp in Sources */,
 				FA833E9E15A755C90044283D /* aunit_consolereporter.cpp in Sources */,
 				FA833E9F15A755C90044283D /* aunit_reporter.cpp in Sources */,
+				FA1962671BC98CD300B94BC2 /* aunit_fixture.cpp in Sources */,
 				FA833EA115A755C90044283D /* aunit_stringutil.cpp in Sources */,
+				FAA47C4B1BAE0C3F00514613 /* aunit_expect.cpp in Sources */,
 				FA833EA315A755C90044283D /* aunit_testconfiguration.cpp in Sources */,
 				FA833EA415A755C90044283D /* aunit_testfixture.cpp in Sources */,
 				FA833EA515A755C90044283D /* aunit_testmanager.cpp in Sources */,
 				FA833EA615A755C90044283D /* aunit_testregistry.cpp in Sources */,
+				FACFF4E01BBB6D5C00FBB983 /* aunit_fixtureregistry.cpp in Sources */,
 				FA833EA715A755C90044283D /* aunit_testresult.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2173,7 +2202,6 @@
 				FA9B15EF15AA6FDC0017DCD5 /* aftipc_sharedmemory.t.cpp in Sources */,
 				FA9B15F215AA700B0017DCD5 /* afth_crc32.t.cpp in Sources */,
 				FA9B15F815AA738B0017DCD5 /* aftio_permission.t.cpp in Sources */,
-				FA9B15FB15AA73AB0017DCD5 /* aftfs_filesystem.t.cpp in Sources */,
 				FA9B15FC15AA73AB0017DCD5 /* aftfs_path.t.cpp in Sources */,
 				FAFB3A5317B7C527002510F9 /* aftfs_localfilesystem.t.cpp in Sources */,
 			);
@@ -2441,10 +2469,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -2456,7 +2486,8 @@
 					/usr/local/include,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				KEEP_PRIVATE_EXTERNS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -2467,10 +2498,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -2482,7 +2514,7 @@
 					/usr/local/include,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -2525,14 +2557,11 @@
 					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2563,15 +2592,10 @@
 					"$(inherited)",
 					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
 				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2581,12 +2605,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

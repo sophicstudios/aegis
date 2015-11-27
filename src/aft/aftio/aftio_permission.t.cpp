@@ -3,71 +3,163 @@
 
 namespace aftio {
 
-class TestPermission : public aunit::TestFixture
+using namespace aunit;
+
+describe("Test Permission", []
 {
-public:
-    TestPermission() {}
+    it("Default Construction", [&]
+    {
+        Permission p;
 
-    virtual ~TestPermission() {}
+        expect(p.read()).toBeTrue();
+        expect(p.write()).toBeTrue();
+        expect(p.execute()).toBeTrue();
+    });
 
-protected:
-    virtual void runTest();
-    
-private:
-    void testConstruction();
-    void testOperators();
-};
+    it("Enum Construction", [&]
+    {
+        Permission p1(Permission::Type_READ);
 
-AUNIT_REGISTERTEST(TestPermission);
+        expect(p1.read()).toBeTrue();
+        expect(p1.write()).non().toBeTrue();
+        expect(p1.execute()).non().toBeTrue();
 
-void TestPermission::runTest()
-{
-    testConstruction();
-    testOperators();
-}
+        Permission p2(Permission::Type_READ | Permission::Type_WRITE);
 
-void TestPermission::testConstruction()
-{
-    Permission p1;
-    AUNIT_ASSERT(p1.hasRead() && p1.hasWrite() && p1.hasExecute());
-    
-    Permission p2(Permission::Type_READ | Permission::Type_WRITE);
-    AUNIT_ASSERT(p2.hasRead() && p2.hasWrite() && !p2.hasExecute());
-    
-    Permission p3(Permission::Type_EXECUTE);
-    AUNIT_ASSERT(!p3.hasRead() && !p3.hasWrite() && p3.hasExecute());
-    
-    Permission p4("r");
-    AUNIT_ASSERT(p4.hasRead() && !p4.hasWrite() && !p4.hasExecute());
-    
-    Permission p5("rw");
-    AUNIT_ASSERT(p5.hasRead() && p5.hasWrite() && !p5.hasExecute());
-}
+        expect(p2.read()).toBeTrue();
+        expect(p2.write()).toBeTrue();
+        expect(p2.execute()).non().toBeTrue();
+    });
 
-void TestPermission::testOperators()
-{
-    Permission p(false, false, false);
-    Permission pRead(Permission::Type_READ);
-    Permission pWrite(Permission::Type_WRITE);
-    Permission pExec(Permission::Type_EXECUTE);
-    
-    p += pRead;
-    AUNIT_ASSERT(p.hasRead() && !p.hasWrite() && !p.hasExecute());
-    
-    p += pWrite;
-    AUNIT_ASSERT(p.hasRead() && p.hasWrite() && !p.hasExecute());
-    
-    p += pExec;
-    AUNIT_ASSERT(p.hasRead() && p.hasWrite() && p.hasExecute());
-    
-    p -= pRead;
-    AUNIT_ASSERT(!p.hasRead() && p.hasWrite() && p.hasExecute());
-    
-    p -= pWrite;
-    AUNIT_ASSERT(!p.hasRead() && !p.hasWrite() && p.hasExecute());
-    
-    p -= pExec;
-    AUNIT_ASSERT(!p.hasRead() && !p.hasWrite() && !p.hasExecute());
-}
+    it("R/W/E Construction", [&]
+    {
+        Permission p1(Permission::Read(true), Permission::Write(true), Permission::Execute(false));
+
+        expect(p1.read()).toBeTrue();
+        expect(p1.write()).toBeTrue();
+        expect(p1.execute()).non().toBeTrue();
+    });
+
+    it("|= operator (R/W/E)", [&]
+    {
+        Permission p;
+        Permission::Read read(false);
+        Permission::Write write(false);
+        Permission::Execute execute(false);
+
+        p |= read;
+
+        expect(p.read()).non().toBeTrue();
+
+        p |= write;
+
+        expect(p.write()).non().toBeTrue();
+
+        p |= execute;
+
+        expect(p.execute()).non().toBeTrue();
+
+        read = Permission::Read(true);
+        write = Permission::Write(true);
+        execute = Permission::Execute(true);
+
+        p |= read;
+
+        expect(p.read()).toBeTrue();
+
+        p |= write;
+
+        expect(p.write()).toBeTrue();
+
+        p |= execute;
+
+        expect(p.execute()).toBeTrue();
+    });
+
+    it("|= operator (Permission)", [&]
+    {
+        Permission p1(false, false, false);
+        Permission p2(true, true, true);
+
+        p1 |= p2;
+
+        expect(p1.read()).toBeTrue();
+        expect(p1.write()).toBeTrue();
+        expect(p1.execute()).toBeTrue();
+
+    });
+
+    it("&= operator (R/W/E)", [&]
+    {
+        Permission p;
+        Permission::Read read(true);
+        Permission::Write write(true);
+        Permission::Execute execute(true);
+
+        p &= read;
+
+        expect(p.read()).non().toBeTrue();
+
+        p &= write;
+
+        expect(p.write()).non().toBeTrue();
+
+        p &= execute;
+
+        expect(p.execute()).non().toBeTrue();
+
+        p.read(true);
+        p.write(true);
+        p.execute(true);
+
+        p &= read;
+
+        expect(p.read()).toBeTrue();
+
+        p &= write;
+
+        expect(p.write()).toBeTrue();
+
+        p &= execute;
+
+        expect(p.execute()).toBeTrue();
+    });
+
+    it("&= operator (Permission)", [&]
+    {
+        Permission p1(false, true, false);
+        Permission p2(true, false, true);
+
+        p1 &= p2;
+
+        expect(p1.read()).non().toBeTrue();
+        expect(p1.write()).non().toBeTrue();
+        expect(p1.execute()).non().toBeTrue();
+    });
+
+    it("| operator", [&]
+    {
+        Permission p1(true, false, false);
+        Permission p2(false, true, false);
+
+        Permission p3 = p1 | p2;
+
+        expect(p3.read()).toBeTrue();
+        expect(p3.write()).toBeTrue();
+        expect(p3.execute()).non().toBeTrue();
+    });
+
+    it("& operator", [&]
+    {
+        Permission p1(true, false, false);
+        Permission p2(true, true, true);
+
+        Permission p3 = p1 & p2;
+
+        expect(p3.read()).toBeTrue();
+        expect(p3.write()).non().toBeTrue();
+        expect(p3.execute()).non().toBeTrue();
+    });
+});
 
 } // namespace

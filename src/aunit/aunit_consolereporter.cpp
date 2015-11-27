@@ -109,6 +109,22 @@ bool ConsoleReporter::shouldReportIndividualFailure() const
     return m_config->shouldReportIndividualFailure;
 }
 
+void ConsoleReporter::onSetFixture(std::string const& name)
+{
+    std::cout << name << std::endl;
+}
+
+void ConsoleReporter::onAddResult(std::string const& name, bool success, std::string const& filename, int line)
+{
+    std::cout << "  " << name;
+    if (success) {
+        std::cout << " -- SUCCESS" << std::endl;
+    }
+    else {
+        std::cout << " -- FAIL (" << filename << ":" << line << ")" << std::endl;
+    }
+}
+
 void ConsoleReporter::onAddResult(TestResult const& result)
 {
     if (result.success() && m_config->shouldPrintIndividualSuccess) {
@@ -122,38 +138,6 @@ void ConsoleReporter::onAddResult(TestResult const& result)
         printResult(std::cout, result);
         std::cout << std::endl;
     }
-}
-
-void ConsoleReporter::generateAndPublishReport(
-    std::vector<TestResult> const& successList,
-    std::vector<TestResult> const& failureList)
-{
-    std::cout << std::endl;
-    std::cout << "Test Result Summary\n";
-    std::cout << "--------------------\n";
-
-    std::cout << "SUCCEEDED: " << successList.size() << "\n";
-    
-    std::vector<TestResult>::const_iterator it, end;
-    if (m_config->shouldReportIndividualSuccess) {
-        for (it = successList.begin(), end = successList.end(); it != end; ++it) {
-            std::cout << "  ";
-            printResult(std::cout, *it);
-            std::cout << std::endl;
-        }
-    }
-    
-    std::cout << "FAILED:    " << failureList.size() << "\n";
-
-    if (m_config->shouldReportIndividualFailure) {
-        for (it = failureList.begin(), end = failureList.end(); it != end; ++it) {
-            std::cout << "  ";
-            printResult(std::cout, *it);
-            std::cout << std::endl;
-        }
-    }
-
-    std::cout << std::endl;
 }
 
 } // namespace

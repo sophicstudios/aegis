@@ -15,9 +15,48 @@ public:
         Type_EXECUTE = 0x1 << 2
     };
     
+    class Read
+    {
+    public:
+        Read(bool read);
+
+        ~Read();
+
+        operator bool() const;
+
+    private:
+        bool m_read;
+    };
+
+    class Write
+    {
+    public:
+        Write(bool write);
+
+        ~Write();
+
+        operator bool() const;
+
+    private:
+        bool m_write;
+    };
+
+    class Execute
+    {
+    public:
+        Execute(bool execute);
+
+        ~Execute();
+
+        operator bool() const;
+
+    private:
+        bool m_execute;
+    };
+
     /**
      * Default Constructor. Creates a Permission object with read, write and
-     * execute values all enabled.
+     * execute values all disabled.
      */
     Permission();
 
@@ -26,21 +65,12 @@ public:
      * flags set by the parameters 'flags'
      */
     Permission(int typeFlags);
-    
-    /**
-     * Constructor. Creates a Permission object with read, write and execute
-     * set by the parameter 'flagString', which follows the regular
-     * expression: "r{0,1}w{0,1}x{0,1}" (ex. "rwx", "w", "r", "rx", etc.)
-     * If the string is invalid, i.e. does not contain any of these characters,
-     * or the wrong number of flags, an exception will be thrown
-     */
-    Permission(std::string const& flagString) throw (aftu::Exception);
-    
+
     /**
      * Creates a Permission object with read, write and execute set
      * based on the boolean values of r, w, and x
      */
-    Permission(bool r, bool w, bool x);
+    Permission(Read read, Write write, Execute execute);
 
     /**
      * Copy Constructor
@@ -52,54 +82,57 @@ public:
      */
     ~Permission();
 
+    /**
+     * Assignment operator
+     */
     Permission& operator=(Permission const& rhs);
 
-    Permission& operator+=(Permission const& rhs);
-    
-    Permission& operator-=(Permission const& rhs);
+    Permission& operator|=(Read read);
+
+    Permission& operator|=(Write write);
+
+    Permission& operator|=(Execute execute);
+
+    Permission& operator|=(Permission const& permission);
+
+    Permission& operator&=(Read read);
+
+    Permission& operator&=(Write write);
+
+    Permission& operator&=(Execute execute);
+
+    Permission& operator&=(Permission const& permission);
     
     /**
      * Returns the value of the read flag
      */
-    bool hasRead() const;
+    Read read() const;
 
     /**
      * Sets the read flag to the specfied value
      */
-    void setRead(bool value);
-    
-    void enableRead();
-    
-    void disableRead();
+    void read(Read value);
     
     /**
      * Returns the value of the write flag
      */
-    bool hasWrite() const;
+    Write write() const;
 
     /**
      * Sets the write flag to the specified value
      */
-    void setWrite(bool value);
-
-    void enableWrite();
-    
-    void disableWrite();
+    void write(Write value);
 
     /**
      * Returns the value of the execute flag
      */
-    bool hasExecute() const;
+    Execute execute() const;
     
     /**
      * Sets the execute flag to the specified value
      */
-    void setExecute(bool x);
+    void execute(Execute value);
 
-    void enableExecute();
-    
-    void disableExecute();
-    
 private:
     bool m_read;
     bool m_write;
@@ -108,9 +141,9 @@ private:
 
 std::ostream& operator<<(std::ostream& os, Permission const& perm);
 
-Permission unionOF(Permission const& lhs, Permission const& rhs);
+Permission operator|(Permission const& lhs, Permission const& rhs);
 
-Permission intersectionOf(Permission const& lhs, Permission const& rhs);
+Permission operator&(Permission const& lhs, Permission const& rhs);
 
 } // namespace
 

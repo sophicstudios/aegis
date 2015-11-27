@@ -3,8 +3,44 @@
 
 namespace aftio {
 
+Permission::Read::Read(bool read)
+: m_read(read)
+{}
+
+Permission::Read::~Read()
+{}
+
+Permission::Read::operator bool() const
+{
+    return m_read;
+}
+
+Permission::Write::Write(bool write)
+: m_write(write)
+{}
+
+Permission::Write::~Write()
+{}
+
+Permission::Write::operator bool() const
+{
+    return m_write;
+}
+
+Permission::Execute::Execute(bool execute)
+: m_execute(execute)
+{}
+
+Permission::Execute::~Execute()
+{}
+
+Permission::Execute::operator bool() const
+{
+    return m_execute;
+}
+
 Permission::Permission()
-: m_read(true), m_write(true), m_execute(true)
+: m_read(false), m_write(false), m_execute(false)
 {}
 
 Permission::Permission(int typeFlags)
@@ -13,44 +49,13 @@ Permission::Permission(int typeFlags)
   m_execute(typeFlags & Permission::Type_EXECUTE)
 {}
 
-Permission::Permission(std::string const& flagString) throw (aftu::Exception)
-: m_read(false),
-  m_write(false),
-  m_execute(false)
-{
-    if (flagString.size() > 3) {
-        throw aftu::Exception() << "Invalid permission flag string ["
-            << " flagString: '" << flagString << "'"
-            << " ]";
-    }
-
-    std::string::const_iterator it, end = flagString.end();
-    for (it = flagString.begin(); it != end; ++it) {
-        if (*it == 'r') {
-            m_read = true;
-        }
-        else if (*it == 'w') {
-            m_write = true;
-        }
-        else if (*it == 'x') {
-            m_execute = true;
-        }
-        else {
-            throw aftu::Exception() << "Invalid permission flag character ["
-                << " character: '" << *it << "'"
-                << " flagString: '" << flagString << "'"
-                << " ]";
-        }
-    }
-}
-
 Permission::Permission(Permission const& rhs)
 : m_read(rhs.m_read),
   m_write(rhs.m_write),
   m_execute(rhs.m_execute)
 {}
 
-Permission::Permission(bool read, bool write, bool execute)
+Permission::Permission(Read read, Write write, Execute execute)
 : m_read(read),
   m_write(write),
   m_execute(execute)
@@ -68,66 +73,92 @@ Permission& Permission::operator=(Permission const& rhs)
     return *this;
 }
 
-Permission& Permission::operator+=(Permission const& rhs)
+Permission& Permission::operator|=(Read read)
 {
-    if (rhs.m_read) {
-        m_read = true;
-    }
-    
-    if (rhs.m_write) {
-        m_write = true;
-    }
-    
-    if (rhs.m_execute) {
-        m_execute = true;
-    }
-    
+    m_read |= read;
+
     return *this;
 }
 
-Permission& Permission::operator-=(Permission const& rhs)
+Permission& Permission::operator|=(Write write)
 {
-    if (rhs.m_read) {
-        m_read = false;
-    }
-    
-    if (rhs.m_write) {
-        m_write = false;
-    }
-    
-    if (rhs.m_execute) {
-        m_execute = false;
-    }
-    
+    m_write |= write;
+
     return *this;
 }
 
-bool Permission::hasRead() const
+Permission& Permission::operator|=(Execute execute)
+{
+    m_execute |= execute;
+
+    return *this;
+}
+
+Permission& Permission::operator|=(Permission const& permission)
+{
+    m_read |= permission.read();
+    m_write |= permission.write();
+    m_execute |= permission.execute();
+
+    return *this;
+}
+
+Permission& Permission::operator&=(Read read)
+{
+    m_read &= read;
+
+    return *this;
+}
+
+Permission& Permission::operator&=(Write write)
+{
+    m_write &= write;
+
+    return *this;
+}
+
+Permission& Permission::operator&=(Execute execute)
+{
+    m_execute &= execute;
+
+    return *this;
+}
+
+Permission& Permission::operator&=(Permission const& permission)
+{
+    m_read &= permission.read();
+    m_write &= permission.write();
+    m_execute &= permission.execute();
+
+    return *this;
+}
+
+Permission::Read Permission::read() const
 {
     return m_read;
 }
 
-void Permission::setRead(bool value)
+void Permission::read(Permission::Read value)
 {
     m_read = value;
 }
 
-bool Permission::hasWrite() const
+Permission::Write Permission::write() const
 {
     return m_write;
 }
 
-void Permission::setWrite(bool value)
+void Permission::write(Permission::Write value)
 {
     m_write = value;
 }
 
-bool Permission::hasExecute() const
+Permission::Execute Permission::execute() const
 {
     return m_execute;
 }
 
-void Permission::setExecute(bool value)
+void Permission::execute(Permission::Execute value)
 {
     m_execute = value;
 }
@@ -135,12 +166,22 @@ void Permission::setExecute(bool value)
 std::ostream& operator<<(std::ostream& os, Permission const& perm)
 {
     os << "["
-        << (perm.hasRead() ? "+r" : "-r")
-        << (perm.hasWrite() ? "+w" : "-w")
-        << (perm.hasExecute() ? "+x" : "-x")
+        << (perm.read() ? "+r" : "-r")
+        << (perm.write() ? "+w" : "-w")
+        << (perm.execute() ? "+x" : "-x")
         << "]";
     
     return os;
+}
+
+Permission operator|(Permission const& lhs, Permission const& rhs)
+{
+    return Permission(lhs.read() || rhs.read(), lhs.write() || rhs.write(), lhs.execute() || rhs.execute());
+}
+
+Permission operator&(Permission const& lhs, Permission const& rhs)
+{
+    return Permission(lhs.read() && rhs.read(), lhs.write() && rhs.write(), lhs.execute() && rhs.execute());
 }
 
 } // namespace

@@ -6,41 +6,16 @@
 
 namespace aftfs {
 
-class TestLocalFilesystem : public aunit::TestFixture
+describe("Test LocalFilesystem", []
 {
-public:
-    TestLocalFilesystem();
-    
-    virtual ~TestLocalFilesystem();
-    
-protected:
-    virtual void runTest();
-    
-private:
-};
+    it("List Directory", [&]
+    {
+        LocalFilesystem filesystem;
 
-AUNIT_REGISTERTEST(TestLocalFilesystem);
+        std::vector<aftu::URL> entries;
 
-TestLocalFilesystem::TestLocalFilesystem()
-{}
-
-TestLocalFilesystem::~TestLocalFilesystem()
-{}
-
-void TestLocalFilesystem::runTest()
-{
-    LocalFilesystem filesystem;
-    std::vector<aftu::URL> entries;
-    
-    filesystem.listDirectory(entries);
-    for (std::vector<aftu::URL>::const_iterator it = entries.begin(); it != entries.end(); ++it) {
-        std::cout << "url: " << it->canonical() << std::endl;
-        
-        Filesystem::DirectoryEntryPtr entry = filesystem.directoryEntry(*it);
-        std::cout << "is file: " << entry->isFile() << std::endl;;
-        std::cout << "is dir: " << entry->isDirectory() << std::endl;
-        std::cout << "is link: " << entry->isLink() << std::endl;
-    }
-}
+        filesystem.listCurrentDirectory(entries);
+    });
+});
 
 } // namespace

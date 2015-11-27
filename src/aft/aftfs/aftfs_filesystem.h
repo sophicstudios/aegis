@@ -31,7 +31,7 @@ public:
     
     virtual Status setCurrentDirectory(aftu::URL const& url) = 0;
     
-    virtual Status listDirectory(std::vector<aftu::URL>& results) = 0;
+    virtual Status listCurrentDirectory(std::vector<aftu::URL>& results) = 0;
     
     virtual Status listDirectory(std::vector<aftu::URL>& results, aftu::URL const& url) = 0;
     

@@ -198,15 +198,15 @@ aftipc::ResultCode SharedMemory::map(
     
     
     int prot = 0;
-    if (m_permissions.user().hasRead()) {
+    if (m_permissions.user().read()) {
         prot |= PROT_READ;
     }
 
-    if (m_permissions.user().hasWrite()) {
+    if (m_permissions.user().write()) {
         prot |= PROT_WRITE;
     }
 
-    if (m_permissions.user().hasExecute()) {
+    if (m_permissions.user().execute()) {
         // Mac OSX doesn't support PROT_EXEC flag
         #ifndef AFTS_OS_MACOS
         prot |= PROT_EXEC;

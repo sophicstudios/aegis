@@ -7,6 +7,8 @@
 
 namespace afth {
 
+using namespace aunit;
+
 namespace {
 
 bool uuidMatch(std::vector<char> const& bytes, std::string uuid)
@@ -14,7 +16,8 @@ bool uuidMatch(std::vector<char> const& bytes, std::string uuid)
     uuid.erase(std::remove(uuid.begin(), uuid.end(), '-'), uuid.end());
     assert(bytes.size() * 2 == uuid.size());
 
-    for (size_t i = 0; i < bytes.size(); ++i) {
+    for (size_t i = 0; i < bytes.size(); ++i)
+    {
         // convert the byte to a string
         std::stringstream s;
         s << std::hex << std::nouppercase << std::setfill('0');
@@ -27,7 +30,8 @@ bool uuidMatch(std::vector<char> const& bytes, std::string uuid)
         rhs += uuid[(i*2)+1];
 
         // compare
-        if (lhs != rhs) {
+        if (lhs != rhs)
+        {
             return false;
         }
     }
@@ -35,69 +39,94 @@ bool uuidMatch(std::vector<char> const& bytes, std::string uuid)
     return true;
 }
 
-}
+} // namespace
 
-class TestUUID : public aunit::TestFixture
+describe("Test UUID", []
 {
-public:
-    TestUUID();
+    const char* zeroUUID = "00000000-0000-0000-0000-000000000000";
 
-    virtual ~TestUUID();
+    it("Default construction", [&]
+    {
+        UUID uuid;
+        std::string str = uuid.str();
 
-protected:
-    virtual void runTest();
-};
+        expect(str).toEqual(zeroUUID);
+    });
 
-AUNIT_REGISTERTEST(TestUUID);
+    it("Version 4 construction", [&]
+    {
+        UUID uuid = UUID::v4();
+        std::string str = uuid.str();
 
-TestUUID::TestUUID()
-{}
+        expect(str[14]).toEqual('4');
+        expect(uuidMatch(uuid.bytes(), str)).toEqual(true);
+    });
 
-TestUUID::~TestUUID()
-{}
+    it("bytes", [&]
+    {
+        UUID uuid = UUID::v4();
+        std::string str = uuid.str();
 
-void TestUUID::runTest()
-{
-    UUID u1;
-    std::string str1 = u1.str();
-    AUNIT_ASSERT(str1 == "00000000-0000-0000-0000-000000000000");
+        expect(uuidMatch(uuid.bytes(), str)).toEqual(true);
+    });
 
-    std::vector<char> b1 = u1.bytes();
-    AUNIT_ASSERT(uuidMatch(b1, str1));
+    it("equality operators", [&]
+    {
+        UUID u1 = UUID::v4();
+        UUID u2 = UUID::v4();
 
-    UUID u2 = UUID::v4();
-    std::string str2 = u2.str();
-    AUNIT_ASSERT(str2[14] == '4');
+        expect(u1 == u1).toEqual(true);
+        expect(u2 == u2).toEqual(true);
+        expect(u1 != u2).toEqual(true);
+    });
 
-    std::vector<char> b2 = u2.bytes();
-    AUNIT_ASSERT(uuidMatch(b2, str2));
+    it("lt operator", [&]
+    {
+        UUID u1;
+        UUID u2 = UUID::v4();
 
-    AUNIT_ASSERT(u1 == u1);
-    AUNIT_ASSERT(u1 <= u1);
-    AUNIT_ASSERT(u1 >= u1);
+        expect(u1 < u2).toEqual(true);
+        expect(u2 < u1).toEqual(false);
+    });
 
-    AUNIT_ASSERT(u2 == u2);
-    AUNIT_ASSERT(u2 <= u2);
-    AUNIT_ASSERT(u2 >= u2);
-    AUNIT_ASSERT(u1 < u2);
-    AUNIT_ASSERT(u2 > u1);
+    it("gt operator", [&]
+    {
+        UUID u1;
+        UUID u2 = UUID::v4();
 
-    UUID u3 = UUID::v4();
-    if (u3 < u2) {
-        AUNIT_ASSERT(u2 != u3);
-        AUNIT_ASSERT(u2 > u3);
-        AUNIT_ASSERT(u3 <= u2);
-        AUNIT_ASSERT(!(u2 == u3));
-    } else {
-        AUNIT_ASSERT(u3 != u2);
-        AUNIT_ASSERT(u3 > u2);
-        AUNIT_ASSERT(u2 <= u3);
-        AUNIT_ASSERT(!(u2 == u3));
-    }
+        expect(u2 > u1).toEqual(true);
+        expect(u1 > u2).toEqual(false);
+    });
 
-    std::stringstream s;
-    s << u2;
-    AUNIT_ASSERT(s.str() == u2.str());
-}
+    it("lt/eq operator", [&]
+    {
+        UUID u1;
+        UUID u2 = UUID::v4();
+        UUID u3 = UUID::v4();
+
+        expect(u1 <= u2).toEqual(true);
+        expect(u1 <= u1).toEqual(true);
+        expect(u2 <= u1).toEqual(false);
+    });
+
+    it("gt/eq operator", [&]
+    {
+        UUID u1;
+        UUID u2 = UUID::v4();
+        UUID u3 = UUID::v4();
+
+        expect(u2 >= u1).toEqual(true);
+        expect(u1 >= u1).toEqual(true);
+        expect(u1 >= u2).toEqual(false);
+    });
+
+    it("str operator", [&]
+    {
+        UUID uuid = UUID::v4();
+        std::stringstream s;
+        s << uuid;
+        expect(s.str()).toEqual(uuid.str());
+    });
+});
 
 } // namespace

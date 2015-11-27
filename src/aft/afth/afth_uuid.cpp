@@ -67,13 +67,15 @@ std::string UUID::str() const
 std::vector<char> UUID::bytes() const
 {
     std::vector<char> result(16, '\0');
-
     size_t i = 0;
-    for (int j = 7; j >= 0; --j, ++i) {
+
+    for (int j = 7; j >= 0; --j, ++i)
+    {
         result[i] = 0xff & (m_uuid.a >> (j * 8));
     }
 
-    for (int j = 7; j >= 0; --j, ++i) {
+    for (int j = 7; j >= 0; --j, ++i)
+    {
         result[i] = 0xff & (m_uuid.b >> (j * 8));
     }
 

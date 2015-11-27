@@ -7,6 +7,8 @@
 
 namespace aftipc {
 
+using namespace aunit;
+
 namespace {
 
 static const size_t MAJOR_VERSION=1;
@@ -47,99 +49,79 @@ uint32_t computeCrc(Country* countryArray, size_t countryCount)
 
 } // namespace
 
-class TestMemoryMappedFile : public aunit::TestFixture
+describe("aftipc_memorymappedfile", []
 {
-public:
-    TestMemoryMappedFile() {}
+    it("create", [&]
+    {
+        std::string filename = FILENAME;
 
-    virtual ~TestMemoryMappedFile() {}
+        // calculate how much memory we need to store the data
+        size_t countryDataSize = COUNTRY_COUNT * sizeof(Country);
+        size_t totalSize = sizeof(CountryHeader) + countryDataSize;
 
-protected:
-    virtual void runTest();
-    
-private:
-    void loadFile();
-    void readFile();
-};
+        // create the memory mapped file with enough room for the initial header
+        // plus all the country data.
+        aftipc::MemoryMappedFile file(
+            aftio::OpenFlags::CREATE_OR_OPEN, // open file or create if doesn't exist
+            aftio::AccessFlags::READ_WRITE, // open for reading and writing
+            filename, // the file name
+            totalSize); // the size of the file in bytes
+        
+        // Create a mapped region of the memory mapped file to hold the
+        // header information.
+        size_t offset = 0;
+        aftipc::MappedRegion headerRegion(file, offset, sizeof(CountryHeader));
 
-AUNIT_REGISTERTEST(TestMemoryMappedFile);
+        // Fill in the initial details of the header
+        CountryHeader* header = reinterpret_cast<CountryHeader*>(headerRegion.data());
+        std::memset(header, 0, sizeof(CountryHeader));
 
-void TestMemoryMappedFile::runTest()
-{
-    loadFile();
-    readFile();
-}
+        header->majorVersion = MAJOR_VERSION;
+        header->minorVersion = MINOR_VERSION;
 
-void TestMemoryMappedFile::loadFile()
-{    
-    std::string filename = FILENAME;
+        // Create a mapped region of the memory mapped file to hold the
+        // data for all the countries in the array.
+        aftipc::MappedRegion countryRegion(file, sizeof(CountryHeader), countryDataSize);
+        Country* countryArray = reinterpret_cast<Country*>(countryRegion.data());
 
-    // calculate how much memory we need to store the data
-    size_t countryDataSize = COUNTRY_COUNT * sizeof(Country);
-    size_t totalSize = sizeof(CountryHeader) + countryDataSize;
+        // Copy the country data into the mapped region
+        for (size_t i = 0; i < COUNTRY_COUNT; ++i, ++header->count) {
+            std::memcpy(countryArray + i, &COUNTRY_DATA[i], sizeof(Country));
+        }
+        
+        header->crc = computeCrc(countryArray, header->count);
+        
+        // At the end of this block, the mapped region and memory mapped file
+        // go out of scope, but the shared memory and its data continues to live.
+    });
 
-    // create the memory mapped file with enough room for the initial header
-    // plus all the country data.
-    aftipc::MemoryMappedFile file(
-        aftio::OpenFlags::CREATE_OR_OPEN, // open file or create if doesn't exist
-        aftio::AccessFlags::READ_WRITE, // open for reading and writing
-        filename, // the file name
-        totalSize); // the size of the file in bytes
-    
-    // Create a mapped region of the memory mapped file to hold the
-    // header information.
-    size_t offset = 0;
-    aftipc::MappedRegion headerRegion(file, offset, sizeof(CountryHeader));
+    it("read", [&]
+    {
+        std::string filename = FILENAME;
+        
+        aftipc::MemoryMappedFile file(
+            aftio::AccessFlags::READ_ONLY,
+            filename);
+        
+        size_t offset = 0;
+        aftipc::MappedRegion headerRegion(file, offset, sizeof(CountryHeader));
+        
+        const CountryHeader* header = reinterpret_cast<const CountryHeader*>(headerRegion.data());
 
-    // Fill in the initial details of the header
-    CountryHeader* header = reinterpret_cast<CountryHeader*>(headerRegion.data());
-    std::memset(header, 0, sizeof(CountryHeader));
-
-    header->majorVersion = MAJOR_VERSION;
-    header->minorVersion = MINOR_VERSION;
-
-    // Create a mapped region of the memory mapped file to hold the
-    // data for all the countries in the array.
-    aftipc::MappedRegion countryRegion(file, sizeof(CountryHeader), countryDataSize);
-    Country* countryArray = reinterpret_cast<Country*>(countryRegion.data());
-
-    // Copy the country data into the mapped region
-    for (size_t i = 0; i < COUNTRY_COUNT; ++i, ++header->count) {
-        std::memcpy(countryArray + i, &COUNTRY_DATA[i], sizeof(Country));
-    }
-    
-    header->crc = computeCrc(countryArray, header->count);
-    
-    // At the end of this block, the mapped region and memory mapped file
-    // go out of scope, but the shared memory and its data continues to live.
-}
-
-void TestMemoryMappedFile::readFile()
-{
-    std::string filename = FILENAME;
-    
-    aftipc::MemoryMappedFile file(
-        aftio::AccessFlags::READ_ONLY,
-        filename);
-    
-    size_t offset = 0;
-    aftipc::MappedRegion headerRegion(file, offset, sizeof(CountryHeader));
-    
-    const CountryHeader* header = reinterpret_cast<const CountryHeader*>(headerRegion.data());
-    AUNIT_ASSERT(header->majorVersion == MAJOR_VERSION);
-    AUNIT_ASSERT(header->minorVersion == MINOR_VERSION);
-    AUNIT_ASSERT(header->count == COUNTRY_COUNT);
-    
-    size_t countryDataSize = header->count * sizeof(Country);
-    aftipc::MappedRegion countryRegion(file, sizeof(CountryHeader), countryDataSize);
-    Country* countryArray = reinterpret_cast<Country*>(countryRegion.data());
-    
-    for (size_t i = 0; i < header->count; ++i) {
-        AUNIT_ASSERT(0 == strcmp(countryArray[i].isoCountryCode, COUNTRY_DATA[i].isoCountryCode));
-        AUNIT_ASSERT(0 == strcmp(countryArray[i].isoCurrencyCode, COUNTRY_DATA[i].isoCurrencyCode));
-        AUNIT_ASSERT(0 == strcmp(countryArray[i].enName, COUNTRY_DATA[i].enName));        
-    }
-    
-}
+        expect(header->majorVersion == MAJOR_VERSION).toBeTrue();
+        expect(header->minorVersion == MINOR_VERSION).toBeTrue();
+        expect(header->count == COUNTRY_COUNT).toBeTrue();
+        
+        size_t countryDataSize = header->count * sizeof(Country);
+        aftipc::MappedRegion countryRegion(file, sizeof(CountryHeader), countryDataSize);
+        Country* countryArray = reinterpret_cast<Country*>(countryRegion.data());
+        
+        for (size_t i = 0; i < header->count; ++i) {
+            expect(0 == strcmp(countryArray[i].isoCountryCode, COUNTRY_DATA[i].isoCountryCode)).toBeTrue();
+            expect(0 == strcmp(countryArray[i].isoCurrencyCode, COUNTRY_DATA[i].isoCurrencyCode)).toBeTrue();
+            expect(0 == strcmp(countryArray[i].enName, COUNTRY_DATA[i].enName)).toBeTrue();
+        }
+    });
+});
 
 } // namespace

@@ -62,7 +62,9 @@ private:
 long getPathMaxLength(std::string const& path)
 {
     long name_max = pathconf(path.c_str(), _PC_NAME_MAX);
-    if (name_max == -1) { // limit not defined, or error
+
+    if (name_max == -1) // limit not defined, or error
+    {
         name_max = 1024;
     }
     
@@ -73,17 +75,20 @@ std::string getCWD(long name_max)
 {
     char* buffer = (char*)malloc(name_max);
     char* result = getcwd(buffer, name_max);
-    while (result == NULL && errno == ERANGE) {
+    while (result == NULL && errno == ERANGE)
+    {
         free(buffer);
         name_max *= 2;
         buffer = (char*)malloc(name_max);
         result = getcwd(buffer, name_max);
     }
     
-    if (result) {
+    if (result)
+    {
         return std::string(buffer);
     }
-    else {
+    else
+    {
         return std::string("");
     }
 }
@@ -96,7 +101,8 @@ struct LocalFilesystem::Impl
 
 LocalFilesystem::LocalFilesystem()
 : m_impl(new LocalFilesystem::Impl())
-{}
+{
+}
 
 LocalFilesystem::~LocalFilesystem()
 {
@@ -117,7 +123,7 @@ Filesystem::Status LocalFilesystem::setCurrentDirectory(aftu::URL const& url)
     return result == 0 ? Filesystem::Status_OK : Filesystem::Status_ERROR;
 }
 
-Filesystem::Status LocalFilesystem::listDirectory(std::vector<aftu::URL>& results)
+Filesystem::Status LocalFilesystem::listCurrentDirectory(std::vector<aftu::URL>& results)
 {
     long name_max = getPathMaxLength(".");
 
@@ -126,15 +132,19 @@ Filesystem::Status LocalFilesystem::listDirectory(std::vector<aftu::URL>& result
     std::string currentDirectory = getCWD(name_max);
     
     std::string baseUrl;
-    if (currentDirectory.empty()) {
+
+    if (currentDirectory.empty())
+    {
         baseUrl = ".";
     }
-    else {
+    else
+    {
         baseUrl = std::string("file://") + currentDirectory;
     }
     
     DIR* dir = opendir(currentDirectory.c_str());
-    if (!dir) {
+    if (!dir)
+    {
         return Filesystem::Status_DIRECTORY_NOT_FOUND;
     }
 
@@ -142,13 +152,17 @@ Filesystem::Status LocalFilesystem::listDirectory(std::vector<aftu::URL>& result
     
     int result = 0;
     struct dirent* entryResult;
-    do {
+
+    do
+    {
         entryResult = NULL;
         result = readdir_r(dir, entry, &entryResult);
         results.push_back(aftu::URL(baseUrl + "/" + std::string(entry->d_name, entry->d_namlen)));
-    } while (entryResult != NULL && result == 0);
+    }
+    while (entryResult != NULL && result == 0);
     
-    if (result != 0) {
+    if (result != 0)
+    {
         return Filesystem::Status_ERROR;
     }
     
@@ -165,7 +179,9 @@ Filesystem::Status LocalFilesystem::listDirectory(std::vector<aftu::URL>& result
     
     std::string path = url.path();
     dir = opendir(path.empty() ? "/" : path.c_str());
-    if (!dir) {
+
+    if (!dir)
+    {
         return Filesystem::Status_DIRECTORY_NOT_FOUND;
     }
 
@@ -174,11 +190,14 @@ Filesystem::Status LocalFilesystem::listDirectory(std::vector<aftu::URL>& result
     entry = (struct dirent*)malloc(len);
     
     int result = 0;
-    while ((result = readdir_r(dir, entry, &entryResult) == 0) && entryResult != NULL) {
+
+    while ((result = readdir_r(dir, entry, &entryResult) == 0) && entryResult != NULL)
+    {
         results.push_back(aftu::URL(url.canonical() + std::string(entry->d_name, entry->d_namlen)));
     }
     
-    if (result != 0) {
+    if (result != 0)
+    {
         return Filesystem::Status_ERROR;
     }
     
@@ -190,7 +209,9 @@ Filesystem::Status LocalFilesystem::listDirectory(std::vector<aftu::URL>& result
 Filesystem::DirectoryEntryPtr LocalFilesystem::directoryEntry(aftu::URL const& url, Filesystem::Status* status)
 {
     std::string path = url.path();
-    if (path.empty()) {
+
+    if (path.empty())
+    {
         path = "/";
     }
     
@@ -206,8 +227,11 @@ Filesystem::FileReaderPtr LocalFilesystem::openFileReader(aftu::URL const& url, 
 {
     std::string path = url.path();
     FILE* fileHandle = fopen(path.c_str(), "r");
-    if (!fileHandle) {
-        if (status) {
+
+    if (!fileHandle)
+    {
+        if (status)
+        {
             *status = Filesystem::Status_FILE_NOT_FOUND;
         }
 
@@ -268,7 +292,8 @@ PosixFileReader::PosixFileReader(FILE* fileHandle)
 
 PosixFileReader::~PosixFileReader()
 {
-    if (m_fileHandle) {
+    if (m_fileHandle)
+    {
         fclose(m_fileHandle);
     }
 }
@@ -276,17 +301,22 @@ PosixFileReader::~PosixFileReader()
 aftio::Reader::Status PosixFileReader::read(char* buffer, size_t bytes, size_t* actualBytes)
 {
     size_t bytesRead = fread(buffer, sizeof(char), bytes, m_fileHandle);
-    if (actualBytes) {
+
+    if (actualBytes)
+    {
         *actualBytes = bytesRead;
     }
     
     aftio::Reader::Status status = aftio::Reader::Status_OK;
 
-    if (bytesRead < bytes) {
-        if (feof(m_fileHandle) > 0) {
+    if (bytesRead < bytes)
+    {
+        if (feof(m_fileHandle) > 0)
+        {
             status = aftio::Reader::Status_EOF;
         }
-        else if (ferror(m_fileHandle) > 0) {
+        else if (ferror(m_fileHandle) > 0)
+        {
             status = aftio::Reader::Status_ERROR;
         }
     }
@@ -300,17 +330,21 @@ aftio::Reader::Status PosixFileReader::read(std::vector<char>& buffer, size_t by
     buffer.resize(originalSize + bytes);
     size_t bytesRead = fread(&buffer[buffer.size()], sizeof(char), bytes, m_fileHandle);
     
-    if (actualBytes) {
+    if (actualBytes)
+    {
         *actualBytes = bytesRead;
     }
     
     aftio::Reader::Status status = aftio::Reader::Status_OK;
     
-    if (bytesRead < bytes) {
-        if (feof(m_fileHandle) > 0) {
+    if (bytesRead < bytes)
+    {
+        if (feof(m_fileHandle) > 0)
+        {
             status = aftio::Reader::Status_EOF;
         }
-        else if (ferror(m_fileHandle) > 0) {
+        else if (ferror(m_fileHandle) > 0)
+        {
             status = aftio::Reader::Status_ERROR;
         }
 
@@ -329,7 +363,9 @@ aftio::Reader::Status PosixFileReader::reset()
 bool PosixFileReader::eof(aftio::Reader::Status* status)
 {
     bool result = feof(m_fileHandle) > 0 ? true : false;
-    if (status) {
+
+    if (status)
+    {
         *status = aftio::Reader::Status_OK;
     }
     
@@ -341,7 +377,9 @@ aftio::Reader::Status PosixFileReader::position(off_t position)
     aftio::Reader::Status status = aftio::Reader::Status_OK;
 
     int result = fseeko(m_fileHandle, position, 0);
-    if (result != 0) {
+
+    if (result != 0)
+    {
         status = aftio::Reader::Status_ERROR;
     }
     
@@ -351,15 +389,20 @@ aftio::Reader::Status PosixFileReader::position(off_t position)
 off_t PosixFileReader::position(aftio::Reader::Status* status)
 {
     off_t result = ftello(m_fileHandle);
-    if (result < 0) {
-        if (status) {
+
+    if (result < 0)
+    {
+        if (status)
+        {
             *status = aftio::Reader::Status_ERROR;
         }
 
         return 0;
     }
-    else {
-        if (status) {
+    else
+    {
+        if (status)
+        {
             *status = aftio::Reader::Status_OK;
         }
 

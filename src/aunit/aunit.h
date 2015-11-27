@@ -12,5 +12,7 @@
 #include <aunit_testmanager.h>
 #include <aunit_testregistry.h>
 #include <aunit_testresult.h>
+#include <aunit_describe.h>
+#include <aunit_expect.h>
 
 #endif // INCLUDED

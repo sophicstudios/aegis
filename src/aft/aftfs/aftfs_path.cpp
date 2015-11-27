@@ -11,7 +11,8 @@ namespace aftfs {
 Path::Path(std::string const& pathString)
 : m_isAbsolute(false)
 {
-    if (pathString.empty()) {
+    if (pathString.empty())
+    {
         throw aftu::Exception() << "Empty path string ["
             << " pathString: '" << pathString << "'"
             << " ]";
@@ -31,16 +32,23 @@ Path::Path(std::string const& pathString)
     std::string::const_iterator it2 = end;
     bool foundSep = false;
     std::string pathEntry;
-    while (it1 != beg) {
-        if ((*it1) == '/') {
-            if (it1 != it2) {
+
+    while (it1 != beg)
+    {
+        if ((*it1) == '/')
+        {
+            if (it1 != it2)
+            {
                 pathEntry.assign(it1+1, it2);
             }
+
             foundSep = true;
             break;
         }
-        else if ((*it1) == '.') {
-            if (it1 != it2) {
+        else if ((*it1) == '.')
+        {
+            if (it1 != it2)
+            {
                 //m_extension.assign(it1+1, it2);
                 it2 = it1;
             }
@@ -49,10 +57,12 @@ Path::Path(std::string const& pathString)
         --it1;
     }
 
-    if (foundSep && !pathEntry.empty()) {
+    if (foundSep && !pathEntry.empty())
+    {
         //m_basename = pathEntry;
     }
-    else if (!foundSep) {
+    else if (!foundSep)
+    {
         // we are done
         //m_basename = pathEntry;
     }
@@ -67,24 +77,30 @@ Path::Path(std::string const& pathString)
     
     // first, skip over any leading '/', which also 
     // indicates this path is absolute
-    while (*it2 == '/' && it2 != end) {
+    while (*it2 == '/' && it2 != end)
+    {
         m_isAbsolute = true;
         ++it2;
     }
     
     it1 = it2;
-    while (it2 != end) {
+
+    while (it2 != end)
+    {
         // move the 2nd iterator to the end of any directory entry
-        while (*it2 != '/' && it2 != end) {
+        while (*it2 != '/' && it2 != end)
+        {
             ++it2;
         }
         
-        if (it1 != it2) {
+        if (it1 != it2)
+        {
             pathEntry.assign(it1, it2);
             //m_directories.push_back(pathEntry);
         }
         
-        while (*it2 == '/' && it2 != end) {
+        while (*it2 == '/' && it2 != end)
+        {
             ++it2;
         }
         
@@ -111,7 +127,8 @@ Path& Path::operator=(Path const& path)
 std::string Path::nativeStr() const
 {
     std::string path;
-    if (m_isAbsolute) {
+    if (m_isAbsolute)
+    {
         path.append("/");
     }
 /*
@@ -146,7 +163,8 @@ std::string Path::hostname() const
 std::string Path::dirname() const
 {
     std::string dirname;
-    if (m_isAbsolute) {
+    if (m_isAbsolute)
+    {
         dirname.append("/");
     }
 /*

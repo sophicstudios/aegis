@@ -3,71 +3,79 @@
 
 namespace aftfs {
 
-class TestPath : public aunit::TestFixture
+using namespace aunit;
+
+describe("Test Path", []
 {
-public:
-    TestPath();
-    
-    virtual ~TestPath();
-    
-protected:
-    virtual void runTest();
-    
-private:
-    void testConstruction();
-};
+    it("Constructor - directory with no ending slash", [&]
+    {
+        aftfs::Path p("/usr/local/bin");
 
-AUNIT_REGISTERTEST(TestPath);
+        expect(p.dirname()).toEqual("/usr/local");
+        expect(p.basename()).toEqual("bin");
+        expect(p.extension().empty()).toBeTrue();
+        expect(p.isAbsolute()).toBeTrue();
+    });
 
-TestPath::TestPath()
-{}
+    it("Constructor - directory with ending slash", [&]
+    {
+        aftfs::Path p("/usr/local/bin/");
 
-TestPath::~TestPath()
-{}
+        expect(p.dirname()).toEqual("/usr/local");
+        expect(p.basename()).toEqual("bin");
+        expect(p.extension().empty()).toBeTrue();
+        expect(p.isAbsolute()).toBeTrue();
+    });
 
-void TestPath::runTest()
-{
-    testConstruction();
-}
+    it("Constructor - file with extension", [&]
+    {
+        aftfs::Path p("/usr/local/bin/test.dat");
 
-void TestPath::testConstruction()
-{
-    aftfs::Path p1("/usr/local/bin");
-    AUNIT_ASSERT(p1.dirname() == "/usr/local");
-    AUNIT_ASSERT(p1.basename() == "bin");
-    AUNIT_ASSERT(p1.extension().empty());
-    AUNIT_ASSERT(p1.isAbsolute() == true);
-    
-    aftfs::Path p2("/usr/local/bin/");
-    AUNIT_ASSERT(p2.dirname() == "/usr/local");
-    AUNIT_ASSERT(p2.basename() == "bin");
-    AUNIT_ASSERT(p2.extension().empty());
-    AUNIT_ASSERT(p2.isAbsolute() == true);
-    
-    aftfs::Path p4("/usr/local/bin/test.dat");
-    AUNIT_ASSERT(p4.dirname() == "/usr/local/bin");
-    AUNIT_ASSERT(p4.basename() == "test.dat");
-    AUNIT_ASSERT(p4.extension() == "dat");
-    AUNIT_ASSERT(p4.isAbsolute() == true);
-    
-    aftfs::Path p5(".");
-    AUNIT_ASSERT(p5.dirname() == ".");
-    AUNIT_ASSERT(p5.basename() == ".");
-    AUNIT_ASSERT(p5.extension().empty());
-    AUNIT_ASSERT(p5.isAbsolute() == false);
-    
-    aftfs::Path p6("..");
-    AUNIT_ASSERT(p6.dirname() == ".");
-    AUNIT_ASSERT(p6.basename() == "..");
-    AUNIT_ASSERT(p6.extension().empty());
-    AUNIT_ASSERT(p6.isAbsolute() == false);
-    
-    aftfs::Path p7("./.");
-    AUNIT_ASSERT(p7.dirname() == ".");
-    AUNIT_ASSERT(p7.basename() == ".");
-    AUNIT_ASSERT(p7.isAbsolute() == false);
-    
-    aftfs::Path p8("./..");
-}
+        expect(p.dirname()).toEqual("/usr/local/bin");
+        expect(p.basename()).toEqual("test.dat");
+        expect(p.extension()).toEqual("dat");
+        expect(p.isAbsolute()).toBeTrue();
+    });
+
+    it("Constructor - current directory ('.') with no slash", [&]
+    {
+        aftfs::Path p(".");
+
+        expect(p.dirname()).toEqual(".");
+        expect(p.basename()).toEqual(".");
+        expect(p.extension().empty()).toBeTrue();
+        expect(p.isAbsolute()).non().toBeTrue();
+    });
+
+    it("Constructor - one directory level up ('..') with no slash", [&]
+    {
+        aftfs::Path p("..");
+
+        expect(p.dirname()).toEqual(".");
+        expect(p.basename()).toEqual("..");
+        expect(p.extension().empty()).toBeTrue();
+        expect(p.isAbsolute()).non().toBeTrue();
+    });
+
+    it("Constructor - current directory ('./.') with slash", [&]
+    {
+        aftfs::Path p("./.");
+
+        expect(p.dirname()).toEqual(".");
+        expect(p.basename()).toEqual(".");
+        expect(p.extension().empty()).toBeTrue();
+        expect(p.isAbsolute()).non().toBeTrue();
+    });
+
+    it("Constructor - one directory level up ('./..') with slash", [&]
+    {
+        aftfs::Path p("./..");
+
+        expect(p.dirname()).toEqual(".");
+        expect(p.basename()).toEqual("..");
+        expect(p.extension().empty()).toBeTrue();
+        expect(p.isAbsolute()).non().toBeTrue();
+    });
+});
 
 } // namespace

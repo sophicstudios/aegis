@@ -68,39 +68,39 @@ mode_t Permissions::mode() const
 {
     mode_t mode = 0;
 
-    if (m_user.hasRead()) {
+    if (m_user.read()) {
         mode |= S_IRUSR;
     }
     
-    if (m_user.hasWrite()) {
+    if (m_user.write()) {
         mode |= S_IWUSR;
     }
     
-    if (m_user.hasExecute()) {
+    if (m_user.execute()) {
         mode |= S_IXUSR;
     }
     
-    if (m_group.hasRead()) {
+    if (m_group.read()) {
         mode |= S_IRGRP;
     }
     
-    if (m_group.hasWrite()) {
+    if (m_group.write()) {
         mode |= S_IWGRP;
     }
     
-    if (m_group.hasExecute()) {
+    if (m_group.execute()) {
         mode |= S_IXGRP;
     }
     
-    if (m_other.hasRead()) {
+    if (m_other.read()) {
         mode |= S_IROTH;
     }
     
-    if (m_other.hasWrite()) {
+    if (m_other.write()) {
         mode |= S_IWOTH;
     }
     
-    if (m_other.hasExecute()) {
+    if (m_other.execute()) {
         mode |= S_IXOTH;
     }
     

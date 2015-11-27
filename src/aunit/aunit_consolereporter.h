@@ -43,11 +43,11 @@ public:
     bool shouldReportIndividualFailure() const;
     
 protected:
-    virtual void onAddResult(TestResult const& result);
+    virtual void onSetFixture(std::string const& name);
 
-    virtual void generateAndPublishReport(
-        std::vector<TestResult> const& successList,
-        std::vector<TestResult> const& failureList);
+    virtual void onAddResult(std::string const& name, bool success, std::string const& filename, int line);
+
+    virtual void onAddResult(TestResult const& result);
 
 private:
     Config* m_config;
