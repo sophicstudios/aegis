@@ -1,95 +1,38 @@
 #include <aftu_nullable.h>
 #include <aunit.h>
-#include <algorithm>
-#include <cstring>
+#include <string>
 
 namespace aftu {
 
-class MyString
+using namespace aunit;
+
+describe("aftu_nullable", []
 {
-public:
-    MyString(char const* const str)
+    it("Default Construction", [&]
     {
-        m_length = std::strlen(str);
-        m_str = new char[m_length + 1];
-        std::strncpy(m_str, str, m_length);
-        m_str[m_length] = 0;
-    }
-    
-    MyString(MyString const& rhs)
-    : m_length(rhs.m_length)
+        aftu::Nullable<std::string> nullable;
+
+        expect(nullable.isNull()).toBeTrue();
+    });
+
+    it("Value Construction", [&]
     {
-        m_str = new char[m_length + 1];
-        std::strncpy(m_str, rhs.m_str, m_length);
-        m_str[m_length] = 0;
-    }
-    
-    ~MyString()
+        std::string myString("myString");
+        aftu::Nullable<std::string> nullable(myString);
+
+        expect(nullable.isNull()).non().toBeTrue();
+        expect(nullable.value()).toEqual(myString);
+    });
+
+    it("makeNull", [&]
     {
-        delete [] m_str;
-        m_str = NULL;
-        m_length = 0;
-    }
-    
-    MyString& operator=(MyString const& rhs)
-    {
-        // if no memory is available, this will throw and the
-        // original string will remain unchanged
-        char* tmpStr = new char[rhs.m_length + 1];
+        std::string myString("myString");
+        aftu::Nullable<std::string> nullable(myString);
 
-        if (m_str) {
-            delete [] m_str;
-        }
-        
-        m_length = rhs.m_length;
-        m_str = tmpStr;
-        std::strncpy(m_str, rhs.m_str, m_length);
-        m_str[m_length] = 0;
-        
-        return *this;
-    }
-    
-    bool operator==(MyString const& rhs)
-    {
-        return std::strcmp(m_str, rhs.m_str) == 0;
-    }
-    
-private:
-    char* m_str;
-    size_t m_length;
-};
+        nullable.makeNull();
 
-class TestNullable : public aunit::TestFixture
-{
-public:
-    TestNullable();
-
-    virtual ~TestNullable();
-
-    virtual void runTest();
-};
-
-AUNIT_REGISTERTEST(TestNullable);
-
-TestNullable::TestNullable()
-{}
-
-TestNullable::~TestNullable()
-{}
-
-void TestNullable::runTest()
-{
-    aftu::Nullable<MyString> nullable;
-    AUNIT_ASSERT(nullable.isNull());
-    
-    MyString myString("myString");
-
-    nullable = myString;
-    AUNIT_ASSERT(!nullable.isNull());
-    AUNIT_ASSERT(nullable.value() == myString);
-    
-    nullable.makeNull();
-    AUNIT_ASSERT(nullable.isNull());
-}
+        expect(nullable.isNull()).toBeTrue();
+    });
+});
 
 } // namespace

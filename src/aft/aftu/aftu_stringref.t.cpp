@@ -3,6 +3,8 @@
 
 namespace aftu {
 
+using namespace aunit;
+
 template<typename T>
 struct TestStrings;
 
@@ -26,63 +28,47 @@ struct TestStrings<wchar_t>
 const wchar_t* TestStrings<wchar_t>::S1 = L"Test C String";
 const std::wstring TestStrings<wchar_t>::S2(L"Test std::wstring");
 
-class TestStringRef : public aunit::TestFixture
+describe("aftu_stringref", []
 {
-public:
-    TestStringRef() {}
-    
-    virtual ~TestStringRef() {}
-    
-protected:
-    virtual void runTest();
+    it("Default Construction", [&]
+    {
+        StringRef<char> emptyref;
 
-private:
-    template<typename T>
-    void testConstruction(TestStrings<T> const& testStrings);
-    
-    template<typename T>
-    void testComparison(TestStrings<T> const& testStrings);
-};
+        expect(emptyref.isEmpty()).toBeTrue();
+        expect(emptyref.size()).toEqual(0);
+        expect(emptyref.begin()).toEqual(emptyref.end());
+    });
 
-AUNIT_REGISTERTEST(TestStringRef);
+    it("C string Construction", [&]
+    {
+        StringRef<char> cstringref(TestStrings<char>::S1);
 
-void TestStringRef::runTest()
-{
-    testConstruction(TestStrings<char>());
-    testConstruction(TestStrings<wchar_t>());
-    testComparison(TestStrings<char>());
-    testComparison(TestStrings<wchar_t>());
-}
+        expect(cstringref.isEmpty()).non().toBeTrue();
+        expect(cstringref.size()).toEqual(std::char_traits<char>::length(TestStrings<char>::S1));
+        expect(&cstringref.begin()[0]).toEqual(&TestStrings<char>::S1[0]);
+        expect(&cstringref.end()[0]).toEqual(&TestStrings<char>::S1[std::char_traits<char>::length(TestStrings<char>::S1)]);
+    });
 
-template<typename T>
-void TestStringRef::testConstruction(TestStrings<T> const& testStrings)
-{
-    StringRef<T> emptyref;
-    AUNIT_ASSERT(emptyref.isEmpty());
-    AUNIT_ASSERT(emptyref.size() == 0);
-    AUNIT_ASSERT(emptyref.begin() == emptyref.end());
+    it("basic_string Construction", [&]
+    {
+        StringRef<std::basic_string<char> > stlstringref(TestStrings<char>::S2);
 
-    StringRef<T> cstringref(TestStrings<T>::S1);
-    AUNIT_ASSERT(!cstringref.isEmpty());
-    AUNIT_ASSERT(cstringref.size() == std::char_traits<T>::length(TestStrings<T>::S1));
-    AUNIT_ASSERT(&cstringref.begin()[0] == &TestStrings<T>::S1[0]
-        && &cstringref.end()[0] == &TestStrings<T>::S1[std::char_traits<T>::length(TestStrings<T>::S1)]);
-    
-    StringRef<std::basic_string<T> > stlstringref(TestStrings<T>::S2);
-    AUNIT_ASSERT(!stlstringref.isEmpty());
-    AUNIT_ASSERT(stlstringref.size() == TestStrings<T>::S2.size());
-    AUNIT_ASSERT(&(*stlstringref.begin()) == &(*TestStrings<T>::S2.begin())
-        && &(*stlstringref.end()) == &(*TestStrings<T>::S2.end()));
-}
+        expect(stlstringref.isEmpty()).toBeTrue();
+        expect(stlstringref.size()).toEqual(TestStrings<char>::S2.size());
+        expect(&(*stlstringref.begin())).toEqual(&(*TestStrings<char>::S2.begin()));
+        expect(&(*stlstringref.end())).toEqual(&(*TestStrings<char>::S2.end()));
+    });
 
-template<typename T>
-void TestStringRef::testComparison(TestStrings<T> const& testStrings)
-{
-    StringRef<T> cstringref(TestStrings<T>::S1);
-    AUNIT_ASSERT(cstringref == TestStrings<T>::S1);
-    
-    StringRef<std::basic_string<T> > stlstringref(TestStrings<T>::S2);
-    AUNIT_ASSERT(stlstringref == TestStrings<T>::S2);
-}
+    it("Comparison", [&]
+    {
+        StringRef<char> cstringref(TestStrings<char>::S1);
+
+        expect(cstringref).toEqual(TestStrings<char>::S1);
+        
+        StringRef<std::basic_string<char> > stlstringref(TestStrings<char>::S2);
+
+        expect(stlstringref).toEqual(TestStrings<char>::S2);
+    });
+});
 
 } // namespace
