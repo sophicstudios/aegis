@@ -1,9 +1,10 @@
 #include <aftt_datetime.h>
 #include <aunit.h>
 
-namespace aftt {
+namespace {
 
 using namespace aunit;
+using namespace aftt;
 
 namespace {
 
@@ -31,7 +32,7 @@ bool verify(Datetime const& dt,
 
 } // namespace
 
-describe("aftt_datetime", []
+Describe d("aftt_datetime", []
 {
     it("Construction", [&]
     {

@@ -23,8 +23,9 @@ Fixture* Fixture::instance()
     return m_activeInstance;
 }
 
-void Fixture::run(Reporter& reporter)
+bool Fixture::run(Reporter& reporter)
 {
+    m_hasError = false;
     s_activeReporter = &reporter;
 
     // set the active fixture
@@ -39,6 +40,8 @@ void Fixture::run(Reporter& reporter)
     // unset the current fixture
     m_activeInstance = nullptr;
     s_activeReporter = nullptr;
+
+    return m_hasError;
 }
 
 void Fixture::doBeforeEach(std::function<void ()> const& func, std::string const& filename, int line)
@@ -57,21 +60,27 @@ void Fixture::doAfterEach(std::function<void ()> const& func, std::string const&
 
 void Fixture::doIt(std::string const& name, std::function<void ()> const& func, std::string const& filename, int line)
 {
-    try {
-        if (m_beforeEachFunc) {
+    try
+    {
+        if (m_beforeEachFunc)
+        {
             m_beforeEachFunc();
         }
 
         func();
 
-        if (m_afterEachFunc) {
+        if (m_afterEachFunc)
+        {
             m_afterEachFunc();
         }
-    } catch (...) {
-        s_activeReporter->addResult(name, false, filename, line);
-    }
 
-    s_activeReporter->addResult(name, true, filename, line);
+        s_activeReporter->addResult(name, true, filename, line);
+    }
+    catch (...)
+    {
+        s_activeReporter->addResult(name, false, filename, line);
+        m_hasError = true;
+    }
 }
 
 } // namespace

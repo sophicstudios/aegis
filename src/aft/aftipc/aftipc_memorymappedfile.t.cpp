@@ -5,9 +5,10 @@
 #include <aunit.h>
 #include <iostream>
 
-namespace aftipc {
+namespace {
 
 using namespace aunit;
+using namespace aftipc;
 
 namespace {
 
@@ -49,7 +50,7 @@ uint32_t computeCrc(Country* countryArray, size_t countryCount)
 
 } // namespace
 
-describe("aftipc_memorymappedfile", []
+Describe d("aftipc_memorymappedfile", []
 {
     it("create", [&]
     {

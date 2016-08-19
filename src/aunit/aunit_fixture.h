@@ -16,7 +16,7 @@ public:
 
     ~Fixture();
 
-    void run(Reporter& reporter);
+    bool run(Reporter& reporter);
 
     void doBeforeEach(std::function<void ()> const& func, std::string const& filename, int line);
 
@@ -29,6 +29,7 @@ private:
 
     static Fixture* m_activeInstance;
 
+    bool m_hasError;
     std::string m_name;
     std::string m_fixtureFilename;
     int m_fixtureLine;

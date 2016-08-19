@@ -19,7 +19,7 @@ EventSystem::~EventSystem()
 void EventSystem::queueEvent(afth::UUID const& id, EventSystem::Callback callback)
 {
     actp::ScopedLock<actp::Mutex> lock(m_mutex);
-    m_nextEvents.push_back(std::make_pair(id, callback));
+    m_nextEvents->push_back(std::make_pair(id, callback));
 }
 
 void EventSystem::doPreUpdate(agta::Engine::Context& context)
@@ -29,8 +29,8 @@ void EventSystem::doUpdate(agta::Engine::SpacePtr space, agta::Engine::Context& 
 {
     swapEventLists();
 
-    EventList::iterator it = m_currentEvents.begin();
-    EventList::iterator end = m_currentEvents.end();
+    EventList::iterator it = m_currentEvents->begin();
+    EventList::iterator end = m_currentEvents->end();
     for (; it != end; ++it) {
         Callback& callback = it->second;
         callback(it->first);

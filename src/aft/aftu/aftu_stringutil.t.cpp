@@ -1,11 +1,12 @@
 #include <aftu_stringutil.h>
 #include <aunit.h>
 
-namespace aftu {
+namespace {
 
 using namespace aunit;
+using namespace aftu;
 
-describe("aftu_stringutil", []
+Describe d("aftu_stringutil", []
 {
     it("trimLeft", [&]
     {
@@ -46,7 +47,7 @@ describe("aftu_stringutil", []
         std::vector<std::string> tokenList2;
 
         std::string s1("0");
-        StringUtil::tokenize(&tokenList1, s1);
+        aftu::StringUtil::tokenize(&tokenList1, s1);
 
         expect(tokenList1.size()).toEqual(1);
         expect(tokenList1[0]).toEqual("0");
@@ -54,7 +55,7 @@ describe("aftu_stringutil", []
         tokenList1.clear();
         
         std::string s2("0 1");
-        StringUtil::tokenize(&tokenList1, s2);
+        aftu::StringUtil::tokenize(&tokenList1, s2);
 
         expect(tokenList1.size()).toEqual(2);
         expect(tokenList1[0]).toEqual("0");
@@ -63,7 +64,7 @@ describe("aftu_stringutil", []
         tokenList1.clear();
         
         std::string s3("0;1");
-        StringUtil::tokenize(&tokenList1, s3, ';');
+        aftu::StringUtil::tokenize(&tokenList1, s3, ';');
 
         expect(tokenList1.size()).toEqual(2);
         expect(tokenList1[0]).toEqual("0");
@@ -72,7 +73,7 @@ describe("aftu_stringutil", []
         tokenList1.clear();
 
         std::string s4("0;;2");
-        StringUtil::tokenize(&tokenList1, s4, ';', true);
+        aftu::StringUtil::tokenize(&tokenList1, s4, ';', true);
 
         expect(tokenList1.size()).toEqual(3);
         expect(tokenList1[0]).toEqual("0");
@@ -82,7 +83,7 @@ describe("aftu_stringutil", []
         tokenList1.clear();
         
         std::string s5(";1;;3;");
-        StringUtil::tokenize(&tokenList1, s5, ';', true);
+        aftu::StringUtil::tokenize(&tokenList1, s5, ';', true);
 
         expect(tokenList1.size()).toEqual(5);
         expect(tokenList1[0]).toEqual("");

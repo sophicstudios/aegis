@@ -1,6 +1,6 @@
-#include <agta_displaytimer.h>
+#include <agtui_displaytimer.h>
 
-namespace agta {
+namespace agtui {
 
 DisplayTimer::DisplayTimer()
 {}

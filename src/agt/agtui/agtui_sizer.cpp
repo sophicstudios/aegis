@@ -28,9 +28,4 @@ agtm::Size2d<float> Sizer::maxSize() const
     return doMaxSize();
 }
 
-agtm::Size2d<float> Sizer::bestSize() const
-{
-    return doBestSize();
-}
-
 } // namespace

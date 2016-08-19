@@ -2,11 +2,12 @@
 #include <aunit.h>
 #include <string>
 
-namespace aftu {
+namespace {
 
 using namespace aunit;
+using namespace aftu;
 
-describe("aftu_nullable", []
+Describe d("aftu_nullable", []
 {
     it("Default Construction", [&]
     {

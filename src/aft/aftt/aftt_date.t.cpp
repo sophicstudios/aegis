@@ -1,9 +1,10 @@
 #include <aftt_date.h>
 #include <aunit.h>
 
-namespace aftt {
+namespace {
 
 using namespace aunit;
+using namespace aftt;
 
 namespace {
 
@@ -40,7 +41,7 @@ bool equalDates(Date const& date, int year, int month, int day)
 
 } // namespace
 
-describe("aftt_date", []
+Describe d("aftt_date", []
 {
     it("Construction", [&]
     {

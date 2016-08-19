@@ -2,7 +2,7 @@
 #define INCLUDED_AGTA_PLATFORM_H
 
 #include <aftfs_filesystem.h>
-#include <agta_glwindow.h>
+#include <agtui_glwindow.h>
 #include <memory>
 
 namespace agta {
@@ -11,7 +11,7 @@ class Platform
 {
 public:
     typedef std::shared_ptr<aftfs::Filesystem> FilesystemPtr;
-    typedef std::shared_ptr<agta::GLWindow> GLWindowPtr;
+    typedef std::shared_ptr<agtui::GLWindow> GLWindowPtr;
 
     Platform(FilesystemPtr filesystem, GLWindowPtr glWindow);
 

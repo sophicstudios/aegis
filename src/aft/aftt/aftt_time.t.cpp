@@ -3,9 +3,10 @@
 #include <aunit.h>
 #include <iostream>
 
-namespace aftt {
+namespace {
 
 using namespace aunit;
+using namespace aftt;
 
 namespace {
 
@@ -19,7 +20,7 @@ bool verify(Time const& t, unsigned int hour, unsigned int minute, unsigned int 
 
 } // namespace
 
-describe("aftt_time", []
+Describe d("aftt_time", []
 {
     it("Construction", [&]
     {

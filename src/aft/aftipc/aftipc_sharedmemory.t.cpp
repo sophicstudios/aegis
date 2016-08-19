@@ -6,9 +6,10 @@
 #include <aunit.h>
 #include <iostream>
 
-namespace aftipc {
+namespace {
 
 using namespace aunit;
+using namespace aftipc;
 
 static const size_t MAJOR_VERSION=1;
 static const size_t MINOR_VERSION=0;
@@ -45,7 +46,7 @@ uint32_t computeCrc(Country* countryArray, size_t countryCount)
     return crc;
 }
 
-describe("aftipc_sharedmemory", []
+Describe d("aftipc_sharedmemory", []
 {
     beforeEach([&]
     {

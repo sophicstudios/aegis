@@ -13,8 +13,8 @@
 		FA0E03A41ACEEE2400386511 /* agta_sprite2dmaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = FA0E03A01ACEEE2400386511 /* agta_sprite2dmaterial.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA14A0AA19E6088C0058A4CA /* agtr_resource.h in Headers */ = {isa = PBXBuildFile; fileRef = FA14A0A919E6088C0058A4CA /* agtr_resource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA14A0AB19E6088C0058A4CA /* agtr_resource.h in Headers */ = {isa = PBXBuildFile; fileRef = FA14A0A919E6088C0058A4CA /* agtr_resource.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA1962671BC98CD300B94BC2 /* aunit_fixture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA1962651BC98CD300B94BC2 /* aunit_fixture.cpp */; settings = {ASSET_TAGS = (); }; };
-		FA1962681BC98CD300B94BC2 /* aunit_fixture.h in Headers */ = {isa = PBXBuildFile; fileRef = FA1962661BC98CD300B94BC2 /* aunit_fixture.h */; settings = {ASSET_TAGS = (); }; };
+		FA1962671BC98CD300B94BC2 /* aunit_fixture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA1962651BC98CD300B94BC2 /* aunit_fixture.cpp */; };
+		FA1962681BC98CD300B94BC2 /* aunit_fixture.h in Headers */ = {isa = PBXBuildFile; fileRef = FA1962661BC98CD300B94BC2 /* aunit_fixture.h */; };
 		FA19D67F1ABEF037007C91E1 /* agta_visual2dcomponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA19D67D1ABEF037007C91E1 /* agta_visual2dcomponent.cpp */; };
 		FA19D6801ABEF037007C91E1 /* agta_visual2dcomponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA19D67D1ABEF037007C91E1 /* agta_visual2dcomponent.cpp */; };
 		FA19D6811ABEF037007C91E1 /* agta_visual2dcomponent.h in Headers */ = {isa = PBXBuildFile; fileRef = FA19D67E1ABEF037007C91E1 /* agta_visual2dcomponent.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -217,7 +217,7 @@
 		FA424AB516F4D7CC00622AED /* agtg_colorrgba.h in Headers */ = {isa = PBXBuildFile; fileRef = FA424AB316F4D7CC00622AED /* agtg_colorrgba.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA4779381B1BA90000F205D4 /* agtui_boxsizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4779361B1BA90000F205D4 /* agtui_boxsizer.cpp */; };
 		FA4779391B1BA90000F205D4 /* agtui_boxsizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4779361B1BA90000F205D4 /* agtui_boxsizer.cpp */; };
-		FA47793A1B1BA90000F205D4 /* agtui_boxsizer.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4779371B1BA90000F205D4 /* agtui_boxsizer.h */; };
+		FA47793A1B1BA90000F205D4 /* agtui_boxsizer.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4779371B1BA90000F205D4 /* agtui_boxsizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA47793B1B1BA90000F205D4 /* agtui_boxsizer.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4779371B1BA90000F205D4 /* agtui_boxsizer.h */; };
 		FA4C5FB71AF54D7500BD4B55 /* agtui_window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4C5FB51AF54D7500BD4B55 /* agtui_window.cpp */; };
 		FA4C5FB81AF54D7500BD4B55 /* agtui_window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4C5FB51AF54D7500BD4B55 /* agtui_window.cpp */; };
@@ -286,9 +286,7 @@
 		FA833E9F15A755C90044283D /* aunit_reporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E7E15A755850044283D /* aunit_reporter.cpp */; };
 		FA833EA115A755C90044283D /* aunit_stringutil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E8215A755850044283D /* aunit_stringutil.cpp */; };
 		FA833EA315A755C90044283D /* aunit_testconfiguration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E8615A755850044283D /* aunit_testconfiguration.cpp */; };
-		FA833EA415A755C90044283D /* aunit_testfixture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E8815A755850044283D /* aunit_testfixture.cpp */; };
 		FA833EA515A755C90044283D /* aunit_testmanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E8A15A755850044283D /* aunit_testmanager.cpp */; };
-		FA833EA615A755C90044283D /* aunit_testregistry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E8C15A755850044283D /* aunit_testregistry.cpp */; };
 		FA833EA715A755C90044283D /* aunit_testresult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833E8E15A755850044283D /* aunit_testresult.cpp */; };
 		FA833EA915A755E70044283D /* aunit_assert.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E7715A755850044283D /* aunit_assert.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA833EAA15A755EB0044283D /* aunit_commandlineoptions.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E7915A755850044283D /* aunit_commandlineoptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -297,10 +295,8 @@
 		FA833EAD15A755F60044283D /* aunit_reporter.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E7F15A755850044283D /* aunit_reporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA833EAF15A7560D0044283D /* aunit_stringutil.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E8315A755850044283D /* aunit_stringutil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA833EB115A756160044283D /* aunit_testconfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E8715A755850044283D /* aunit_testconfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA833EB215A7561C0044283D /* aunit_testfixture.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E8915A755850044283D /* aunit_testfixture.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA833EB415A756250044283D /* aunit.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E9215A755850044283D /* aunit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA833EB515A756280044283D /* aunit_testresult.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E8F15A755850044283D /* aunit_testresult.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA833EB615A7562C0044283D /* aunit_testregistry.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E8D15A755850044283D /* aunit_testregistry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA833EB715A756340044283D /* aunit_testmanager.h in Headers */ = {isa = PBXBuildFile; fileRef = FA833E8B15A755850044283D /* aunit_testmanager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA833EC715A75D810044283D /* aft.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA833EC615A75D800044283D /* aft.t.cpp */; };
 		FA833ECC15A790600044283D /* libaft-macosx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA833E2215A752430044283D /* libaft-macosx.a */; };
@@ -458,10 +454,10 @@
 		FAA99BC61A6AE52000A0A52E /* agta_space.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA99BC31A6AE52000A0A52E /* agta_space.cpp */; };
 		FAA99BC71A6AE52000A0A52E /* agta_space.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA99BC41A6AE52000A0A52E /* agta_space.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAA99BC81A6AE52000A0A52E /* agta_space.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA99BC41A6AE52000A0A52E /* agta_space.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FAA99BCB1A6AF60900A0A52E /* agta_componentmanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA99BC91A6AF60900A0A52E /* agta_componentmanager.cpp */; };
-		FAA99BCC1A6AF60900A0A52E /* agta_componentmanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA99BC91A6AF60900A0A52E /* agta_componentmanager.cpp */; };
-		FAA99BCD1A6AF60900A0A52E /* agta_componentmanager.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA99BCA1A6AF60900A0A52E /* agta_componentmanager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FAA99BCE1A6AF60900A0A52E /* agta_componentmanager.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA99BCA1A6AF60900A0A52E /* agta_componentmanager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAA99BCB1A6AF60900A0A52E /* agta_componentpool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA99BC91A6AF60900A0A52E /* agta_componentpool.cpp */; };
+		FAA99BCC1A6AF60900A0A52E /* agta_componentpool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA99BC91A6AF60900A0A52E /* agta_componentpool.cpp */; };
+		FAA99BCD1A6AF60900A0A52E /* agta_componentpool.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA99BCA1A6AF60900A0A52E /* agta_componentpool.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAA99BCE1A6AF60900A0A52E /* agta_componentpool.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA99BCA1A6AF60900A0A52E /* agta_componentpool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAAEE5A41686155500F587BE /* aftt_seconds.h in Headers */ = {isa = PBXBuildFile; fileRef = FAAEE5A31686155400F587BE /* aftt_seconds.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAAEE5A51686155500F587BE /* aftt_seconds.h in Headers */ = {isa = PBXBuildFile; fileRef = FAAEE5A31686155400F587BE /* aftt_seconds.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAAEE5A71686168900F587BE /* aftt_milliseconds.h in Headers */ = {isa = PBXBuildFile; fileRef = FAAEE5A61686168900F587BE /* aftt_milliseconds.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -504,10 +500,6 @@
 		FAD3F6BE1AA23D24005455B2 /* agta_platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAD3F6BB1AA23D24005455B2 /* agta_platform.cpp */; };
 		FAD3F6BF1AA23D24005455B2 /* agta_platform.h in Headers */ = {isa = PBXBuildFile; fileRef = FAD3F6BC1AA23D24005455B2 /* agta_platform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAD3F6C01AA23D24005455B2 /* agta_platform.h in Headers */ = {isa = PBXBuildFile; fileRef = FAD3F6BC1AA23D24005455B2 /* agta_platform.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FADE7DC21AE47B4600280A14 /* agta_componententitymap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FADE7DC01AE47B4600280A14 /* agta_componententitymap.cpp */; };
-		FADE7DC31AE47B4600280A14 /* agta_componententitymap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FADE7DC01AE47B4600280A14 /* agta_componententitymap.cpp */; };
-		FADE7DC41AE47B4600280A14 /* agta_componententitymap.h in Headers */ = {isa = PBXBuildFile; fileRef = FADE7DC11AE47B4600280A14 /* agta_componententitymap.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FADE7DC51AE47B4600280A14 /* agta_componententitymap.h in Headers */ = {isa = PBXBuildFile; fileRef = FADE7DC11AE47B4600280A14 /* agta_componententitymap.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FADE7DC81AE47D3D00280A14 /* agtg_camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FADE7DC61AE47D3D00280A14 /* agtg_camera.cpp */; };
 		FADE7DC91AE47D3D00280A14 /* agtg_camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FADE7DC61AE47D3D00280A14 /* agtg_camera.cpp */; };
 		FADE7DCA1AE47D3D00280A14 /* agtg_camera.h in Headers */ = {isa = PBXBuildFile; fileRef = FADE7DC71AE47D3D00280A14 /* agtg_camera.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -740,12 +732,8 @@
 		FA833E8315A755850044283D /* aunit_stringutil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aunit_stringutil.h; path = ../../../src/aunit/aunit_stringutil.h; sourceTree = "<group>"; };
 		FA833E8615A755850044283D /* aunit_testconfiguration.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = aunit_testconfiguration.cpp; path = ../../../src/aunit/aunit_testconfiguration.cpp; sourceTree = "<group>"; };
 		FA833E8715A755850044283D /* aunit_testconfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aunit_testconfiguration.h; path = ../../../src/aunit/aunit_testconfiguration.h; sourceTree = "<group>"; };
-		FA833E8815A755850044283D /* aunit_testfixture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = aunit_testfixture.cpp; path = ../../../src/aunit/aunit_testfixture.cpp; sourceTree = "<group>"; };
-		FA833E8915A755850044283D /* aunit_testfixture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aunit_testfixture.h; path = ../../../src/aunit/aunit_testfixture.h; sourceTree = "<group>"; };
 		FA833E8A15A755850044283D /* aunit_testmanager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = aunit_testmanager.cpp; path = ../../../src/aunit/aunit_testmanager.cpp; sourceTree = "<group>"; };
 		FA833E8B15A755850044283D /* aunit_testmanager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aunit_testmanager.h; path = ../../../src/aunit/aunit_testmanager.h; sourceTree = "<group>"; };
-		FA833E8C15A755850044283D /* aunit_testregistry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = aunit_testregistry.cpp; path = ../../../src/aunit/aunit_testregistry.cpp; sourceTree = "<group>"; };
-		FA833E8D15A755850044283D /* aunit_testregistry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aunit_testregistry.h; path = ../../../src/aunit/aunit_testregistry.h; sourceTree = "<group>"; };
 		FA833E8E15A755850044283D /* aunit_testresult.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = aunit_testresult.cpp; path = ../../../src/aunit/aunit_testresult.cpp; sourceTree = "<group>"; };
 		FA833E8F15A755850044283D /* aunit_testresult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aunit_testresult.h; path = ../../../src/aunit/aunit_testresult.h; sourceTree = "<group>"; };
 		FA833E9215A755850044283D /* aunit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aunit.h; path = ../../../src/aunit/aunit.h; sourceTree = "<group>"; };
@@ -883,8 +871,8 @@
 		FAA99BBE1A62F7EE00A0A52E /* agta_entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_entity.h; path = ../../../src/agt/agta/agta_entity.h; sourceTree = "<group>"; };
 		FAA99BC31A6AE52000A0A52E /* agta_space.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_space.cpp; path = ../../../src/agt/agta/agta_space.cpp; sourceTree = "<group>"; };
 		FAA99BC41A6AE52000A0A52E /* agta_space.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_space.h; path = ../../../src/agt/agta/agta_space.h; sourceTree = "<group>"; };
-		FAA99BC91A6AF60900A0A52E /* agta_componentmanager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_componentmanager.cpp; path = ../../../src/agt/agta/agta_componentmanager.cpp; sourceTree = "<group>"; };
-		FAA99BCA1A6AF60900A0A52E /* agta_componentmanager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_componentmanager.h; path = ../../../src/agt/agta/agta_componentmanager.h; sourceTree = "<group>"; };
+		FAA99BC91A6AF60900A0A52E /* agta_componentpool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_componentpool.cpp; path = ../../../src/agt/agta/agta_componentpool.cpp; sourceTree = "<group>"; };
+		FAA99BCA1A6AF60900A0A52E /* agta_componentpool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_componentpool.h; path = ../../../src/agt/agta/agta_componentpool.h; sourceTree = "<group>"; };
 		FAAEE5A31686155400F587BE /* aftt_seconds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftt_seconds.h; path = ../../../src/aft/aftt/aftt_seconds.h; sourceTree = "<group>"; };
 		FAAEE5A61686168900F587BE /* aftt_milliseconds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftt_milliseconds.h; path = ../../../src/aft/aftt/aftt_milliseconds.h; sourceTree = "<group>"; };
 		FAAEE5A91686170C00F587BE /* aftt_minutes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftt_minutes.cpp; path = ../../../src/aft/aftt/aftt_minutes.cpp; sourceTree = "<group>"; };
@@ -912,8 +900,6 @@
 		FACFF4DF1BBB6D5C00FBB983 /* aunit_fixtureregistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aunit_fixtureregistry.h; path = ../../../src/aunit/aunit_fixtureregistry.h; sourceTree = "<group>"; };
 		FAD3F6BB1AA23D24005455B2 /* agta_platform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_platform.cpp; path = ../../../src/agt/agta/agta_platform.cpp; sourceTree = "<group>"; };
 		FAD3F6BC1AA23D24005455B2 /* agta_platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_platform.h; path = ../../../src/agt/agta/agta_platform.h; sourceTree = "<group>"; };
-		FADE7DC01AE47B4600280A14 /* agta_componententitymap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_componententitymap.cpp; path = ../../../src/agt/agta/agta_componententitymap.cpp; sourceTree = "<group>"; };
-		FADE7DC11AE47B4600280A14 /* agta_componententitymap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_componententitymap.h; path = ../../../src/agt/agta/agta_componententitymap.h; sourceTree = "<group>"; };
 		FADE7DC61AE47D3D00280A14 /* agtg_camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtg_camera.cpp; path = ../../../src/agt/agtg/agtg_camera.cpp; sourceTree = "<group>"; };
 		FADE7DC71AE47D3D00280A14 /* agtg_camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtg_camera.h; path = ../../../src/agt/agtg/agtg_camera.h; sourceTree = "<group>"; };
 		FADE7DCC1AE482CE00280A14 /* agtg_orthographiccamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtg_orthographiccamera.cpp; path = ../../../src/agt/agtg/agtg_orthographiccamera.cpp; sourceTree = "<group>"; };
@@ -1049,8 +1035,8 @@
 		FA3E4D321A2D447E00E58703 /* agta */ = {
 			isa = PBXGroup;
 			children = (
-				FAA99BC91A6AF60900A0A52E /* agta_componentmanager.cpp */,
-				FAA99BCA1A6AF60900A0A52E /* agta_componentmanager.h */,
+				FAA99BC91A6AF60900A0A52E /* agta_componentpool.cpp */,
+				FAA99BCA1A6AF60900A0A52E /* agta_componentpool.h */,
 				FA3E4D331A2D45CF00E58703 /* agta_engine.cpp */,
 				FA3E4D341A2D45CF00E58703 /* agta_engine.h */,
 				FAA99BBD1A62F7EE00A0A52E /* agta_entity.cpp */,
@@ -1069,8 +1055,6 @@
 				FA19D67E1ABEF037007C91E1 /* agta_visual2dcomponent.h */,
 				FA0E039F1ACEEE2400386511 /* agta_sprite2dmaterial.cpp */,
 				FA0E03A01ACEEE2400386511 /* agta_sprite2dmaterial.h */,
-				FADE7DC01AE47B4600280A14 /* agta_componententitymap.cpp */,
-				FADE7DC11AE47B4600280A14 /* agta_componententitymap.h */,
 				FA4C5FC11AFE827900BD4B55 /* agta_eventsystem.cpp */,
 				FA4C5FC21AFE827900BD4B55 /* agta_eventsystem.h */,
 			);
@@ -1220,36 +1204,32 @@
 			isa = PBXGroup;
 			children = (
 				FA833E7615A755850044283D /* aunit_assert.cpp */,
-				FA833E7815A755850044283D /* aunit_commandlineoptions.cpp */,
-				FA833E7A15A755850044283D /* aunit_commandlineparser.cpp */,
-				FA833E7C15A755850044283D /* aunit_consolereporter.cpp */,
-				FA833E7E15A755850044283D /* aunit_reporter.cpp */,
-				FA833E8215A755850044283D /* aunit_stringutil.cpp */,
-				FA833E8615A755850044283D /* aunit_testconfiguration.cpp */,
-				FA833E8815A755850044283D /* aunit_testfixture.cpp */,
-				FA833E8A15A755850044283D /* aunit_testmanager.cpp */,
-				FA833E8C15A755850044283D /* aunit_testregistry.cpp */,
-				FA833E8E15A755850044283D /* aunit_testresult.cpp */,
-				FA833E9215A755850044283D /* aunit.h */,
 				FA833E7715A755850044283D /* aunit_assert.h */,
+				FA833E7815A755850044283D /* aunit_commandlineoptions.cpp */,
 				FA833E7915A755850044283D /* aunit_commandlineoptions.h */,
+				FA833E7A15A755850044283D /* aunit_commandlineparser.cpp */,
 				FA833E7B15A755850044283D /* aunit_commandlineparser.h */,
+				FA833E7C15A755850044283D /* aunit_consolereporter.cpp */,
 				FA833E7D15A755850044283D /* aunit_consolereporter.h */,
-				FA833E7F15A755850044283D /* aunit_reporter.h */,
-				FA833E8315A755850044283D /* aunit_stringutil.h */,
-				FA833E8715A755850044283D /* aunit_testconfiguration.h */,
-				FA833E8915A755850044283D /* aunit_testfixture.h */,
-				FA833E8B15A755850044283D /* aunit_testmanager.h */,
-				FA833E8D15A755850044283D /* aunit_testregistry.h */,
-				FA833E8F15A755850044283D /* aunit_testresult.h */,
-				FAA47C491BAE0C3F00514613 /* aunit_expect.cpp */,
-				FAA47C4A1BAE0C3F00514613 /* aunit_expect.h */,
 				FACFF4DA1BB6ECE200FBB983 /* aunit_describe.cpp */,
 				FACFF4DB1BB6ECE200FBB983 /* aunit_describe.h */,
-				FACFF4DE1BBB6D5C00FBB983 /* aunit_fixtureregistry.cpp */,
-				FACFF4DF1BBB6D5C00FBB983 /* aunit_fixtureregistry.h */,
+				FAA47C491BAE0C3F00514613 /* aunit_expect.cpp */,
+				FAA47C4A1BAE0C3F00514613 /* aunit_expect.h */,
 				FA1962651BC98CD300B94BC2 /* aunit_fixture.cpp */,
 				FA1962661BC98CD300B94BC2 /* aunit_fixture.h */,
+				FACFF4DE1BBB6D5C00FBB983 /* aunit_fixtureregistry.cpp */,
+				FACFF4DF1BBB6D5C00FBB983 /* aunit_fixtureregistry.h */,
+				FA833E7E15A755850044283D /* aunit_reporter.cpp */,
+				FA833E7F15A755850044283D /* aunit_reporter.h */,
+				FA833E8215A755850044283D /* aunit_stringutil.cpp */,
+				FA833E8315A755850044283D /* aunit_stringutil.h */,
+				FA833E8615A755850044283D /* aunit_testconfiguration.cpp */,
+				FA833E8715A755850044283D /* aunit_testconfiguration.h */,
+				FA833E8A15A755850044283D /* aunit_testmanager.cpp */,
+				FA833E8B15A755850044283D /* aunit_testmanager.h */,
+				FA833E8E15A755850044283D /* aunit_testresult.cpp */,
+				FA833E8F15A755850044283D /* aunit_testresult.h */,
+				FA833E9215A755850044283D /* aunit.h */,
 			);
 			name = aunit;
 			sourceTree = "<group>";
@@ -1573,7 +1553,7 @@
 				FAFD77CF189D466300734186 /* agtui_widget.h in Headers */,
 				FA2318E3178E2DDE0050DE3A /* agtui_touchevent.h in Headers */,
 				FAC45A9819EF79C900329DAB /* agtr_imageloaderpng.h in Headers */,
-				FAA99BCE1A6AF60900A0A52E /* agta_componentmanager.h in Headers */,
+				FAA99BCE1A6AF60900A0A52E /* agta_componentpool.h in Headers */,
 				FA3E4D381A2D45CF00E58703 /* agta_engine.h in Headers */,
 				FAA99BC21A62F7EE00A0A52E /* agta_entity.h in Headers */,
 				FA2318CE178DD44F0050DE3A /* agtr_image.h in Headers */,
@@ -1584,7 +1564,6 @@
 				FA90ECAB1AAB7AC600DB0A34 /* agtui_glwindow.h in Headers */,
 				FA19D6821ABEF037007C91E1 /* agta_visual2dcomponent.h in Headers */,
 				FA3E4D541A32BB5600E58703 /* agta_rendersystem.h in Headers */,
-				FADE7DC51AE47B4600280A14 /* agta_componententitymap.h in Headers */,
 				FADE7DCB1AE47D3D00280A14 /* agtg_camera.h in Headers */,
 				FADE7DD11AE482CE00280A14 /* agtg_orthographiccamera.h in Headers */,
 				FA0E03A41ACEEE2400386511 /* agta_sprite2dmaterial.h in Headers */,
@@ -1706,11 +1685,9 @@
 				FA833EAD15A755F60044283D /* aunit_reporter.h in Headers */,
 				FA833EAF15A7560D0044283D /* aunit_stringutil.h in Headers */,
 				FA833EB115A756160044283D /* aunit_testconfiguration.h in Headers */,
-				FA833EB215A7561C0044283D /* aunit_testfixture.h in Headers */,
 				FACFF4DD1BB6ECE200FBB983 /* aunit_describe.h in Headers */,
 				FA833EB715A756340044283D /* aunit_testmanager.h in Headers */,
 				FACFF4E11BBB6D5C00FBB983 /* aunit_fixtureregistry.h in Headers */,
-				FA833EB615A7562C0044283D /* aunit_testregistry.h in Headers */,
 				FA1962681BC98CD300B94BC2 /* aunit_fixture.h in Headers */,
 				FA833EB515A756280044283D /* aunit_testresult.h in Headers */,
 			);
@@ -1811,7 +1788,6 @@
 				FAA6CDDB15DDB37400F480F0 /* agtm_vector4.h in Headers */,
 				FA14A0AA19E6088C0058A4CA /* agtr_resource.h in Headers */,
 				FAC45A9719EF79C900329DAB /* agtr_imageloaderpng.h in Headers */,
-				FA47793A1B1BA90000F205D4 /* agtui_boxsizer.h in Headers */,
 				FAA6CDDD15DDB37400F480F0 /* agtm_vectorutil.h in Headers */,
 				FA3E4D531A32BB5600E58703 /* agta_rendersystem.h in Headers */,
 				FA3E4D431A2EAA3100E58703 /* agta_transformcomponent.h in Headers */,
@@ -1819,14 +1795,13 @@
 				FA3E4D371A2D45CF00E58703 /* agta_engine.h in Headers */,
 				FAA99BC11A62F7EE00A0A52E /* agta_entity.h in Headers */,
 				FAA99BC71A6AE52000A0A52E /* agta_space.h in Headers */,
-				FAA99BCD1A6AF60900A0A52E /* agta_componentmanager.h in Headers */,
+				FAA99BCD1A6AF60900A0A52E /* agta_componentpool.h in Headers */,
 				FAD3F6BF1AA23D24005455B2 /* agta_platform.h in Headers */,
 				FA19D68A1AC24FDC007C91E1 /* agtg_gl.h in Headers */,
 				FA90ECB01AAB7B5300DB0A34 /* agtui_displaytimer.h in Headers */,
 				FA90ECAA1AAB7AC600DB0A34 /* agtui_glwindow.h in Headers */,
 				FA19D6811ABEF037007C91E1 /* agta_visual2dcomponent.h in Headers */,
 				FACBAC9116FE6F03008B2004 /* agtr_image.h in Headers */,
-				FADE7DC41AE47B4600280A14 /* agta_componententitymap.h in Headers */,
 				FADE7DCA1AE47D3D00280A14 /* agtg_camera.h in Headers */,
 				FADE7DD01AE482CE00280A14 /* agtg_orthographiccamera.h in Headers */,
 				FA0E03A31ACEEE2400386511 /* agta_sprite2dmaterial.h in Headers */,
@@ -1835,6 +1810,7 @@
 				FAFD77CE189D466300734186 /* agtui_widget.h in Headers */,
 				FA4C5FC51AFE827900BD4B55 /* agta_eventsystem.h in Headers */,
 				FAFD77CB189D419F00734186 /* agtui_sizer.h in Headers */,
+				FA47793A1B1BA90000F205D4 /* agtui_boxsizer.h in Headers */,
 				FA5E9772176CCDCB0035F4D0 /* agtui_mouseevent.h in Headers */,
 				FA2318E2178E2DDE0050DE3A /* agtui_touchevent.h in Headers */,
 			);
@@ -2031,7 +2007,7 @@
 				FA3E4D361A2D45CF00E58703 /* agta_engine.cpp in Sources */,
 				FA90ECAF1AAB7B5300DB0A34 /* agtui_displaytimer.cpp in Sources */,
 				FAD3F6BE1AA23D24005455B2 /* agta_platform.cpp in Sources */,
-				FAA99BCC1A6AF60900A0A52E /* agta_componentmanager.cpp in Sources */,
+				FAA99BCC1A6AF60900A0A52E /* agta_componentpool.cpp in Sources */,
 				FAFD77D2189D4B6200734186 /* agtui_widget.cpp in Sources */,
 				FA4C5FC41AFE827900BD4B55 /* agta_eventsystem.cpp in Sources */,
 				FA2318B1178DD38A0050DE3A /* agtg_renderingcontext.cpp in Sources */,
@@ -2049,7 +2025,6 @@
 				FA3E4D3C1A2D482400E58703 /* agta_system.cpp in Sources */,
 				FA2318AE178DD24D0050DE3A /* agtm_matrixutil.cpp in Sources */,
 				FA2318B8178DD3D60050DE3A /* agtm_point2d.cpp in Sources */,
-				FADE7DC31AE47B4600280A14 /* agta_componententitymap.cpp in Sources */,
 				FAC45A9619EF79C900329DAB /* agtr_imageloaderpng.cpp in Sources */,
 				FA2318B9178DD3D90050DE3A /* agtm_point3d.cpp in Sources */,
 				FAA99BC01A62F7EE00A0A52E /* agta_entity.cpp in Sources */,
@@ -2174,9 +2149,7 @@
 				FA833EA115A755C90044283D /* aunit_stringutil.cpp in Sources */,
 				FAA47C4B1BAE0C3F00514613 /* aunit_expect.cpp in Sources */,
 				FA833EA315A755C90044283D /* aunit_testconfiguration.cpp in Sources */,
-				FA833EA415A755C90044283D /* aunit_testfixture.cpp in Sources */,
 				FA833EA515A755C90044283D /* aunit_testmanager.cpp in Sources */,
-				FA833EA615A755C90044283D /* aunit_testregistry.cpp in Sources */,
 				FACFF4E01BBB6D5C00FBB983 /* aunit_fixtureregistry.cpp in Sources */,
 				FA833EA715A755C90044283D /* aunit_testresult.cpp in Sources */,
 			);
@@ -2300,7 +2273,7 @@
 				FA3E4D351A2D45CF00E58703 /* agta_engine.cpp in Sources */,
 				FA90ECAE1AAB7B5300DB0A34 /* agtui_displaytimer.cpp in Sources */,
 				FAD3F6BD1AA23D24005455B2 /* agta_platform.cpp in Sources */,
-				FAA99BCB1A6AF60900A0A52E /* agta_componentmanager.cpp in Sources */,
+				FAA99BCB1A6AF60900A0A52E /* agta_componentpool.cpp in Sources */,
 				FAFD77D1189D4B6200734186 /* agtui_widget.cpp in Sources */,
 				FA4C5FC31AFE827900BD4B55 /* agta_eventsystem.cpp in Sources */,
 				FACBACAB17072886008B2004 /* agtg_renderingcontext.cpp in Sources */,
@@ -2318,7 +2291,6 @@
 				FA3E4D3B1A2D482400E58703 /* agta_system.cpp in Sources */,
 				FAA6CDD015DDB37400F480F0 /* agtm_matrix4.cpp in Sources */,
 				FAA6CDD215DDB37400F480F0 /* agtm_matrixutil.cpp in Sources */,
-				FADE7DC21AE47B4600280A14 /* agta_componententitymap.cpp in Sources */,
 				FAC45A9519EF79C900329DAB /* agtr_imageloaderpng.cpp in Sources */,
 				FAA6CDDE15DDB37400F480F0 /* agtm_point2d.cpp in Sources */,
 				FAA99BBF1A62F7EE00A0A52E /* agta_entity.cpp in Sources */,
@@ -2472,7 +2444,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_VERSION = "";

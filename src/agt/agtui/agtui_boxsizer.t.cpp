@@ -4,30 +4,28 @@
 #include <vector>
 #include <iostream>
 
-namespace agtui {
+namespace {
+
+using namespace aunit;
+using namespace agtui;
 
 // A test widget with fixed size requirements for min and max
 class A : public agtui::Widget
 {
 public:
-    A();
+    A() {};
 
-    virtual ~A();
+    virtual ~A() {};
 
 private:
     virtual agtm::Size2d<float> doMinSize() const
     {
-        return 5;
+        return agtm::Size2d<float>(5, 5);
     }
 
     virtual agtm::Size2d<float> doMaxSize() const
     {
-        return 10;
-    }
-
-    virtual agtm::Size2d<float> doPreferredSize() const
-    {
-        return 10;
+        return agtm::Size2d<float>(10, 10);
     }
 };
 
@@ -42,58 +40,35 @@ public:
 private:
     virtual agtm::Size2d<float> doMinSize() const
     {
-        return -1;
+        return agtm::Size2d<float>(-1, -1);
     }
 
     virtual agtm::Size2d<float> doMaxSize() const
     {
-        return -1;
+        return agtm::Size2d<float>(-1, -1);
     }
+};
 
-    virtual agtm::Size2d<float> doPreferredSize() const
+Describe d("agtui_boxsizer", []
+{
+    it("size", [&]
     {
-        return -1;
-    }
-};
+        // Create the test widgets
+        std::shared_ptr<A> a(new A());
+        std::shared_ptr<B> b(new B());
 
-class TestBoxSizer : public aunit::TestFixture
-{
-public:
-    TestBoxSizer();
-    
-    virtual TestBoxSizer();
-    
-protected:
-    virtual void runTest();
-    
-private:
-};
+        // Create the Box Sizer, with vertical orientation
+        agtui::BoxSizer sizer(agtui::BoxSizer::Direction_VERTICAL);
 
-AUNIT_REGISTERTEST(TestBoxSizer);
+        // Add the test widtets, giving equal size to each
+        sizer.insert(a, 0, BoxSizer::Flags().sizeMode(BoxSizer::SizeMode_RELATIVE).size(1));
+        sizer.insert(b, 1, BoxSizer::Flags().sizeMode(BoxSizer::SizeMode_RELATIVE).size(1));
 
-TestBoxSizer::TestBoxSizer()
-{}
+        sizer.size(agtm::Size2d<float>(100, 100));
 
-TestBoxSizer::TestBoxSizer()
-{}
-
-void TestBoxSizer::runTest()
-{
-    // Create the test widgets
-    std::shared_ptr<A> a(new A());
-    std::shared_ptr<B> b(new B());
-
-    // Create the Box Sizer, with vertical orientation
-    agtui::BoxSizer sizer(agtui::BoxSizer::Direction_VERTICAL);
-
-    // Add the test widtets, giving equal size to each
-    sizer.add(a, 0, agtui::BoxSizer::SizeMode_RELATIVE, 1);
-    sizer.add(b, 1, agtui::BoxSizer::SizeMode_RELATIVE, 1);
-
-    sizer.size(agtm::Size2d<float>(100, 100));
-
-    AUNIT_ASSERT(a.size() == 50);
-    AUNIT_ASSERT(b.size() == 50);
-}
+        expect(a->size()).toEqual(agtm::Size2d<float>(10, 50));
+        expect(b->size()).toEqual(agtm::Size2d<float>(100, 50));
+    });
+});
 
 } // namespace

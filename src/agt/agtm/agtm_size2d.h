@@ -29,10 +29,17 @@ private:
 };
 
 template<typename T>
-Size2d<T> make_size(T const& width, T const& height);
+bool operator==(Size2d<T> const& lhs, Size2d<T> const& rhs);
+
+template<typename T>
+bool operator!=(Size2d<T> const& lhs, Size2d<T> const& rhs);
 
 template<typename T>
 std::ostream& operator<<(std::ostream& os, Size2d<T> const& size);
+
+template<typename T>
+Size2d<T> make_size(T const& width, T const& height);
+
 
 template<typename T>
 Size2d<T>::Size2d()
@@ -77,9 +84,15 @@ Size2d<T>& Size2d<T>::height(T const& height)
 }
 
 template<typename T>
-Size2d<T> make_size(T const& width, T const& height)
+bool operator==(Size2d<T> const& lhs, Size2d<T> const& rhs)
 {
-    return Size2d<T>(width, height);
+    return lhs.width() == rhs.width() && lhs.height() == rhs.height();
+}
+
+template<typename T>
+bool operator!=(Size2d<T> const& lhs, Size2d<T> const& rhs)
+{
+    return lhs.width() != rhs.width() || lhs.height() != rhs.height();
 }
 
 template<typename T>
@@ -87,6 +100,12 @@ std::ostream& operator<<(std::ostream& os, Size2d<T> const& size)
 {
     os << "[" << size.width() << " " << size.height() << "]";
     return os;
+}
+
+template<typename T>
+Size2d<T> make_size(T const& width, T const& height)
+{
+    return Size2d<T>(width, height);
 }
 
 } // namespace

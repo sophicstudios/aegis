@@ -1,6 +1,16 @@
 #include <agtm_quaternion.h>
 #include <aunit.h>
 
-namespace agtm {
+namespace {
+
+using namespace aunit;
+using namespace agtm;
+
+Describe d("agtm_quaternion", []
+{
+    it("Construction", [&]
+    {
+    });
+});
 
 } // namespace

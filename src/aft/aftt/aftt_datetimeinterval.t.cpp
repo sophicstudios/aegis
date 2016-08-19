@@ -1,11 +1,12 @@
 #include <aftt_datetimeinterval.h>
 #include <aunit.h>
 
-namespace aftt {
+namespace {
 
 using namespace aunit;
+using namespace aftt;
 
-describe("aftt_datetimeinterval", []
+Describe d("aftt_datetimeinterval", []
 {
 });
 

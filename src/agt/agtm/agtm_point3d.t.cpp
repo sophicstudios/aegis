@@ -2,143 +2,101 @@
 #include <afts_comparisonutil.h>
 #include <aunit.h>
 
-namespace agtm {
+namespace {
 
-template<typename T>
-class TestPoint3d : public aunit::TestFixture
+using namespace aunit;
+using namespace agtm;
+
+namespace {
+
+struct TestValues
 {
-public:
-    struct TestValues
-    {
-        static T xOrigin;
-        static T yOrigin;
-        static T zOrigin;
-        
-        static T x;
-        static T y;
-        static T z;
-        
-        static T xNeg;
-        static T yNeg;
-        static T zNeg;
-    };
-
-    TestPoint3d() {}
+    static float xOrigin;
+    static float yOrigin;
+    static float zOrigin;
     
-    virtual ~TestPoint3d() {};
-    
-protected:
-    virtual void runTest();
-    
-private:
-    void assertEqual(agtm::Point3d<T> const& p, T x, T y, T z);
-    void testConstruction();
-    void testAssignment();
-    void testMultiplication();
-    void testDivision();
-    void testAddition();
-    void testSubtraction();
+    static float x;
+    static float y;
+    static float z;
 };
 
-template<typename T> T TestPoint3d<T>::TestValues::xOrigin = static_cast<T>(0);
-template<typename T> T TestPoint3d<T>::TestValues::yOrigin = static_cast<T>(0);
-template<typename T> T TestPoint3d<T>::TestValues::zOrigin = static_cast<T>(0);
-template<typename T> T TestPoint3d<T>::TestValues::x = static_cast<T>(1.1);
-template<typename T> T TestPoint3d<T>::TestValues::y = static_cast<T>(2.2);
-template<typename T> T TestPoint3d<T>::TestValues::z = static_cast<T>(3.3);
-template<typename T> T TestPoint3d<T>::TestValues::xNeg = static_cast<T>(-1.1);
-template<typename T> T TestPoint3d<T>::TestValues::yNeg = static_cast<T>(-2.2);
-template<typename T> T TestPoint3d<T>::TestValues::zNeg = static_cast<T>(-3.3);
+float TestValues::xOrigin = 0.0f;
+float TestValues::yOrigin = 0.0f;
+float TestValues::zOrigin = 0.0f;
+
+float TestValues::x = 1.1f;
+float TestValues::y = 2.2f;
+float TestValues::z = 3.3f;
 
 template<typename T>
-void TestPoint3d<T>::runTest()
+void assertEqual(agtm::Point3d<T> const& p, T x, T y, T z)
 {
-    testConstruction();
-    testAssignment();
-    testMultiplication();
-    testDivision();
-    testAddition();
-    testSubtraction();
+    expect(afts::ComparisonUtil::equalULP(p.x(), x, 5)).toBeTrue();
+    expect(afts::ComparisonUtil::equalULP(p.y(), y, 5)).toBeTrue();
+    expect(afts::ComparisonUtil::equalULP(p.z(), z, 5)).toBeTrue();
 }
 
-template<typename T>
-void TestPoint3d<T>::assertEqual(agtm::Point3d<T> const& p, T x, T y, T z)
+} // namespace
+
+Describe d("agtm_point3d", []
 {
-    AUNIT_ASSERT(afts::ComparisonUtil::equalULP(p.x(), x, 5)
-        && afts::ComparisonUtil::equalULP(p.y(), y, 5)
-        && afts::ComparisonUtil::equalULP(p.z(), z, 5));
-}
+    it("Construction", [&]
+    {
+        // Default construction
+        agtm::Point3d<float> p1;
+        assertEqual(p1, TestValues::xOrigin, TestValues::yOrigin, TestValues::zOrigin);
+        
+        // Construction with individual x, y and z components
+        agtm::Point3d<float> p2(TestValues::x, TestValues::y, TestValues::z);
+        assertEqual(p2, TestValues::x, TestValues::y, TestValues::z);
+        
+        // Construction with 3-element array
+        float arr[3];
+        arr[0] = TestValues::x;
+        arr[1] = TestValues::y;
+        arr[2] = TestValues::z;
 
-template<typename T>
-void TestPoint3d<T>::testConstruction()
-{
-    // Default construction
-    agtm::Point3d<T> p1;
-    assertEqual(p1, TestValues::xOrigin, TestValues::yOrigin, TestValues::zOrigin);
-    
-    // Construction with individual x, y and z components
-    agtm::Point3d<T> p2(TestValues::x, TestValues::y, TestValues::z);
-    assertEqual(p2, TestValues::x, TestValues::y, TestValues::z);
-    
-    // Construction with 3-element array
-    T arr[3];
-    arr[0] = TestValues::x;
-    arr[1] = TestValues::y;
-    arr[2] = TestValues::z;
+        agtm::Point3d<float> p3(arr);
+        assertEqual(p3, arr[0], arr[1], arr[2]);
+    });
 
-    agtm::Point3d<T> p3(arr);
-    assertEqual(p3, arr[0], arr[1], arr[2]);
-}
+    it("Assignment", [&]
+    {
+        agtm::Point3d<float> p1(TestValues::x, TestValues::y, TestValues::z);
+        agtm::Point3d<float> p2;
+        
+        // Basic assignment
+        p2 = p1;
+        assertEqual(p1, p2.x(), p2.y(), p2.z());
+    });
 
-template<typename T>
-void TestPoint3d<T>::testAssignment()
-{
-    agtm::Point3d<T> p1(TestValues::x, TestValues::y, TestValues::z);
-    agtm::Point3d<T> p2;
-    
-    // Basic assignment
-    p2 = p1;
-    assertEqual(p1, p2.x(), p2.y(), p2.z());
-}
+    it("Multiplication", [&]
+    {
+        // unary operator *=
+        agtm::Point3d<float> p1(TestValues::x, TestValues::y, TestValues::z);
+        p1 *= 2.0;
+        assertEqual(p1, TestValues::x * 6 / 3, TestValues::y * 6 / 3, TestValues::z * 6 / 3);
+        
+        // binary operator*
+        agtm::Point3d<float> p2 = p1 * 3.0;
+        assertEqual(p2, TestValues::x * 6, TestValues::y * 6, TestValues::z * 6);
+    });
 
-template<typename T>
-void TestPoint3d<T>::testMultiplication()
-{    
-    // unary operator *=
-    agtm::Point3d<T> p1(TestValues::x, TestValues::y, TestValues::z);
-    p1 *= 2.0;
-    assertEqual(p1, TestValues::x * 6 / 3, TestValues::y * 6 / 3, TestValues::z * 6 / 3);
-    
-    // binary operator*
-    agtm::Point3d<T> p2 = p1 * 3.0;
-    assertEqual(p2, TestValues::x * 6, TestValues::y * 6, TestValues::z * 6);
-}
-
-template<typename T>
-void TestPoint3d<T>::testDivision()
-{
-    const T xInit = TestValues::x * 12;
-    const T yInit = TestValues::y * 12;
-    const T zInit = TestValues::z * 12;
-    
-    // unary operator/=
-    agtm::Point3d<T> p1(xInit, yInit, zInit);
-    p1 /= 3;
-    assertEqual(p1, xInit / 3, yInit / 3, zInit / 3);
-    
-    // binary operator/
-    agtm::Point3d<T> p2 = p1 / 4;
-    assertEqual(p2, xInit / 12, yInit / 12, zInit / 12);
-}
-
-template<typename T>
-void TestPoint3d<T>::testAddition()
-{
-}
-
-template<typename T>
-void TestPoint3d<T>::testSubtraction()
-{
-}
+    it("Division", [&]
+    {
+        const float xInit = TestValues::x * 12;
+        const float yInit = TestValues::y * 12;
+        const float zInit = TestValues::z * 12;
+        
+        // unary operator/=
+        agtm::Point3d<float> p1(xInit, yInit, zInit);
+        p1 /= 3;
+        assertEqual(p1, xInit / 3, yInit / 3, zInit / 3);
+        
+        // binary operator/
+        agtm::Point3d<float> p2 = p1 / 4;
+        assertEqual(p2, xInit / 12, yInit / 12, zInit / 12);
+    });
+});
 
 } // namespace

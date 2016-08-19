@@ -1,19 +1,20 @@
 #include <aftio_permission.h>
 #include <aunit.h>
 
-namespace aftio {
+namespace {
 
 using namespace aunit;
+using namespace aftio;
 
-describe("aftio_permission", []
+Describe d("aftio_permission", []
 {
     it("Default Construction", [&]
     {
         Permission p;
 
-        expect(p.read()).toBeTrue();
-        expect(p.write()).toBeTrue();
-        expect(p.execute()).toBeTrue();
+        expect(p.read()).non().toBeTrue();
+        expect(p.write()).non().toBeTrue();
+        expect(p.execute()).non().toBeTrue();
     });
 
     it("Enum Construction", [&]

@@ -2,4 +2,13 @@
 
 namespace agtui {
 
+GLView::GLView(GLView::RenderingContextPtr renderingContext)
+: m_renderingContext(renderingContext)
+{
+}
+
+GLView::GLView()
+{}
+
+
 } // namespace

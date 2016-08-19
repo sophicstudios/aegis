@@ -1,27 +1,54 @@
 #ifndef INCLUDED_AGTA_ENTITY_H
 #define INCLUDED_AGTA_ENTITY_H
 
-#include <afth_uuid.h>
+#include <bitset>
 #include <string>
 
 namespace agta {
 
+class Space;
+
 class Entity
 {
-public:
-    Entity();
+    friend class Space;
 
-    Entity(afth::UUID const& id);
+    friend bool operator==(Entity const& lhs, Entity const& rhs);
+    friend bool operator<(Entity const& lhs, Entity const& rhs);
+    friend bool operator>(Entity const& lhs, Entity const& rhs);
+    friend bool operator<=(Entity const& lhs, Entity const& rhs);
+    friend bool operator>=(Entity const& lhs, Entity const& rhs);
+
+public:
+    static const int MAX_COMPONENTS = sizeof(size_t);
+    typedef std::bitset<MAX_COMPONENTS> ComponentSet;
+
+    struct Hash
+    {
+        size_t operator()(Entity const& entity);
+    };
 
     ~Entity();
 
-    afth::UUID const& id() const;
+    size_t id() const;
+
+protected:
+    Entity(size_t id);
 
 private:
     Entity();
 
-    afth::UUID m_id;
+    size_t m_id;
 };
+
+bool operator==(Entity const& lhs, Entity const& rhs);
+
+bool operator<(Entity const& lhs, Entity const& rhs);
+
+bool operator>(Entity const& lhs, Entity const& rhs);
+
+bool operator<=(Entity const& lhs, Entity const& rhs);
+
+bool operator>=(Entity const& lhs, Entity const& rhs);
 
 } // namespace
 

@@ -11,13 +11,19 @@ class TransformComponent
 public:
     TransformComponent();
 
-    TransformComponent(agtm::Matrix4<float> const& initialTransform);
-
     virtual ~TransformComponent();
 
     agtm::Matrix4<float> const& transform() const;
 
-    void translate(agtm::Vector3<float> const& vec);
+    TransformComponent& x(float x);
+
+    TransformComponent& y(float y);
+
+    TransformComponent& z(float z);
+
+    TransformComponent& transform(agtm::Matrix4<float> const& mat);
+
+    TransformComponent& translate(agtm::Vector3<float> const& vec);
 
 private:
     agtm::Matrix4<float> m_transform;

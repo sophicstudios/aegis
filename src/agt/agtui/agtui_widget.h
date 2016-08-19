@@ -11,10 +11,11 @@ namespace agtui {
 class Widget
 {
 public:
-    Widget();
+    static const agtm::Point2d<float> DEFAULT_POSITION;
+    static const agtm::Point2d<float> DEFAULT_SIZE;
 
-    Widget(afth::UUID const& id);
-    
+    Widget(agtm::Rect<float> const& bounds)
+
     virtual ~Widget() = 0;
 
     afth::UUID const& id() const;
@@ -42,8 +43,10 @@ public:
     agtm::Size2d<float> minSize() const;
 
     agtm::Size2d<float> maxSize() const;
-    
+
     agtm::Size2d<float> bestSize() const;
+
+    agtm::Size2d<float> actualMinSize() const;
 
 private:
     virtual agtm::Size2d<float> doMinSize() const;
@@ -51,7 +54,7 @@ private:
     virtual agtm::Size2d<float> doMaxSize() const;
 
     virtual agtm::Size2d<float> doBestSize() const;
-    
+
     afth::UUID m_id;
     bool m_enabled;
     bool m_visible;

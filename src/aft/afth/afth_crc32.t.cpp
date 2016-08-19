@@ -3,11 +3,12 @@
 #include <cstring>
 #include <iostream>
 
-namespace afth {
+namespace {
 
 using namespace aunit;
+using namespace afth;
 
-describe("afth_crc32", []
+Describe d("afth_crc32", []
 {
     char const string1[] = "The quick brown fox jumps over the lazy dog";
     char const string2[] = "The quick brown fox jumps over the lazy dog.";

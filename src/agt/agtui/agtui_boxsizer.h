@@ -3,7 +3,9 @@
 
 #include <agtui_sizer.h>
 #include <agtui_widget.h>
+#include <deque>
 #include <memory>
+#include <set>
 #include <vector>
 
 namespace agtui {
@@ -154,14 +156,17 @@ private:
 
     virtual agtm::Size2d<float> doMaxSize() const;
 
-    virtual agtm::Size2d<float> doBestSize() const;
+    float getSizeInMajorDirection(agtm::Size2d<float> const& size) const;
 
-    typedef std::deque<std::pair<Info, std::shared_ptr<agtui::Widget> > WidgetList;
-    typedef std::set<UUID> WidgetMap;
+    float getSizeInMinorDirection(agtm::Size2d<float> const& size) const;
+    
+    typedef std::deque<std::pair<Info, std::shared_ptr<agtui::Widget> > > WidgetList;
+    typedef std::set<afth::UUID> WidgetMap;
 
     BoxSizer::Direction m_direction;
     WidgetList m_widgets;
     WidgetMap m_widgetMap;
+    float m_totalProportion;
 };
 
 

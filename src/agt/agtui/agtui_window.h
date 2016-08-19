@@ -15,6 +15,8 @@ namespace agtui {
 class Window
 {
 public:
+    typedef std::shared_ptr<agtui::Widget> WidgetPtr;
+    typedef std::shared_ptr<agtui::Sizer> SizerPtr;
     typedef std::function<void (agtm::Rect<float> const&)> ResizeEventHandler;
     typedef std::function<void ()> DrawEventHandler;
     typedef std::function<void ()> KeyEventHandler;
@@ -51,9 +53,9 @@ public:
 
     void removeTouchEventHandler(std::string const& id);
 
-    void addWidget(std::shared_ptr<agtui::Widget> widget);
+    void addChild(WidgetPtr widget);
 
-    void setSizer(std::shared_ptr<agtui::Sizer> sizer);
+    void setSizer(SizerPtr sizer);
 
 protected:
     typedef std::vector<std::pair<std::string, ResizeEventHandler> > ResizeHandlers;
@@ -91,6 +93,9 @@ protected:
     virtual void doAddTouchEventHandler(std::string const& id, TouchEventHandler const& handler);
 
     virtual void doRemoveTouchEventHandler(std::string const& id);
+
+    SizerPtr m_sizer;
+    std::vector<WidgetPtr> m_children;
 
 private:
     ResizeHandlers m_resizeHandlers;

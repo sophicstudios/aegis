@@ -92,6 +92,16 @@ void Window::removeTouchEventHandler(std::string const& id)
     doRemoveTouchEventHandler(id);
 }
 
+void Window::addChild(Window::WidgetPtr widget)
+{
+    m_children.push_back(widget);
+}
+
+void Window::setSizer(Window::SizerPtr sizer)
+{
+    m_sizer = sizer;
+}
+
 Window::ResizeHandlers const& Window::resizeHandlers() const
 {
     return m_resizeHandlers;

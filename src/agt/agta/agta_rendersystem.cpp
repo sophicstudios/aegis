@@ -1,5 +1,6 @@
 #include <agta_rendersystem.h>
 #include <agta_platform.h>
+#include <agta_visual2dcomponent.h>
 #include <agtr_image.h>
 #include <agtr_imageloaderpng.h>
 #include <agtg_renderingcontext.h>
@@ -175,6 +176,9 @@ void checkError(char const* const context)
 RenderSystem::RenderSystem(std::shared_ptr<agta::Platform> platform, int updatePriority)
 : agta::System(updatePriority)
 {
+    m_componentSet.set(agta::ComponentPool<agta::TransformComponent>::type());
+    m_componentSet.set(agta::ComponentPool<agta::Visual2dComponent>::type());
+
     glGenBuffers(1, &m_vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, m_vertexBuffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(s_vertices), s_vertices, GL_STATIC_DRAW);
@@ -213,38 +217,39 @@ void RenderSystem::doPreUpdate(agta::Engine::Context& context)
 {
 }
 
+
 void RenderSystem::doUpdate(agta::Engine::SpacePtr space, agta::Engine::Context& context)
 {
     std::cout << "RenderSystem::doUpdate" << std::endl;
 
-    agtg::RenderingContext& renderingContext = context.platform()->glWindow()->context();
+    std::shared_ptr<agtg::RenderingContext> renderingContext = context.platform()->glWindow()->renderingContext();
 
-    renderingContext.preRender();
+    renderingContext->preRender();
 
-    // get cameras
-    Space::CameraList const& cameras = space->cameras();
-
-    // get list of entities with visual and transform components
-    // sort entities by visual component material
-
-    Space::CameraList::const_iterator cameraIter = cameras.begin();
-    Space::CameraList::const_iterator cameraEnd = cameras.end();
-
-    // for each camera in space
-    for (; cameraIter != cameraEnd; ++cameraIter) {
-        // set the viewport from the camera
-        agtm::Rect<float> const& rect = (*cameraIter)->viewport();
-        glViewport(rect.x(), rect.y(), rect.width(), rect.height());
-
-        // set the view and projection matrices from the camera
-        m_modelViewMatrix = (*cameraIter)->view();
-        m_projectionMatrix = (*cameraIter)->projection();
-
-        // render the objects in the space with the camera
-        render(renderingContext);
+    
+    // get the camera for the space
+    SpaceCameraMap::iterator spaceCameraIter = m_spaceCameraMap.find(space->id());
+    if (spaceCameraIter == m_spaceCameraMap.end())
+    {
+        // if no camera, skip this update
+        return;
     }
 
-    renderingContext.postRender();
+    CameraPtr camera = spaceCameraIter->second;
+
+    // get list of entities with visual and transform components
+    Space::EntityView entityView = space->getEntitiesForComponents(m_componentSet);
+    
+    // sort entities by visual component material
+
+    // set the viewport from the camera
+    agtm::Rect<float> const& rect = camera->viewport();
+    glViewport(rect.x(), rect.y(), rect.width(), rect.height());
+
+    // for each entity, get its transform and visual compoonents
+    render(*renderingContext, camera, entityView);
+
+    renderingContext->postRender();
 }
 
 void RenderSystem::doPostUpdate(agta::Engine::Context& context)
@@ -260,7 +265,7 @@ void RenderSystem::doPostUpdate(agta::Engine::Context& context)
         // get the entity renderable
         // apply the transform
         // draw the renderable
-void RenderSystem::render(agtg::RenderingContext& renderingContext)
+void RenderSystem::render(agtg::RenderingContext& renderingContext, CameraPtr camera, Space::EntityView const& entities)
 {
     std::cout << "RenderSystem::render" << std::endl;
     
@@ -277,10 +282,24 @@ void RenderSystem::render(agtg::RenderingContext& renderingContext)
 
     glUniformMatrix4fv(m_projectionMatrixLoc, 1, GL_FALSE, m_projectionMatrix.arr());
 
-    glBindVertexArray(m_vertexArray);
+    Space::EntityView::Iterator it = entities.begin();
+    Space::EntityView::Iterator end = entities.end();
 
-    glUniformMatrix4fv(m_modelViewMatrixLoc, 1, GL_FALSE, m_modelViewMatrix.arr());
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    agtm::Matrix4<float> viewMatrix = camera->view();
+    agtm::Matrix4<float> projMatrix = camera->projection();
+    agtm::Matrix4<float> modelViewMatrix;
+
+    // set the view and projection matrices from the camera
+    m_modelViewMatrix = camera->view();
+    m_projectionMatrix = camera->projection();
+
+    for (; it != end; ++it)
+    {
+        glBindVertexArray(m_vertexArray);
+
+        glUniformMatrix4fv(m_modelViewMatrixLoc, 1, GL_FALSE, m_modelViewMatrix.arr());
+        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    }
 
     glUseProgram(0);
 }

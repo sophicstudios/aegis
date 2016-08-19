@@ -3,9 +3,10 @@
 #include <iostream>
 #include <limits>
 
-namespace aftu {
+namespace {
 
 using namespace aunit;
+using namespace aftu;
 
 struct Struct
 {
@@ -16,7 +17,7 @@ struct Struct
     char c;
 };
 
-describe("aftu_hexprinter", []
+Describe d("aftu_hexprinter", []
 {
     it("String", [&]
     {

@@ -20,8 +20,6 @@ public:
 
     agtm::Size2d<float> maxSize() const;
 
-    agtm::Size2d<float> bestSize() const;
-
 private:
     virtual agtm::Size2d<float> doSize() const = 0;
 
@@ -30,8 +28,6 @@ private:
     virtual agtm::Size2d<float> doMinSize() const = 0;
 
     virtual agtm::Size2d<float> doMaxSize() const = 0;
-
-    virtual agtm::Size2d<float> doBestSize() const = 0;
 };
 
 } // namespace

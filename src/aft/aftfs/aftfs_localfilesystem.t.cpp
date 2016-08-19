@@ -4,9 +4,12 @@
 #include <vector>
 #include <iostream>
 
-namespace aftfs {
+namespace {
 
-describe("aftfs_localfilesystem", []
+using namespace aunit;
+using namespace aftfs;
+
+Describe d("aftfs_localfilesystem", []
 {
     it("List Directory", [&]
     {

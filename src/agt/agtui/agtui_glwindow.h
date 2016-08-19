@@ -2,26 +2,29 @@
 #define INCLUDED_AGTUI_GLWINDOW_H
 
 #include <agtui_window.h>
+#include <agtui_displaytimer.h>
 #include <agtg_renderingcontext.h>
 #include <memory>
 
 namespace agtui {
 
-class DisplayTimer;
-
 class GLWindow : public agtui::Window
 {
 public:
-    typedef std::shared_ptr<DisplayTimer> DisplayTimerPtr;
+    typedef std::shared_ptr<agtui::DisplayTimer> DisplayTimerPtr;
     typedef std::shared_ptr<agtg::RenderingContext> RenderingContextPtr;
 
-    GLWindow();
+    GLWindow(RenderingContextPtr renderingContext, DisplayTimerPtr displayTimer);
     
     virtual ~GLWindow() = 0;
 
-    virtual DisplayTimerPtr displayTimer() = 0;
+    DisplayTimerPtr displayTimer() const;
     
-    virtual RenderingContextPtr renderingContext() = 0;
+    RenderingContextPtr renderingContext() const;
+
+protected:
+    RenderingContextPtr m_renderingContext;
+    DisplayTimerPtr m_displayTimer;
 };
 
 } // namespace

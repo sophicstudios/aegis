@@ -3,7 +3,10 @@
 #include <vector>
 #include <iostream>
 
-namespace agtui {
+namespace {
+
+using namespace aunit;
+using namespace agtui;
 
 class DummyWindow : public agtui::Window
 {
@@ -34,36 +37,20 @@ public:
 void resizeHandler(agtm::Rect<float> const& bounds)
 {}
 
-class TestWindow : public aunit::TestFixture
+Describe d("agtui_window", []
 {
-public:
-    TestWindow();
-    
-    virtual ~TestWindow();
-    
-protected:
-    virtual void runTest();
-    
-private:
-};
+    it("Resize Handler", [&]
+    {
+        DummyWindow w;
 
-AUNIT_REGISTERTEST(TestWindow);
+        w.addResizeEventHandler("resize", resizeHandler);
 
-TestWindow::TestWindow()
-{}
+        expect(w.getResizeHandlers().size()).toEqual(1);
 
-TestWindow::~TestWindow()
-{}
+        w.removeResizeEventHandler("resize");
 
-void TestWindow::runTest()
-{
-    DummyWindow w;
-
-    w.addResizeEventHandler("resize", resizeHandler);
-    AUNIT_ASSERT(w.getResizeHandlers().size() == 1);
-
-    w.removeResizeEventHandler("resize");
-    AUNIT_ASSERT(w.getResizeHandlers().size() == 0);
-}
+        expect(w.getResizeHandlers().size()).toEqual(0);
+    });
+});
 
 } // namespace

@@ -5,9 +5,10 @@
 #include <sstream>
 #include <string>
 
-namespace afth {
+namespace {
 
 using namespace aunit;
+using namespace afth;
 
 namespace {
 
@@ -41,7 +42,7 @@ bool uuidMatch(std::vector<char> const& bytes, std::string uuid)
 
 } // namespace
 
-describe("afth_uuid", []
+Describe d("afth_uuid", []
 {
     const char* zeroUUID = "00000000-0000-0000-0000-000000000000";
 

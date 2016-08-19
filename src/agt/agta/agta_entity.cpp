@@ -1,21 +1,51 @@
 #include <agta_entity.h>
+#include <functional>
 
 namespace agta {
 
 Entity::Entity()
-: m_id(afth::UUID::v4())
 {}
 
-Entity::Entity(afth::UUID const& id)
+Entity::Entity(size_t id)
 : m_id(id)
 {}
 
 Entity::~Entity()
 {}
 
-afth::UUID const& Entity::id() const
+size_t Entity::id() const
 {
     return m_id;
+}
+
+size_t Entity::Hash::operator()(Entity const& entity)
+{
+    return std::hash<size_t>()(entity.m_id);
+}
+
+bool operator==(Entity const& lhs, Entity const& rhs)
+{
+    return lhs.m_id == rhs.m_id;
+}
+
+bool operator<(Entity const& lhs, Entity const& rhs)
+{
+    return lhs.m_id < rhs.m_id;
+}
+
+bool operator>(Entity const& lhs, Entity const& rhs)
+{
+    return lhs.m_id > rhs.m_id;
+}
+
+bool operator<=(Entity const& lhs, Entity const& rhs)
+{
+    return lhs.m_id <= rhs.m_id;
+}
+
+bool operator>=(Entity const& lhs, Entity const& rhs)
+{
+    return lhs.m_id >= rhs.m_id;
 }
 
 } // namespace

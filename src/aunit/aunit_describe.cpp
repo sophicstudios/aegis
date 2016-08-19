@@ -5,13 +5,13 @@
 
 namespace aunit {
 
-Describe::Describe(std::string const& name, std::function<void ()> const& func, std::string const& filename, int line)
+Describe::Describe(std::string const& name, std::function<void ()> const& func)
 {
     // Get the FixtureRegistry singleton
     FixtureRegistry& registry = FixtureRegistry::instance();
 
     // Create an instance of the Describe object for the func
-    std::shared_ptr<Fixture> fixture(new Fixture(name, func, filename, line));
+    std::shared_ptr<Fixture> fixture(new Fixture(name, func, "", -1));
 
     // register it with the TestRegistry
     registry.registerFixture(name, fixture);
@@ -20,31 +20,31 @@ Describe::Describe(std::string const& name, std::function<void ()> const& func, 
 Describe::~Describe()
 {}
 
-void doBeforeEach(std::function<void ()> const& func, std::string const& filename, int line)
+void beforeEach(std::function<void ()> const& func)
 {
     // Get the current running fixture
     Fixture* instance = Fixture::instance();
     if (instance) {
         // Register the before func with the fixture
-        instance->doBeforeEach(func, filename, line);
+        instance->doBeforeEach(func, "", -1);
     }
 }
 
-void doAfterEach(std::function<void ()> const& func, std::string const& filename, int line)
+void afterEach(std::function<void ()> const& func)
 {
     // Get the current running fixture
     Fixture* instance = Fixture::instance();
     if (instance) {
         // Register the after func with the fixture
-        instance->doAfterEach(func, filename, line);
+        instance->doAfterEach(func, "", -1);
     }
 }
 
-void doIt(std::string const& name, std::function<void ()> const& func, std::string const& filename, int line)
+void it(std::string const& name, std::function<void ()> const& func)
 {
     Fixture* instance = Fixture::instance();
     if (instance) {
-        instance->doIt(name, func, filename, line);
+        instance->doIt(name, func, "", -1);
     }
 }
 

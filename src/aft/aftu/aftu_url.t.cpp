@@ -2,9 +2,10 @@
 #include <aftu_url.h>
 #include <iostream>
 
-namespace aftu {
+namespace {
 
 using namespace aunit;
+using namespace aftu;
 
 namespace {
 
@@ -38,7 +39,7 @@ void checkUrl(
 
 }
 
-describe("aftu_url", []
+Describe d("aftu_url", []
 {
     it("Empty Construction", [&]
     {

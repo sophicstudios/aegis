@@ -3,11 +3,12 @@
 #include <cstring>
 #include <limits>
 
-namespace afts {
+namespace {
 
 using namespace aunit;
+using namespace afts;
 
-describe("afts_comparisonutil", []
+Describe d("afts_comparisonutil", []
 {
     it("float ULP", [&]
     {

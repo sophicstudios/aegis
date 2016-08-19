@@ -1,9 +1,10 @@
 #include <aftu_stringref.h>
 #include <aunit.h>
 
-namespace aftu {
+namespace {
 
 using namespace aunit;
+using namespace aftu;
 
 template<typename T>
 struct TestStrings;
@@ -28,7 +29,7 @@ struct TestStrings<wchar_t>
 const wchar_t* TestStrings<wchar_t>::S1 = L"Test C String";
 const std::wstring TestStrings<wchar_t>::S2(L"Test std::wstring");
 
-describe("aftu_stringref", []
+Describe d("aftu_stringref", []
 {
     it("Default Construction", [&]
     {
@@ -53,7 +54,7 @@ describe("aftu_stringref", []
     {
         StringRef<std::basic_string<char> > stlstringref(TestStrings<char>::S2);
 
-        expect(stlstringref.isEmpty()).toBeTrue();
+        expect(stlstringref.isEmpty()).non().toBeTrue();
         expect(stlstringref.size()).toEqual(TestStrings<char>::S2.size());
         expect(&(*stlstringref.begin())).toEqual(&(*TestStrings<char>::S2.begin()));
         expect(&(*stlstringref.end())).toEqual(&(*TestStrings<char>::S2.end()));
