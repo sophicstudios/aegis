@@ -4,9 +4,9 @@
 #include <acts_platform.h>
 
 #if defined(ACTS_PLATFORM_PTHREADS)
-#include <actp_posixmutex.h>
+#include <pthread.h>
 #elif defined(ACTS_PLATFORM_WINTHREADS)
-#include <actp_win32mutex.h>
+#include <afts_windows.h>
 #endif
 
 #include <iosfwd>
@@ -43,6 +43,13 @@ class Mutex
     friend class Condition;
 
 public:
+    enum Result {
+        Result_OK,
+        Result_NOT_LOCK_OWNER,
+        Result_WAIT_ABANDONED,
+        Result_UNKNOWN
+    };
+
     /**
      * Creates a new Mutex object in the unlocked state.
      */
@@ -59,37 +66,27 @@ public:
      * mutex into the locked state. All other threads will
      * block on this call until the first thread calls unlock.
      */
-    MutexResult lock();
+    Result lock();
 
     /**
      * Unlocks the mutex. Any threads that are blocked on a call
      * to lock() will be released so that one of them will next
      * acquire the mutex.
      */
-    MutexResult unlock();
+    Result unlock();
 
 private:
     Mutex(Mutex const&);
     Mutex& operator=(Mutex const&);
-    
-#if defined(ACTS_PLATFORM_PTHREADS)
-    typedef PosixMutex NativeMutex;
-#elif defined(ACTS_PLATFORM_WINTHREADS)
-    typedef Win32Mutex NativeMutex;
-#endif
 
-    NativeMutex m_nativeMutex;
+    #if defined(ACTS_PLATFORM_PTHREADS)
+        pthread_mutex_t m_mutex;
+    #elif defined(ACTS_PLATFORM_WINTHREADS)
+        HANDLE m_mutex;
+    #endif
 };
 
-inline MutexResult Mutex::lock()
-{
-    return m_nativeMutex.lock();
-}
-
-inline MutexResult Mutex::unlock()
-{
-    return m_nativeMutex.unlock();
-}
+std::ostream& operator<<(std::ostream& os, Mutex::Result const& result);
 
 } // namespace
 

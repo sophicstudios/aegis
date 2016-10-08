@@ -6,55 +6,47 @@
 #include <iosfwd>
 
 #if defined(ACTS_PLATFORM_PTHREADS)
-#include <actp_posixcondition.h>
+#include <pthread.h>
 #elif defined(ACTS_PLATFORM_WINTHREADS)
 #include <actp_win32condition.h>
 #endif
 
 namespace actp {
 
-#if defined(ACTS_PLATFORM_PTHREADS)
-typedef PosixCondition NativeCondition;
-#elif defined(ACTS_PLATFORM_WINTHREADS)
-typedef Win32Condition NativeCondition;
-#endif
-
 class Condition
 {
     friend class Mutex;
 
 public:
+    enum Result {
+        Result_OK,
+        Result_INVALID_MUTEX,
+        Result_UNKNOWN
+    };
+
     Condition();
 
     ~Condition();
 
-    ConditionResult wait(Mutex& mutex);
+    Result wait(Mutex& mutex);
 
-    ConditionResult signalOne();
+    Result signalOne();
 
-    ConditionResult signalAll();
+    Result signalAll();
 
 private:
     Condition(Condition const&);
     Condition& operator=(Condition const&);
 
-    NativeCondition m_nativeCondition;
+    #if defined(ACTS_PLATFORM_PTHREADS)
+        pthread_cond_t m_condition;
+    #elif defined(ACTS_PLATFORM_WINTHREADS)
+        HANDLE m_condition;
+        HANDLE m_mutex;
+    #endif
 };
 
-inline ConditionResult Condition::wait(Mutex& mutex)
-{
-    return m_nativeCondition.wait(mutex.m_nativeMutex);
-}
-
-inline ConditionResult Condition::signalOne()
-{
-    return m_nativeCondition.signalOne();
-}
-
-inline ConditionResult Condition::signalAll()
-{
-    return m_nativeCondition.signalAll();
-}
+std::ostream& operator<<(std::ostream& os, Condition::Result const& result);
 
 } // namespace
 

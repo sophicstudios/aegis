@@ -2,9 +2,9 @@
 
 namespace agta {
 
-Platform::Platform(FilesystemPtr filesystem, GLWindowPtr glWindow)
+Platform::Platform(FilesystemPtr filesystem, WindowPtr window)
 : m_filesystem(filesystem),
-  m_glWindow(glWindow)
+  m_window(window)
 {}
 
 Platform::~Platform()
@@ -15,9 +15,9 @@ Platform::FilesystemPtr Platform::filesystem() const
     return m_filesystem;
 }
 
-Platform::GLWindowPtr Platform::glWindow() const
+Platform::WindowPtr Platform::window() const
 {
-    return m_glWindow;
+    return m_window;
 }
 
 } // namespace

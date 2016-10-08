@@ -41,7 +41,7 @@ bool Fixture::run(Reporter& reporter)
     m_activeInstance = nullptr;
     s_activeReporter = nullptr;
 
-    return m_hasError;
+    return !m_hasError;
 }
 
 void Fixture::doBeforeEach(std::function<void ()> const& func, std::string const& filename, int line)

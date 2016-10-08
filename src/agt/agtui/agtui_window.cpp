@@ -102,6 +102,19 @@ void Window::setSizer(Window::SizerPtr sizer)
     m_sizer = sizer;
 }
 
+void Window::onResize(agtm::Rect<float> const& bounds)
+{
+    // calculate the client size?
+    // update the size of the sizer
+    if (m_sizer)
+    {
+        m_sizer->size(bounds.size());
+    }
+
+    // TOOD: verify the size meets the sizer's constraints
+    // and reset the window size to the constraint
+}
+
 Window::ResizeHandlers const& Window::resizeHandlers() const
 {
     return m_resizeHandlers;
@@ -128,33 +141,53 @@ Window::TouchHandlers const& Window::touchHandlers() const
 }
 
 void Window::doAddResizeEventHandler(std::string const& id, ResizeEventHandler const& handler)
-{}
+{
+    // Default handler does nothing
+}
 
 void Window::doRemoveResizeEventHandler(std::string const& id)
-{}
+{
+    // Default handler does nothing
+}
 
 void Window::doAddDrawEventHandler(std::string const& id, DrawEventHandler const& handler)
-{}
+{
+    // Default handler does nothing
+}
 
 void Window::doRemoveDrawEventHandler(std::string const& id)
-{}
+{
+    // Default handler does nothing
+}
 
 void Window::doAddKeyEventHandler(std::string const& id, KeyEventHandler const& handler)
-{}
+{
+    // Default handler does nothing
+}
 
 void Window::doRemoveKeyEventHandler(std::string const& id)
-{}
+{
+    // Default handler does nothing
+}
 
 void Window::doAddMouseEventHandler(std::string const& id, MouseEventHandler const& handler)
-{}
+{
+    // Default handler does nothing
+}
 
 void Window::doRemoveMouseEventHandler(std::string const& id)
-{}
+{
+    // Default handler does nothing
+}
 
 void Window::doAddTouchEventHandler(std::string const& id, TouchEventHandler const& handler)
-{}
+{
+    // Default handler does nothing
+}
 
 void Window::doRemoveTouchEventHandler(std::string const& id)
-{}
+{
+    // Default handler does nothing
+}
 
 } // namespace

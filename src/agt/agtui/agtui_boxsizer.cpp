@@ -3,6 +3,8 @@
 namespace agtui {
 
 BoxSizer::Flags::Flags()
+: m_sizeMode(BoxSizer::SizeMode_RELATIVE),
+  m_size(1.0f)
 {}
 
 BoxSizer::Flags::~Flags()
@@ -107,12 +109,13 @@ void BoxSizer::doSize(agtm::Size2d<float> const& size)
 
     float totalMajorSize = getSizeInMajorDirection(size);
     float totalMinorSize = getSizeInMinorDirection(size);
+    float totalProp = 0.0f;
     float minMajorSize = getSizeInMajorDirection(minSize);
     float minMinorSize = getSizeInMinorDirection(minSize);
 
     float remaining = totalMajorSize;
 
-    std::vector<float> majorSizes(m_widgets.size(), -1.0f);
+    std::vector<float> majorSizes(m_widgets.size(), getSizeInMajorDirection(Widget::DEFAULT_SIZE));
 
     if (totalMajorSize < minMajorSize)
     {
@@ -123,20 +126,44 @@ void BoxSizer::doSize(agtm::Size2d<float> const& size)
     }
     else
     {
-        std::vector<int> majorSizes(m_widgets.size(), Widget::DEFAULT_SIZE);
-        WidgetList::iterator it;
-        int n;
-        for (it = m_widgets.begin(), n = 0; ; ++it, ++n)
+        WidgetList::iterator it = m_widgets.begin();
+        WidgetList::iterator end = m_widgets.end();
+        int n = 0;
+
+        // Loop throuh the children and calculate the total proportions as well
+        // as the initial values for fixed size widgets
+        for (; it != end; ++it, ++n)
         {
             float majorSize = getSizeInMajorDirection(it->second->actualMinSize());
             if (it->first.flags.sizeMode() == SizeMode_RELATIVE)
             {
+                totalProp += it->first.flags.size();
+            }
+            else
+            {
+                majorSizes[n] = majorSize;
+                remaining -= majorSize;
             }
         }
 
+        // TODO:
         // loop through the children until all conditions of proportions,
         // fixed, min and max sizes are satisfied
-        
+        // For now, just allocate the proportional amounts to the relative
+        // size children, without regard for min/max size requirements
+        for (it = m_widgets.begin(), n = 0; it != end; ++it, ++n)
+        {
+            if (it->first.flags.sizeMode() == SizeMode_RELATIVE)
+            {
+                majorSizes[n] = (remaining / totalProp) * it->first.flags.size();
+            }
+        }
+
+        // Make the final pass through the children to set their new sizes
+        for (it = m_widgets.begin(), n = 0; it != end; ++it, ++n)
+        {
+            it->second->size(getSize(majorSizes[n], totalMinorSize));
+        }
     }
 }
 
@@ -162,8 +189,8 @@ agtm::Size2d<float> BoxSizer::doMinSize() const
         float widgetMajorSize = getSizeInMajorDirection(it->second->actualMinSize());
         if (sizeMode == SizeMode_RELATIVE)
         {
-            totalProp += it->first.size;
-            float minSizeToProp = widgetMajorSize / it->first.size;
+            totalProp += it->first.flags.size();
+            float minSizeToProp = widgetMajorSize / it->first.flags.size();
             if (minSizeToProp > largestMinSizeToProp)
             {
                 largestMinSizeToProp = minSizeToProp;
@@ -184,8 +211,7 @@ agtm::Size2d<float> BoxSizer::doMinSize() const
 
     majorSize += (largestMinSizeToProp * totalProp);
 
-    return m_direction == Direction_VERTICAL ?
-        agtm::Size2d<float>(minorSize, majorSize) : agtm::Size2d<float>(majorSize, minorSize);
+    return getSize(majorSize, minorSize);
 }
 
 agtm::Size2d<float> BoxSizer::doMaxSize() const
@@ -201,6 +227,13 @@ float BoxSizer::getSizeInMajorDirection(agtm::Size2d<float> const& size) const
 float BoxSizer::getSizeInMinorDirection(agtm::Size2d<float> const& size) const
 {
     return m_direction == Direction_VERTICAL ? size.width() : size.height();
+}
+
+agtm::Size2d<float> BoxSizer::getSize(float sizeInMajorDirection, float sizeInMinorDirection) const
+{
+    return m_direction == Direction_VERTICAL ?
+        agtm::Size2d<float>(sizeInMinorDirection, sizeInMajorDirection) :
+        agtm::Size2d<float>(sizeInMajorDirection, sizeInMinorDirection);
 }
 
 } // namespace

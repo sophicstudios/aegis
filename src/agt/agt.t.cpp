@@ -4,7 +4,5 @@ int main(int argc, char** argv)
 {
     aunit::TestManager testManager;
     aunit::ConsoleReporter reporter;
-    testManager.run(reporter);
-    
-    return 0;
+    return testManager.run(reporter) == aunit::TestManager::Result_OK ? 0 : -1;
 }

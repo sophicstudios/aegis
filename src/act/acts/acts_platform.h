@@ -5,6 +5,12 @@
 
 #if defined(AFTS_OS_POSIX)
 
+#if defined(AFTS_OS_APPLE)
+
+#define ACTS_PLATFORM_APPLE
+
+#endif // AFTS_OS_APPLE
+
 #define ACTS_PLATFORM_PTHREADS
 
 #elif defined(AFTS_OS_WIN32)

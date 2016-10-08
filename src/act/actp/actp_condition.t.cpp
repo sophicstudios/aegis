@@ -1,20 +1,25 @@
-#include <actp_mutex.h>
 #include <actp_condition.h>
+#include <actp_mutex.h>
+#include <actp_scopedlock.h>
 #include <actp_thread.h>
 #include <actp_threadutil.h>
+#include <aftt_seconds.h>
 #include <aunit.h>
-#include <boost/bind.hpp>
-#include <boost/function.hpp>
 #include <functional>
 #include <iostream>
+#include <vector>
 
-using namespace aegis;
+namespace {
+
+using namespace aunit;
 
 class Reader
 {
 public:
-    Reader(actp::Mutex& mutex, actp::Condition& condition)
-    : m_mutex(mutex), m_condition(condition)
+    Reader(std::vector<int>& input, actp::Mutex& mutex, actp::Condition& condition)
+    : m_input(input),
+      m_mutex(mutex),
+      m_condition(condition)
     {}
 
     ~Reader()
@@ -22,20 +27,22 @@ public:
 
     void run()
     {
-        m_mutex.lock();
-
-        std::cout << "reader: start" << std::endl;
-        std::cout << "reader: waiting for data..." << std::endl;
+        actp::ScopedLock<actp::Mutex> l(m_mutex);
 
         m_condition.wait(m_mutex);
 
-        std::cout << "reader: reading data..." << std::endl;
-        std::cout << "reader: done" << std::endl;
+        std::copy(m_input.begin(), m_input.end(), std::back_inserter(m_output));
+    }
 
-        m_mutex.unlock();
+    std::vector<int> const& output() const
+    {
+        actp::ScopedLock<actp::Mutex> l(m_mutex);
+        return m_output;
     }
 
 private:
+    std::vector<int>& m_input;
+    std::vector<int> m_output;
     actp::Mutex& m_mutex;
     actp::Condition& m_condition;
 };
@@ -44,8 +51,10 @@ private:
 class Writer
 {
 public:
-    Writer(actp::Mutex& mutex, actp::Condition& condition)
-    : m_mutex(mutex), m_condition(condition)
+    Writer(std::vector<int>& input, actp::Mutex& mutex, actp::Condition& condition)
+    : m_input(input),
+      m_mutex(mutex),
+      m_condition(condition)
     {}
 
     ~Writer()
@@ -53,51 +62,54 @@ public:
 
     void run()
     {
-        aflt::Seconds interval(2);
-        m_mutex.lock();
-        std::cout << "writer: start" << std::endl;        
-        std::cout << "writer: sleeping..." << std::endl;
-        
+        aftt::DatetimeInterval interval(aftt::Seconds(1));
         actp::ThreadUtil::sleep(interval);
-        
-        std::cout << "writer:: signalOne" << std::endl;
-        
+
+        actp::ScopedLock<actp::Mutex> l(m_mutex);
+
+        for (int i = 0; i < 10; ++i)
+        {
+            m_input.push_back(i);
+        }
+
         m_condition.signalOne();
-        
-        std::cout << "writer:: end" << std::endl;
-                
-        m_mutex.unlock();
     }
     
 private:
+    std::vector<int>& m_input;
     actp::Mutex& m_mutex;
     actp::Condition& m_condition;
 };
 
-class TestCondition : public aunit::TestFixture
+
+Describe d("actp_condition", []
 {
-public:
-    TestCondition() {}
+    beforeEach([&]
+    {
+    });
 
-    virtual ~TestCondition() {}
+    afterEach([&]
+    {
+    });
 
-protected:
-    virtual void runTest();
-};
+    it("wait", [&]
+    {
+        std::vector<int> vec;
+        actp::Mutex m;
+        actp::Condition c;
+        
+        Reader r(vec, m, c);
+        actp::Thread readerThread(std::bind(&Reader::run, &r));
 
-AUNIT_REGISTER_TEST(TestCondition);
+        Writer w(vec, m, c);
+        actp::Thread writerThread(std::bind(&Writer::run, &w));
 
-void TestCondition::runTest()
-{
-    actp::Mutex m;
-    actp::Condition c;
-    
-    Reader r(m, c);
-    actp::Thread readerThread(boost::bind(&Reader::run, &r));
+        readerThread.join();
+        writerThread.join();
 
-    Writer w(m, c);
-    actp::Thread writerThread(boost::bind(&Writer::run, &w));
-    
-    readerThread.join();
-    writerThread.join();
-}
+        expect(r.output().size()).toEqual(10);
+    });
+});
+
+} // namespace
+

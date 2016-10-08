@@ -159,7 +159,9 @@ private:
     float getSizeInMajorDirection(agtm::Size2d<float> const& size) const;
 
     float getSizeInMinorDirection(agtm::Size2d<float> const& size) const;
-    
+
+    agtm::Size2d<float> getSize(float sizeInMajorDirection, float sizeInMinorDirection) const;
+
     typedef std::deque<std::pair<Info, std::shared_ptr<agtui::Widget> > > WidgetList;
     typedef std::set<afth::UUID> WidgetMap;
 

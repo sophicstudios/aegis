@@ -4,7 +4,9 @@
 #include <acts_platform.h>
 #include <iosfwd>
 
-#if defined(ACTS_PLATFORM_PTHREADS)
+#if defined(ACTS_PLATFORM_APPLE)
+#include <dispatch/dispatch.h>
+#elif defined(ACTS_PLATFORM_PTHREADS)
 #include <semaphore.h>
 #include <pthread.h>
 #elif defined(ACTS_PLATFORM_WINTHREADS)
@@ -21,23 +23,22 @@ public:
         ResultCode_WAIT_ABANDONED,
         ResultCode_UNKNOWN
     };
-    
-    Semaphore(unsigned int maxValue, unsigned int initialValue);
+
+    Semaphore(unsigned int initialValue);
     
     ~Semaphore();
     
-    ResultCode acquire();
+    ResultCode wait();
     
-    ResultCode release();
+    ResultCode signal();
 
-    ResultCode release(unsigned int count);
-    
 private:
     Semaphore();
-    
-#if defined(ACTS_PLATFORM_PTHREADS)
-    sem_t m_sem;
-    pthread_mutex_t m_mutex;
+
+#if defined(ACTS_PLATFORM_APPLE)
+    dispatch_semaphore_t m_semaphore;
+#elif defined(ACTS_PLATFORM_PTHREADS)
+    sem_t m_semaphore;
 #elif defined(ACTS_PLATFORM_WINTHREADS)
     HANDLE m_handle;
 #endif // ACTS_PLATFORM

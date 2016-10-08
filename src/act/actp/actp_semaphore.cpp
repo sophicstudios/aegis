@@ -5,45 +5,74 @@
 
 namespace actp {
 
-#if defined(ACTS_PLATFORM_PTHREADS)
+#if defined(ACTS_PLATFORM_APPLE)
 
-Semaphore::Semaphore(unsigned int maxValue, unsigned int initialValue)
-: m_sem(NULL)
+Semaphore::Semaphore(unsigned int initialValue)
 {
-    int result = sem_init(&m_sem, 0, initialValue);
-    if (result != 0) {
-        std::cerr << "sem_init failed ["
-            << " result: " << result
+    m_semaphore = dispatch_semaphore_create(initialValue);
+    if (m_semaphore == nullptr)
+    {
+        std::cerr << "dispatch_semaphore_create failed ["
             << " ]" << std::endl;
     }
 }
     
 Semaphore::~Semaphore()
 {
-    int result = sem_destroy(&m_sem);
-    AFTS_ASSERT(0 == result);
+    dispatch_release(m_semaphore);
 }
     
-Semaphore::ResultCode Semaphore::acquire()
+Semaphore::ResultCode Semaphore::wait()
 {
-    int result = sem_wait(&m_sem);
-    if (0 != result) {
+    long result = dispatch_semaphore_wait(m_semaphore, DISPATCH_TIME_FOREVER);
+    if (result != 0)
+    {
+        return ResultCode_UNKNOWN;
     }
-    
     return ResultCode_OK;
 }
     
-Semaphore::ResultCode Semaphore::release()
+Semaphore::ResultCode Semaphore::signal()
 {
-    int result = sem_post(&m_sem);
-    if (0 != result) {
-    }
-    
+    dispatch_semaphore_signal(m_semaphore);
     return ResultCode_OK;
 }
 
-Semaphore::ResultCode Semaphore::release(unsigned int count)
+#elif defined(ACTS_PLATFORM_PTHREADS)
+
+Semaphore::Semaphore(unsigned int initialValue)
 {
+    int result = sem_init(&m_semaphore, 0, initialValue);
+    if (result != 0)
+    {
+         std::cerr << "sem_init failed ["
+            << " ]" << std::endl;
+    }
+}
+    
+Semaphore::~Semaphore()
+{
+    int result = sem_destroy(&m_semaphore);
+    AFTS_ASSERT(0 == result);
+}
+    
+Semaphore::ResultCode Semaphore::wait()
+{
+    int result = sem_wait(&m_semaphore);
+    if (0 != result) {
+        return ResultCode_UNKNOWN;
+    }
+    
+    return ResultCode_OK;
+}
+    
+Semaphore::ResultCode Semaphore::signal()
+{
+    int result = sem_post(&m_semaphore);
+    if (0 != result) {
+        return ResultCode_UNKNOWN;
+    }
+    
     return ResultCode_OK;
 }
 
@@ -83,7 +112,7 @@ Semaphore::~Semaphore()
     }
 }
     
-Semaphore::ResultCode Semaphore::acquire()
+Semaphore::ResultCode Semaphore::wait()
 {
     DWORD result = WaitForSingleObject(m_handle, INFINITE);
     switch (result)
@@ -100,7 +129,7 @@ Semaphore::ResultCode Semaphore::acquire()
     }
 }
     
-Semaphore::ResultCode Semaphore::release()
+Semaphore::ResultCode Semaphore::signal()
 {
     BOOL result = ReleaseSemaphore(m_handle, 1, NULL);
     if (!result)
@@ -108,17 +137,6 @@ Semaphore::ResultCode Semaphore::release()
         return toSemaphoreResultCode(GetLastError());
     }
     
-    return ResultCode_OK;
-}
-
-Semaphore::ResultCode Semaphore::release(unsigned int count)
-{
-    BOOL result = ReleaseSemaphore(m_handle, static_cast<LONG>(count), NULL);
-    if (!result)
-    {
-        return toSemaphoreResultCode(GetLastError());
-    }
-
     return ResultCode_OK;
 }
 

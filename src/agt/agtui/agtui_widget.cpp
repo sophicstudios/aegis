@@ -21,12 +21,12 @@ void grow(agtm::Size2d<float>& best, agtm::Size2d<float> const& min)
 
 void shrink(agtm::Size2d<float>& best, agtm::Size2d<float> const& max)
 {
-    if (max.width() != Widget::DEFAULT_SIZE && max.width() < best.width())
+    if (max.width() != Widget::DEFAULT_SIZE.width() && max.width() < best.width())
     {
         best.width(max.width());
     }
 
-    if (max.height() != Widget::DEFAULT_SIZE && max.height() < best.height())
+    if (max.height() != Widget::DEFAULT_SIZE.height() && max.height() < best.height())
     {
         best.height(max.height());
     }
@@ -35,15 +35,23 @@ void shrink(agtm::Size2d<float>& best, agtm::Size2d<float> const& max)
 } // namespace
 
 const agtm::Point2d<float> Widget::DEFAULT_POSITION = agtm::Point2d<float>(0.0f, 0.0f);
-const agtm::Point2d<float> Widget::DEFAULT_SIZE = agtm::Point2d<float>(-1.0f, -1.0f);
+const agtm::Size2d<float> Widget::DEFAULT_SIZE = agtm::Size2d<float>(-1.0f, -1.0f);
+
+Widget::Widget()
+: m_id(afth::UUID::v4()),
+  m_bounds(Widget::DEFAULT_POSITION, Widget::DEFAULT_SIZE)
+{
+}
 
 Widget::Widget(agtm::Rect<float> const& bounds)
 : m_id(afth::UUID::v4()),
   m_bounds(bounds)
-{}
+{
+}
 
 Widget::~Widget()
-{}
+{
+}
 
 afth::UUID const& Widget::id() const
 {
@@ -123,15 +131,15 @@ agtm::Size2d<float> Widget::bestSize() const
 agtm::Size2d<float> Widget::actualMinSize() const
 {
     agtm::Size2d<float> min = minSize();
-    if (min.width() == Widget::DEFAULT_SIZE || min.height() == Widget::DEFAULT_SIZE)
+    if (min.width() == Widget::DEFAULT_SIZE.width() || min.height() == Widget::DEFAULT_SIZE.height())
     {
         agtm::Size2d<float> best = bestSize();
-        if (min.width() == Widget::DEFAULT_SIZE)
+        if (min.width() == Widget::DEFAULT_SIZE.width())
         {
             min.width(best.width());
         }
 
-        if (min.height() == Widget::DEFAULT_SIZE)
+        if (min.height() == Widget::DEFAULT_SIZE.height())
         {
             min.height(best.height());
         }
@@ -142,12 +150,12 @@ agtm::Size2d<float> Widget::actualMinSize() const
 
 agtm::Size2d<float> Widget::doMinSize() const
 {
-    return agtm::Size2d<float>(Widget::DEFAULT_SIZE, Widget::DEFAULT_SIZE);
+    return Widget::DEFAULT_SIZE;
 }
 
 agtm::Size2d<float> Widget::doMaxSize() const
 {
-    return agtm::Size2d<float>(Widget::DEFAULT_SIZE, Widget::DEFAULT_SIZE);
+    return Widget::DEFAULT_SIZE;
 }
 
 agtm::Size2d<float> Widget::doBestSize() const

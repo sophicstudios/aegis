@@ -6,15 +6,13 @@
 
 #if defined(ACTS_PLATFORM_PTHREADS)
 #include <actp_posixthread.h>
+#elif defined(ACTS_PLATFORM_WINTHREADS)
+#include <afts_windows.h>
 #endif
 
 #include <functional>
 
 namespace actp {
-
-#if defined(ACTS_PLATFORM_PTHREADS)
-typedef PosixThread NativeThread;
-#endif
 
 class Thread
 {
@@ -34,13 +32,15 @@ private:
     Thread(Thread const&);
     Thread& operator=(Thread const&);
 
-    NativeThread m_nativeThread;
-};
+    bool m_joinable;
 
-inline bool Thread::join()
-{
-    return m_nativeThread.join();
-}
+    #if defined(ACTS_PLATFORM_PTHREADS)
+        pthread_t m_thread;
+    #elif defined(ACTS_PLATFORM_WINTHREADS)
+        HANDLE m_thread;
+        DWORD m_threadId;
+    #endif
+};
 
 } // namespace
 

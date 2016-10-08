@@ -1,14 +1,17 @@
 #ifndef INCLUDED_AGTUI_WINDOW_H
 #define INCLUDED_AGTUI_WINDOW_H
 
+#include <agtui_displaytimer.h>
 #include <agtui_mouseevent.h>
 #include <agtui_sizer.h>
 #include <agtui_touchevent.h>
 #include <agtui_widget.h>
+#include <agtg_renderingcontext.h>
 #include <agtm_rect.h>
 #include <functional>
-#include <vector>
+#include <memory>
 #include <string>
+#include <vector>
 
 namespace agtui {
 
@@ -22,9 +25,11 @@ public:
     typedef std::function<void ()> KeyEventHandler;
     typedef std::function<void (agtui::MouseEvent const&)> MouseEventHandler;
     typedef std::function<void (agtui::TouchEvent const&)> TouchEventHandler;
+    typedef std::shared_ptr<agtui::DisplayTimer> DisplayTimerPtr;
+    typedef std::shared_ptr<agtg::RenderingContext> RenderingContextPtr;
 
     Window();
-
+    
     virtual ~Window() = 0;
 
     virtual void show() = 0;
@@ -57,12 +62,18 @@ public:
 
     void setSizer(SizerPtr sizer);
 
+    virtual DisplayTimerPtr displayTimer() const = 0;
+    
+    virtual RenderingContextPtr renderingContext() const = 0;
+
 protected:
     typedef std::vector<std::pair<std::string, ResizeEventHandler> > ResizeHandlers;
     typedef std::vector<std::pair<std::string, DrawEventHandler> > DrawHandlers;
     typedef std::vector<std::pair<std::string, KeyEventHandler> > KeyHandlers;
     typedef std::vector<std::pair<std::string, MouseEventHandler> > MouseHandlers;
     typedef std::vector<std::pair<std::string, TouchEventHandler> > TouchHandlers;
+
+    void onResize(agtm::Rect<float> const& bounds);
 
     ResizeHandlers const& resizeHandlers() const;
 
@@ -103,6 +114,8 @@ private:
     KeyHandlers m_keyHandlers;
     MouseHandlers m_mouseHandlers;
     TouchHandlers m_touchHandlers;
+    RenderingContextPtr m_renderingContext;
+    DisplayTimerPtr m_displayTimer;
 };
 
 } // namespace

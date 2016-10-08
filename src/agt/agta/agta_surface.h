@@ -1,22 +1,21 @@
-#ifndef INCLUDED_AGTUI_GLVIEW_H
-#define INCLUDED_AGTUI_GLVIEW_H
+#ifndef INCLUDED_AGTA_SURFACE_H
+#define INCLUDED_AGTA_SURFACE_H
 
 #include <agtui_widget.h>
 #include <agtg_renderingcontext.h>
-#include <memory>
 
-namespace agtui {
+namespace agta {
 
-class GLView : public agtui::Widget
+class Surface : public agtui::Widget
 {
 public:
     typedef std::shared_ptr<agtg::RenderingContext> RenderingContextPtr;
 
-    GLView(RenderingContextPtr renderingContext);
+    Surface(RenderingContextPtr renderingContext);
 
-    virtual ~GLView();
+    virtual ~Surface();
 
-protected:
+private:
     RenderingContextPtr m_renderingContext;
 };
 

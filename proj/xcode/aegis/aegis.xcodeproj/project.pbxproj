@@ -164,18 +164,8 @@
 		FA2318E6178E2E440050DE3A /* agtui_touchevent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA2318E4178E2E440050DE3A /* agtui_touchevent.cpp */; };
 		FA3B86C717A933CA0042C241 /* actp_condition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86AA17A933CA0042C241 /* actp_condition.cpp */; };
 		FA3B86C817A933CA0042C241 /* actp_condition.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86AB17A933CA0042C241 /* actp_condition.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA3B86C917A933CA0042C241 /* actp_conditionresult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86AC17A933CA0042C241 /* actp_conditionresult.cpp */; };
-		FA3B86CA17A933CA0042C241 /* actp_conditionresult.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86AD17A933CA0042C241 /* actp_conditionresult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA3B86CB17A933CA0042C241 /* actp_mutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86AE17A933CA0042C241 /* actp_mutex.cpp */; };
 		FA3B86CC17A933CA0042C241 /* actp_mutex.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86AF17A933CA0042C241 /* actp_mutex.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA3B86CD17A933CA0042C241 /* actp_mutexresult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86B017A933CA0042C241 /* actp_mutexresult.cpp */; };
-		FA3B86CE17A933CA0042C241 /* actp_mutexresult.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86B117A933CA0042C241 /* actp_mutexresult.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA3B86CF17A933CA0042C241 /* actp_posixcondition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86B217A933CA0042C241 /* actp_posixcondition.cpp */; };
-		FA3B86D017A933CA0042C241 /* actp_posixcondition.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86B317A933CA0042C241 /* actp_posixcondition.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA3B86D117A933CA0042C241 /* actp_posixmutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86B417A933CA0042C241 /* actp_posixmutex.cpp */; };
-		FA3B86D217A933CA0042C241 /* actp_posixmutex.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86B517A933CA0042C241 /* actp_posixmutex.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA3B86D317A933CA0042C241 /* actp_posixthread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86B617A933CA0042C241 /* actp_posixthread.cpp */; };
-		FA3B86D417A933CA0042C241 /* actp_posixthread.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86B717A933CA0042C241 /* actp_posixthread.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA3B86D517A933CA0042C241 /* actp_scopedlock.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86B817A933CA0042C241 /* actp_scopedlock.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA3B86D617A933CA0042C241 /* actp_semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86B917A933CA0042C241 /* actp_semaphore.cpp */; };
 		FA3B86D717A933CA0042C241 /* actp_semaphore.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86BA17A933CA0042C241 /* actp_semaphore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -185,12 +175,6 @@
 		FA3B86DB17A933CA0042C241 /* actp_threadattributes.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86BE17A933CA0042C241 /* actp_threadattributes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA3B86DC17A933CA0042C241 /* actp_threadutil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86BF17A933CA0042C241 /* actp_threadutil.cpp */; };
 		FA3B86DD17A933CA0042C241 /* actp_threadutil.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86C017A933CA0042C241 /* actp_threadutil.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA3B86DE17A933CA0042C241 /* actp_win32condition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86C117A933CA0042C241 /* actp_win32condition.cpp */; };
-		FA3B86DF17A933CA0042C241 /* actp_win32condition.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86C217A933CA0042C241 /* actp_win32condition.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA3B86E017A933CA0042C241 /* actp_win32mutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86C317A933CA0042C241 /* actp_win32mutex.cpp */; };
-		FA3B86E117A933CA0042C241 /* actp_win32mutex.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86C417A933CA0042C241 /* actp_win32mutex.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA3B86E217A933CA0042C241 /* actp_win32thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86C517A933CA0042C241 /* actp_win32thread.cpp */; };
-		FA3B86E317A933CA0042C241 /* actp_win32thread.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86C617A933CA0042C241 /* actp_win32thread.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA3B86E617A933FC0042C241 /* acts_platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86E417A933FC0042C241 /* acts_platform.cpp */; };
 		FA3B86E717A933FC0042C241 /* acts_platform.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86E517A933FC0042C241 /* acts_platform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA3E4D351A2D45CF00E58703 /* agta_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3E4D331A2D45CF00E58703 /* agta_engine.cpp */; };
@@ -223,10 +207,6 @@
 		FA4C5FB81AF54D7500BD4B55 /* agtui_window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4C5FB51AF54D7500BD4B55 /* agtui_window.cpp */; };
 		FA4C5FB91AF54D7500BD4B55 /* agtui_window.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4C5FB61AF54D7500BD4B55 /* agtui_window.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA4C5FBA1AF54D7500BD4B55 /* agtui_window.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4C5FB61AF54D7500BD4B55 /* agtui_window.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA4C5FBD1AFD940400BD4B55 /* agtui_glview.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4C5FBB1AFD940400BD4B55 /* agtui_glview.cpp */; };
-		FA4C5FBE1AFD940400BD4B55 /* agtui_glview.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4C5FBB1AFD940400BD4B55 /* agtui_glview.cpp */; };
-		FA4C5FBF1AFD940400BD4B55 /* agtui_glview.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4C5FBC1AFD940400BD4B55 /* agtui_glview.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA4C5FC01AFD940400BD4B55 /* agtui_glview.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4C5FBC1AFD940400BD4B55 /* agtui_glview.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA4C5FC31AFE827900BD4B55 /* agta_eventsystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4C5FC11AFE827900BD4B55 /* agta_eventsystem.cpp */; };
 		FA4C5FC41AFE827900BD4B55 /* agta_eventsystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4C5FC11AFE827900BD4B55 /* agta_eventsystem.cpp */; };
 		FA4C5FC51AFE827900BD4B55 /* agta_eventsystem.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4C5FC21AFE827900BD4B55 /* agta_eventsystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -333,14 +313,18 @@
 		FA875BBF15DF1BBE00C5E50B /* libagt-macosx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA6CDB215DDB28400F480F0 /* libagt-macosx.a */; };
 		FA875BC015DF1BBE00C5E50B /* libaunit-macosx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA833E9715A755A50044283D /* libaunit-macosx.a */; };
 		FA875BC215E0330900C5E50B /* agt.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA875BC115E0330900C5E50B /* agt.t.cpp */; };
-		FA90ECA81AAB7AC600DB0A34 /* agtui_glwindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA90ECA61AAB7AC600DB0A34 /* agtui_glwindow.cpp */; };
-		FA90ECA91AAB7AC600DB0A34 /* agtui_glwindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA90ECA61AAB7AC600DB0A34 /* agtui_glwindow.cpp */; };
-		FA90ECAA1AAB7AC600DB0A34 /* agtui_glwindow.h in Headers */ = {isa = PBXBuildFile; fileRef = FA90ECA71AAB7AC600DB0A34 /* agtui_glwindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA90ECAB1AAB7AC600DB0A34 /* agtui_glwindow.h in Headers */ = {isa = PBXBuildFile; fileRef = FA90ECA71AAB7AC600DB0A34 /* agtui_glwindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA90ECAE1AAB7B5300DB0A34 /* agtui_displaytimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA90ECAC1AAB7B5300DB0A34 /* agtui_displaytimer.cpp */; };
 		FA90ECAF1AAB7B5300DB0A34 /* agtui_displaytimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA90ECAC1AAB7B5300DB0A34 /* agtui_displaytimer.cpp */; };
 		FA90ECB01AAB7B5300DB0A34 /* agtui_displaytimer.h in Headers */ = {isa = PBXBuildFile; fileRef = FA90ECAD1AAB7B5300DB0A34 /* agtui_displaytimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA90ECB11AAB7B5300DB0A34 /* agtui_displaytimer.h in Headers */ = {isa = PBXBuildFile; fileRef = FA90ECAD1AAB7B5300DB0A34 /* agtui_displaytimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA9795921D9FFFF800094B1B /* libaunit-macosx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA833E9715A755A50044283D /* libaunit-macosx.a */; };
+		FA9795931D9FFFF800094B1B /* libaft-macosx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA833E2215A752430044283D /* libaft-macosx.a */; };
+		FA97959B1DA0002600094B1B /* libact-macosx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3B86A717A9333C0042C241 /* libact-macosx.a */; };
+		FA97959C1DA0004B00094B1B /* actp_condition.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9795701D9FFF8200094B1B /* actp_condition.t.cpp */; };
+		FA9795A11DA000DD00094B1B /* act.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9795781D9FFFDD00094B1B /* act.t.cpp */; };
+		FA9795A21DA0396600094B1B /* actp_mutex.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9795711D9FFF8200094B1B /* actp_mutex.t.cpp */; };
+		FA9795A31DA09E3D00094B1B /* actp_thread.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9795731D9FFF8200094B1B /* actp_thread.t.cpp */; };
+		FA9795A41DA1E96800094B1B /* actp_semaphore.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA97956F1D9FFF6800094B1B /* actp_semaphore.t.cpp */; };
 		FA9B158F15A9DE900017DCD5 /* aftio_flags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158415A9DE900017DCD5 /* aftio_flags.cpp */; };
 		FA9B159015A9DE900017DCD5 /* aftio_flags.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9B158515A9DE900017DCD5 /* aftio_flags.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA9B159115A9DE900017DCD5 /* aftio_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA9B158615A9DE900017DCD5 /* aftio_reader.cpp */; };
@@ -510,6 +494,10 @@
 		FADE7DD11AE482CE00280A14 /* agtg_orthographiccamera.h in Headers */ = {isa = PBXBuildFile; fileRef = FADE7DCD1AE482CE00280A14 /* agtg_orthographiccamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAE78A461687D82900EEBCE6 /* aftt_nanoseconds.h in Headers */ = {isa = PBXBuildFile; fileRef = FAE78A451687D82900EEBCE6 /* aftt_nanoseconds.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAE78A471687D82900EEBCE6 /* aftt_nanoseconds.h in Headers */ = {isa = PBXBuildFile; fileRef = FAE78A451687D82900EEBCE6 /* aftt_nanoseconds.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAF8FDF81D7DD4FD006D9ED6 /* agta_surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF8FDF61D7DD4FD006D9ED6 /* agta_surface.cpp */; };
+		FAF8FDF91D7DD4FD006D9ED6 /* agta_surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF8FDF61D7DD4FD006D9ED6 /* agta_surface.cpp */; };
+		FAF8FDFA1D7DD4FD006D9ED6 /* agta_surface.h in Headers */ = {isa = PBXBuildFile; fileRef = FAF8FDF71D7DD4FD006D9ED6 /* agta_surface.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAF8FDFB1D7DD4FD006D9ED6 /* agta_surface.h in Headers */ = {isa = PBXBuildFile; fileRef = FAF8FDF71D7DD4FD006D9ED6 /* agta_surface.h */; };
 		FAFB3A4C17B338F6002510F9 /* aftfs_localfilesystem.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFB3A4B17B338F1002510F9 /* aftfs_localfilesystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAFB3A4D17B338F6002510F9 /* aftfs_localfilesystem.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFB3A4B17B338F1002510F9 /* aftfs_localfilesystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAFB3A4F17B33A08002510F9 /* aftfs_localfilesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFB3A4E17B33A05002510F9 /* aftfs_localfilesystem.cpp */; };
@@ -580,6 +568,27 @@
 			remoteGlobalIDString = FA833E9615A755A50044283D;
 			remoteInfo = aunit;
 		};
+		FA97957B1D9FFFF800094B1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA833E1715A7501D0044283D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA833E2115A752430044283D;
+			remoteInfo = aft;
+		};
+		FA97957D1D9FFFF800094B1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA833E1715A7501D0044283D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA833E9615A755A50044283D;
+			remoteInfo = aunit;
+		};
+		FA9795991DA0001B00094B1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA833E1715A7501D0044283D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA3B862317A9333C0042C241;
+			remoteInfo = "act-macosx";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -593,6 +602,15 @@
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 		FA875B9E15DF1B6C00C5E50B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		FA9795941D9FFFF800094B1B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -621,18 +639,8 @@
 		FA3B86A717A9333C0042C241 /* libact-macosx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libact-macosx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA3B86AA17A933CA0042C241 /* actp_condition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_condition.cpp; path = ../../../src/act/actp/actp_condition.cpp; sourceTree = "<group>"; };
 		FA3B86AB17A933CA0042C241 /* actp_condition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_condition.h; path = ../../../src/act/actp/actp_condition.h; sourceTree = "<group>"; };
-		FA3B86AC17A933CA0042C241 /* actp_conditionresult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_conditionresult.cpp; path = ../../../src/act/actp/actp_conditionresult.cpp; sourceTree = "<group>"; };
-		FA3B86AD17A933CA0042C241 /* actp_conditionresult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_conditionresult.h; path = ../../../src/act/actp/actp_conditionresult.h; sourceTree = "<group>"; };
 		FA3B86AE17A933CA0042C241 /* actp_mutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_mutex.cpp; path = ../../../src/act/actp/actp_mutex.cpp; sourceTree = "<group>"; };
 		FA3B86AF17A933CA0042C241 /* actp_mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_mutex.h; path = ../../../src/act/actp/actp_mutex.h; sourceTree = "<group>"; };
-		FA3B86B017A933CA0042C241 /* actp_mutexresult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_mutexresult.cpp; path = ../../../src/act/actp/actp_mutexresult.cpp; sourceTree = "<group>"; };
-		FA3B86B117A933CA0042C241 /* actp_mutexresult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_mutexresult.h; path = ../../../src/act/actp/actp_mutexresult.h; sourceTree = "<group>"; };
-		FA3B86B217A933CA0042C241 /* actp_posixcondition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_posixcondition.cpp; path = ../../../src/act/actp/actp_posixcondition.cpp; sourceTree = "<group>"; };
-		FA3B86B317A933CA0042C241 /* actp_posixcondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_posixcondition.h; path = ../../../src/act/actp/actp_posixcondition.h; sourceTree = "<group>"; };
-		FA3B86B417A933CA0042C241 /* actp_posixmutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_posixmutex.cpp; path = ../../../src/act/actp/actp_posixmutex.cpp; sourceTree = "<group>"; };
-		FA3B86B517A933CA0042C241 /* actp_posixmutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_posixmutex.h; path = ../../../src/act/actp/actp_posixmutex.h; sourceTree = "<group>"; };
-		FA3B86B617A933CA0042C241 /* actp_posixthread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_posixthread.cpp; path = ../../../src/act/actp/actp_posixthread.cpp; sourceTree = "<group>"; };
-		FA3B86B717A933CA0042C241 /* actp_posixthread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_posixthread.h; path = ../../../src/act/actp/actp_posixthread.h; sourceTree = "<group>"; };
 		FA3B86B817A933CA0042C241 /* actp_scopedlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_scopedlock.h; path = ../../../src/act/actp/actp_scopedlock.h; sourceTree = "<group>"; };
 		FA3B86B917A933CA0042C241 /* actp_semaphore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_semaphore.cpp; path = ../../../src/act/actp/actp_semaphore.cpp; sourceTree = "<group>"; };
 		FA3B86BA17A933CA0042C241 /* actp_semaphore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_semaphore.h; path = ../../../src/act/actp/actp_semaphore.h; sourceTree = "<group>"; };
@@ -642,12 +650,6 @@
 		FA3B86BE17A933CA0042C241 /* actp_threadattributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_threadattributes.h; path = ../../../src/act/actp/actp_threadattributes.h; sourceTree = "<group>"; };
 		FA3B86BF17A933CA0042C241 /* actp_threadutil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_threadutil.cpp; path = ../../../src/act/actp/actp_threadutil.cpp; sourceTree = "<group>"; };
 		FA3B86C017A933CA0042C241 /* actp_threadutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_threadutil.h; path = ../../../src/act/actp/actp_threadutil.h; sourceTree = "<group>"; };
-		FA3B86C117A933CA0042C241 /* actp_win32condition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_win32condition.cpp; path = ../../../src/act/actp/actp_win32condition.cpp; sourceTree = "<group>"; };
-		FA3B86C217A933CA0042C241 /* actp_win32condition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_win32condition.h; path = ../../../src/act/actp/actp_win32condition.h; sourceTree = "<group>"; };
-		FA3B86C317A933CA0042C241 /* actp_win32mutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_win32mutex.cpp; path = ../../../src/act/actp/actp_win32mutex.cpp; sourceTree = "<group>"; };
-		FA3B86C417A933CA0042C241 /* actp_win32mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_win32mutex.h; path = ../../../src/act/actp/actp_win32mutex.h; sourceTree = "<group>"; };
-		FA3B86C517A933CA0042C241 /* actp_win32thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_win32thread.cpp; path = ../../../src/act/actp/actp_win32thread.cpp; sourceTree = "<group>"; };
-		FA3B86C617A933CA0042C241 /* actp_win32thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = actp_win32thread.h; path = ../../../src/act/actp/actp_win32thread.h; sourceTree = "<group>"; };
 		FA3B86E417A933FC0042C241 /* acts_platform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = acts_platform.cpp; path = ../../../src/act/acts/acts_platform.cpp; sourceTree = "<group>"; };
 		FA3B86E517A933FC0042C241 /* acts_platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = acts_platform.h; path = ../../../src/act/acts/acts_platform.h; sourceTree = "<group>"; };
 		FA3E4D331A2D45CF00E58703 /* agta_engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_engine.cpp; path = ../../../src/agt/agta/agta_engine.cpp; sourceTree = "<group>"; };
@@ -668,8 +670,6 @@
 		FA4779371B1BA90000F205D4 /* agtui_boxsizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtui_boxsizer.h; path = ../../../src/agt/agtui/agtui_boxsizer.h; sourceTree = "<group>"; };
 		FA4C5FB51AF54D7500BD4B55 /* agtui_window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtui_window.cpp; path = ../../../src/agt/agtui/agtui_window.cpp; sourceTree = "<group>"; };
 		FA4C5FB61AF54D7500BD4B55 /* agtui_window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtui_window.h; path = ../../../src/agt/agtui/agtui_window.h; sourceTree = "<group>"; };
-		FA4C5FBB1AFD940400BD4B55 /* agtui_glview.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtui_glview.cpp; path = ../../../src/agt/agtui/agtui_glview.cpp; sourceTree = "<group>"; };
-		FA4C5FBC1AFD940400BD4B55 /* agtui_glview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtui_glview.h; path = ../../../src/agt/agtui/agtui_glview.h; sourceTree = "<group>"; };
 		FA4C5FC11AFE827900BD4B55 /* agta_eventsystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_eventsystem.cpp; path = ../../../src/agt/agta/agta_eventsystem.cpp; sourceTree = "<group>"; };
 		FA4C5FC21AFE827900BD4B55 /* agta_eventsystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_eventsystem.h; path = ../../../src/agt/agta/agta_eventsystem.h; sourceTree = "<group>"; };
 		FA4C5FC71B08210D00BD4B55 /* agtui_window.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtui_window.t.cpp; path = ../../../src/agt/agtui/agtui_window.t.cpp; sourceTree = "<group>"; };
@@ -772,10 +772,14 @@
 		FA875BB015DF1B9800C5E50B /* agtm_point3d.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtm_point3d.t.cpp; path = ../../../src/agt/agtm/agtm_point3d.t.cpp; sourceTree = "<group>"; };
 		FA875BC115E0330900C5E50B /* agt.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agt.t.cpp; path = ../../../src/agt/agt.t.cpp; sourceTree = "<group>"; };
 		FA875BCA15E099D800C5E50B /* libaft-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libaft-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA90ECA61AAB7AC600DB0A34 /* agtui_glwindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtui_glwindow.cpp; path = ../../../src/agt/agtui/agtui_glwindow.cpp; sourceTree = "<group>"; };
-		FA90ECA71AAB7AC600DB0A34 /* agtui_glwindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtui_glwindow.h; path = ../../../src/agt/agtui/agtui_glwindow.h; sourceTree = "<group>"; };
 		FA90ECAC1AAB7B5300DB0A34 /* agtui_displaytimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtui_displaytimer.cpp; path = ../../../src/agt/agtui/agtui_displaytimer.cpp; sourceTree = "<group>"; };
 		FA90ECAD1AAB7B5300DB0A34 /* agtui_displaytimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtui_displaytimer.h; path = ../../../src/agt/agtui/agtui_displaytimer.h; sourceTree = "<group>"; };
+		FA97956F1D9FFF6800094B1B /* actp_semaphore.t.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = actp_semaphore.t.cpp; path = ../../../src/act/actp/actp_semaphore.t.cpp; sourceTree = "<group>"; };
+		FA9795701D9FFF8200094B1B /* actp_condition.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_condition.t.cpp; path = ../../../src/act/actp/actp_condition.t.cpp; sourceTree = "<group>"; };
+		FA9795711D9FFF8200094B1B /* actp_mutex.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_mutex.t.cpp; path = ../../../src/act/actp/actp_mutex.t.cpp; sourceTree = "<group>"; };
+		FA9795731D9FFF8200094B1B /* actp_thread.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = actp_thread.t.cpp; path = ../../../src/act/actp/actp_thread.t.cpp; sourceTree = "<group>"; };
+		FA9795781D9FFFDD00094B1B /* act.t.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = act.t.cpp; path = ../../../src/act/act.t.cpp; sourceTree = "<group>"; };
+		FA9795981D9FFFF800094B1B /* test_act-macosx */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "test_act-macosx"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9B158415A9DE900017DCD5 /* aftio_flags.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftio_flags.cpp; path = ../../../src/aft/aftio/aftio_flags.cpp; sourceTree = "<group>"; };
 		FA9B158515A9DE900017DCD5 /* aftio_flags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftio_flags.h; path = ../../../src/aft/aftio/aftio_flags.h; sourceTree = "<group>"; };
 		FA9B158615A9DE900017DCD5 /* aftio_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftio_reader.cpp; path = ../../../src/aft/aftio/aftio_reader.cpp; sourceTree = "<group>"; };
@@ -905,6 +909,8 @@
 		FADE7DCC1AE482CE00280A14 /* agtg_orthographiccamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtg_orthographiccamera.cpp; path = ../../../src/agt/agtg/agtg_orthographiccamera.cpp; sourceTree = "<group>"; };
 		FADE7DCD1AE482CE00280A14 /* agtg_orthographiccamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtg_orthographiccamera.h; path = ../../../src/agt/agtg/agtg_orthographiccamera.h; sourceTree = "<group>"; };
 		FAE78A451687D82900EEBCE6 /* aftt_nanoseconds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftt_nanoseconds.h; path = ../../../src/aft/aftt/aftt_nanoseconds.h; sourceTree = "<group>"; };
+		FAF8FDF61D7DD4FD006D9ED6 /* agta_surface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_surface.cpp; path = ../../../src/agt/agta/agta_surface.cpp; sourceTree = "<group>"; };
+		FAF8FDF71D7DD4FD006D9ED6 /* agta_surface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_surface.h; path = ../../../src/agt/agta/agta_surface.h; sourceTree = "<group>"; };
 		FAFB3A4B17B338F1002510F9 /* aftfs_localfilesystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aftfs_localfilesystem.h; path = ../../../src/aft/aftfs/aftfs_localfilesystem.h; sourceTree = "<group>"; };
 		FAFB3A4E17B33A05002510F9 /* aftfs_localfilesystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftfs_localfilesystem.cpp; path = ../../../src/aft/aftfs/aftfs_localfilesystem.cpp; sourceTree = "<group>"; };
 		FAFB3A5117B7C514002510F9 /* aftfs_localfilesystem.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aftfs_localfilesystem.t.cpp; path = ../../../src/aft/aftfs/aftfs_localfilesystem.t.cpp; sourceTree = "<group>"; };
@@ -968,6 +974,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA9795911D9FFFF800094B1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA97959B1DA0002600094B1B /* libact-macosx.a in Frameworks */,
+				FA9795921D9FFFF800094B1B /* libaunit-macosx.a in Frameworks */,
+				FA9795931D9FFFF800094B1B /* libaft-macosx.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FAA6CDAF15DDB28400F480F0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -983,6 +999,7 @@
 			children = (
 				FA3B862217A931390042C241 /* actp */,
 				FA3B862117A931280042C241 /* acts */,
+				FA9795781D9FFFDD00094B1B /* act.t.cpp */,
 			);
 			name = act;
 			sourceTree = "<group>";
@@ -1001,33 +1018,21 @@
 			children = (
 				FA3B86AA17A933CA0042C241 /* actp_condition.cpp */,
 				FA3B86AB17A933CA0042C241 /* actp_condition.h */,
-				FA3B86AC17A933CA0042C241 /* actp_conditionresult.cpp */,
-				FA3B86AD17A933CA0042C241 /* actp_conditionresult.h */,
+				FA9795701D9FFF8200094B1B /* actp_condition.t.cpp */,
 				FA3B86AE17A933CA0042C241 /* actp_mutex.cpp */,
 				FA3B86AF17A933CA0042C241 /* actp_mutex.h */,
-				FA3B86B017A933CA0042C241 /* actp_mutexresult.cpp */,
-				FA3B86B117A933CA0042C241 /* actp_mutexresult.h */,
-				FA3B86B217A933CA0042C241 /* actp_posixcondition.cpp */,
-				FA3B86B317A933CA0042C241 /* actp_posixcondition.h */,
-				FA3B86B417A933CA0042C241 /* actp_posixmutex.cpp */,
-				FA3B86B517A933CA0042C241 /* actp_posixmutex.h */,
-				FA3B86B617A933CA0042C241 /* actp_posixthread.cpp */,
-				FA3B86B717A933CA0042C241 /* actp_posixthread.h */,
+				FA9795711D9FFF8200094B1B /* actp_mutex.t.cpp */,
 				FA3B86B817A933CA0042C241 /* actp_scopedlock.h */,
 				FA3B86B917A933CA0042C241 /* actp_semaphore.cpp */,
 				FA3B86BA17A933CA0042C241 /* actp_semaphore.h */,
+				FA97956F1D9FFF6800094B1B /* actp_semaphore.t.cpp */,
 				FA3B86BB17A933CA0042C241 /* actp_thread.cpp */,
 				FA3B86BC17A933CA0042C241 /* actp_thread.h */,
+				FA9795731D9FFF8200094B1B /* actp_thread.t.cpp */,
 				FA3B86BD17A933CA0042C241 /* actp_threadattributes.cpp */,
 				FA3B86BE17A933CA0042C241 /* actp_threadattributes.h */,
 				FA3B86BF17A933CA0042C241 /* actp_threadutil.cpp */,
 				FA3B86C017A933CA0042C241 /* actp_threadutil.h */,
-				FA3B86C117A933CA0042C241 /* actp_win32condition.cpp */,
-				FA3B86C217A933CA0042C241 /* actp_win32condition.h */,
-				FA3B86C317A933CA0042C241 /* actp_win32mutex.cpp */,
-				FA3B86C417A933CA0042C241 /* actp_win32mutex.h */,
-				FA3B86C517A933CA0042C241 /* actp_win32thread.cpp */,
-				FA3B86C617A933CA0042C241 /* actp_win32thread.h */,
 			);
 			name = actp;
 			sourceTree = "<group>";
@@ -1057,6 +1062,8 @@
 				FA0E03A01ACEEE2400386511 /* agta_sprite2dmaterial.h */,
 				FA4C5FC11AFE827900BD4B55 /* agta_eventsystem.cpp */,
 				FA4C5FC21AFE827900BD4B55 /* agta_eventsystem.h */,
+				FAF8FDF61D7DD4FD006D9ED6 /* agta_surface.cpp */,
+				FAF8FDF71D7DD4FD006D9ED6 /* agta_surface.h */,
 			);
 			name = agta;
 			sourceTree = "<group>";
@@ -1069,10 +1076,6 @@
 				FA81522A1B3F10C60008B86E /* agtui_boxsizer.t.cpp */,
 				FA90ECAC1AAB7B5300DB0A34 /* agtui_displaytimer.cpp */,
 				FA90ECAD1AAB7B5300DB0A34 /* agtui_displaytimer.h */,
-				FA4C5FBB1AFD940400BD4B55 /* agtui_glview.cpp */,
-				FA4C5FBC1AFD940400BD4B55 /* agtui_glview.h */,
-				FA90ECA61AAB7AC600DB0A34 /* agtui_glwindow.cpp */,
-				FA90ECA71AAB7AC600DB0A34 /* agtui_glwindow.h */,
 				FA5E9773176D0B760035F4D0 /* agtui_mouseevent.cpp */,
 				FA5E9771176CCDCB0035F4D0 /* agtui_mouseevent.h */,
 				FA81473A1B293C950008B86E /* agtui_sizer.cpp */,
@@ -1091,9 +1094,9 @@
 		FA833E1515A7501D0044283D = {
 			isa = PBXGroup;
 			children = (
-				FA833E2715A7526A0044283D /* Source */,
 				FA875BCB15E099D800C5E50B /* Frameworks */,
 				FA833E2315A752430044283D /* Products */,
+				FA833E2715A7526A0044283D /* Source */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1108,6 +1111,7 @@
 				FA875BCA15E099D800C5E50B /* libaft-ios.a */,
 				FA2318A9178DD1CD0050DE3A /* libagt-ios.a */,
 				FA3B86A717A9333C0042C241 /* libact-macosx.a */,
+				FA9795981D9FFFF800094B1B /* test_act-macosx */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1531,6 +1535,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA2318B3178DD3B00050DE3A /* agtg_colorrgba.h in Headers */,
+				FAF8FDFB1D7DD4FD006D9ED6 /* agta_surface.h in Headers */,
 				FA2318B4178DD3B60050DE3A /* agtg_mesh.h in Headers */,
 				FA2318B5178DD3B90050DE3A /* agtg_renderingcontext.h in Headers */,
 				FA2318B6178DD3BD0050DE3A /* agtg_texture.h in Headers */,
@@ -1561,7 +1566,6 @@
 				FAD3F6C01AA23D24005455B2 /* agta_platform.h in Headers */,
 				FA19D68B1AC24FDC007C91E1 /* agtg_gl.h in Headers */,
 				FA90ECB11AAB7B5300DB0A34 /* agtui_displaytimer.h in Headers */,
-				FA90ECAB1AAB7AC600DB0A34 /* agtui_glwindow.h in Headers */,
 				FA19D6821ABEF037007C91E1 /* agta_visual2dcomponent.h in Headers */,
 				FA3E4D541A32BB5600E58703 /* agta_rendersystem.h in Headers */,
 				FADE7DCB1AE47D3D00280A14 /* agtg_camera.h in Headers */,
@@ -1569,7 +1573,6 @@
 				FA0E03A41ACEEE2400386511 /* agta_sprite2dmaterial.h in Headers */,
 				FA4C5FBA1AF54D7500BD4B55 /* agtui_window.h in Headers */,
 				FA14A0AB19E6088C0058A4CA /* agtr_resource.h in Headers */,
-				FA4C5FC01AFD940400BD4B55 /* agtui_glview.h in Headers */,
 				FA3E4D3E1A2D482400E58703 /* agta_system.h in Headers */,
 				FA4C5FC61AFE827900BD4B55 /* agta_eventsystem.h in Headers */,
 				FA3E4D441A2EAA3100E58703 /* agta_transformcomponent.h in Headers */,
@@ -1582,20 +1585,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA3B86C817A933CA0042C241 /* actp_condition.h in Headers */,
-				FA3B86CA17A933CA0042C241 /* actp_conditionresult.h in Headers */,
 				FA3B86CC17A933CA0042C241 /* actp_mutex.h in Headers */,
-				FA3B86CE17A933CA0042C241 /* actp_mutexresult.h in Headers */,
-				FA3B86D017A933CA0042C241 /* actp_posixcondition.h in Headers */,
-				FA3B86D217A933CA0042C241 /* actp_posixmutex.h in Headers */,
-				FA3B86D417A933CA0042C241 /* actp_posixthread.h in Headers */,
 				FA3B86D517A933CA0042C241 /* actp_scopedlock.h in Headers */,
 				FA3B86D717A933CA0042C241 /* actp_semaphore.h in Headers */,
 				FA3B86D917A933CA0042C241 /* actp_thread.h in Headers */,
 				FA3B86DB17A933CA0042C241 /* actp_threadattributes.h in Headers */,
 				FA3B86DD17A933CA0042C241 /* actp_threadutil.h in Headers */,
-				FA3B86DF17A933CA0042C241 /* actp_win32condition.h in Headers */,
-				FA3B86E117A933CA0042C241 /* actp_win32mutex.h in Headers */,
-				FA3B86E317A933CA0042C241 /* actp_win32thread.h in Headers */,
 				FA3B86E717A933FC0042C241 /* acts_platform.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1799,19 +1794,18 @@
 				FAD3F6BF1AA23D24005455B2 /* agta_platform.h in Headers */,
 				FA19D68A1AC24FDC007C91E1 /* agtg_gl.h in Headers */,
 				FA90ECB01AAB7B5300DB0A34 /* agtui_displaytimer.h in Headers */,
-				FA90ECAA1AAB7AC600DB0A34 /* agtui_glwindow.h in Headers */,
 				FA19D6811ABEF037007C91E1 /* agta_visual2dcomponent.h in Headers */,
 				FACBAC9116FE6F03008B2004 /* agtr_image.h in Headers */,
 				FADE7DCA1AE47D3D00280A14 /* agtg_camera.h in Headers */,
 				FADE7DD01AE482CE00280A14 /* agtg_orthographiccamera.h in Headers */,
 				FA0E03A31ACEEE2400386511 /* agta_sprite2dmaterial.h in Headers */,
-				FA4C5FBF1AFD940400BD4B55 /* agtui_glview.h in Headers */,
 				FA4C5FB91AF54D7500BD4B55 /* agtui_window.h in Headers */,
 				FAFD77CE189D466300734186 /* agtui_widget.h in Headers */,
 				FA4C5FC51AFE827900BD4B55 /* agta_eventsystem.h in Headers */,
 				FAFD77CB189D419F00734186 /* agtui_sizer.h in Headers */,
 				FA47793A1B1BA90000F205D4 /* agtui_boxsizer.h in Headers */,
 				FA5E9772176CCDCB0035F4D0 /* agtui_mouseevent.h in Headers */,
+				FAF8FDFA1D7DD4FD006D9ED6 /* agta_surface.h in Headers */,
 				FA2318E2178E2DDE0050DE3A /* agtui_touchevent.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1945,6 +1939,26 @@
 			productReference = FA875BCA15E099D800C5E50B /* libaft-ios.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		FA9795791D9FFFF800094B1B /* test_act-macosx */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA9795951D9FFFF800094B1B /* Build configuration list for PBXNativeTarget "test_act-macosx" */;
+			buildPhases = (
+				FA97957E1D9FFFF800094B1B /* Sources */,
+				FA9795911D9FFFF800094B1B /* Frameworks */,
+				FA9795941D9FFFF800094B1B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA97959A1DA0001B00094B1B /* PBXTargetDependency */,
+				FA97957A1D9FFFF800094B1B /* PBXTargetDependency */,
+				FA97957C1D9FFFF800094B1B /* PBXTargetDependency */,
+			);
+			name = "test_act-macosx";
+			productName = test_aft;
+			productReference = FA9795981D9FFFF800094B1B /* test_act-macosx */;
+			productType = "com.apple.product-type.tool";
+		};
 		FAA6CDB115DDB28400F480F0 /* agt-macosx */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAA6CDB315DDB28400F480F0 /* Build configuration list for PBXNativeTarget "agt-macosx" */;
@@ -1986,12 +2000,13 @@
 			targets = (
 				FA833E2115A752430044283D /* aft-macosx */,
 				FA875BC915E099D800C5E50B /* aft-ios */,
+				FA3B862317A9333C0042C241 /* act-macosx */,
 				FAA6CDB115DDB28400F480F0 /* agt-macosx */,
 				FA231825178DD1CD0050DE3A /* agt-ios */,
 				FA833E9615A755A50044283D /* aunit-macosx */,
 				FA833EBB15A75C350044283D /* test_aft-macosx */,
+				FA9795791D9FFFF800094B1B /* test_act-macosx */,
 				FA875B9F15DF1B6C00C5E50B /* test_agt-macosx */,
-				FA3B862317A9333C0042C241 /* act-macosx */,
 			);
 		};
 /* End PBXProject section */
@@ -2018,9 +2033,9 @@
 				FAA99BC61A6AE52000A0A52E /* agta_space.cpp in Sources */,
 				FAC45A9219EF795B00329DAB /* agtr_image.cpp in Sources */,
 				FA2318AC178DD2410050DE3A /* agtm_matrix3.cpp in Sources */,
-				FA90ECA91AAB7AC600DB0A34 /* agtui_glwindow.cpp in Sources */,
 				FA2318AD178DD2480050DE3A /* agtm_matrix4.cpp in Sources */,
 				FA3E4D421A2EAA3100E58703 /* agta_transformcomponent.cpp in Sources */,
+				FAF8FDF91D7DD4FD006D9ED6 /* agta_surface.cpp in Sources */,
 				FA0E03A21ACEEE2400386511 /* agta_sprite2dmaterial.cpp in Sources */,
 				FA3E4D3C1A2D482400E58703 /* agta_system.cpp in Sources */,
 				FA2318AE178DD24D0050DE3A /* agtm_matrixutil.cpp in Sources */,
@@ -2036,7 +2051,6 @@
 				FA2318BC178DD3E60050DE3A /* agtm_size2d.cpp in Sources */,
 				FA2318BD178DD3EA0050DE3A /* agtm_vector2.cpp in Sources */,
 				FA2318BE178DD3EE0050DE3A /* agtm_vector3.cpp in Sources */,
-				FA4C5FBE1AFD940400BD4B55 /* agtui_glview.cpp in Sources */,
 				FADE7DCF1AE482CE00280A14 /* agtg_orthographiccamera.cpp in Sources */,
 				FA2318BF178DD3F00050DE3A /* agtm_vector4.cpp in Sources */,
 				FA19D6851AC24EA8007C91E1 /* agtg_texture.cpp in Sources */,
@@ -2053,19 +2067,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA3B86C717A933CA0042C241 /* actp_condition.cpp in Sources */,
-				FA3B86C917A933CA0042C241 /* actp_conditionresult.cpp in Sources */,
 				FA3B86CB17A933CA0042C241 /* actp_mutex.cpp in Sources */,
-				FA3B86CD17A933CA0042C241 /* actp_mutexresult.cpp in Sources */,
-				FA3B86CF17A933CA0042C241 /* actp_posixcondition.cpp in Sources */,
-				FA3B86D117A933CA0042C241 /* actp_posixmutex.cpp in Sources */,
-				FA3B86D317A933CA0042C241 /* actp_posixthread.cpp in Sources */,
 				FA3B86D617A933CA0042C241 /* actp_semaphore.cpp in Sources */,
 				FA3B86D817A933CA0042C241 /* actp_thread.cpp in Sources */,
 				FA3B86DA17A933CA0042C241 /* actp_threadattributes.cpp in Sources */,
 				FA3B86DC17A933CA0042C241 /* actp_threadutil.cpp in Sources */,
-				FA3B86DE17A933CA0042C241 /* actp_win32condition.cpp in Sources */,
-				FA3B86E017A933CA0042C241 /* actp_win32mutex.cpp in Sources */,
-				FA3B86E217A933CA0042C241 /* actp_win32thread.cpp in Sources */,
 				FA3B86E617A933FC0042C241 /* acts_platform.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2263,6 +2269,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA97957E1D9FFFF800094B1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA9795A11DA000DD00094B1B /* act.t.cpp in Sources */,
+				FA9795A21DA0396600094B1B /* actp_mutex.t.cpp in Sources */,
+				FA97959C1DA0004B00094B1B /* actp_condition.t.cpp in Sources */,
+				FA9795A31DA09E3D00094B1B /* actp_thread.t.cpp in Sources */,
+				FA9795A41DA1E96800094B1B /* actp_semaphore.t.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FAA6CDAE15DDB28400F480F0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2284,9 +2302,9 @@
 				FAA99BC51A6AE52000A0A52E /* agta_space.cpp in Sources */,
 				FAC45A9119EF795B00329DAB /* agtr_image.cpp in Sources */,
 				FAA6CDCE15DDB37400F480F0 /* agtm_matrix3.cpp in Sources */,
-				FA90ECA81AAB7AC600DB0A34 /* agtui_glwindow.cpp in Sources */,
 				FA5E9774176D0B760035F4D0 /* agtui_mouseevent.cpp in Sources */,
 				FA3E4D411A2EAA3100E58703 /* agta_transformcomponent.cpp in Sources */,
+				FAF8FDF81D7DD4FD006D9ED6 /* agta_surface.cpp in Sources */,
 				FA0E03A11ACEEE2400386511 /* agta_sprite2dmaterial.cpp in Sources */,
 				FA3E4D3B1A2D482400E58703 /* agta_system.cpp in Sources */,
 				FAA6CDD015DDB37400F480F0 /* agtm_matrix4.cpp in Sources */,
@@ -2302,7 +2320,6 @@
 				FACBAC9C16FE8D3E008B2004 /* agtm_rect.cpp in Sources */,
 				FACBAC9E16FE8D6B008B2004 /* agtm_size2d.cpp in Sources */,
 				FAA6CDD615DDB37400F480F0 /* agtm_vector2.cpp in Sources */,
-				FA4C5FBD1AFD940400BD4B55 /* agtui_glview.cpp in Sources */,
 				FADE7DCE1AE482CE00280A14 /* agtg_orthographiccamera.cpp in Sources */,
 				FAA6CDD815DDB37400F480F0 /* agtm_vector3.cpp in Sources */,
 				FA19D6841AC24EA8007C91E1 /* agtg_texture.cpp in Sources */,
@@ -2356,6 +2373,21 @@
 			isa = PBXTargetDependency;
 			target = FA833E9615A755A50044283D /* aunit-macosx */;
 			targetProxy = FA875BBC15DF1BB000C5E50B /* PBXContainerItemProxy */;
+		};
+		FA97957A1D9FFFF800094B1B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA833E2115A752430044283D /* aft-macosx */;
+			targetProxy = FA97957B1D9FFFF800094B1B /* PBXContainerItemProxy */;
+		};
+		FA97957C1D9FFFF800094B1B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA833E9615A755A50044283D /* aunit-macosx */;
+			targetProxy = FA97957D1D9FFFF800094B1B /* PBXContainerItemProxy */;
+		};
+		FA97959A1DA0001B00094B1B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA3B862317A9333C0042C241 /* act-macosx */;
+			targetProxy = FA9795991DA0001B00094B1B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2662,6 +2694,36 @@
 			};
 			name = Release;
 		};
+		FA9795961D9FFFF800094B1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FA9795971D9FFFF800094B1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		FAA6CDB415DDB28400F480F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2773,6 +2835,15 @@
 			buildConfigurations = (
 				FA875BD515E099D800C5E50B /* Debug */,
 				FA875BD615E099D800C5E50B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA9795951D9FFFF800094B1B /* Build configuration list for PBXNativeTarget "test_act-macosx" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA9795961D9FFFF800094B1B /* Debug */,
+				FA9795971D9FFFF800094B1B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

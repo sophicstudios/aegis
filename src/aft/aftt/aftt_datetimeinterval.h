@@ -20,8 +20,6 @@ class DatetimeInterval
 public:
     DatetimeInterval();
     
-    explicit DatetimeInterval(Seconds const& seconds, Nanoseconds const& nanoseconds = Nanoseconds(0));
-    
     explicit DatetimeInterval(
         Days const& days,
         Hours const& hours = Hours(0),
@@ -42,6 +40,8 @@ public:
     explicit DatetimeInterval(Microseconds const& microseconds);
     
     explicit DatetimeInterval(Nanoseconds const& nanoseconds);
+    
+    explicit DatetimeInterval(Seconds const& seconds, Nanoseconds const& nanoseconds);
     
     ~DatetimeInterval();
 

@@ -12,9 +12,11 @@ class Widget
 {
 public:
     static const agtm::Point2d<float> DEFAULT_POSITION;
-    static const agtm::Point2d<float> DEFAULT_SIZE;
+    static const agtm::Size2d<float> DEFAULT_SIZE;
 
-    Widget(agtm::Rect<float> const& bounds)
+    Widget();
+    
+    Widget(agtm::Rect<float> const& bounds);
 
     virtual ~Widget() = 0;
 

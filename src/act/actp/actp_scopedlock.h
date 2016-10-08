@@ -28,6 +28,12 @@ inline ScopedLock<T>::~ScopedLock()
     m_mutex.unlock();
 }
 
+template<typename T>
+ScopedLock<T> make_scoped(T& mutex)
+{
+    return ScopedLock<T>(mutex);
+}
+
 } // namespace
 
 #endif // INCLUDE

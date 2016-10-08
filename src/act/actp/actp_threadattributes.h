@@ -5,19 +5,29 @@
 
 namespace actp {
 
-enum CreateType {
-    CreateType_DETACHED,
-    CreateType_JOINABLE
-};
-
-struct ThreadAttributes
+class ThreadAttributes
 {
-    ThreadAttributes(
-        CreateType ct = CreateType_JOINABLE,
-        size_t ss = 0);
-    
-    CreateType createType;
-    size_t stackSize;
+public:
+    enum CreateType {
+        CreateType_DETACHED,
+        CreateType_JOINABLE
+    };
+
+    ThreadAttributes();
+
+    ~ThreadAttributes();
+
+    void createType(CreateType value);
+
+    CreateType createType() const;
+
+    void stackSize(size_t value);
+
+    size_t stackSize() const;
+
+private:
+    CreateType m_createType;
+    size_t m_stackSize;
 };
 
 } // namespace
