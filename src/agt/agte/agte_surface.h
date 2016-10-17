@@ -1,10 +1,10 @@
-#ifndef INCLUDED_AGTA_SURFACE_H
-#define INCLUDED_AGTA_SURFACE_H
+#ifndef INCLUDED_AGTE_SURFACE_H
+#define INCLUDED_AGTE_SURFACE_H
 
 #include <agtui_widget.h>
 #include <agtg_renderingcontext.h>
 
-namespace agta {
+namespace agte {
 
 class Surface : public agtui::Widget
 {

@@ -1,8 +1,8 @@
-#include <agta_eventsystem.h>
+#include <agte_eventsystem.h>
 #include <actp_scopedlock.h>
 #include <functional>
 
-namespace agta {
+namespace agte {
 
 namespace {
 
@@ -22,10 +22,10 @@ void EventSystem::queueEvent(afth::UUID const& id, EventSystem::Callback callbac
     m_nextEvents->push_back(std::make_pair(id, callback));
 }
 
-void EventSystem::doPreUpdate(agta::Engine::Context& context)
+void EventSystem::doPreUpdate(agte::Engine::Context& context)
 {}
 
-void EventSystem::doUpdate(agta::Engine::SpacePtr space, agta::Engine::Context& context)
+void EventSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context& context)
 {
     swapEventLists();
 
@@ -37,7 +37,7 @@ void EventSystem::doUpdate(agta::Engine::SpacePtr space, agta::Engine::Context& 
     }
 }
 
-void EventSystem::doPostUpdate(agta::Engine::Context& context)
+void EventSystem::doPostUpdate(agte::Engine::Context& context)
 {}
 
 void EventSystem::swapEventLists()

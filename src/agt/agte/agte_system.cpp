@@ -1,6 +1,6 @@
-#include <agta_system.h>
+#include <agte_system.h>
 
-namespace agta {
+namespace agte {
 
 System::System(int updatePriority)
 : m_priority(updatePriority)
@@ -9,17 +9,17 @@ System::System(int updatePriority)
 System::~System()
 {}
 
-void System::preUpdate(agta::Engine::Context& context)
+void System::preUpdate(agte::Engine::Context& context)
 {
     doPreUpdate(context);
 }
 
-void System::update(agta::Engine::SpacePtr space, agta::Engine::Context& context)
+void System::update(agte::Engine::SpacePtr space, agte::Engine::Context& context)
 {
     doUpdate(space, context);
 }
 
-void System::postUpdate(agta::Engine::Context& context)
+void System::postUpdate(agte::Engine::Context& context)
 {
     doPostUpdate(context);
 }

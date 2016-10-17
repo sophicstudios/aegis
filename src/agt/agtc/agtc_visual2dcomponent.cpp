@@ -1,6 +1,6 @@
-#include <agta_visual2dcomponent.h>
+#include <agtc_visual2dcomponent.h>
 
-namespace agta {
+namespace agtc {
 
 Visual2dComponent::Visual2dComponent()
 {}

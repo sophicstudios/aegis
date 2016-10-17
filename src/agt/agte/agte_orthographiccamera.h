@@ -1,14 +1,14 @@
-#ifndef INCLUDED_AGTG_ORTHOGRAPHICCAMERA_H
-#define INCLUDED_AGTG_ORTHOGRAPHICCAMERA_H
+#ifndef INCLUDED_AGTE_ORTHOGRAPHICCAMERA_H
+#define INCLUDED_AGTE_ORTHOGRAPHICCAMERA_H
 
-#include <agtg_camera.h>
+#include <agte_camera.h>
 #include <agtm_rect.h>
 #include <agtm_size2d.h>
 #include <agtm_vector2.h>
 
-namespace agtg {
+namespace agte {
 
-class OrthographicCamera : public agtg::Camera
+class OrthographicCamera : public agte::Camera
 {
 public:
     OrthographicCamera(float width, float height);

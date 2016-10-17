@@ -1,9 +1,9 @@
-#ifndef INCLUDED_AGTA_VISUAL2DCOMPONENT_H
-#define INCLUDED_AGTA_VISUAL2DCOMPONENT_H
+#ifndef INCLUDED_AGTC_VISUAL2DCOMPONENT_H
+#define INCLUDED_AGTC_VISUAL2DCOMPONENT_H
 
 #include <agtg_renderingcontext.h>
 
-namespace agta {
+namespace agtc {
 
 class Visual2dComponent
 {

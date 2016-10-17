@@ -1,14 +1,13 @@
-#include <agta_engine.h>
-#include <agta_displaytimer.h>
-#include <agta_platform.h>
-#include <agta_system.h>
+#include <agte_engine.h>
+#include <agte_platform.h>
+#include <agte_system.h>
 #include <actp_scopedlock.h>
 #include <aftu_exception.h>
 #include <functional>
 #include <iostream>
 #include <cassert>
 
-namespace agta {
+namespace agte {
 
 Engine::Context::Context(Engine::PlatformPtr platform, actp::Mutex& mutex, actp::Condition& condition)
 : m_shouldUpdate(false),
@@ -95,7 +94,7 @@ void Engine::removeSpace(std::string const& id)
     assert(count != 0);
 }
 
-void Engine::registerSystem(std::shared_ptr<agta::System> system)
+void Engine::registerSystem(SystemPtr system)
 {
     bool inserted = false;
     SystemList::iterator it = m_systems.begin(), end = m_systems.end();

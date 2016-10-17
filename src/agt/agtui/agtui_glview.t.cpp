@@ -1,4 +1,4 @@
-#include <agtui_window.h>
+#include <agtui_glview.h>
 #include <aunit.h>
 #include <vector>
 #include <iostream>
@@ -8,13 +8,13 @@ namespace {
 using namespace aunit;
 using namespace agtui;
 
-class DummyWindow : public agtui::Window
+class DummyView : public agtui::GLView
 {
 public:
-    DummyWindow()
+    DummyView()
     {}
 
-    virtual ~DummyWindow()
+    virtual DummyView()
     {}
 
     virtual void show()
@@ -37,11 +37,11 @@ public:
 void resizeHandler(agtm::Rect<float> const& bounds)
 {}
 
-Describe d("agtui_window", []
+Describe d("agtui_glview", []
 {
     it("Resize Handler", [&]
     {
-        DummyWindow w;
+        DummyView w;
 
         w.addResizeEventHandler("resize", resizeHandler);
 

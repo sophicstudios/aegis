@@ -1,12 +1,11 @@
-#ifndef INCLUDED_AGTA_RENDERSYSTEM_H
-#define INCLUDED_AGTA_RENDERSYSTEM_H
+#ifndef INCLUDED_AGTE_RENDERSYSTEM_H
+#define INCLUDED_AGTE_RENDERSYSTEM_H
 
-#include <agta_entity.h>
-#include <agta_system.h>
-#include <agta_glwindow.h>
-#include <agta_componentpool.h>
-#include <agta_space.h>
-#include <agta_transformcomponent.h>
+#include <agte_entity.h>
+#include <agte_system.h>
+#include <agte_componentpool.h>
+#include <agte_space.h>
+#include <agtc_transformcomponent.h>
 #include <agtg_camera.h>
 #include <agtg_gl.h>
 #include <agtg_texture.h>
@@ -18,15 +17,15 @@
 #include <memory>
 #include <bitset>
 
-namespace agta {
+namespace agte {
 
 class RenderSystem : public System
 {
 public:
-    typedef std::shared_ptr<agta::Platform> PlatformPtr;
-    typedef std::shared_ptr<agta::Space> SpacePtr;
-    typedef std::shared_ptr<agtg::Camera> CameraPtr;
-    typedef std::shared_ptr<ComponentPool<TransformComponent> > TransformComponentManagerPtr;
+    typedef std::shared_ptr<agte::Platform> PlatformPtr;
+    typedef std::shared_ptr<agte::Space> SpacePtr;
+    typedef std::shared_ptr<agte::Camera> CameraPtr;
+    typedef std::shared_ptr<ComponentPool<agtc::TransformComponent> > TransformComponentManagerPtr;
 
     RenderSystem(PlatformPtr platform, int updatePriority = 0);
 
@@ -39,11 +38,11 @@ public:
     void addTransformComponents(SpacePtr space, TransformComponentManagerPtr components);
 
 protected:
-    virtual void doPreUpdate(agta::Engine::Context& context);
+    virtual void doPreUpdate(agte::Engine::Context& context);
 
-    virtual void doUpdate(agta::Engine::SpacePtr space, agta::Engine::Context& context);
+    virtual void doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context& context);
 
-    virtual void doPostUpdate(agta::Engine::Context& context);
+    virtual void doPostUpdate(agte::Engine::Context& context);
 
 private:
     void render(agtg::RenderingContext& renderingContext, CameraPtr camera, Space::EntityView const& entities);

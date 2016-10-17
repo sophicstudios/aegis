@@ -1,6 +1,6 @@
-#include <agta_rendersystem.h>
-#include <agta_platform.h>
-#include <agta_visual2dcomponent.h>
+#include <agte_rendersystem.h>
+#include <agte_platform.h>
+#include <agtc_visual2dcomponent.h>
 #include <agtr_image.h>
 #include <agtr_imageloaderpng.h>
 #include <agtg_renderingcontext.h>
@@ -13,7 +13,7 @@
 #include <string>
 #include <vector>
 
-namespace agta {
+namespace agte {
 
 struct Vertex
 {
@@ -28,7 +28,7 @@ static const Vertex s_vertices[] = {
 };
 
 bool createShaderProgram(GLuint* program,
-                         agta::Platform::FilesystemPtr filesystem,
+                         agte::Platform::FilesystemPtr filesystem,
                          std::vector<std::pair<std::string, GLenum> > const& shaders,
                          std::vector<std::pair<std::string, GLuint> > const& attribLocations)
 {
@@ -173,11 +173,11 @@ void checkError(char const* const context)
     }
 }
 
-RenderSystem::RenderSystem(std::shared_ptr<agta::Platform> platform, int updatePriority)
-: agta::System(updatePriority)
+RenderSystem::RenderSystem(std::shared_ptr<agte::Platform> platform, int updatePriority)
+: agte::System(updatePriority)
 {
-    m_componentSet.set(agta::ComponentPool<agta::TransformComponent>::type());
-    m_componentSet.set(agta::ComponentPool<agta::Visual2dComponent>::type());
+    m_componentSet.set(agte::ComponentPool<agtc::TransformComponent>::type());
+    m_componentSet.set(agte::ComponentPool<agtc::Visual2dComponent>::type());
 
     glGenBuffers(1, &m_vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, m_vertexBuffer);
@@ -213,12 +213,12 @@ RenderSystem::RenderSystem(std::shared_ptr<agta::Platform> platform, int updateP
 RenderSystem::~RenderSystem()
 {}
 
-void RenderSystem::doPreUpdate(agta::Engine::Context& context)
+void RenderSystem::doPreUpdate(agte::Engine::Context& context)
 {
 }
 
 
-void RenderSystem::doUpdate(agta::Engine::SpacePtr space, agta::Engine::Context& context)
+void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context& context)
 {
     std::cout << "RenderSystem::doUpdate" << std::endl;
 
@@ -252,7 +252,7 @@ void RenderSystem::doUpdate(agta::Engine::SpacePtr space, agta::Engine::Context&
     renderingContext->postRender();
 }
 
-void RenderSystem::doPostUpdate(agta::Engine::Context& context)
+void RenderSystem::doPostUpdate(agte::Engine::Context& context)
 {
 }
 

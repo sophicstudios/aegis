@@ -1,8 +1,8 @@
-#include <agtg_orthographiccamera.h>
+#include <agte_orthographiccamera.h>
 #include <agtm_vector3.h>
 #include <iostream>
 
-namespace agtg {
+namespace agte {
 
 namespace {
 

@@ -1,7 +1,7 @@
-#include <agta_entity.h>
+#include <agte_entity.h>
 #include <functional>
 
-namespace agta {
+namespace agte {
 
 Entity::Entity()
 {}

@@ -1,6 +1,6 @@
-#include <agta_surface.h>
+#include <agte_surface.h>
 
-namespace agta {
+namespace agte {
 
 Surface::Surface()
 {

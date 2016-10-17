@@ -1,18 +1,15 @@
-#ifndef INCLUDED_AGTG_CAMERA_H
-#define INCLUDED_AGTG_CAMERA_H
+#ifndef INCLUDED_AGTE_CAMERA_H
+#define INCLUDED_AGTE_CAMERA_H
 
-#include <agtui_glview.h>
 #include <agtm_matrix4.h>
 #include <agtm_rect.h>
 #include <memory>
 
-namespace agtg {
+namespace agte {
 
 class Camera
 {
 public:
-    typedef std::shared_ptr<agtui::GLView> GLViewPtr;
-
     virtual ~Camera() = 0;
 
     void lookAt(agtm::Vector3<float> const& vec);

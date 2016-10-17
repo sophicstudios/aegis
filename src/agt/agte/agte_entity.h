@@ -1,10 +1,10 @@
-#ifndef INCLUDED_AGTA_ENTITY_H
-#define INCLUDED_AGTA_ENTITY_H
+#ifndef INCLUDED_AGTE_ENTITY_H
+#define INCLUDED_AGTE_ENTITY_H
 
 #include <bitset>
 #include <string>
 
-namespace agta {
+namespace agte {
 
 class Space;
 

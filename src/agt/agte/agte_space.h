@@ -1,8 +1,8 @@
-#ifndef INCLUDED_AGTA_SPACE_H
-#define INCLUDED_AGTA_SPACE_H
+#ifndef INCLUDED_AGTE_SPACE_H
+#define INCLUDED_AGTE_SPACE_H
 
-#include <agta_entity.h>
-#include <agtg_camera.h>
+#include <agte_entity.h>
+#include <agte_camera.h>
 #include <afth_uuid.h>
 #include <cstdint>
 #include <map>
@@ -11,7 +11,7 @@
 #include <string>
 #include <vector>
 
-namespace agta {
+namespace agte {
 
 /**
  * @class Space

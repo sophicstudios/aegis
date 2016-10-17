@@ -1,6 +1,6 @@
-#include <agtg_camera.h>
+#include <agte_camera.h>
 
-namespace agtg {
+namespace agte {
 
 Camera::Camera()
 {}

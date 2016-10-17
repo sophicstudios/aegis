@@ -1,9 +1,9 @@
-#include <agta_space.h>
+#include <agte_space.h>
 #include <vector>
 #include <map>
 #include <set>
 
-namespace agta {
+namespace agte {
 
 Space::EntityView::Iterator::Iterator()
 : m_entities(nullptr),

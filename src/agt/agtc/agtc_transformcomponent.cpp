@@ -1,6 +1,6 @@
-#include <agta_transformcomponent.h>
+#include <agtc_transformcomponent.h>
 
-namespace agta {
+namespace agtc {
 
 TransformComponent::TransformComponent()
 : m_transform(agtm::Matrix4<float>::identity())

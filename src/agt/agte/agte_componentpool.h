@@ -1,19 +1,19 @@
-#ifndef INCLUDED_AGTA_COMPONENTPOOL_H
-#define INCLUDED_AGTA_COMPONENTPOOL_H
+#ifndef INCLUDED_AGTE_COMPONENTPOOL_H
+#define INCLUDED_AGTE_COMPONENTPOOL_H
 
-#include <agta_space.h>
+#include <agte_space.h>
 #include <exception>
 #include <memory>
 #include <vector>
 
-namespace agta {
+namespace agte {
 
 class BaseComponentPool
 {
 public:
     static size_t typeCounter;
 
-    virtual void destroyComponent(agta::Entity entity) = 0;
+    virtual void destroyComponent(agte::Entity entity) = 0;
 };
 
 /**
@@ -32,7 +32,7 @@ public:
      * Constructor. Creates a ComponentPool to hold components with a default
      * initial batch size of 500 components.
      */
-    ComponentPool(std::shared_ptr<agta::Space> space);
+    ComponentPool(std::shared_ptr<agte::Space> space);
 
     /**
      * Constructor. Creates a ComponentPool to hold components. The batchSize
@@ -41,7 +41,7 @@ public:
      *
      * @param batchSize Size of each batch of components
      */
-    ComponentPool(std::shared_ptr<agta::Space> space, size_t batchSize);
+    ComponentPool(std::shared_ptr<agte::Space> space, size_t batchSize);
 
     /**
      * Destructor.
@@ -51,17 +51,17 @@ public:
     /**
      * 
      */
-    T& createComponent(agta::Entity entity);
+    T& createComponent(agte::Entity entity);
 
     /**
      *
      */
-    T& createComponent(agta::Entity entity, T const& initialState);
+    T& createComponent(agte::Entity entity, T const& initialState);
 
     /**
      *
      */
-    virtual void destroyComponent(agta::Entity entity);
+    virtual void destroyComponent(agte::Entity entity);
 
     /**
      *
@@ -75,7 +75,7 @@ private:
     typedef std::vector<size_t> EntityComponentMap;
     typedef std::vector<size_t> ComponentEntityMap;
 
-    std::shared_ptr<agta::Space> m_space;
+    std::shared_ptr<agte::Space> m_space;
     ComponentList m_components;
     size_t m_batchSize;
     size_t m_count;
@@ -91,7 +91,7 @@ size_t ComponentPool<T>::type()
 }
 
 template<typename T>
-ComponentPool<T>::ComponentPool(std::shared_ptr<agta::Space> space)
+ComponentPool<T>::ComponentPool(std::shared_ptr<agte::Space> space)
 : m_space(space),
   m_batchSize(DEFAULT_BATCH_SIZE),
   m_components(DEFAULT_BATCH_SIZE),
@@ -100,7 +100,7 @@ ComponentPool<T>::ComponentPool(std::shared_ptr<agta::Space> space)
 {}
 
 template<typename T>
-ComponentPool<T>::ComponentPool(std::shared_ptr<agta::Space> space, size_t batchSize)
+ComponentPool<T>::ComponentPool(std::shared_ptr<agte::Space> space, size_t batchSize)
 : m_space(space),
   m_batchSize(batchSize),
   m_components(batchSize),
@@ -113,7 +113,7 @@ ComponentPool<T>::~ComponentPool()
 {}
 
 template<typename T>
-T& ComponentPool<T>::createComponent(Entity entity)
+T& ComponentPool<T>::createComponent(agte::Entity entity)
 {
     // if component for entity already exists, throw exception
     if (m_entityComponentMap[entity.id()] != std::numeric_limits<size_t>::max())
@@ -133,7 +133,7 @@ T& ComponentPool<T>::createComponent(Entity entity)
 }
 
 template<typename T>
-T& ComponentPool<T>::createComponent(Entity entity, T const& initialState)
+T& ComponentPool<T>::createComponent(agte::Entity entity, T const& initialState)
 {
     T& component = createComponent(entity);
 
@@ -143,7 +143,7 @@ T& ComponentPool<T>::createComponent(Entity entity, T const& initialState)
 }
 
 template<typename T>
-void ComponentPool<T>::destroyComponent(Entity entity)
+void ComponentPool<T>::destroyComponent(agte::Entity entity)
 {
     size_t componentIndex = m_entityComponentMap[entity.id()];
     if (componentIndex == std::numeric_limits<size_t>::max())
@@ -162,7 +162,7 @@ void ComponentPool<T>::destroyComponent(Entity entity)
 }
 
 template<typename T>
-T& ComponentPool<T>::componentForEntity(Entity entity) const
+T& ComponentPool<T>::componentForEntity(agte::Entity entity) const
 {
     size_t componentIndex = m_entityComponentMap[entity.id()];
     if (componentIndex == std::numeric_limits<size_t>::max())

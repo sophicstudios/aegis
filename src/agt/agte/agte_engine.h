@@ -1,7 +1,7 @@
-#ifndef INCLUDED_AGTA_ENGINE_H
-#define INCLUDED_AGTA_ENGINE_H
+#ifndef INCLUDED_AGTE_ENGINE_H
+#define INCLUDED_AGTE_ENGINE_H
 
-#include <agta_space.h>
+#include <agte_space.h>
 #include <actp_condition.h>
 #include <actp_mutex.h>
 #include <actp_thread.h>
@@ -9,7 +9,7 @@
 #include <memory>
 #include <vector>
 
-namespace agta {
+namespace agte {
 
 class System;
 class Platform;
@@ -17,9 +17,9 @@ class Platform;
 class Engine
 {
 public:
-    typedef std::shared_ptr<agta::System> SystemPtr;
-    typedef std::shared_ptr<agta::Platform> PlatformPtr;
-    typedef std::shared_ptr<agta::Space> SpacePtr;
+    typedef std::shared_ptr<agte::System> SystemPtr;
+    typedef std::shared_ptr<agte::Platform> PlatformPtr;
+    typedef std::shared_ptr<agte::Space> SpacePtr;
     typedef std::vector<SpacePtr> SpaceList;
 
     class Context

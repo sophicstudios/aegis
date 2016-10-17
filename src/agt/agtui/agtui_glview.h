@@ -15,7 +15,7 @@
 
 namespace agtui {
 
-class Window
+class GLView
 {
 public:
     typedef std::shared_ptr<agtui::Widget> WidgetPtr;
@@ -28,13 +28,9 @@ public:
     typedef std::shared_ptr<agtui::DisplayTimer> DisplayTimerPtr;
     typedef std::shared_ptr<agtg::RenderingContext> RenderingContextPtr;
 
-    Window();
+    GLView();
     
-    virtual ~Window() = 0;
-
-    virtual void show() = 0;
-
-    virtual void hide() = 0;
+    virtual ~GLView() = 0;
 
     virtual agtm::Rect<float> bounds() const = 0;
     

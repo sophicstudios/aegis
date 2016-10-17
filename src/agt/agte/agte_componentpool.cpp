@@ -1,6 +1,6 @@
-#include <agta_componentpool.h>
+#include <agte_componentpool.h>
 
-namespace agta {
+namespace agte {
 
 size_t BaseComponentPool::BaseComponentPool::typeCounter = 0;
 
