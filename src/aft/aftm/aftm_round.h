@@ -1,8 +1,6 @@
 #ifndef INCLUDED_AEGIS_AFTM_ROUND_H
 #define INCLUDED_AEGIS_AFTM_ROUND_H
 
-#include <boost/static_assert.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
 #include <limits>
 #include <cmath>
 
@@ -40,7 +38,6 @@ struct Round
 template<typename T>
 T Round::halfUp(T value, int decimals)
 {
-    //BOOST_STATIC_ASSERT(typename boost:type_traits::is_floating_point<T>::value);
     T factor = std::pow(static_cast<T>(10), decimals);
     T result = std::floor((std::fabs(value) * factor) + (static_cast<T>(0.5) + std::numeric_limits<T>::epsilon())) / factor;
     return (value < static_cast<T>(0.0) ? -result : result);
@@ -49,7 +46,6 @@ T Round::halfUp(T value, int decimals)
 template<typename T>
 T Round::halfDown(T value, int decimals)
 {
-    //BOOST_STATIC_ASSERT(typename boost::type_traits::is_floating_point<T>::value);
     T factor = std::pow(static_cast<T>(10), decimals);
     T result = std::ceil((std::fabs(value) * factor) - (static_cast<T>(0.5) + std::numeric_limits<T>::epsilon())) / factor;
     return (value < static_cast<T>(0.0) ? -result : result);

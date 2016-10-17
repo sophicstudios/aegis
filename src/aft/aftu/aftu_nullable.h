@@ -4,7 +4,6 @@
 #include <aftu_exception.h>
 #include <aftu_typedbuffer.h>
 #include <afts_compiler.h>
-#include <boost/cstdint.hpp>
 #include <exception>
 
 namespace aftu {

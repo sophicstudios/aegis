@@ -1,8 +1,6 @@
 #ifndef INCLUDE_AEGIS_AFTU_TYPEDBUFFER_H
 #define INCLUDE_AEGIS_AFTU_TYPEDBUFFER_H
 
-#include <boost/cstdint.hpp>
-
 namespace aftu {
 
 template<typename T>
@@ -15,10 +13,10 @@ public:
 
     ~TypedBuffer();
 
-    boost::uint8_t* data();
+    uint8_t* data();
     
 private:
-    boost::uint8_t m_buffer[sizeof(T)];
+    uint8_t m_buffer[sizeof(T)];
 };
 
 template<typename T>
@@ -36,7 +34,7 @@ TypedBuffer<T>::~TypedBuffer()
 {}
 
 template<typename T>
-boost::uint8_t* TypedBuffer<T>::data()
+uint8_t* TypedBuffer<T>::data()
 {
     return m_buffer;
 }

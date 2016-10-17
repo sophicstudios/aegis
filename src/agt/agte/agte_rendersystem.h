@@ -5,9 +5,10 @@
 #include <agte_system.h>
 #include <agte_componentpool.h>
 #include <agte_space.h>
+#include <agte_camera.h>
 #include <agtc_transformcomponent.h>
-#include <agtg_camera.h>
 #include <agtg_gl.h>
+#include <agtg_renderingcontext.h>
 #include <agtg_texture.h>
 #include <aftfs_filesystem.h>
 #include <afth_uuid.h>

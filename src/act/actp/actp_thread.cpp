@@ -9,7 +9,7 @@ namespace {
 
 struct ThreadData
 {
-    PosixThread::Callback callback;
+    Thread::Callback callback;
 };
 
 void* threadEntry(void* data)
@@ -39,7 +39,7 @@ void translateThreadAttributes(
 }
 
 bool createThread(
-    PosixThread::Callback const& callback,
+    Thread::Callback const& callback,
     ThreadAttributes const& threadAttributes,
     pthread_t* thread,
     bool* joinable)

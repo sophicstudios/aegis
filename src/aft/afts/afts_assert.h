@@ -2,7 +2,7 @@
 #define INCLUDED_AEGIS_AFTS_ASSERT_H
 
 #include <afts_compiler.h>
-#include <boost/function.hpp>
+#include <functional>
 
 /**
  * Native C assert in both release and debug builds.
@@ -24,7 +24,7 @@ namespace afts {
 
 struct AssertUtil
 {
-    typedef boost::function<void (bool, const char*, int, const char*)> AssertFunc;
+    typedef std::function<void (bool, const char*, int, const char*)> AssertFunc;
     
     static void assignAssertFunc(AssertFunc const& f);
     

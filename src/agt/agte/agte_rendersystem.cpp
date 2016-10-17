@@ -222,7 +222,7 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
 {
     std::cout << "RenderSystem::doUpdate" << std::endl;
 
-    std::shared_ptr<agtg::RenderingContext> renderingContext = context.platform()->window()->renderingContext();
+    std::shared_ptr<agtg::RenderingContext> renderingContext = context.platform()->glView()->renderingContext();
 
     renderingContext->preRender();
 

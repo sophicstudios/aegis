@@ -10,6 +10,8 @@ public:
     
     virtual ~RenderingContext() = 0;
     
+    virtual void makeCurrent() = 0;
+
     virtual void preRender() = 0;
     
     virtual void postRender() = 0;

@@ -1,5 +1,4 @@
 #include <afts_comparisonutil.h>
-#include <boost/cstdint.hpp>
 #include <cmath>
 #include <cstdlib>
 #include <cassert>
@@ -12,15 +11,15 @@ namespace {
 union FloatInt
 {
     float f;
-    boost::int32_t i;
+    int32_t i;
 };
 
 union DoubleInt
 {
     double d;
     struct {
-        boost::int32_t hi;
-        boost::int32_t lo;
+        int32_t hi;
+        int32_t lo;
     } i;
 };
 
@@ -33,7 +32,7 @@ double ulp(double x)
 
 inline bool equalULPImp(float lhs, float rhs, unsigned int maxULP)
 {
-    assert(sizeof(boost::int32_t) == sizeof(float));
+    assert(sizeof(int32_t) == sizeof(float));
     
     // make sure maxULP is small enough so that the default NaN won't compare to anything
     assert(maxULP < 4 * 1024 * 1024);
@@ -64,7 +63,7 @@ inline bool equalULPImp(float lhs, float rhs, unsigned int maxULP)
 
 bool equalULPImp(double lhs, double rhs, unsigned int maxULP)
 {
-    assert(sizeof(boost::int32_t) == sizeof(float));
+    assert(sizeof(int32_t) == sizeof(float));
 
     if (lhs == rhs) {
         return true;

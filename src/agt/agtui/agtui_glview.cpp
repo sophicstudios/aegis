@@ -19,7 +19,7 @@ void removeHandler(std::string const& id, std::vector<std::pair<std::string, T> 
 GLView::GLView()
 {}
 
-GLView::GLView()
+GLView::~GLView()
 {}
 
 void GLView::addResizeEventHandler(std::string const& id, ResizeEventHandler const& handler)

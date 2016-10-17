@@ -1,12 +1,11 @@
 #ifndef INCLUDED_AEGIS_AFTS_ALIGNMENTOF_H
 #define INCLUDED_AEGIS_AFTS_ALIGNMENTOF_H
 
-#include <boost/static_assert.hpp>
 #include <cstddef>
 
 namespace afts {
 
-template<int Size> struct AlignmentSize { BOOST_STATIC_ASSERT(true); };
+template<int Size> struct AlignmentSize { static_assert(true, "Unsupported AlignmentSize"); };
 template<> struct AlignmentSize<1> { typedef char Type; };
 template<> struct AlignmentSize<2> { typedef short Type; };
 template<> struct AlignmentSize<4> { typedef int Type; };

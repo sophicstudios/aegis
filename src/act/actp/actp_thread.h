@@ -5,7 +5,7 @@
 #include <acts_platform.h>
 
 #if defined(ACTS_PLATFORM_PTHREADS)
-#include <actp_posixthread.h>
+#include <pthread.h>
 #elif defined(ACTS_PLATFORM_WINTHREADS)
 #include <afts_windows.h>
 #endif

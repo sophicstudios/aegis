@@ -2,6 +2,7 @@
 #include <afts_assert.h>
 #include <afts_platform.h>
 #include <dirent.h>
+#include <unistd.h>
 #include <sys/stat.h>
 #include <iostream>
 #include <cerrno>
@@ -61,7 +62,7 @@ private:
 
 long getPathMaxLength(std::string const& path)
 {
-    long name_max = pathconf(path.c_str(), _PC_NAME_MAX);
+    long name_max = 255;//pathconf(path.c_str(), _PC_NAME_MAX);
 
     if (name_max == -1) // limit not defined, or error
     {

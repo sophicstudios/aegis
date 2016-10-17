@@ -2,7 +2,7 @@
 
 namespace agte {
 
-Surface::Surface()
+Surface::Surface(RenderingContextPtr renderingContext)
 {
 }
 
