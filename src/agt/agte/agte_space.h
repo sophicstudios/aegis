@@ -52,7 +52,7 @@ public:
 
             Iterator(Space::EntityInfoList* list,
                      Entity::ComponentSet const* componentSet,
-                     size_t index);
+                     Space::EntityInfoList::iterator iter);
 
             Iterator(Iterator const& rhs);
 
@@ -77,7 +77,7 @@ public:
         private:
             Space::EntityInfoList* m_entities;
             Entity::ComponentSet const* m_componentSet;
-            size_t m_index;
+            Space::EntityInfoList::iterator m_iter;
         };
 
         EntityView(

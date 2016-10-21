@@ -33,7 +33,8 @@ float BoxSizer::Flags::size() const
 }
 
 BoxSizer::BoxSizer(BoxSizer::Direction direction)
-: m_direction(direction)
+: m_direction(direction),
+  m_cachedSize(0.0f, 0.0f)
 {}
 
 BoxSizer::~BoxSizer()
@@ -53,6 +54,8 @@ BoxSizer::Status BoxSizer::push_front(std::shared_ptr<agtui::Widget> widget, Box
 
     m_widgets.push_front(std::make_pair(info, widget));
 
+    size(m_cachedSize);
+
     return Status_OK;
 }
 
@@ -69,6 +72,8 @@ BoxSizer::Status BoxSizer::push_back(std::shared_ptr<agtui::Widget> widget, BoxS
     info.size = 0;
 
     m_widgets.push_back(std::make_pair(info, widget));
+
+    size(m_cachedSize);
 
     return Status_OK;
 }
@@ -95,6 +100,8 @@ BoxSizer::Status BoxSizer::insert(std::shared_ptr<agtui::Widget> widget, size_t 
 
     m_widgets.insert(it, std::make_pair(info, widget));
 
+    size(m_cachedSize);
+    
     return Status_OK;
 }
 
@@ -105,6 +112,7 @@ agtm::Size2d<float> BoxSizer::doSize() const
 
 void BoxSizer::doSize(agtm::Size2d<float> const& size)
 {
+    m_cachedSize = size;
     agtm::Size2d<float> minSize = doMinSize();
 
     float totalMajorSize = getSizeInMajorDirection(size);

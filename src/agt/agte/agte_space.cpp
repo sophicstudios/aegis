@@ -7,22 +7,21 @@ namespace agte {
 
 Space::EntityView::Iterator::Iterator()
 : m_entities(nullptr),
-  m_componentSet(nullptr),
-  m_index(std::numeric_limits<size_t>::max())
+  m_componentSet(nullptr)
 {}
 
 Space::EntityView::Iterator::Iterator(Space::EntityInfoList* entities,
                                       Entity::ComponentSet const* componentSet,
-                                      size_t index)
+                                      Space::EntityInfoList::iterator iter)
 : m_entities(entities),
   m_componentSet(componentSet),
-  m_index(index)
+  m_iter(iter)
 {}
 
 Space::EntityView::Iterator::Iterator(Space::EntityView::Iterator const& rhs)
 : m_entities(rhs.m_entities),
   m_componentSet(rhs.m_componentSet),
-  m_index(rhs.m_index)
+  m_iter(rhs.m_iter)
 {}
 
 Space::EntityView::Iterator::~Iterator()
@@ -32,37 +31,47 @@ Space::EntityView::Iterator& Space::EntityView::Iterator::operator=(Space::Entit
 {
     m_entities = rhs.m_entities;
     m_componentSet = rhs.m_componentSet;
-    m_index = rhs.m_index;
+    m_iter = rhs.m_iter;
 
     return *this;
 }
 
 Space::EntityView::Iterator& Space::EntityView::Iterator::operator++()
 {
-    while (((*m_entities)[++m_index].components & *m_componentSet) != *m_componentSet) {}
+    ++m_iter;
+    while (m_iter != m_entities->end() && (m_iter->components & *m_componentSet) != *m_componentSet)
+    {
+        ++m_iter;
+    }
+
     return *this;
 }
 
 Space::EntityView::Iterator Space::EntityView::Iterator::operator++(int)
 {
-    size_t index = m_index;
-    while (((*m_entities)[++m_index].components & *m_componentSet) != *m_componentSet) {}
-    return Iterator(m_entities, m_componentSet, index);
+    Space::EntityInfoList::iterator iter = m_iter;
+    ++m_iter;
+    while (m_iter != m_entities->end() && (m_iter->components & *m_componentSet) != *m_componentSet)
+    {
+        ++m_iter;
+    }
+
+    return Iterator(m_entities, m_componentSet, iter);
 }
 
 Entity& Space::EntityView::Iterator::operator*()
 {
-    return (*m_entities)[m_index].entity;
+    return m_iter->entity;
 }
 
 bool Space::EntityView::Iterator::operator==(Space::EntityView::Iterator const& rhs) const
 {
-    return m_index == rhs.m_index;
+    return m_iter == rhs.m_iter;
 }
 
 bool Space::EntityView::Iterator::operator!=(Space::EntityView::Iterator const& rhs) const
 {
-    return m_index != rhs.m_index;
+    return m_iter != rhs.m_iter;
 }
 
 Space::EntityView::EntityView(Space::EntityInfoList& entities,
@@ -76,18 +85,19 @@ Space::EntityView::~EntityView()
 
 Space::EntityView::Iterator Space::EntityView::begin() const
 {
-    size_t index = 0;
-    while ((m_entities[index].components & m_componentSet) != m_componentSet)
+    Space::EntityInfoList::iterator iter = m_entities.begin();
+    
+    while ((iter->components & m_componentSet) != m_componentSet && iter != m_entities.end())
     {
-        ++index;
+        ++iter;
     }
 
-    return Iterator(&m_entities, &m_componentSet, index);
+    return Iterator(&m_entities, &m_componentSet, iter);
 }
 
 Space::EntityView::Iterator Space::EntityView::end() const
 {
-    return Iterator(&m_entities, &m_componentSet, m_entities.size());
+    return Iterator(&m_entities, &m_componentSet, m_entities.end());
 }
 
 Space::Space()

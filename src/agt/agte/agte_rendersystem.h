@@ -48,7 +48,8 @@ protected:
 private:
     void render(agtg::RenderingContext& renderingContext, CameraPtr camera, Space::EntityView const& entities);
 
-    typedef std::map<afth::UUID, CameraPtr> SpaceCameraMap;
+    typedef std::vector<CameraPtr> CameraList;
+    typedef std::map<afth::UUID, CameraList> SpaceCameraMap;
     typedef std::map<afth::UUID, TransformComponentManagerPtr> SpaceTransformComponentsMap;
 
     SpaceCameraMap m_spaceCameraMap;

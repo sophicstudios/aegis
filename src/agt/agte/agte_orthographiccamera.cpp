@@ -32,19 +32,10 @@ agtm::Matrix4<float> calculateOrthographicProjection(agtm::Rect<float> const& re
 
 } // namespace
 
-OrthographicCamera::OrthographicCamera(float width, float height)
-: Camera(agtm::Rect<float>::fromXYWidthHeight(0.0f, 0.0f, width, height),
-  calculateOrthographicProjection(agtm::Rect<float>::fromXYWidthHeight(-width/2.0f, -height/2.0f, width, height)))
+OrthographicCamera::OrthographicCamera(agte::Camera::SurfacePtr surface)
+: Camera(surface)
 {}
 
-OrthographicCamera::OrthographicCamera(agtm::Size2d<float> const& viewport)
-: Camera(agtm::Rect<float>::fromXYWidthHeight(0.0f, 0.0f, viewport.width(), viewport.height()),
-  calculateOrthographicProjection(agtm::Rect<float>::fromXYWidthHeight(-viewport.width()/2.0f, -viewport.height()/2.0f, viewport.width(), viewport.height())))
-{}
-
-OrthographicCamera::OrthographicCamera(agtm::Rect<float> const& viewport)
-: Camera(viewport, calculateOrthographicProjection(agtm::Rect<float>::fromXYWidthHeight(-viewport.width()/2.0f, -viewport.height()/2.0f, viewport.width(), viewport.height())))
-{}
 
 OrthographicCamera::~OrthographicCamera()
 {}

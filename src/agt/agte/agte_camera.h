@@ -1,8 +1,10 @@
 #ifndef INCLUDED_AGTE_CAMERA_H
 #define INCLUDED_AGTE_CAMERA_H
 
+#include <agte_surface.h>
 #include <agtm_matrix4.h>
 #include <agtm_rect.h>
+#include <afth_uuid.h>
 #include <memory>
 
 namespace agte {
@@ -10,7 +12,11 @@ namespace agte {
 class Camera
 {
 public:
+    typedef std::shared_ptr<agte::Surface> SurfacePtr;
+
     virtual ~Camera() = 0;
+
+    afth::UUID const& id() const;
 
     void lookAt(agtm::Vector3<float> const& vec);
 
@@ -22,27 +28,26 @@ public:
 
     agtm::Matrix4<float> const& view();
 
-    agtm::Rect<float> const& viewport();
-
-    void viewport(agtm::Rect<float> const& viewport);
-
-protected:
-    Camera(agtm::Rect<float> const& viewport, agtm::Matrix4<float> const& projection);
+    agtm::Rect<float> viewport();
 
     void update();
+
+protected:
+    Camera(SurfacePtr surface);
 
     virtual void updateProjection(agtm::Matrix4<float>& projection) = 0;
 
 private:
     Camera();
-    
+
+    afth::UUID m_id;
+    SurfacePtr m_surface;
     bool m_dirty;
     agtm::Vector3<float> m_position;
     agtm::Vector3<float> m_direction;
     agtm::Vector3<float> m_up;
     agtm::Matrix4<float> m_projection;
     agtm::Matrix4<float> m_view;
-    agtm::Rect<float> m_viewport;
 };
 
 } // namespace

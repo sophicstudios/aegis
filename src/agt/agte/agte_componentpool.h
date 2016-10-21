@@ -93,6 +93,7 @@ size_t ComponentPool<T>::type()
 template<typename T>
 ComponentPool<T>::ComponentPool(std::shared_ptr<agte::Space> space)
 : m_space(space),
+  m_count(0),
   m_batchSize(DEFAULT_BATCH_SIZE),
   m_components(DEFAULT_BATCH_SIZE),
   m_componentEntityMap(DEFAULT_BATCH_SIZE, std::numeric_limits<size_t>::max()),
@@ -102,6 +103,7 @@ ComponentPool<T>::ComponentPool(std::shared_ptr<agte::Space> space)
 template<typename T>
 ComponentPool<T>::ComponentPool(std::shared_ptr<agte::Space> space, size_t batchSize)
 : m_space(space),
+  m_count(0),
   m_batchSize(batchSize),
   m_components(batchSize),
   m_componentEntityMap(batchSize, std::numeric_limits<size_t>::max()),

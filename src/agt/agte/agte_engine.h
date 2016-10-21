@@ -88,9 +88,6 @@ public:
     void update();
 
 private:
-    void onResizeEvent(agtm::Rect<float> const& rect);
-    void onDrawEvent();
-    
     void threadFunc();
     
     typedef std::vector<SystemPtr> SystemList;

@@ -22,6 +22,8 @@ public:
 
     afth::UUID const& id() const;
 
+    void draw(agtm::Rect<float> const& dirtyRect);
+
     bool enabled() const;
 
     void enabled(bool enabled);
@@ -56,6 +58,10 @@ private:
     virtual agtm::Size2d<float> doMaxSize() const;
 
     virtual agtm::Size2d<float> doBestSize() const;
+
+    virtual void onDraw(agtm::Rect<float> const& dirtyRect);
+
+    virtual void onBounds(agtm::Rect<float> const& bounds);
 
     afth::UUID m_id;
     bool m_enabled;

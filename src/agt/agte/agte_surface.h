@@ -3,6 +3,8 @@
 
 #include <agtui_widget.h>
 #include <agtg_renderingcontext.h>
+#include <agtm_rect.h>
+#include <actp_mutex.h>
 
 namespace agte {
 
@@ -15,8 +17,19 @@ public:
 
     virtual ~Surface();
 
+    agtm::Rect<float> viewport();
+
+    RenderingContextPtr renderingContext();
+
+protected:
+    virtual void onDraw(agtm::Rect<float> const& dirtyRect);
+
+    virtual void onBounds(agtm::Rect<float> const& bounds);
+
 private:
+    actp::Mutex m_mutex;
     RenderingContextPtr m_renderingContext;
+    agtm::Rect<float> m_viewport;
 };
 
 } // namespace

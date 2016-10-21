@@ -169,6 +169,7 @@ private:
     WidgetList m_widgets;
     WidgetMap m_widgetMap;
     float m_totalProportion;
+    agtm::Size2d<float> m_cachedSize;
 };
 
 

@@ -23,30 +23,6 @@ struct ImageHandler
     Image::DataPtr data;
 };
 
-const char* pngColorTypeToString(int colorType)
-{
-    switch (colorType) {
-    case PNG_COLOR_TYPE_GRAY:
-        return "PNG_COLOR_TYPE_GRAY";
-        break;
-    case PNG_COLOR_TYPE_GRAY_ALPHA:
-        return "PNG_COLOR_TYPE_GRAY_ALPHA";
-        break;
-    case PNG_COLOR_TYPE_PALETTE:
-        return "PNG_COLOR_TYPE_PALETTE";
-        break;
-    case PNG_COLOR_TYPE_RGB:
-        return "PNG_COLOR_TYPE_RGB";
-        break;
-    case PNG_COLOR_TYPE_RGB_ALPHA:
-        return "PNG_COLOR_TYPE_RGB_ALPHA";
-        break;
-    default:
-        return "Unknown";
-        break;
-    }
-}
-
 Image::Format pngColorTypeToImageFormat(int colorType)
 {
     switch (colorType) {

@@ -17,14 +17,6 @@ size_t calculateBlockSize(size_t size)
     return blockSize;
 }
 
-bool hasFreeBlock(uint32_t* freeListBitmap, size_t size)
-{
-    for (size_t i = 0; i < size; ++i) {
-    }
-    
-    return false;
-}
-
 }
 
 BlockAllocator::BlockAllocator()

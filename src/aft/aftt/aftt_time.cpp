@@ -29,26 +29,6 @@ const uint64_t NANOSECONDS_PER_MINUTE = NANOSECONDS_PER_SECOND * SECONDS_PER_MIN
 const uint64_t NANOSECONDS_PER_HOUR = NANOSECONDS_PER_MINUTE * MINUTES_PER_HOUR;
 const uint64_t NANOSECONDS_PER_DAY = NANOSECONDS_PER_HOUR * HOURS_PER_DAY;
 
-int64_t clamp(int64_t* value, int64_t range)
-{
-    int64_t result = *value / range;
-    *value %= range;
-    return result;
-}
-
-int64_t clamp_positive(int64_t* value, int64_t range)
-{
-    int64_t result = *value / range;
-    *value %= range;
-    
-    if (*value < 0) {
-        *value += range;
-        --result;
-    }
-    
-    return result;
-}
-
 inline uint64_t fromComponents(
     Hour const& hour,
     Minute const& minute,
@@ -74,16 +54,6 @@ inline unsigned int getMinute(uint64_t nanoseconds)
 inline unsigned int getSecond(uint64_t nanoseconds)
 {
     return static_cast<unsigned int>((nanoseconds % NANOSECONDS_PER_MINUTE) / NANOSECONDS_PER_SECOND);
-}
-
-inline unsigned int getMillisecond(uint64_t nanoseconds)
-{
-    return static_cast<unsigned int>((nanoseconds % NANOSECONDS_PER_SECOND) / NANOSECONDS_PER_MILLISECOND);
-}
-
-inline unsigned int getMicrosecond(uint64_t nanoseconds)
-{
-    return static_cast<unsigned int>((nanoseconds % NANOSECONDS_PER_MILLISECOND) / NANOSECONDS_PER_MICROSECOND);
 }
 
 inline unsigned int getNanosecond(uint64_t nanoseconds)

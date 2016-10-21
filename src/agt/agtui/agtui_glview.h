@@ -71,6 +71,8 @@ protected:
 
     void onResize(agtm::Rect<float> const& bounds);
 
+    void onDraw(agtm::Rect<float> const& dirtyRect);
+
     ResizeHandlers const& resizeHandlers() const;
 
     DrawHandlers const& drawHandlers() const;
@@ -101,10 +103,9 @@ protected:
 
     virtual void doRemoveTouchEventHandler(std::string const& id);
 
-    SizerPtr m_sizer;
-    std::vector<WidgetPtr> m_children;
-
 private:
+    typedef std::vector<WidgetPtr> Children;
+
     ResizeHandlers m_resizeHandlers;
     DrawHandlers m_drawHandlers;
     KeyHandlers m_keyHandlers;
@@ -112,6 +113,8 @@ private:
     TouchHandlers m_touchHandlers;
     RenderingContextPtr m_renderingContext;
     DisplayTimerPtr m_displayTimer;
+    SizerPtr m_sizer;
+    Children m_children;
 };
 
 } // namespace

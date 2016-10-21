@@ -58,6 +58,11 @@ afth::UUID const& Widget::id() const
     return m_id;
 }
 
+void Widget::draw(agtm::Rect<float> const& dirtyRect)
+{
+    onDraw(dirtyRect);
+}
+
 bool Widget::enabled() const
 {
     return m_enabled;
@@ -86,6 +91,7 @@ agtm::Rect<float> const& Widget::bounds() const
 void Widget::bounds(agtm::Rect<float> const& bounds)
 {
     m_bounds = bounds;
+    onBounds(bounds);
 }
 
 agtm::Size2d<float> Widget::size() const
@@ -96,6 +102,7 @@ agtm::Size2d<float> Widget::size() const
 void Widget::size(agtm::Size2d<float> const& size)
 {
     m_bounds.size(size);
+    onBounds(m_bounds);
 }
 
 agtm::Point2d<float> Widget::position() const
@@ -161,6 +168,14 @@ agtm::Size2d<float> Widget::doMaxSize() const
 agtm::Size2d<float> Widget::doBestSize() const
 {
     return doMinSize();
+}
+
+void Widget::onDraw(agtm::Rect<float> const& dirtyRect)
+{
+}
+
+void Widget::onBounds(agtm::Rect<float> const& bounds)
+{
 }
 
 } // namespace

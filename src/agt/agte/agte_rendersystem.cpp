@@ -177,7 +177,7 @@ RenderSystem::RenderSystem(std::shared_ptr<agte::Platform> platform, int updateP
 : agte::System(updatePriority)
 {
     m_componentSet.set(agte::ComponentPool<agtc::TransformComponent>::type());
-    m_componentSet.set(agte::ComponentPool<agtc::Visual2dComponent>::type());
+    //m_componentSet.set(agte::ComponentPool<agtc::Visual2dComponent>::type());
 
     glGenBuffers(1, &m_vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, m_vertexBuffer);
@@ -213,20 +213,46 @@ RenderSystem::RenderSystem(std::shared_ptr<agte::Platform> platform, int updateP
 RenderSystem::~RenderSystem()
 {}
 
-void RenderSystem::doPreUpdate(agte::Engine::Context& context)
+void RenderSystem::addCamera(SpacePtr space, CameraPtr camera)
+{
+    SpaceCameraMap::iterator it = m_spaceCameraMap.find(space->id());
+    if (it == m_spaceCameraMap.end())
+    {
+        it = m_spaceCameraMap.insert(std::make_pair(space->id(), CameraList())).first;
+    }
+
+    it->second.push_back(camera);
+}
+
+void RenderSystem::removeCamera(SpacePtr space, CameraPtr camera)
+{
+    SpaceCameraMap::iterator it = m_spaceCameraMap.find(space->id());
+    if (it != m_spaceCameraMap.end())
+    {
+        CameraList::iterator camIter, camEnd = it->second.end();
+        for (camIter = it->second.begin(); camIter != camEnd; ++camIter)
+        {
+            if ((*camIter)->id() == camera->id())
+            {
+                it->second.erase(camIter);
+                break;
+            }
+        }
+    }
+}
+
+void RenderSystem::addTransformComponents(SpacePtr space, TransformComponentManagerPtr components)
 {
 }
 
+void RenderSystem::doPreUpdate(agte::Engine::Context& context)
+{
+}
 
 void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context& context)
 {
     std::cout << "RenderSystem::doUpdate" << std::endl;
 
-    std::shared_ptr<agtg::RenderingContext> renderingContext = context.platform()->glView()->renderingContext();
-
-    renderingContext->preRender();
-
-    
     // get the camera for the space
     SpaceCameraMap::iterator spaceCameraIter = m_spaceCameraMap.find(space->id());
     if (spaceCameraIter == m_spaceCameraMap.end())
@@ -235,21 +261,32 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
         return;
     }
 
-    CameraPtr camera = spaceCameraIter->second;
+    // update all the cameras
+    CameraList::iterator cameraIter, cameraEnd = spaceCameraIter->second.end();
+    for (cameraIter = spaceCameraIter->second.begin(); cameraIter != cameraEnd; ++cameraIter)
+    {
+        (*cameraIter)->update();
+    }
 
     // get list of entities with visual and transform components
     Space::EntityView entityView = space->getEntitiesForComponents(m_componentSet);
     
     // sort entities by visual component material
 
-    // set the viewport from the camera
-    agtm::Rect<float> const& rect = camera->viewport();
-    glViewport(rect.x(), rect.y(), rect.width(), rect.height());
+    for (cameraIter = spaceCameraIter->second.begin(); cameraIter != cameraEnd; ++cameraIter)
+    {
+        std::shared_ptr<agtg::RenderingContext> renderingContext = context.platform()->glView()->renderingContext();
+        renderingContext->preRender();
 
-    // for each entity, get its transform and visual compoonents
-    render(*renderingContext, camera, entityView);
+        // set the viewport from the camera
+        agtm::Rect<float> const& rect = (*cameraIter)->viewport();
+        glViewport(rect.x(), rect.y(), rect.width(), rect.height());
 
-    renderingContext->postRender();
+        // for each entity, get its transform and visual compoonents
+        render(*renderingContext, *cameraIter, entityView);
+
+        renderingContext->postRender();
+    }
 }
 
 void RenderSystem::doPostUpdate(agte::Engine::Context& context)

@@ -100,6 +100,7 @@ void GLView::addChild(GLView::WidgetPtr widget)
 void GLView::setSizer(GLView::SizerPtr sizer)
 {
     m_sizer = sizer;
+    m_sizer->size(bounds().size());
 }
 
 void GLView::onResize(agtm::Rect<float> const& bounds)
@@ -113,6 +114,30 @@ void GLView::onResize(agtm::Rect<float> const& bounds)
 
     // TOOD: verify the size meets the sizer's constraints
     // and reset the GLView size to the constraint
+
+    ResizeHandlers::iterator it, end = m_resizeHandlers.end();
+    for (it = m_resizeHandlers.begin(); it != end; ++it)
+    {
+        it->second(bounds);
+    }
+}
+
+void GLView::onDraw(agtm::Rect<float> const& dirtyRect)
+{
+    if (m_children.size())
+    {
+        Children::iterator it, end = m_children.end();
+        for (it = m_children.begin(); it != end; ++it)
+        {
+            (*it)->draw(dirtyRect);
+        }
+    }
+
+    DrawHandlers::iterator drawIter, drawEnd = m_drawHandlers.end();
+    for (drawIter = m_drawHandlers.begin(); drawIter != drawEnd; ++drawIter)
+    {
+        drawIter->second();
+    }
 }
 
 GLView::ResizeHandlers const& GLView::resizeHandlers() const

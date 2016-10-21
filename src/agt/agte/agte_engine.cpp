@@ -32,7 +32,8 @@ void Engine::Context::flagUpdate()
 {
     std::cout << "flagUpdate" << std::endl;
 
-    if (m_shouldUpdate) {
+    if (m_shouldUpdate)
+    {
         return;
     }
     
@@ -78,7 +79,8 @@ Engine::~Engine()
 void Engine::addSpace(std::string const& id, SpacePtr space)
 {
     SpaceMap::iterator it = m_spaceMap.find(id);
-    if (it != m_spaceMap.end()) {
+    if (it != m_spaceMap.end())
+    {
         // space already exists with this id!
         throw aftu::Exception("Space already exists with id: ") << id;
     }
@@ -97,9 +99,12 @@ void Engine::removeSpace(std::string const& id)
 void Engine::registerSystem(SystemPtr system)
 {
     bool inserted = false;
+
     SystemList::iterator it = m_systems.begin(), end = m_systems.end();
-    while (it != end) {
-        if ((*it)->updatePriority() > system->updatePriority()) {
+    while (it != end)
+    {
+        if ((*it)->updatePriority() > system->updatePriority())
+        {
             m_systems.insert(it, system);
             inserted = true;
         }
@@ -107,7 +112,8 @@ void Engine::registerSystem(SystemPtr system)
         ++it;
     }
 
-    if (!inserted) {
+    if (!inserted)
+    {
         m_systems.push_back(system);
     }
 }
@@ -121,29 +127,27 @@ void Engine::threadFunc()
 {
     actp::ScopedLock<actp::Mutex> lock(m_mutex);
 
-    while (true) {
+    while (true)
+    {
         std::cout << "Engine::threadFunc waiting..." << std::endl;
         m_condition.wait(m_mutex);
         std::cout << "Engine::threadFunc running" << std::endl;
 
-        if (!m_running) {
+        if (!m_running)
+        {
             std::cout << "Engine::threadFunc done" << std::endl;
             break;
         }
 
-        // for each space
-            // for each system
-                // update each system with the space
+        SpaceList::iterator spaceIter, spaceEnd = m_spaces.end();
 
-
-        SpaceList::iterator spaceIter = m_spaces.begin();
-        SpaceList::iterator spaceEnd = m_spaces.end();
-
-        for (; spaceIter != spaceEnd; ++spaceIter) {
+        for (spaceIter = m_spaces.begin(); spaceIter != spaceEnd; ++spaceIter)
+        {
             SystemList::iterator systemIter = m_systems.begin();
             SystemList::iterator systemEnd = m_systems.end();
 
-            for (; systemIter != systemEnd; ++systemIter) {
+            for (; systemIter != systemEnd; ++systemIter)
+            {
                 (*systemIter)->update(*spaceIter, m_context);
             }
         }

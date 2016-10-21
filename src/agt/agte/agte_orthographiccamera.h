@@ -11,11 +11,7 @@ namespace agte {
 class OrthographicCamera : public agte::Camera
 {
 public:
-    OrthographicCamera(float width, float height);
-    
-    OrthographicCamera(agtm::Size2d<float> const& viewport);
-
-    OrthographicCamera(agtm::Rect<float> const& viewport);
+    OrthographicCamera(agte::Camera::SurfacePtr surface);
     
     virtual ~OrthographicCamera();
 
@@ -24,9 +20,8 @@ public:
     void translate(agtm::Vector2<float> const& vec);
 
 protected:
-    virtual void updateProjection(agtm::Matrix4<float>& projection) = 0;
+    virtual void updateProjection(agtm::Matrix4<float>& projection);
 };
-
 
 } // namespace
 
