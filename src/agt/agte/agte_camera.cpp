@@ -1,4 +1,5 @@
 #include <agte_camera.h>
+#include <actp_scopedlock.h>
 
 namespace agte {
 
@@ -8,10 +9,14 @@ Camera::Camera()
 Camera::Camera(SurfacePtr surface)
 : m_id(afth::UUID::v4()),
   m_dirty(true),
+  m_boundsDirty(true),
   m_surface(surface),
   m_projection(agtm::Matrix4<float>::identity()),
   m_view(agtm::Matrix4<float>::identity())
-{}
+{
+    Surface::BoundsChangedCallback cb = std::bind(&Camera::onBoundsChanged, this, std::placeholders::_1);
+    m_surface->boundsChangedCallback(cb);
+}
 
 Camera::~Camera()
 {}
@@ -33,7 +38,7 @@ agtm::Matrix4<float> const& Camera::view()
 
 agtm::Rect<float> Camera::viewport()
 {
-    return m_surface->viewport();
+    return m_bounds;
 }
 
 void Camera::lookAt(agtm::Vector3<float> const& vec)
@@ -52,8 +57,29 @@ void Camera::translate(agtm::Vector3<float> const& vec)
     m_dirty = true;
 }
 
+// Can be called from another thread, so needs protection around
+// dirty bounds rect and bounds dirty flag
+void Camera::onBoundsChanged(agtm::Rect<float> const& bounds)
+{
+    actp::ScopedLock<actp::Mutex> lock(m_boundsMutex);
+    m_dirtyBounds = bounds;
+    m_boundsDirty = true;
+}
+
 void Camera::update()
 {
+    // bounds rect and bounds dirty flag need to be protected since
+    // they can be written to from another thread
+    {
+        actp::ScopedLock<actp::Mutex> lock(m_boundsMutex);
+        if (m_boundsDirty)
+        {
+            m_dirty = true;
+            m_bounds = m_dirtyBounds;
+            m_boundsDirty = false;
+        }
+    }
+
     if (m_dirty)
     {
         updateProjection(m_projection);

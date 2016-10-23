@@ -4,6 +4,7 @@
 #include <agte_surface.h>
 #include <agtm_matrix4.h>
 #include <agtm_rect.h>
+#include <actp_mutex.h>
 #include <afth_uuid.h>
 #include <memory>
 
@@ -44,8 +45,14 @@ protected:
 private:
     Camera();
 
+    void onBoundsChanged(agtm::Rect<float> const& bounds);
+
     afth::UUID m_id;
     SurfacePtr m_surface;
+    actp::Mutex m_boundsMutex;
+    agtm::Rect<float> m_bounds;
+    agtm::Rect<float> m_dirtyBounds;
+    bool m_boundsDirty;
     bool m_dirty;
     agtm::Vector3<float> m_position;
     agtm::Vector3<float> m_direction;

@@ -5,12 +5,15 @@
 #include <agtg_renderingcontext.h>
 #include <agtm_rect.h>
 #include <actp_mutex.h>
+#include <functional>
+
 
 namespace agte {
 
 class Surface : public agtui::Widget
 {
 public:
+    typedef std::function<void (agtm::Rect<float> const&)> BoundsChangedCallback;
     typedef std::shared_ptr<agtg::RenderingContext> RenderingContextPtr;
 
     Surface(RenderingContextPtr renderingContext);
@@ -21,15 +24,16 @@ public:
 
     RenderingContextPtr renderingContext();
 
+    void boundsChangedCallback(BoundsChangedCallback callback);
+
 protected:
     virtual void onDraw(agtm::Rect<float> const& dirtyRect);
 
     virtual void onBounds(agtm::Rect<float> const& bounds);
 
 private:
-    actp::Mutex m_mutex;
     RenderingContextPtr m_renderingContext;
-    agtm::Rect<float> m_viewport;
+    BoundsChangedCallback m_boundsChangedCallback;
 };
 
 } // namespace
