@@ -37,6 +37,10 @@ protected:
 
     virtual void updateProjection(agtm::Matrix4<float>& projection) = 0;
 
+    void dirty(bool value);
+
+    bool dirty() const;
+
 private:
     Camera();
 

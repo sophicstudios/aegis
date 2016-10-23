@@ -306,7 +306,7 @@ void RenderSystem::render(agtg::RenderingContext& renderingContext, CameraPtr ca
 {
     std::cout << "RenderSystem::render" << std::endl;
     
-    glClearColor(0.9f, 0.7f, 0.7f, 1.0f);
+    glClearColor(0.0f, 0.0f, .7f, 1.0f);
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 

@@ -23,11 +23,15 @@ agtm::Matrix4<float> calculateOrthographicProjection(agtm::Rect<float> const& re
         << " b: " << b
         << " ]" << std::endl;
 
-    return agtm::Matrix4<float>(
+    agtm::Matrix4<float> projection(
         2.0f / (r - l), 0.0f,            0.0f,           -((r + l) / (r - l)),
         0.0f,           2.0f / (t - b),  0.0f,           -((t + b) / (t - b)),
         0.0f,           0.0f,           -2.0f / (f - n), -((f + n) / (f - n)),
         0.0f,           0.0f,            0.0f,           1.0f);
+
+    std::cout << "projection: " << projection << std::endl;
+
+    return projection;
 }
 
 } // namespace
