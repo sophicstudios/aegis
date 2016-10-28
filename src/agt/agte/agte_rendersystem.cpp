@@ -1,5 +1,6 @@
 #include <agte_rendersystem.h>
 #include <agte_platform.h>
+#include <agtc_transformcomponent.h>
 #include <agtc_visual2dcomponent.h>
 #include <agtr_image.h>
 #include <agtr_imageloaderpng.h>
@@ -21,10 +22,10 @@ struct Vertex
 };
 
 static const Vertex s_vertices[] = {
-    -8.0f, -8.0f, 0.0f,
-     8.0f, -8.0f, 0.0f,
-    -8.0f,  8.0f, 0.0f,
-     8.0f,  8.0f, 0.0f
+    -1.0f, -1.0f, 0.0f,
+     1.0f, -1.0f, 0.0f,
+    -1.0f,  1.0f, 0.0f,
+     1.0f,  1.0f, 0.0f
 };
 
 bool createShaderProgram(GLuint* program,
@@ -243,6 +244,7 @@ void RenderSystem::removeCamera(SpacePtr space, CameraPtr camera)
 
 void RenderSystem::addTransformComponents(SpacePtr space, TransformComponentManagerPtr components)
 {
+    m_spaceTransformComponentsMap.insert(std::make_pair(space->id(), components));
 }
 
 void RenderSystem::doPreUpdate(agte::Engine::Context& context)
@@ -261,6 +263,13 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
         return;
     }
 
+    // get the transform components for the space
+    SpaceTransformComponentsMap::iterator transformIter = m_spaceTransformComponentsMap.find(space->id());
+    if (transformIter == m_spaceTransformComponentsMap.end())
+    {
+        return;
+    }
+
     // update all the cameras
     CameraList::iterator cameraIter, cameraEnd = spaceCameraIter->second.end();
     for (cameraIter = spaceCameraIter->second.begin(); cameraIter != cameraEnd; ++cameraIter)
@@ -270,7 +279,7 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
 
     // get list of entities with visual and transform components
     Space::EntityView entityView = space->getEntitiesForComponents(m_componentSet);
-    
+
     // sort entities by visual component material
 
     for (cameraIter = spaceCameraIter->second.begin(); cameraIter != cameraEnd; ++cameraIter)
@@ -280,10 +289,42 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
 
         // set the viewport from the camera
         agtm::Rect<float> const& rect = (*cameraIter)->viewport();
+        std::cout << "viewport: " << rect << std::endl;
         glViewport(rect.x(), rect.y(), rect.width(), rect.height());
 
-        // for each entity, get its transform and visual compoonents
-        render(*renderingContext, *cameraIter, entityView);
+        glClearColor(0.0f, 0.0f, .7f, 1.0f);
+
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        glEnable(GL_CULL_FACE);
+        glEnable(GL_BLEND);
+
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+        glUseProgram(m_program);
+
+        // set the view and projection matrices from the camera
+        m_projectionMatrix = (*cameraIter)->projection();
+
+        glUniformMatrix4fv(m_projectionMatrixLoc, 1, GL_FALSE, m_projectionMatrix.arr());
+
+        Space::EntityView::Iterator it = entityView.begin();
+        Space::EntityView::Iterator end = entityView.end();
+        for (; it != end; ++it)
+        {
+            glBindVertexArray(m_vertexArray);
+
+            // for each entity, get its transform and visual compoonents
+            agtc::TransformComponent& transform = transformIter->second->componentForEntity(*it);
+            m_modelViewMatrix = transform.transform() * (*cameraIter)->view();
+
+            std::cout << "modelview:" << m_modelViewMatrix << std::endl;
+            
+            glUniformMatrix4fv(m_modelViewMatrixLoc, 1, GL_FALSE, m_modelViewMatrix.arr());
+            glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+        }
+
+        glUseProgram(0);
 
         renderingContext->postRender();
     }
@@ -291,54 +332,6 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
 
 void RenderSystem::doPostUpdate(agte::Engine::Context& context)
 {
-}
-
-// get the list of renderable entities
-// sort by render states (should this already be sorted?)
-// for each render state
-    // set the render state
-    // for each entity in the render state
-        // get the entity transform
-        // get the entity renderable
-        // apply the transform
-        // draw the renderable
-void RenderSystem::render(agtg::RenderingContext& renderingContext, CameraPtr camera, Space::EntityView const& entities)
-{
-    std::cout << "RenderSystem::render" << std::endl;
-    
-    glClearColor(0.0f, 0.0f, .7f, 1.0f);
-
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    glEnable(GL_CULL_FACE);
-    glEnable(GL_BLEND);
-
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-    glUseProgram(m_program);
-
-    glUniformMatrix4fv(m_projectionMatrixLoc, 1, GL_FALSE, m_projectionMatrix.arr());
-
-    Space::EntityView::Iterator it = entities.begin();
-    Space::EntityView::Iterator end = entities.end();
-
-    agtm::Matrix4<float> viewMatrix = camera->view();
-    agtm::Matrix4<float> projMatrix = camera->projection();
-    agtm::Matrix4<float> modelViewMatrix;
-
-    // set the view and projection matrices from the camera
-    m_modelViewMatrix = camera->view();
-    m_projectionMatrix = camera->projection();
-
-    for (; it != end; ++it)
-    {
-        glBindVertexArray(m_vertexArray);
-
-        glUniformMatrix4fv(m_modelViewMatrixLoc, 1, GL_FALSE, m_modelViewMatrix.arr());
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-    }
-
-    glUseProgram(0);
 }
 
 } // namespace

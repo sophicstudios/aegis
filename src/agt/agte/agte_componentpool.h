@@ -66,7 +66,7 @@ public:
     /**
      *
      */
-     T& componentForEntity(Entity entity) const;
+     T& componentForEntity(Entity entity);
 
 private:
     static const size_t DEFAULT_BATCH_SIZE = 500;
@@ -164,7 +164,7 @@ void ComponentPool<T>::destroyComponent(agte::Entity entity)
 }
 
 template<typename T>
-T& ComponentPool<T>::componentForEntity(agte::Entity entity) const
+T& ComponentPool<T>::componentForEntity(agte::Entity entity)
 {
     size_t componentIndex = m_entityComponentMap[entity.id()];
     if (componentIndex == std::numeric_limits<size_t>::max())

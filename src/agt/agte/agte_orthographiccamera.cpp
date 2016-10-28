@@ -8,26 +8,20 @@ namespace {
 
 agtm::Matrix4<float> calculateOrthographicProjection(agtm::Rect<float> const& rect)
 {
-    // set up orthographic projection
-    float l = rect.x();
-    float r = rect.x() + rect.width();
-    float b = rect.y();
-    float t = rect.y() + rect.height();
-    float n = -1.0f;
-    float f = 1.0f;
-
-    std::cout << "updateProjectionMatrix: ["
-        << " l: " << l
-        << " r: " << r
-        << " t: " << t
-        << " b: " << b
-        << " ]" << std::endl;
+    std::cout << "rect: " << rect << std::endl;
+    
+    float left = rect.x();
+    float right = left + rect.width();
+    float top = rect.y();
+    float bottom = top + rect.height();
+    // float near = -1.0f;
+    // float far = 1.0f;
 
     agtm::Matrix4<float> projection(
-        2.0f / (r - l), 0.0f,            0.0f,           -((r + l) / (r - l)),
-        0.0f,           2.0f / (t - b),  0.0f,           -((t + b) / (t - b)),
-        0.0f,           0.0f,           -2.0f / (f - n), -((f + n) / (f - n)),
-        0.0f,           0.0f,            0.0f,           1.0f);
+        2.0f / (right - left), 0.0f,                  0.0f, 0.0f,
+        0.0f,                  2.0 / (bottom - top),  0.0f, 0.0f,
+        0.0f,                  0.0f,                 -1.0f, 0.0,
+        0.0f,                  0.0f,                  0.0f, 1.0f);
 
     std::cout << "projection: " << projection << std::endl;
 

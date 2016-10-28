@@ -46,8 +46,6 @@ protected:
     virtual void doPostUpdate(agte::Engine::Context& context);
 
 private:
-    void render(agtg::RenderingContext& renderingContext, CameraPtr camera, Space::EntityView const& entities);
-
     typedef std::vector<CameraPtr> CameraList;
     typedef std::map<afth::UUID, CameraList> SpaceCameraMap;
     typedef std::map<afth::UUID, TransformComponentManagerPtr> SpaceTransformComponentsMap;

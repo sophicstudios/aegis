@@ -15,15 +15,11 @@ public:
 
     agtm::Matrix4<float> const& transform() const;
 
-    TransformComponent& x(float x);
-
-    TransformComponent& y(float y);
-
-    TransformComponent& z(float z);
-
     TransformComponent& transform(agtm::Matrix4<float> const& mat);
 
     TransformComponent& translate(agtm::Vector3<float> const& vec);
+
+    TransformComponent& scale(agtm::Vector3<float> const& scale);
 
 private:
     agtm::Matrix4<float> m_transform;
