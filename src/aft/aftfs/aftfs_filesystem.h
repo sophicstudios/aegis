@@ -9,7 +9,7 @@
 
 namespace aftfs {
 
-class Filesystem
+class FileSystem
 {
 public:
     typedef std::shared_ptr<aftfs::DirectoryEntry> DirectoryEntryPtr;
@@ -23,9 +23,9 @@ public:
         Status_UNKNOWN
     };
     
-    Filesystem();
+    FileSystem();
 
-    virtual ~Filesystem();
+    virtual ~FileSystem();
     
     virtual aftu::URL getCurrentDirectory(Status* status = NULL) = 0;
     

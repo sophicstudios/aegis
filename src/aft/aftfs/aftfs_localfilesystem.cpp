@@ -96,35 +96,35 @@ std::string getCWD(long name_max)
 
 } // namespace
 
-struct LocalFilesystem::Impl
+struct LocalFileSystem::Impl
 {
 };
 
-LocalFilesystem::LocalFilesystem()
-: m_impl(new LocalFilesystem::Impl())
+LocalFileSystem::LocalFileSystem()
+: m_impl(new LocalFileSystem::Impl())
 {
 }
 
-LocalFilesystem::~LocalFilesystem()
+LocalFileSystem::~LocalFileSystem()
 {
     delete m_impl;
 }
 
-aftu::URL LocalFilesystem::getCurrentDirectory(Filesystem::Status* status)
+aftu::URL LocalFileSystem::getCurrentDirectory(FileSystem::Status* status)
 {
     long name_max = getPathMaxLength(".");
     std::string dir = getCWD(name_max);
     return aftu::URL(std::string("file://") + dir);
 }
 
-Filesystem::Status LocalFilesystem::setCurrentDirectory(aftu::URL const& url)
+FileSystem::Status LocalFileSystem::setCurrentDirectory(aftu::URL const& url)
 {
     std::string path = url.path();
     int result = chdir(path.c_str());
-    return result == 0 ? Filesystem::Status_OK : Filesystem::Status_ERROR;
+    return result == 0 ? FileSystem::Status_OK : FileSystem::Status_ERROR;
 }
 
-Filesystem::Status LocalFilesystem::listCurrentDirectory(std::vector<aftu::URL>& results)
+FileSystem::Status LocalFileSystem::listCurrentDirectory(std::vector<aftu::URL>& results)
 {
     long name_max = getPathMaxLength(".");
 
@@ -146,7 +146,7 @@ Filesystem::Status LocalFilesystem::listCurrentDirectory(std::vector<aftu::URL>&
     DIR* dir = opendir(currentDirectory.c_str());
     if (!dir)
     {
-        return Filesystem::Status_DIRECTORY_NOT_FOUND;
+        return FileSystem::Status_DIRECTORY_NOT_FOUND;
     }
 
     struct dirent* entry = (struct dirent*)malloc(len);
@@ -164,15 +164,15 @@ Filesystem::Status LocalFilesystem::listCurrentDirectory(std::vector<aftu::URL>&
     
     if (result != 0)
     {
-        return Filesystem::Status_ERROR;
+        return FileSystem::Status_ERROR;
     }
     
     free(entry);
     
-    return Filesystem::Status_OK;
+    return FileSystem::Status_OK;
 }
 
-Filesystem::Status LocalFilesystem::listDirectory(std::vector<aftu::URL>& results, aftu::URL const& url)
+FileSystem::Status LocalFileSystem::listDirectory(std::vector<aftu::URL>& results, aftu::URL const& url)
 {
     DIR* dir = NULL;
     struct dirent* entry = NULL;
@@ -183,7 +183,7 @@ Filesystem::Status LocalFilesystem::listDirectory(std::vector<aftu::URL>& result
 
     if (!dir)
     {
-        return Filesystem::Status_DIRECTORY_NOT_FOUND;
+        return FileSystem::Status_DIRECTORY_NOT_FOUND;
     }
 
     long name_max = getPathMaxLength(path);
@@ -199,15 +199,15 @@ Filesystem::Status LocalFilesystem::listDirectory(std::vector<aftu::URL>& result
     
     if (result != 0)
     {
-        return Filesystem::Status_ERROR;
+        return FileSystem::Status_ERROR;
     }
     
     free(entry);
     
-    return Filesystem::Status_OK;
+    return FileSystem::Status_OK;
 }
 
-Filesystem::DirectoryEntryPtr LocalFilesystem::directoryEntry(aftu::URL const& url, Filesystem::Status* status)
+FileSystem::DirectoryEntryPtr LocalFileSystem::directoryEntry(aftu::URL const& url, FileSystem::Status* status)
 {
     std::string path = url.path();
 
@@ -221,10 +221,10 @@ Filesystem::DirectoryEntryPtr LocalFilesystem::directoryEntry(aftu::URL const& u
     
     stat(path.c_str(), &info);
 
-    return Filesystem::DirectoryEntryPtr(new PosixDirectoryEntry(url, info));
+    return FileSystem::DirectoryEntryPtr(new PosixDirectoryEntry(url, info));
 }
 
-Filesystem::FileReaderPtr LocalFilesystem::openFileReader(aftu::URL const& url, Filesystem::Status* status)
+FileSystem::FileReaderPtr LocalFileSystem::openFileReader(aftu::URL const& url, FileSystem::Status* status)
 {
     std::string path = url.path();
     FILE* fileHandle = fopen(path.c_str(), "r");
@@ -233,13 +233,13 @@ Filesystem::FileReaderPtr LocalFilesystem::openFileReader(aftu::URL const& url, 
     {
         if (status)
         {
-            *status = Filesystem::Status_FILE_NOT_FOUND;
+            *status = FileSystem::Status_FILE_NOT_FOUND;
         }
 
-        return Filesystem::FileReaderPtr();
+        return FileSystem::FileReaderPtr();
     }
     
-    return Filesystem::FileReaderPtr(new PosixFileReader(fileHandle));
+    return FileSystem::FileReaderPtr(new PosixFileReader(fileHandle));
 }
 
 PosixDirectoryEntry::PosixDirectoryEntry(aftu::URL const& url, struct stat const& info)

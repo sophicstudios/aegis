@@ -10,7 +10,7 @@ namespace agte {
 class Platform
 {
 public:
-    typedef std::shared_ptr<aftfs::Filesystem> FilesystemPtr;
+    typedef std::shared_ptr<aftfs::FileSystem> FilesystemPtr;
     typedef std::shared_ptr<agtui::GLView> GLViewPtr;
 
     Platform(FilesystemPtr filesystem, GLViewPtr glView);

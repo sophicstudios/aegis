@@ -2,10 +2,10 @@
 
 namespace aftfs {
 
-Filesystem::Filesystem()
+FileSystem::FileSystem()
 {}
 
-Filesystem::~Filesystem()
+FileSystem::~FileSystem()
 {}
 
 } // namespace

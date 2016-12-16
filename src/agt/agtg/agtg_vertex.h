@@ -14,7 +14,7 @@ public:
     Vertex(agtm::Vector3<T> const& coordinates);
     
     Vertex(
-        agtm::Vector2<T> const& coordinates,
+        agtm::Vector3<T> const& coordinates,
         agtg::ColorRGBA<T> const& color);
 
     Vertex(Vertex<T> const& rhs);
@@ -23,7 +23,7 @@ public:
     
     Vertex& operator=(Vertex<T> const& rhs);
     
-    agtm::Vector3<T> coordinates() const;
+    agtm::Vector3<T> const& coordinates() const;
     
 private:
     agtm::Vector3<T> m_coordinates;
@@ -34,6 +34,47 @@ private:
     //bool m_hasTextureCoordinates;
     bool m_hasColor;
 };
+
+template<typename T>
+Vertex<T>::Vertex(agtm::Vector3<T> const& coordinates)
+: m_coordinates(coordinates)
+{
+}
+
+template<typename T>
+Vertex<T>::Vertex(agtm::Vector3<T> const& coordinates,
+                  agtg::ColorRGBA<T> const& color)
+: m_coordinates(coordinates),
+  m_color(color)
+{
+}
+
+template<typename T>
+Vertex<T>::Vertex(Vertex<T> const& rhs)
+: m_coordinates(rhs.m_coordinates),
+  m_color(rhs.m_color)
+
+{
+}
+
+template<typename T>
+Vertex<T>::~Vertex()
+{
+}
+
+template<typename T>
+Vertex<T>& Vertex<T>::operator=(Vertex<T> const& rhs)
+{
+    m_coordinates = rhs.m_coordinates;
+    m_color = rhs.m_color;
+    return *this;
+}
+
+template<typename T>
+agtm::Vector3<T> const& Vertex<T>::coordinates() const
+{
+    return m_coordinates;
+}
 
 } // namespace
 

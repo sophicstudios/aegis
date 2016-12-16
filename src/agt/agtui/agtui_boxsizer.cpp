@@ -119,7 +119,7 @@ void BoxSizer::doSize(agtm::Size2d<float> const& size)
     float totalMinorSize = getSizeInMinorDirection(size);
     float totalProp = 0.0f;
     float minMajorSize = getSizeInMajorDirection(minSize);
-    float minMinorSize = getSizeInMinorDirection(minSize);
+    //float minMinorSize = getSizeInMinorDirection(minSize);
 
     float remaining = totalMajorSize;
 
@@ -177,8 +177,8 @@ void BoxSizer::doSize(agtm::Size2d<float> const& size)
 
 agtm::Size2d<float> BoxSizer::doMinSize() const
 {
-    float width = -1;
-    float height = -1;
+    //float width = -1;
+    //float height = -1;
     float minorSize = 0;
     float majorSize = 0;
     float largestMinSizeToProp = 0;

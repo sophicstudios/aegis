@@ -13,11 +13,11 @@ Describe d("aftfs_localfilesystem", []
 {
     it("List Directory", [&]
     {
-        LocalFilesystem filesystem;
+        LocalFileSystem fileSystem;
 
         std::vector<aftu::URL> entries;
 
-        filesystem.listCurrentDirectory(entries);
+        fileSystem.listCurrentDirectory(entries);
     });
 });
 

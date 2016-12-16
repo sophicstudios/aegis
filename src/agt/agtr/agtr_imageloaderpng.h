@@ -18,7 +18,7 @@ public:
     
     ~ImageLoaderPNG();
     
-    ImagePtr load(aftfs::Filesystem& filesystem, aftu::URL const& url);
+    ImagePtr load(aftfs::FileSystem& fileSystem, aftu::URL const& url);
 };
 
 } // namespace

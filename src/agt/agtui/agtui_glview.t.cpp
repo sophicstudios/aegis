@@ -14,7 +14,7 @@ public:
     DummyView()
     {}
 
-    virtual DummyView()
+    virtual ~DummyView()
     {}
 
     virtual void show()
@@ -28,7 +28,7 @@ public:
         return agtm::Rect<float>::fromXYWidthHeight(0.0f, 0.0f, 1.0f, 1.0f);
     }
 
-    agtui::Window::ResizeHandlers const& getResizeHandlers() const
+    agtui::GLView::ResizeHandlers const& getResizeHandlers() const
     {
         return resizeHandlers();
     }

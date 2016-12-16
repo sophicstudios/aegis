@@ -128,10 +128,10 @@ ImageLoaderPNG::ImageLoaderPNG()
 ImageLoaderPNG::~ImageLoaderPNG()
 {}
 
-ImageLoaderPNG::ImagePtr ImageLoaderPNG::load(aftfs::Filesystem& filesystem, aftu::URL const& url)
+ImageLoaderPNG::ImagePtr ImageLoaderPNG::load(aftfs::FileSystem& fileSystem, aftu::URL const& url)
 {
-    aftfs::Filesystem::DirectoryEntryPtr entry = filesystem.directoryEntry(url);
-    aftfs::Filesystem::FileReaderPtr fileReader = filesystem.openFileReader(url);
+    aftfs::FileSystem::DirectoryEntryPtr entry = fileSystem.directoryEntry(url);
+    aftfs::FileSystem::FileReaderPtr fileReader = fileSystem.openFileReader(url);
 
     char* buffer = new char[entry->size()];
     size_t bytesRead = 0;
