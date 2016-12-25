@@ -7,14 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63098A3A1E04CE9600CF638D /* actp_condition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86AA17A933CA0042C241 /* actp_condition.cpp */; };
+		63098A3B1E04CE9600CF638D /* actp_mutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86AE17A933CA0042C241 /* actp_mutex.cpp */; };
+		63098A3C1E04CE9600CF638D /* actp_semaphore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86B917A933CA0042C241 /* actp_semaphore.cpp */; };
+		63098A3D1E04CE9600CF638D /* actp_thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86BB17A933CA0042C241 /* actp_thread.cpp */; };
+		63098A3E1E04CE9600CF638D /* actp_threadattributes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86BD17A933CA0042C241 /* actp_threadattributes.cpp */; };
+		63098A3F1E04CE9600CF638D /* actp_threadutil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86BF17A933CA0042C241 /* actp_threadutil.cpp */; };
+		63098A401E04CE9600CF638D /* acts_platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3B86E417A933FC0042C241 /* acts_platform.cpp */; };
+		63098A411E04CEB200CF638D /* actp_condition.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86AB17A933CA0042C241 /* actp_condition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		63098A421E04CEB200CF638D /* actp_mutex.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86AF17A933CA0042C241 /* actp_mutex.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		63098A431E04CEB200CF638D /* actp_scopedlock.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86B817A933CA0042C241 /* actp_scopedlock.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		63098A441E04CEB200CF638D /* actp_semaphore.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86BA17A933CA0042C241 /* actp_semaphore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		63098A451E04CEB200CF638D /* actp_thread.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86BC17A933CA0042C241 /* actp_thread.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		63098A461E04CEB200CF638D /* actp_threadattributes.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86BE17A933CA0042C241 /* actp_threadattributes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		63098A471E04CEB200CF638D /* actp_threadutil.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86C017A933CA0042C241 /* actp_threadutil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		63098A481E04CEB200CF638D /* acts_platform.h in Headers */ = {isa = PBXBuildFile; fileRef = FA3B86E517A933FC0042C241 /* acts_platform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		636A9C891DC1513300F49E12 /* agta_mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 636A9C871DC1513300F49E12 /* agta_mesh.cpp */; };
 		636A9C8A1DC1513300F49E12 /* agta_mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 636A9C871DC1513300F49E12 /* agta_mesh.cpp */; };
 		636A9C8B1DC1513300F49E12 /* agta_mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 636A9C881DC1513300F49E12 /* agta_mesh.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		636A9C8C1DC1513300F49E12 /* agta_mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 636A9C881DC1513300F49E12 /* agta_mesh.h */; };
+		636A9C8C1DC1513300F49E12 /* agta_mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 636A9C881DC1513300F49E12 /* agta_mesh.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		636A9C8F1DC3D7C300F49E12 /* agtg_shaderprogram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 636A9C8D1DC3D7C300F49E12 /* agtg_shaderprogram.cpp */; };
 		636A9C901DC3D7C300F49E12 /* agtg_shaderprogram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 636A9C8D1DC3D7C300F49E12 /* agtg_shaderprogram.cpp */; };
 		636A9C911DC3D7C300F49E12 /* agtg_shaderprogram.h in Headers */ = {isa = PBXBuildFile; fileRef = 636A9C8E1DC3D7C300F49E12 /* agtg_shaderprogram.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		636A9C921DC3D7C300F49E12 /* agtg_shaderprogram.h in Headers */ = {isa = PBXBuildFile; fileRef = 636A9C8E1DC3D7C300F49E12 /* agtg_shaderprogram.h */; };
+		636A9C921DC3D7C300F49E12 /* agtg_shaderprogram.h in Headers */ = {isa = PBXBuildFile; fileRef = 636A9C8E1DC3D7C300F49E12 /* agtg_shaderprogram.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA0E03A11ACEEE2400386511 /* agta_sprite2dmaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA0E039F1ACEEE2400386511 /* agta_sprite2dmaterial.cpp */; };
 		FA0E03A21ACEEE2400386511 /* agta_sprite2dmaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA0E039F1ACEEE2400386511 /* agta_sprite2dmaterial.cpp */; };
 		FA0E03A31ACEEE2400386511 /* agta_sprite2dmaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = FA0E03A01ACEEE2400386511 /* agta_sprite2dmaterial.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -204,7 +219,7 @@
 		FA4779381B1BA90000F205D4 /* agtui_boxsizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4779361B1BA90000F205D4 /* agtui_boxsizer.cpp */; };
 		FA4779391B1BA90000F205D4 /* agtui_boxsizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4779361B1BA90000F205D4 /* agtui_boxsizer.cpp */; };
 		FA47793A1B1BA90000F205D4 /* agtui_boxsizer.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4779371B1BA90000F205D4 /* agtui_boxsizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA47793B1B1BA90000F205D4 /* agtui_boxsizer.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4779371B1BA90000F205D4 /* agtui_boxsizer.h */; };
+		FA47793B1B1BA90000F205D4 /* agtui_boxsizer.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4779371B1BA90000F205D4 /* agtui_boxsizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA4C5FB71AF54D7500BD4B55 /* agtui_glview.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4C5FB51AF54D7500BD4B55 /* agtui_glview.cpp */; };
 		FA4C5FB81AF54D7500BD4B55 /* agtui_glview.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4C5FB51AF54D7500BD4B55 /* agtui_glview.cpp */; };
 		FA4C5FB91AF54D7500BD4B55 /* agtui_glview.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4C5FB61AF54D7500BD4B55 /* agtui_glview.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -213,7 +228,6 @@
 		FA4C5FC41AFE827900BD4B55 /* agte_eventsystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4C5FC11AFE827900BD4B55 /* agte_eventsystem.cpp */; };
 		FA4C5FC51AFE827900BD4B55 /* agte_eventsystem.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4C5FC21AFE827900BD4B55 /* agte_eventsystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA4C5FC61AFE827900BD4B55 /* agte_eventsystem.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4C5FC21AFE827900BD4B55 /* agte_eventsystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA4C5FC81B08210D00BD4B55 /* agtui_glview.t.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4C5FC71B08210D00BD4B55 /* agtui_glview.t.cpp */; };
 		FA4C5FCB1B100DD300BD4B55 /* afth_uuid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4C5FC91B100DD200BD4B55 /* afth_uuid.cpp */; };
 		FA4C5FCC1B100DD300BD4B55 /* afth_uuid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA4C5FC91B100DD200BD4B55 /* afth_uuid.cpp */; };
 		FA4C5FCD1B100DD300BD4B55 /* afth_uuid.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4C5FCA1B100DD200BD4B55 /* afth_uuid.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -501,7 +515,7 @@
 		FAF8FDF81D7DD4FD006D9ED6 /* agte_surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF8FDF61D7DD4FD006D9ED6 /* agte_surface.cpp */; };
 		FAF8FDF91D7DD4FD006D9ED6 /* agte_surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF8FDF61D7DD4FD006D9ED6 /* agte_surface.cpp */; };
 		FAF8FDFA1D7DD4FD006D9ED6 /* agte_surface.h in Headers */ = {isa = PBXBuildFile; fileRef = FAF8FDF71D7DD4FD006D9ED6 /* agte_surface.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FAF8FDFB1D7DD4FD006D9ED6 /* agte_surface.h in Headers */ = {isa = PBXBuildFile; fileRef = FAF8FDF71D7DD4FD006D9ED6 /* agte_surface.h */; };
+		FAF8FDFB1D7DD4FD006D9ED6 /* agte_surface.h in Headers */ = {isa = PBXBuildFile; fileRef = FAF8FDF71D7DD4FD006D9ED6 /* agte_surface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAFB3A4C17B338F6002510F9 /* aftfs_localfilesystem.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFB3A4B17B338F1002510F9 /* aftfs_localfilesystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAFB3A4D17B338F6002510F9 /* aftfs_localfilesystem.h in Headers */ = {isa = PBXBuildFile; fileRef = FAFB3A4B17B338F1002510F9 /* aftfs_localfilesystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAFB3A4F17B33A08002510F9 /* aftfs_localfilesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAFB3A4E17B33A05002510F9 /* aftfs_localfilesystem.cpp */; };
@@ -516,6 +530,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		63098A491E04CEC300CF638D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA833E1715A7501D0044283D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA875BC915E099D800C5E50B;
+			remoteInfo = "aft-ios";
+		};
 		FA2318D2178DD58A0050DE3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA833E1715A7501D0044283D /* Project object */;
@@ -626,6 +647,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		63098A391E04CE5200CF638D /* libact-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libact-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		636A9C871DC1513300F49E12 /* agta_mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_mesh.cpp; path = ../../../src/agt/agta/agta_mesh.cpp; sourceTree = "<group>"; };
 		636A9C881DC1513300F49E12 /* agta_mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_mesh.h; path = ../../../src/agt/agta/agta_mesh.h; sourceTree = "<group>"; };
 		636A9C8D1DC3D7C300F49E12 /* agtg_shaderprogram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtg_shaderprogram.cpp; path = ../../../src/agt/agtg/agtg_shaderprogram.cpp; sourceTree = "<group>"; };
@@ -678,7 +700,6 @@
 		FA4C5FB61AF54D7500BD4B55 /* agtui_glview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtui_glview.h; path = ../../../src/agt/agtui/agtui_glview.h; sourceTree = "<group>"; };
 		FA4C5FC11AFE827900BD4B55 /* agte_eventsystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agte_eventsystem.cpp; path = ../../../src/agt/agte/agte_eventsystem.cpp; sourceTree = "<group>"; };
 		FA4C5FC21AFE827900BD4B55 /* agte_eventsystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agte_eventsystem.h; path = ../../../src/agt/agte/agte_eventsystem.h; sourceTree = "<group>"; };
-		FA4C5FC71B08210D00BD4B55 /* agtui_glview.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtui_glview.t.cpp; path = ../../../src/agt/agtui/agtui_glview.t.cpp; sourceTree = "<group>"; };
 		FA4C5FC91B100DD200BD4B55 /* afth_uuid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = afth_uuid.cpp; path = ../../../src/aft/afth/afth_uuid.cpp; sourceTree = "<group>"; };
 		FA4C5FCA1B100DD200BD4B55 /* afth_uuid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = afth_uuid.h; path = ../../../src/aft/afth/afth_uuid.h; sourceTree = "<group>"; };
 		FA4C5FCF1B10247400BD4B55 /* afth_uuid.t.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = afth_uuid.t.cpp; path = ../../../src/aft/afth/afth_uuid.t.cpp; sourceTree = "<group>"; };
@@ -926,6 +947,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		630989F31E04CE5200CF638D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA231861178DD1CD0050DE3A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1090,7 +1118,6 @@
 				FAFD77CD189D466300734186 /* agtui_widget.h */,
 				FA4C5FB51AF54D7500BD4B55 /* agtui_glview.cpp */,
 				FA4C5FB61AF54D7500BD4B55 /* agtui_glview.h */,
-				FA4C5FC71B08210D00BD4B55 /* agtui_glview.t.cpp */,
 			);
 			name = agtui;
 			sourceTree = "<group>";
@@ -1116,6 +1143,7 @@
 				FA2318A9178DD1CD0050DE3A /* libagt-ios.a */,
 				FA3B86A717A9333C0042C241 /* libact-macosx.a */,
 				FA9795981D9FFFF800094B1B /* test_act-macosx */,
+				63098A391E04CE5200CF638D /* libact-ios.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1554,32 +1582,43 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		630989F41E04CE5200CF638D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63098A411E04CEB200CF638D /* actp_condition.h in Headers */,
+				63098A421E04CEB200CF638D /* actp_mutex.h in Headers */,
+				63098A431E04CEB200CF638D /* actp_scopedlock.h in Headers */,
+				63098A441E04CEB200CF638D /* actp_semaphore.h in Headers */,
+				63098A451E04CEB200CF638D /* actp_thread.h in Headers */,
+				63098A461E04CEB200CF638D /* actp_threadattributes.h in Headers */,
+				63098A471E04CEB200CF638D /* actp_threadutil.h in Headers */,
+				63098A481E04CEB200CF638D /* acts_platform.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA231862178DD1CD0050DE3A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				FA2318B3178DD3B00050DE3A /* agtg_colorrgba.h in Headers */,
-				FAF8FDFB1D7DD4FD006D9ED6 /* agte_surface.h in Headers */,
 				FA2318B5178DD3B90050DE3A /* agtg_renderingcontext.h in Headers */,
 				FA2318B6178DD3BD0050DE3A /* agtg_texture.h in Headers */,
 				FA2318B7178DD3C10050DE3A /* agtg_vertex.h in Headers */,
 				FA2318C1178DD40D0050DE3A /* agtm_matrix2.h in Headers */,
 				FA2318C2178DD4130050DE3A /* agtm_matrix3.h in Headers */,
-				636A9C8C1DC1513300F49E12 /* agta_mesh.h in Headers */,
 				FA2318C3178DD4170050DE3A /* agtm_matrix4.h in Headers */,
 				FA2318C4178DD41C0050DE3A /* agtm_matrixutil.h in Headers */,
 				FA2318C5178DD4210050DE3A /* agtm_point2d.h in Headers */,
 				FA2318C6178DD4280050DE3A /* agtm_point3d.h in Headers */,
 				FA2318C7178DD42D0050DE3A /* agtm_quaternion.h in Headers */,
 				FA2318C8178DD4310050DE3A /* agtm_rect.h in Headers */,
-				636A9C921DC3D7C300F49E12 /* agtg_shaderprogram.h in Headers */,
 				FA2318C9178DD4380050DE3A /* agtm_size2d.h in Headers */,
 				FA2318CA178DD43C0050DE3A /* agtm_vector2.h in Headers */,
 				FA2318CB178DD4420050DE3A /* agtm_vector3.h in Headers */,
 				FA2318CC178DD4450050DE3A /* agtm_vector4.h in Headers */,
 				FA2318CD178DD4490050DE3A /* agtm_vectorutil.h in Headers */,
 				FAFD77CC189D419F00734186 /* agtui_sizer.h in Headers */,
-				FA47793B1B1BA90000F205D4 /* agtui_boxsizer.h in Headers */,
 				FAFD77CF189D466300734186 /* agtui_widget.h in Headers */,
 				FA2318E3178E2DDE0050DE3A /* agtui_touchevent.h in Headers */,
 				FAC45A9819EF79C900329DAB /* agtr_imageloaderpng.h in Headers */,
@@ -1598,6 +1637,10 @@
 				FA0E03A41ACEEE2400386511 /* agta_sprite2dmaterial.h in Headers */,
 				FA4C5FBA1AF54D7500BD4B55 /* agtui_glview.h in Headers */,
 				FA14A0AB19E6088C0058A4CA /* agtr_resource.h in Headers */,
+				FAF8FDFB1D7DD4FD006D9ED6 /* agte_surface.h in Headers */,
+				636A9C8C1DC1513300F49E12 /* agta_mesh.h in Headers */,
+				636A9C921DC3D7C300F49E12 /* agtg_shaderprogram.h in Headers */,
+				FA47793B1B1BA90000F205D4 /* agtui_boxsizer.h in Headers */,
 				FA3E4D3E1A2D482400E58703 /* agte_system.h in Headers */,
 				FA4C5FC61AFE827900BD4B55 /* agte_eventsystem.h in Headers */,
 				FA3E4D441A2EAA3100E58703 /* agtc_transformcomponent.h in Headers */,
@@ -1839,6 +1882,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		630989B71E04CE5200CF638D /* act-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63098A361E04CE5200CF638D /* Build configuration list for PBXNativeTarget "act-ios" */;
+			buildPhases = (
+				630989B81E04CE5200CF638D /* Sources */,
+				630989F31E04CE5200CF638D /* Frameworks */,
+				630989F41E04CE5200CF638D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63098A4A1E04CEC300CF638D /* PBXTargetDependency */,
+			);
+			name = "act-ios";
+			productName = "aft-ios";
+			productReference = 63098A391E04CE5200CF638D /* libact-ios.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		FA231825178DD1CD0050DE3A /* agt-ios */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA2318A6178DD1CD0050DE3A /* Build configuration list for PBXNativeTarget "agt-ios" */;
@@ -2027,6 +2088,7 @@
 				FA833E2115A752430044283D /* aft-macosx */,
 				FA875BC915E099D800C5E50B /* aft-ios */,
 				FA3B862317A9333C0042C241 /* act-macosx */,
+				630989B71E04CE5200CF638D /* act-ios */,
 				FAA6CDB115DDB28400F480F0 /* agt-macosx */,
 				FA231825178DD1CD0050DE3A /* agt-ios */,
 				FA833E9615A755A50044283D /* aunit-macosx */,
@@ -2038,6 +2100,20 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		630989B81E04CE5200CF638D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63098A3A1E04CE9600CF638D /* actp_condition.cpp in Sources */,
+				63098A3B1E04CE9600CF638D /* actp_mutex.cpp in Sources */,
+				63098A3C1E04CE9600CF638D /* actp_semaphore.cpp in Sources */,
+				63098A3D1E04CE9600CF638D /* actp_thread.cpp in Sources */,
+				63098A3E1E04CE9600CF638D /* actp_threadattributes.cpp in Sources */,
+				63098A3F1E04CE9600CF638D /* actp_threadutil.cpp in Sources */,
+				63098A401E04CE9600CF638D /* acts_platform.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA231826178DD1CD0050DE3A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2219,7 +2295,6 @@
 			files = (
 				FA875BB115DF1B9800C5E50B /* agtm_matrix2.t.cpp in Sources */,
 				FA875BB215DF1B9800C5E50B /* agtm_matrix4.t.cpp in Sources */,
-				FA4C5FC81B08210D00BD4B55 /* agtui_glview.t.cpp in Sources */,
 				FA875BB315DF1B9800C5E50B /* agtm_quaternion.t.cpp in Sources */,
 				FA875BB415DF1B9800C5E50B /* agtm_vector2.t.cpp in Sources */,
 				FA875BB515DF1B9800C5E50B /* agtm_vector3.t.cpp in Sources */,
@@ -2362,6 +2437,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		63098A4A1E04CEC300CF638D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA875BC915E099D800C5E50B /* aft-ios */;
+			targetProxy = 63098A491E04CEC300CF638D /* PBXContainerItemProxy */;
+		};
 		FA2318D3178DD58A0050DE3A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FA875BC915E099D800C5E50B /* aft-ios */;
@@ -2420,6 +2500,39 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		63098A371E04CE5200CF638D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		63098A381E04CE5200CF638D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		FA2318A7178DD1CD0050DE3A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2645,10 +2758,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -2662,10 +2772,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -2675,10 +2782,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2701,10 +2805,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
 					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
 					/usr/local/include,
@@ -2752,10 +2853,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -2769,10 +2867,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/fizban/development/sdks/boost_1_55_0/osx/framework,
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -2820,6 +2915,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		63098A361E04CE5200CF638D /* Build configuration list for PBXNativeTarget "act-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63098A371E04CE5200CF638D /* Debug */,
+				63098A381E04CE5200CF638D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FA2318A6178DD1CD0050DE3A /* Build configuration list for PBXNativeTarget "agt-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

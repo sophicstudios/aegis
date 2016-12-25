@@ -19,9 +19,11 @@ public:
 
     afth::UUID const& id() const;
 
+    agtg::ShaderProgram& shaderProgram();
+
 private:
     afth::UUID m_id;
-    std::shared_ptr<agtg::ShaderProgram> m_shaderProgram;
+    agtg::ShaderProgram m_shaderProgram;
 };
 
 } // namespace

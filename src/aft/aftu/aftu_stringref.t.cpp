@@ -40,6 +40,15 @@ Describe d("aftu_stringref", []
         expect(emptyref.begin()).toEqual(emptyref.end());
     });
 
+    it("Default Construction (wide)", [&]
+    {
+        StringRef<wchar_t> emptyref;
+
+        expect(emptyref.isEmpty()).toBeTrue();
+        expect(emptyref.size()).toEqual(0);
+        expect(emptyref.begin()).toEqual(emptyref.end());
+    });
+
     it("C string Construction", [&]
     {
         StringRef<char> cstringref(TestStrings<char>::S1);
@@ -48,6 +57,16 @@ Describe d("aftu_stringref", []
         expect(cstringref.size()).toEqual(std::char_traits<char>::length(TestStrings<char>::S1));
         expect(&cstringref.begin()[0]).toEqual(&TestStrings<char>::S1[0]);
         expect(&cstringref.end()[0]).toEqual(&TestStrings<char>::S1[std::char_traits<char>::length(TestStrings<char>::S1)]);
+    });
+
+    it("C string Construction (wide)", [&]
+    {
+        StringRef<wchar_t> cstringref(TestStrings<wchar_t>::S1);
+
+        expect(cstringref.isEmpty()).non().toBeTrue();
+        expect(cstringref.size()).toEqual(std::char_traits<wchar_t>::length(TestStrings<wchar_t>::S1));
+        expect(&cstringref.begin()[0]).toEqual(&TestStrings<wchar_t>::S1[0]);
+        expect(&cstringref.end()[0]).toEqual(&TestStrings<wchar_t>::S1[std::char_traits<wchar_t>::length(TestStrings<wchar_t>::S1)]);
     });
 
     it("basic_string Construction", [&]
@@ -60,6 +79,16 @@ Describe d("aftu_stringref", []
         expect(&(*stlstringref.end())).toEqual(&(*TestStrings<char>::S2.end()));
     });
 
+    it("basic_string Construction (wide)", [&]
+    {
+        StringRef<std::basic_string<wchar_t> > stlstringref(TestStrings<wchar_t>::S2);
+
+        expect(stlstringref.isEmpty()).non().toBeTrue();
+        expect(stlstringref.size()).toEqual(TestStrings<wchar_t>::S2.size());
+        expect(&(*stlstringref.begin())).toEqual(&(*TestStrings<wchar_t>::S2.begin()));
+        expect(&(*stlstringref.end())).toEqual(&(*TestStrings<wchar_t>::S2.end()));
+    });
+
     it("Comparison", [&]
     {
         StringRef<char> cstringref(TestStrings<char>::S1);
@@ -69,6 +98,17 @@ Describe d("aftu_stringref", []
         StringRef<std::basic_string<char> > stlstringref(TestStrings<char>::S2);
 
         expect(stlstringref).toEqual(TestStrings<char>::S2);
+    });
+
+    it("Comparison (wide)", [&]
+    {
+        StringRef<wchar_t> cstringref(TestStrings<wchar_t>::S1);
+
+        expect(cstringref).toEqual(TestStrings<wchar_t>::S1);
+        
+        StringRef<std::basic_string<wchar_t> > stlstringref(TestStrings<wchar_t>::S2);
+
+        expect(stlstringref).toEqual(TestStrings<wchar_t>::S2);
     });
 });
 

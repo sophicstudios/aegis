@@ -50,9 +50,6 @@ RenderSystem::RenderSystem(std::shared_ptr<agte::Platform> platform, int updateP
     //std::shared_ptr<agtr::Image> image = pngLoader.load(filesystem, imageUrl);
 
     //m_texture = std::shared_ptr<agtg::Texture>(new agtg::Texture(image));
-
-    //m_modelViewMatrixLoc = glGetUniformLocation(m_program, "modelViewMatrix");
-    //m_projectionMatrixLoc = glGetUniformLocation(m_program, "projectionMatrix");
 }
 
 RenderSystem::~RenderSystem()
@@ -166,16 +163,13 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        glEnable(GL_CULL_FACE);
+        //glEnable(GL_CULL_FACE);
         glEnable(GL_BLEND);
 
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-        //glUseProgram(m_program);
-
         // set the projection matrix from the camera
         m_projectionMatrix = (*cameraIter)->projection();
-        glUniformMatrix4fv(m_projectionMatrixLoc, 1, GL_FALSE, m_projectionMatrix.arr());
 
         // Loop though material-entity map to iterate through all entities, sorted
         // by material, then draw each entity
@@ -190,22 +184,31 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
             agtc::TransformComponent& transformComponent = transformComponents->componentForEntity(entity);
             m_modelViewMatrix = transformComponent.transform() * (*cameraIter)->view();
 
+            std::cout << "modelViewMatrix: " << m_modelViewMatrix << std::endl;
+            
             agtc::Visual2dComponent& visual2dComponent = visual2dComponents->componentForEntity(entity);
 
             // get the material
             std::shared_ptr<agta::Sprite2dMaterial> material = visual2dComponent.material();
-            if (material->id() != prevMaterialId)
+            if (true || material->id() != prevMaterialId)
             {
+                prevMaterialId = material->id();
+
                 // bind the material if different than the previous
+                agtg::ShaderProgram& program = material->shaderProgram();
+
+                program.bind();
+                program.bindProjectionMatrix(m_projectionMatrix);
+                program.bindModelViewMatrix(m_modelViewMatrix);
             }
 
             // get the mesh and bind the vertex array
-
-            glUniformMatrix4fv(m_modelViewMatrixLoc, 1, GL_FALSE, m_modelViewMatrix.arr());
+            visual2dComponent.mesh()->bind();
 
             glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
         }
 
+        glBindVertexArray(0);
         glUseProgram(0);
 
         renderingContext->postRender();

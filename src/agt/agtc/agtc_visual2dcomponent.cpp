@@ -26,12 +26,23 @@ void Visual2dComponent::mesh(MeshPtr mesh)
     m_mesh = mesh;
 }
 
-MeshPtr Visual2dComponent::mesh() const;
-
-void Visual2dComponent::material(Sprite2dMaterialPtr material);
-
-Sprite2dMaterialPtr Visual2dComponent::material() const;
-
-void Visual2dComponent::draw(agtg::RenderingContext& renderingContext);
-
+Visual2dComponent::MeshPtr Visual2dComponent::mesh() const
+{
+    return m_mesh;
 }
+
+void Visual2dComponent::material(Sprite2dMaterialPtr material)
+{
+    m_material = material;
+}
+
+Visual2dComponent::Sprite2dMaterialPtr Visual2dComponent::material() const
+{
+    return m_material;
+}
+
+void Visual2dComponent::draw(agtg::RenderingContext& renderingContext)
+{
+}
+
+} // namespace

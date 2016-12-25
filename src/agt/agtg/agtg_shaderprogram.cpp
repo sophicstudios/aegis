@@ -51,8 +51,14 @@ bool createShader(std::vector<GLuint>& attachedShaders, std::string const& sourc
 }
 
 ShaderProgram::ShaderProgram()
+: m_modelViewMatrixLoc(-1),
+  m_projectionMatrixLoc(-1)
 {
     m_program = glCreateProgram();
+    if (0 == m_program)
+    {
+        GLenum error = glGetError();
+    }
 }
 
 ShaderProgram::~ShaderProgram()
@@ -73,6 +79,21 @@ bool ShaderProgram::addVertexShader(std::string const& source)
     return createShader(m_attachedShaders, source, GL_VERTEX_SHADER, m_program);
 }
 
+void ShaderProgram::bind()
+{
+    glUseProgram(m_program);
+}
+
+void ShaderProgram::bindProjectionMatrix(agtm::Matrix4<float> const& matrix)
+{
+    glUniformMatrix4fv(m_projectionMatrixLoc, 1, GL_FALSE, matrix.arr());
+}
+
+void ShaderProgram::bindModelViewMatrix(agtm::Matrix4<float> const& matrix)
+{
+    glUniformMatrix4fv(m_modelViewMatrixLoc, 1, GL_FALSE, matrix.arr());
+}
+
 bool ShaderProgram::addFragmentShader(std::string const& source)
 {
     return createShader(m_attachedShaders, source, GL_FRAGMENT_SHADER, m_program);
@@ -85,6 +106,8 @@ void ShaderProgram::bindAttributeLocation(std::string const& name, GLuint locati
 
 bool ShaderProgram::link()
 {
+    bindAttributeLocation("position", 0);
+
     // Link the shader program
     glLinkProgram(m_program);
 
@@ -121,6 +144,11 @@ bool ShaderProgram::link()
 
     m_attachedShaders.clear();
 
+    glUseProgram(m_program);
+
+    m_projectionMatrixLoc = glGetUniformLocation(m_program, "projectionMatrix");
+    m_modelViewMatrixLoc = glGetUniformLocation(m_program, "modelViewMatrix");
+    
     // Shader program is loaded and ready to use!
     return true;
 }

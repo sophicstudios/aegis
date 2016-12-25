@@ -123,7 +123,7 @@ T& ComponentPool<T>::createComponent(agte::Entity entity)
         throw std::exception();
     }
 
-    T& component = m_components[m_count-1];
+    T& component = m_components[m_count];
     m_entityComponentMap[entity.id()] = m_count;
     m_componentEntityMap[m_count] = entity.id();
 
@@ -154,13 +154,15 @@ void ComponentPool<T>::destroyComponent(agte::Entity entity)
     }
 
     // swap the destroyed component with the last active component
-    std::swap(m_components[componentIndex], m_components[m_count - 1]);
-    size_t otherEntityId = m_componentEntityMap[componentIndex] = m_componentEntityMap[m_count - 1];
+    std::swap(m_components[componentIndex], m_components[m_count]);
+    size_t otherEntityId = m_componentEntityMap[componentIndex] = m_componentEntityMap[m_count];
     m_entityComponentMap[otherEntityId] = componentIndex;
 
     // remove the entity/component mappings
     m_entityComponentMap[entity.id()] = std::numeric_limits<size_t>::max();
-    m_componentEntityMap[m_count - 1] = std::numeric_limits<size_t>::max();
+    m_componentEntityMap[m_count] = std::numeric_limits<size_t>::max();
+
+    --m_count;
 }
 
 template<typename T>
