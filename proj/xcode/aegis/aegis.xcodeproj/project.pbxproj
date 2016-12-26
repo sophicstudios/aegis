@@ -614,6 +614,27 @@
 			remoteGlobalIDString = FA3B862317A9333C0042C241;
 			remoteInfo = "act-macosx";
 		};
+		FAB086B61E104FCF00D00462 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA833E1715A7501D0044283D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 630989B71E04CE5200CF638D;
+			remoteInfo = "act-ios";
+		};
+		FAB086B81E104FDC00D00462 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA833E1715A7501D0044283D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA3B862317A9333C0042C241;
+			remoteInfo = "act-macosx";
+		};
+		FAB086BA1E104FEB00D00462 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA833E1715A7501D0044283D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA3B862317A9333C0042C241;
+			remoteInfo = "act-macosx";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1912,6 +1933,7 @@
 			);
 			dependencies = (
 				FA2318D3178DD58A0050DE3A /* PBXTargetDependency */,
+				FAB086B71E104FCF00D00462 /* PBXTargetDependency */,
 			);
 			name = "agt-ios";
 			productName = "aft-ios";
@@ -2000,9 +2022,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				FA875BBD15DF1BB000C5E50B /* PBXTargetDependency */,
-				FA875BBB15DF1BAC00C5E50B /* PBXTargetDependency */,
 				FA875BB915DF1BA800C5E50B /* PBXTargetDependency */,
+				FAB086BB1E104FEB00D00462 /* PBXTargetDependency */,
+				FA875BBB15DF1BAC00C5E50B /* PBXTargetDependency */,
+				FA875BBD15DF1BB000C5E50B /* PBXTargetDependency */,
 			);
 			name = "test_agt-macosx";
 			productName = test_agt;
@@ -2037,8 +2060,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				FA97959A1DA0001B00094B1B /* PBXTargetDependency */,
 				FA97957A1D9FFFF800094B1B /* PBXTargetDependency */,
+				FA97959A1DA0001B00094B1B /* PBXTargetDependency */,
 				FA97957C1D9FFFF800094B1B /* PBXTargetDependency */,
 			);
 			name = "test_act-macosx";
@@ -2058,6 +2081,7 @@
 			);
 			dependencies = (
 				FA875B9A15DF19A200C5E50B /* PBXTargetDependency */,
+				FAB086B91E104FDC00D00462 /* PBXTargetDependency */,
 			);
 			name = "agt-macosx";
 			productName = agt;
@@ -2496,6 +2520,21 @@
 			isa = PBXTargetDependency;
 			target = FA3B862317A9333C0042C241 /* act-macosx */;
 			targetProxy = FA9795991DA0001B00094B1B /* PBXContainerItemProxy */;
+		};
+		FAB086B71E104FCF00D00462 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 630989B71E04CE5200CF638D /* act-ios */;
+			targetProxy = FAB086B61E104FCF00D00462 /* PBXContainerItemProxy */;
+		};
+		FAB086B91E104FDC00D00462 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA3B862317A9333C0042C241 /* act-macosx */;
+			targetProxy = FAB086B81E104FDC00D00462 /* PBXContainerItemProxy */;
+		};
+		FAB086BB1E104FEB00D00462 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA3B862317A9333C0042C241 /* act-macosx */;
+			targetProxy = FAB086BA1E104FEB00D00462 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
