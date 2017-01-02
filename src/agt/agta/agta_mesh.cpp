@@ -2,8 +2,6 @@
 
 namespace agta {
 
-struct Vertex { float position[3]; };
-
 Mesh::Mesh(VertexList const& vertices)
 : m_id(afth::UUID::v4())
 {
@@ -15,18 +13,11 @@ Mesh::Mesh(VertexList const& vertices)
         std::memcpy(arr + i, (*it).coordinates().arr(), 3 * sizeof(float));
     }
 
-    const Vertex s_vertices[] = {
-        -1.0f, -1.0f, 0.0f,
-         1.0f, -1.0f, 0.0f,
-        -1.0f,  1.0f, 0.0f,
-         1.0f,  1.0f, 0.0f
-    };
-
     glGenVertexArrays(1, &m_vertexArray);
     glGenBuffers(1, &m_vertexBuffer);
 
     glBindBuffer(GL_ARRAY_BUFFER, m_vertexBuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(s_vertices), s_vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, size * sizeof(float), arr, GL_STATIC_DRAW);
 
     glBindVertexArray(m_vertexArray);
     glEnableVertexAttribArray(0);
@@ -34,6 +25,8 @@ Mesh::Mesh(VertexList const& vertices)
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
+
+    delete [] arr;
 }
 
 Mesh::Mesh(VertexList const& vertices, IndexList const& indices)

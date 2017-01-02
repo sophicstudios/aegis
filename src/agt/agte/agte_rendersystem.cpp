@@ -169,7 +169,8 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
         // set the projection matrix from the camera
-        m_projectionMatrix = (*cameraIter)->projection();
+        agtm::Matrix4<float> projectionMatrix = (*cameraIter)->projection();
+        agtm::Matrix4<float> viewMatrix = (*cameraIter)->view();
 
         // Loop though material-entity map to iterate through all entities, sorted
         // by material, then draw each entity
@@ -182,25 +183,26 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
 
             // for each entity, get its transform and visual compoonents
             agtc::TransformComponent& transformComponent = transformComponents->componentForEntity(entity);
-            m_modelViewMatrix = transformComponent.transform() * (*cameraIter)->view();
+            agtm::Matrix4<float> modelViewMatrix = transformComponent.transform() * viewMatrix;
 
-            std::cout << "modelViewMatrix: " << m_modelViewMatrix << std::endl;
+            std::cout << "modelViewMatrix: " << modelViewMatrix << std::endl;
             
             agtc::Visual2dComponent& visual2dComponent = visual2dComponents->componentForEntity(entity);
 
             // get the material
             std::shared_ptr<agta::Sprite2dMaterial> material = visual2dComponent.material();
-            if (true || material->id() != prevMaterialId)
+            agtg::ShaderProgram& program = material->shaderProgram();
+
+            if (material->id() != prevMaterialId)
             {
                 prevMaterialId = material->id();
 
-                // bind the material if different than the previous
-                agtg::ShaderProgram& program = material->shaderProgram();
-
+                // bind the material's shader program if different than the previous material
                 program.bind();
-                program.bindProjectionMatrix(m_projectionMatrix);
-                program.bindModelViewMatrix(m_modelViewMatrix);
+                program.bindProjectionMatrix(projectionMatrix);
             }
+
+            program.bindModelViewMatrix(modelViewMatrix);
 
             // get the mesh and bind the vertex array
             visual2dComponent.mesh()->bind();

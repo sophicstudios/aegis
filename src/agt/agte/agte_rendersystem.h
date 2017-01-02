@@ -59,9 +59,6 @@ private:
     SpaceTransformComponentsMap m_spaceTransformComponentsMap;
     SpaceVisual2dComponentsMap m_spaceVisual2dComponentsMap;
     Entity::ComponentSet m_componentSet;
-    agtm::Matrix4<float> m_modelViewMatrix;
-    agtm::Matrix4<float> m_projectionMatrix;
-    std::shared_ptr<agtg::Texture> m_texture;
 };
 
 } // namespace

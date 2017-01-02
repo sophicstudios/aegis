@@ -55,10 +55,6 @@ ShaderProgram::ShaderProgram()
   m_projectionMatrixLoc(-1)
 {
     m_program = glCreateProgram();
-    if (0 == m_program)
-    {
-        GLenum error = glGetError();
-    }
 }
 
 ShaderProgram::~ShaderProgram()
