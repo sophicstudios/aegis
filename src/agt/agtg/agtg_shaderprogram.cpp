@@ -1,7 +1,26 @@
 #include <agtg_shaderprogram.h>
+#include <aftfs_filesystem.h> 
 #include <iostream>
 
 namespace agtg {
+
+std::string loadShaderSource(aftfs::FileSystem& fileSystem, std::string const& path)
+{
+    // Create a url of the shader source file location for use in the Filesystem calls
+    aftu::URL shaderURL(path);
+
+    // Create filesystem entry and reader to read the file contents
+    aftfs::FileSystem::DirectoryEntryPtr entry = fileSystem.directoryEntry(shaderURL);
+    aftfs::FileSystem::FileReaderPtr fileReader = fileSystem.openFileReader(shaderURL);
+
+    // Read the file contents into a character buffer
+    char* buffer = new char[entry->size()];
+    size_t bytesRead = 0;
+    fileReader->read(buffer, entry->size(), &bytesRead);
+    buffer[bytesRead] = 0;
+
+    return std::string(buffer);
+}
 
 bool createShader(std::vector<GLuint>& attachedShaders, std::string const& source, GLenum shaderType, GLuint program)
 {
@@ -75,19 +94,15 @@ bool ShaderProgram::addVertexShader(std::string const& source)
     return createShader(m_attachedShaders, source, GL_VERTEX_SHADER, m_program);
 }
 
-void ShaderProgram::bind()
+bool ShaderProgram::addVertexShader(aftfs::FileSystem &filesystem, const std::string &path)
 {
-    glUseProgram(m_program);
-}
+    std::string source = loadShaderSource(filesystem, path);
+    if (source.empty())
+    {
+        return false;
+    }
 
-void ShaderProgram::bindProjectionMatrix(agtm::Matrix4<float> const& matrix)
-{
-    glUniformMatrix4fv(m_projectionMatrixLoc, 1, GL_FALSE, matrix.arr());
-}
-
-void ShaderProgram::bindModelViewMatrix(agtm::Matrix4<float> const& matrix)
-{
-    glUniformMatrix4fv(m_modelViewMatrixLoc, 1, GL_FALSE, matrix.arr());
+    return createShader(m_attachedShaders, source, GL_VERTEX_SHADER, m_program);
 }
 
 bool ShaderProgram::addFragmentShader(std::string const& source)
@@ -95,15 +110,19 @@ bool ShaderProgram::addFragmentShader(std::string const& source)
     return createShader(m_attachedShaders, source, GL_FRAGMENT_SHADER, m_program);
 }
 
-void ShaderProgram::bindAttributeLocation(std::string const& name, GLuint location)
+bool ShaderProgram::addFragmentShader(aftfs::FileSystem &filesystem, const std::string &path)
 {
-    glBindAttribLocation(m_program, location, name.c_str());
+    std::string source = loadShaderSource(filesystem, path);
+    if (source.empty())
+    {
+        return false;
+    }
+
+    return createShader(m_attachedShaders, source, GL_FRAGMENT_SHADER, m_program);
 }
 
 bool ShaderProgram::link()
 {
-    bindAttributeLocation("position", 0);
-
     // Link the shader program
     glLinkProgram(m_program);
 
@@ -136,17 +155,33 @@ bool ShaderProgram::link()
     for (it = m_attachedShaders.begin(); it != end; ++it)
     {
         glDetachShader(m_program, *it);
+        glDeleteShader(*it);
     }
 
     m_attachedShaders.clear();
 
-    glUseProgram(m_program);
-
-    m_projectionMatrixLoc = glGetUniformLocation(m_program, "projectionMatrix");
-    m_modelViewMatrixLoc = glGetUniformLocation(m_program, "modelViewMatrix");
-    
-    // Shader program is loaded and ready to use!
+    // Shader program is ready to use!
     return true;
+}
+
+GLint ShaderProgram::getUniformLocation(std::string const& name)
+{
+    return glGetUniformLocation(m_program, name.c_str());
+}
+
+GLint ShaderProgram::getAttributeLocation(std::string const& name)
+{
+    return glGetAttribLocation(m_program, name.c_str());
+}
+
+void ShaderProgram::bind()
+{
+    glUseProgram(m_program);
+}
+
+void ShaderProgram::bindUniformMatrix(GLint location, agtm::Matrix4<float> const& matrix)
+{
+    glUniformMatrix4fv(location, 1 /*count*/, true /*transpose*/, matrix.arr());
 }
 
 } // namespace

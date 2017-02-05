@@ -3,6 +3,7 @@
 
 #include <agtg_gl.h>
 #include <agtm_matrix4.h>
+#include <aftfs_filesystem.h>
 #include <memory>
 #include <vector>
 
@@ -15,27 +16,27 @@ public:
 
     ~ShaderProgram();
 
+    bool addVertexShader(aftfs::Filesystem& filesystem, std::string const& path);
+
     bool addVertexShader(std::string const& source);
+
+    bool addFragmentShader(aftfs::Filesystem& filesystem, std::string const& path);
 
     bool addFragmentShader(std::string const& source);
 
-    void bind();
-    
-    void bindProjectionMatrix(agtm::Matrix4<float> const& matrix);
-
-    void bindModelViewMatrix(agtm::Matrix4<float> const& matrix);
-    
-    void bindAttributeLocation(std::string const& name, GLuint location);
-
-    GLuint getUniformLocation(std::string const& name);
-    
     bool link();
-    
+
+    GLint getUniformLocation(std::string const& name);
+
+    GLint getAttributeLocation(std::string const& name);
+
+    void bind();
+
+    void bindUniformMatrix(GLint location, agtm::Matrix4<float> const& matrix);
+
 private:
     GLuint m_program;
     std::vector<GLuint> m_attachedShaders;
-    GLint m_modelViewMatrixLoc;
-    GLint m_projectionMatrixLoc;    
 };
 
 } // namespace
