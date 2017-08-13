@@ -4,7 +4,9 @@
 #include <agtm_vector3.h>
 #include <afts_comparisonutil.h>
 #include <algorithm>
+#include <array>
 #include <ostream>
+#include <vector>
 
 namespace agtm {
 
@@ -14,23 +16,27 @@ class Vector4
 public:
     Vector4();
     
-    Vector4(T const& x, T const& y, T const& z, T const& w = T(1));
+    Vector4(T const& x, T const& y, T const& z, T const& w);
 
-    explicit Vector4(Vector3<T> const& v, T const& w= T(1));
+    explicit Vector4(Vector3<T> const& v, T const& w);
 
-    Vector4(T const* const arr, size_t length);
-    
-    Vector4(Vector4<T> const& v);
+    Vector4(std::array<T, 4> const& arr);
+
+    Vector4(std::vector<T> const& vec);
+
+    Vector4(Vector4<T> const& vec);
 
     ~Vector4();
     
-    Vector4<T>& operator=(Vector4<T> const& rhs);
-    
-    void assign(T const& x, T const& y, T const& z, T const& w = T(1));
+    Vector4<T>& operator=(Vector4<T> const& vec);
 
-    void assign(Vector3<T> const& v, T const& w = T(1));
-    
-    void assign(T const* const arr, size_t length);
+    Vector4<T>& operator=(std::array<T, 4> const& arr);
+
+    Vector4<T>& operator=(std::vector<T> const& vec);
+
+    void assign(T const& x, T const& y, T const& z, T const& w);
+
+    void assign(Vector3<T> const& v, T const& w);
         
     Vector4<T>& operator+=(Vector4<T> const& v);
     
@@ -40,11 +46,7 @@ public:
     
     Vector4<T>& operator-=(T scalar);
 
-    Vector4<T>& operator*=(Vector4<T> const& v);
-    
     Vector4<T>& operator*=(T scalar);
-    
-    Vector4<T>& operator/=(Vector4<T> const& v);
 
     Vector4<T>& operator/=(T scalar);
     
@@ -73,40 +75,38 @@ private:
 };
 
 template<typename T>
-bool operator==(Vector4<T> const& lhs, Vector4<T> const& rhs);
+bool operator==(Vector4<T> const& vec1, Vector4<T> const& vec2);
 
 template<typename T>
-bool operator!=(Vector4<T> const& lhs, Vector4<T> const& rhs);
+bool operator!=(Vector4<T> const& vec1, Vector4<T> const& vec2);
 
 template<typename T>
-Vector4<T> operator-(Vector4<T> const& v);
+Vector4<T> operator-(Vector4<T> const& vec);
 
 template<typename T>
-Vector4<T> operator+(Vector4<T> const& lhs, Vector4<T> const& rhs);
-
-template<typename T, typename U>
-Vector4<T> operator+(Vector4<T> const& lhs, U const& scalar);
+Vector4<T> operator+(Vector4<T> const& vec1, Vector4<T> const& vec2);
 
 template<typename T>
-Vector4<T> operator-(Vector4<T> const& lhs, Vector4<T> const& rhs);
-
-template<typename T, typename U>
-Vector4<T> operator-(Vector4<T> const& lhs, U const& scalar);
+Vector4<T> operator+(Vector4<T> const& vec, T const& scalar);
 
 template<typename T>
-Vector4<T> operator*(Vector4<T> const& lhs, Vector4<T> const& rhs);
-
-template<typename T, typename U>
-Vector4<T> operator*(Vector4<T> const& lhs, U const& scalar);
+Vector4<T> operator-(Vector4<T> const& vec1, Vector4<T> const& vec2);
 
 template<typename T>
-Vector4<T> operator/(Vector4<T> const& lhs, Vector4<T> const& rhs);
-
-template<typename T, typename U>
-Vector4<T> operator/(Vector4<T> const& lhs, U const& scalar);
+Vector4<T> operator-(Vector4<T> const& vec, T const& scalar);
 
 template<typename T>
-std::ostream& operator<<(std::ostream& os, Vector4<T> const& v);
+Vector4<T> operator*(Vector4<T> const& vec, T const& scalar);
+
+template<typename T>
+Vector4<T> operator/(Vector4<T> const& vec, T const& scalar);
+
+template<typename T>
+std::ostream& operator<<(std::ostream& os, Vector4<T> const& vec);
+
+////////////////////////////////////////////////////////////
+// IMPLEMENTATION
+////////////////////////////////////////////////////////////
 
 template<typename T>
 inline Vector4<T>::Vector4()
@@ -125,25 +125,32 @@ inline Vector4<T>::Vector4(T const& x, T const& y, T const& z, T const& w)
 {}
 
 template<typename T>
-inline Vector4<T>::Vector4(Vector3<T> const& v, T const& w)
-: m_x(v.x()),
-  m_y(v.y()),
-  m_z(v.z()),
+inline Vector4<T>::Vector4(Vector3<T> const& vec, T const& w)
+: m_x(vec.x()),
+  m_y(vec.y()),
+  m_z(vec.z()),
   m_w(w)
 {}
 
 template<typename T>
-inline Vector4<T>::Vector4(T const* const arr, size_t length)
+inline Vector4<T>::Vector4(std::array<T, 4> const& arr)
 {
-    std::copy(arr, arr + std::min(size_t(4), length), m_arr);
+    std::copy(arr.begin(), arr.end(), m_arr);
 }
 
 template<typename T>
-inline Vector4<T>::Vector4(Vector4<T> const& v)
-: m_x(v.m_x),
-  m_y(v.m_y),
-  m_z(v.m_z),
-  m_w(v.m_w)
+inline Vector4<T>::Vector4(std::vector<T> const& vec)
+{
+    AFTS_ASSERT_DEBUG(vec.size() == 4);
+    std::copy(vec.begin(), vec.end(), m_arr);
+}
+
+template<typename T>
+inline Vector4<T>::Vector4(Vector4<T> const& vec)
+: m_x(vec.m_x),
+  m_y(vec.m_y),
+  m_z(vec.m_z),
+  m_w(vec.m_w)
 {}
 
 template<typename T>
@@ -151,12 +158,31 @@ Vector4<T>::~Vector4()
 {}
 
 template<typename T>
-inline Vector4<T>& Vector4<T>::operator=(Vector4<T> const& rhs)
+inline Vector4<T>& Vector4<T>::operator=(Vector4<T> const& vec)
 {
-    m_x = rhs.m_x;
-    m_y = rhs.m_y;
-    m_z = rhs.m_z;
-    m_w = rhs.m_w;
+    m_x = vec.m_x;
+    m_y = vec.m_y;
+    m_z = vec.m_z;
+    m_w = vec.m_w;
+
+    return *this;
+}
+
+template<typename T>
+inline Vector4<T>& Vector4<T>::operator=(std::array<T, 4> const& arr)
+{
+    std::copy(arr.begin(), arr.end(), m_arr);
+
+    return *this;
+}
+
+template<typename T>
+inline Vector4<T>& Vector4<T>::operator=(std::vector<T> const& vec)
+{
+    AFTS_ASSERT_DEBUG(vec.size() == 4);
+    std::copy(vec.begin(), vec.end(), m_arr);
+
+    return *this;
 }
 
 template<typename T>
@@ -169,27 +195,21 @@ inline void Vector4<T>::assign(T const& x, T const& y, T const& z, T const& w)
 }
 
 template<typename T>
-inline void Vector4<T>::assign(Vector3<T> const& v, T const& w)
+inline void Vector4<T>::assign(Vector3<T> const& vec, T const& w)
 {
-    m_x = v.x();
-    m_y = v.y();
-    m_z = v.z();
+    m_x = vec.x();
+    m_y = vec.y();
+    m_z = vec.z();
     m_w = w;
 }
 
 template<typename T>
-inline void Vector4<T>::assign(T const* const arr, size_t length)
+inline Vector4<T>& Vector4<T>::operator+=(Vector4<T> const& vec)
 {
-    std::copy(arr, arr + std::min(size_t(4), length), m_arr);
-}
-
-template<typename T>
-inline Vector4<T>& Vector4<T>::operator+=(Vector4<T> const& v)
-{
-    m_x += v.m_x;
-    m_y += v.m_y;
-    m_z += v.m_z;
-    m_w += v.m_w;
+    m_x += vec.m_x;
+    m_y += vec.m_y;
+    m_z += vec.m_z;
+    m_w += vec.m_w;
     
     return *this;
 }
@@ -206,12 +226,12 @@ inline Vector4<T>& Vector4<T>::operator+=(T scalar)
 }
 
 template<typename T>
-inline Vector4<T>& Vector4<T>::operator-=(Vector4<T> const& v)
+inline Vector4<T>& Vector4<T>::operator-=(Vector4<T> const& vec)
 {
-    m_x -= v.m_x;
-    m_y -= v.m_y;
-    m_z -= v.m_z;
-    m_w -= v.m_w;
+    m_x -= vec.m_x;
+    m_y -= vec.m_y;
+    m_z -= vec.m_z;
+    m_w -= vec.m_w;
     
     return *this;
 }
@@ -228,34 +248,12 @@ inline Vector4<T>& Vector4<T>::operator-=(T scalar)
 }
 
 template<typename T>
-inline Vector4<T>& Vector4<T>::Vector4<T>::operator*=(Vector4<T> const& v)
-{
-    m_x *= v.m_x;
-    m_y *= v.m_y;
-    m_z *= v.m_z;
-    m_w *= v.m_w;
-    
-    return *this;
-}
-
-template<typename T>
 inline Vector4<T>& Vector4<T>::operator*=(T scalar)
 {
     m_x *= scalar;
     m_y *= scalar;
     m_z *= scalar;
     m_w *= scalar;
-    
-    return *this;
-}
-
-template<typename T>
-inline Vector4<T>& Vector4<T>::operator/=(Vector4<T> const& v)
-{
-    m_x /= v.m_x;
-    m_y /= v.m_y;
-    m_z /= v.m_z;
-    m_w /= v.m_w;
     
     return *this;
 }
@@ -308,117 +306,97 @@ inline Vector3<T> Vector4<T>::vector3() const
 }
 
 template<typename T>
-inline bool operator==(Vector4<T> const& lhs, Vector4<T> const& rhs)
+inline bool operator==(Vector4<T> const& vec1, Vector4<T> const& vec2)
 {
-    return afts::ComparisonUtil::equal(lhs.x(), rhs.x())
-        && afts::ComparisonUtil::equal(lhs.y(), rhs.y())
-        && afts::ComparisonUtil::equal(lhs.z(), rhs.z())
-        && afts::ComparisonUtil::equal(lhs.w(), rhs.w());
+    return afts::ComparisonUtil::equal(vec1.x(), vec2.x())
+        && afts::ComparisonUtil::equal(vec1.y(), vec2.y())
+        && afts::ComparisonUtil::equal(vec1.z(), vec2.z())
+        && afts::ComparisonUtil::equal(vec1.w(), vec2.w());
 }
 
 template<typename T>
-inline bool operator!=(Vector4<T> const& lhs, Vector4<T> const& rhs)
+inline bool operator!=(Vector4<T> const& vec1, Vector4<T> const& vec2)
 {
-    return !afts::ComparisonUtil::equal(lhs.x(), rhs.x())
-        || !afts::ComparisonUtil::equal(lhs.y(), rhs.y())
-        || !afts::ComparisonUtil::equal(lhs.z(), rhs.z())
-        || !afts::ComparisonUtil::equal(lhs.w(), rhs.w());
+    return !afts::ComparisonUtil::equal(vec1.x(), vec2.x())
+        || !afts::ComparisonUtil::equal(vec1.y(), vec2.y())
+        || !afts::ComparisonUtil::equal(vec1.z(), vec2.z())
+        || !afts::ComparisonUtil::equal(vec1.w(), vec2.w());
 }
 
 template<typename T>
-inline Vector4<T> operator-(Vector4<T> const& v)
+inline Vector4<T> operator-(Vector4<T> const& vec)
 {
     return Vector4<T>(
-        -v.x(),
-        -v.y(),
-        -v.z(),
-        -v.w());
+        -vec.x(),
+        -vec.y(),
+        -vec.z(),
+        -vec.w());
 }
 
 template<typename T>
-inline Vector4<T> operator+(Vector4<T> const& lhs, Vector4<T> const& rhs)
+inline Vector4<T> operator+(Vector4<T> const& vec1, Vector4<T> const& vec2)
 {
     return Vector4<T>(
-        lhs.x() + rhs.x(),
-        lhs.y() + rhs.y(),
-        lhs.z() + rhs.z(),
-        lhs.w() + rhs.w());
-}
-
-template<typename T, typename U>
-inline Vector4<T> operator+(Vector4<T> const& lhs, U const& rhs)
-{
-    return Vector4<T>(
-        lhs.x() + rhs,
-        lhs.y() + rhs,
-        lhs.z() + rhs,
-        lhs.w() + rhs);
+        vec1.x() + vec2.x(),
+        vec1.y() + vec2.y(),
+        vec1.z() + vec2.z(),
+        vec1.w() + vec2.w());
 }
 
 template<typename T>
-inline Vector4<T> operator-(Vector4<T> const& lhs, Vector4<T> const& rhs)
+inline Vector4<T> operator+(Vector4<T> const& vec, T const& scalar)
 {
     return Vector4<T>(
-        lhs.x() - rhs.x(),
-        lhs.y() - rhs.y(),
-        lhs.z() - rhs.z(),
-        lhs.w() - rhs.w());
-}
-
-template<typename T, typename U>
-inline Vector4<T> operator-(Vector4<T> const& lhs, U const& rhs)
-{
-    return Vector4<T>(
-        lhs.x() - rhs,
-        lhs.y() - rhs,
-        lhs.z() - rhs,
-        lhs.w() - rhs);
+        vec.x() + scalar,
+        vec.y() + scalar,
+        vec.z() + scalar,
+        vec.w() + scalar);
 }
 
 template<typename T>
-inline Vector4<T> operator*(Vector4<T> const& lhs, Vector4<T> const& rhs)
+inline Vector4<T> operator-(Vector4<T> const& vec1, Vector4<T> const& vec2)
 {
     return Vector4<T>(
-        lhs.x() * rhs.x(),
-        lhs.y() * rhs.y(),
-        lhs.z() * rhs.z(),
-        lhs.w() * rhs.w());
-}
-
-template<typename T, typename U>
-inline Vector4<T> operator*(Vector4<T> const& lhs, U const& rhs)
-{
-    return Vector4<T>(
-        lhs.x() * rhs,
-        lhs.y() * rhs,
-        lhs.z() * rhs,
-        lhs.w() * rhs);
+        vec1.x() - vec2.x(),
+        vec1.y() - vec2.y(),
+        vec1.z() - vec2.z(),
+        vec1.w() - vec2.w());
 }
 
 template<typename T>
-inline Vector4<T> operator/(Vector4<T> const& lhs, Vector4<T> const& rhs)
+inline Vector4<T> operator-(Vector4<T> const& vec, T const& scalar)
 {
     return Vector4<T>(
-        lhs.x() / rhs.x(),
-        lhs.y() / rhs.y(),
-        lhs.z() / rhs.z(),
-        lhs.w() / rhs.w());
-}
-
-template<typename T, typename U>
-inline Vector4<T> operator/(Vector4<T> const& lhs, U const& rhs)
-{
-    return Vector4<T>(
-        lhs.x() / rhs,
-        lhs.y() / rhs,
-        lhs.z() / rhs,
-        lhs.w() / rhs);
+        vec.x() - scalar,
+        vec.y() - scalar,
+        vec.z() - scalar,
+        vec.w() - scalar);
 }
 
 template<typename T>
-std::ostream& operator<<(std::ostream& os, Vector4<T> const& v)
+inline Vector4<T> operator*(Vector4<T> const& vec, T const& scalar)
 {
-    os << "[" << v.x() << " " << v.y() << " " << v.z() << " " << v.w() << "]";
+    return Vector4<T>(
+        vec.x() * scalar,
+        vec.y() * scalar,
+        vec.z() * scalar,
+        vec.w() * scalar);
+}
+template<typename T>
+inline Vector4<T> operator/(Vector4<T> const& vec, T const& scalar)
+{
+    return Vector4<T>(
+        vec.x() / scalar,
+        vec.y() / scalar,
+        vec.z() / scalar,
+        vec.w() / scalar);
+}
+
+template<typename T>
+std::ostream& operator<<(std::ostream& os, Vector4<T> const& vec)
+{
+    os << "[" << vec.x() << " " << vec.y() << " " << vec.z() << " " << vec.w() << "]";
+
     return os;
 }
 

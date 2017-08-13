@@ -16,28 +16,48 @@ bool verify(Vector3<T> const& v, U x, U y, U z)
 
 Describe d("agtm_vector3", []
 {
+    std::array<int, 3> arr = {1, 2, 3};
+
+    std::vector<int> vec;
+    vec.push_back(1);
+    vec.push_back(2);
+    vec.push_back(3);
+
     it("Construction", [&]
     {
         Vector3<int> v1;
-
         expect(verify(v1, 0, 0, 0)).toBeTrue();
         
         Vector3<int> v2(1, 2, 3);
-
         expect(verify(v2, 1, 2, 3)).toBeTrue();
         
         Vector3<int> v3(v2);
-
         expect(verify(v3, 1, 2, 3)).toBeTrue();
-        expect(v3).toEqual(v2);
-        
-        v3.assign(3, 4, 5);
 
-        expect(verify(v3, 3, 4, 5)).toBeTrue();
-        
-        v3 = -v3;
+        Vector3<int> v4(arr);
+        expect(verify(v4, 1, 2, 3)).toBeTrue();
 
-        expect(verify(v3, -3, -4, -5)).toBeTrue();
+        Vector3<int> v5(vec);
+        expect(verify(v5, 1, 2, 3)).toBeTrue();
+    });
+
+    it("Assignment", [&]
+    {
+        Vector3<int> v1;
+        v1.assign(3, 4, 5);
+        expect(verify(v1, 3, 4, 5)).toBeTrue();
+
+        Vector3<int> v2;
+        v2 = v1;
+        expect(verify(v2, 3, 4, 5)).toBeTrue();
+
+        Vector3<int> v3;
+        v3 = arr;
+        expect(verify(v3, 1, 2, 3)).toBeTrue();
+
+        Vector3<int> v4;
+        v4 = vec;
+        expect(verify(v4, 1, 2, 3)).toBeTrue();
     });
 
     it("Addition", [&]
@@ -91,49 +111,29 @@ Describe d("agtm_vector3", []
     it("Multiplication", [&]
     {
         Vector3<int> v1(1, 2, 3);
-        Vector3<int> v2(2, 3, 4);
-        
-        v1 *= v2;
 
-        expect(verify(v1, 2, 6, 12)).toBeTrue();
-        
-        Vector3<int> v3;
-        v3 = v1 * v2;
+        v1 *= 2;
 
-        expect(verify(v3, 4, 18, 48)).toBeTrue();
+        expect(verify(v1, 2, 4, 6)).toBeTrue();
         
-        v3 *= 2;
+        Vector3<int> v2;
+        v2 = v1 * 2;
 
-        expect(verify(v3, 8, 36, 96)).toBeTrue();
-        
-        Vector3<int> v4;
-        v4 = v3 * 2;
-
-        expect(verify(v4, 16, 72, 192)).toBeTrue();
+        expect(verify(v2, 4, 8, 12)).toBeTrue();
     });
 
     it("Division", [&]
     {
-        Vector3<int> v1(16, 72, 192);
-        Vector3<int> v2(2, 3, 4);
-        
-        v1 /= v2;
+        Vector3<int> v1(4, 8, 12);
 
-        expect(verify(v1, 8, 24, 48)).toBeTrue();
-        
-        Vector3<int> v3;
-        v3 = v1 / v2;
+        v1 /= 2;
 
-        expect(verify(v3, 4, 8, 12)).toBeTrue();
+        expect(verify(v1, 2, 4, 6)).toBeTrue();
         
-        v3 /= 2;
+        Vector3<int> v2;
+        v2 = v1 / 2;
 
-        expect(verify(v3, 2, 4, 6)).toBeTrue();
-        
-        Vector3<int> v4;
-        v4 = v3 / 2;
-
-        expect(verify(v4, 1, 2, 3)).toBeTrue();
+        expect(verify(v2, 1, 2, 3)).toBeTrue();
     });
 
     it("Length", [&]
