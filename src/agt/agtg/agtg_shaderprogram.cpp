@@ -70,8 +70,6 @@ bool createShader(std::vector<GLuint>& attachedShaders, std::string const& sourc
 }
 
 ShaderProgram::ShaderProgram()
-: m_modelViewMatrixLoc(-1),
-  m_projectionMatrixLoc(-1)
 {
     m_program = glCreateProgram();
 }
@@ -89,14 +87,19 @@ ShaderProgram::~ShaderProgram()
     glDeleteProgram(m_program);
 }
 
+GLuint ShaderProgram::id() const
+{
+    return m_program;
+}
+
 bool ShaderProgram::addVertexShader(std::string const& source)
 {
     return createShader(m_attachedShaders, source, GL_VERTEX_SHADER, m_program);
 }
 
-bool ShaderProgram::addVertexShader(aftfs::FileSystem &filesystem, const std::string &path)
+bool ShaderProgram::addVertexShader(aftfs::FileSystem &fileSystem, const std::string &path)
 {
-    std::string source = loadShaderSource(filesystem, path);
+    std::string source = loadShaderSource(fileSystem, path);
     if (source.empty())
     {
         return false;
@@ -110,9 +113,9 @@ bool ShaderProgram::addFragmentShader(std::string const& source)
     return createShader(m_attachedShaders, source, GL_FRAGMENT_SHADER, m_program);
 }
 
-bool ShaderProgram::addFragmentShader(aftfs::FileSystem &filesystem, const std::string &path)
+bool ShaderProgram::addFragmentShader(aftfs::FileSystem &fileSystem, const std::string &path)
 {
-    std::string source = loadShaderSource(filesystem, path);
+    std::string source = loadShaderSource(fileSystem, path);
     if (source.empty())
     {
         return false;

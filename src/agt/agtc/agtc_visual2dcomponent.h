@@ -1,10 +1,10 @@
 #ifndef INCLUDED_AGTC_VISUAL2dCOMPONENT_H
 #define INCLUDED_AGTC_VISUAL2dCOMPONENT_H
 
-#include <agta_sprite2dmaterial.h>
 #include <agta_mesh.h>
 #include <agtg_renderingcontext.h>
 #include <agtg_shaderprogram.h>
+#include <agtm_matrix4.h>
 #include <afth_uuid.h>
 #include <memory>
 
@@ -14,7 +14,6 @@ class Visual2dComponent
 {
 public:
     typedef std::shared_ptr<agta::Mesh> MeshPtr;
-    typedef std::shared_ptr<agta::Sprite2dMaterial> Sprite2dMaterialPtr;
     typedef std::shared_ptr<agtg::ShaderProgram> ShaderProgramPtr;
 
     Visual2dComponent();
@@ -23,22 +22,17 @@ public:
 
     afth::UUID const& id() const;
 
-    void mesh(MeshPtr mesh);
+    void projectionMatrix(agtm::Matrix4<float> const& matrix);
 
-    MeshPtr mesh() const;
-
-    void material(Sprite2dMaterialPtr material);
-
-    Sprite2dMaterialPtr material() const;
-    
-    void draw(agtg::RenderingContext& renderingContext);
+    void modelViewMatrix(agtm::Matrix4<float> const& matrix);
 
 private:
     afth::UUID m_id;
+    ShaderProgramPtr m_shaderProgrem;
     MeshPtr m_mesh;
-    Sprite2dMaterialPtr m_material;
-    
 };
+
+bool operator<(Visual2dComponent const& lhs, Visual2dComponent const& rhs);
 
 } // namespace
 

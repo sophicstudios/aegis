@@ -3,6 +3,7 @@
 
 #include <agtg_vertex.h>
 #include <agtg_gl.h>
+#include <agtg_shaderprogram.h>
 #include <afth_uuid.h>
 #include <vector>
 
@@ -13,6 +14,7 @@ class Mesh
 public:
     typedef std::vector<agtg::Vertex<float> > VertexList;
     typedef std::vector<int> IndexList;
+    typedef std::shared_ptr<agtg::ShaderProgram> ShaderProgramPtr;
 
     Mesh(VertexList const& vertices);
     
@@ -22,7 +24,10 @@ public:
 
     afth::UUID const& id() const;
 
-    void bind();
+    VertexList const& vertices() const;
+
+    IndexList const& indices() const;
+
 
 private:
     afth::UUID m_id;

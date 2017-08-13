@@ -20,29 +20,31 @@ afth::UUID const& Visual2dComponent::id() const
 {
     return m_id;
 }
-
+/*
 void Visual2dComponent::mesh(MeshPtr mesh)
 {
     m_mesh = mesh;
 }
 
-Visual2dComponent::MeshPtr Visual2dComponent::mesh() const
-{
-    return m_mesh;
-}
-
 void Visual2dComponent::material(Sprite2dMaterialPtr material)
 {
-    m_material = material;
+    //m_material = material;
 }
-
-Visual2dComponent::Sprite2dMaterialPtr Visual2dComponent::material() const
+*/
+void Visual2dComponent::projectionMatrix(agtm::Matrix4<float> const& matrix)
 {
-    return m_material;
 }
 
+void Visual2dComponent::modelViewMatrix(agtm::Matrix4<float> const& matrix)
+{
+}
+
+/*
 void Visual2dComponent::draw(agtg::RenderingContext& renderingContext)
 {
+    m_material.bind(renderingContext);
+    m_mesh.draw(renderingContext);
 }
+*/
 
 } // namespace

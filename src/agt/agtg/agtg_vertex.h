@@ -11,10 +11,10 @@ template<typename T>
 class Vertex
 {
 public:
-    Vertex(agtm::Vector3<T> const& coordinates);
+    Vertex(agtm::Vector3<T> const& position);
     
     Vertex(
-        agtm::Vector3<T> const& coordinates,
+        agtm::Vector3<T> const& position,
         agtg::ColorRGBA<T> const& color);
 
     Vertex(Vertex<T> const& rhs);

@@ -30,10 +30,14 @@
 		636A9C901DC3D7C300F49E12 /* agtg_shaderprogram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 636A9C8D1DC3D7C300F49E12 /* agtg_shaderprogram.cpp */; };
 		636A9C911DC3D7C300F49E12 /* agtg_shaderprogram.h in Headers */ = {isa = PBXBuildFile; fileRef = 636A9C8E1DC3D7C300F49E12 /* agtg_shaderprogram.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		636A9C921DC3D7C300F49E12 /* agtg_shaderprogram.h in Headers */ = {isa = PBXBuildFile; fileRef = 636A9C8E1DC3D7C300F49E12 /* agtg_shaderprogram.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA0E03A11ACEEE2400386511 /* agta_sprite2dmaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA0E039F1ACEEE2400386511 /* agta_sprite2dmaterial.cpp */; };
-		FA0E03A21ACEEE2400386511 /* agta_sprite2dmaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA0E039F1ACEEE2400386511 /* agta_sprite2dmaterial.cpp */; };
-		FA0E03A31ACEEE2400386511 /* agta_sprite2dmaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = FA0E03A01ACEEE2400386511 /* agta_sprite2dmaterial.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA0E03A41ACEEE2400386511 /* agta_sprite2dmaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = FA0E03A01ACEEE2400386511 /* agta_sprite2dmaterial.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		63D705501E7F2A6C0007672F /* agtg_vertexarray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63D7054E1E7F2A6C0007672F /* agtg_vertexarray.cpp */; };
+		63D705511E7F2A6C0007672F /* agtg_vertexarray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63D7054E1E7F2A6C0007672F /* agtg_vertexarray.cpp */; };
+		63D705521E7F2A6C0007672F /* agtg_vertexarray.h in Headers */ = {isa = PBXBuildFile; fileRef = 63D7054F1E7F2A6C0007672F /* agtg_vertexarray.h */; };
+		63D705531E7F2A6C0007672F /* agtg_vertexarray.h in Headers */ = {isa = PBXBuildFile; fileRef = 63D7054F1E7F2A6C0007672F /* agtg_vertexarray.h */; };
+		FA0E03A11ACEEE2400386511 /* agta_material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA0E039F1ACEEE2400386511 /* agta_material.cpp */; };
+		FA0E03A21ACEEE2400386511 /* agta_material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA0E039F1ACEEE2400386511 /* agta_material.cpp */; };
+		FA0E03A31ACEEE2400386511 /* agta_material.h in Headers */ = {isa = PBXBuildFile; fileRef = FA0E03A01ACEEE2400386511 /* agta_material.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA0E03A41ACEEE2400386511 /* agta_material.h in Headers */ = {isa = PBXBuildFile; fileRef = FA0E03A01ACEEE2400386511 /* agta_material.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA14A0AA19E6088C0058A4CA /* agtr_resource.h in Headers */ = {isa = PBXBuildFile; fileRef = FA14A0A919E6088C0058A4CA /* agtr_resource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA14A0AB19E6088C0058A4CA /* agtr_resource.h in Headers */ = {isa = PBXBuildFile; fileRef = FA14A0A919E6088C0058A4CA /* agtr_resource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA1962671BC98CD300B94BC2 /* aunit_fixture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA1962651BC98CD300B94BC2 /* aunit_fixture.cpp */; };
@@ -673,8 +677,10 @@
 		636A9C881DC1513300F49E12 /* agta_mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_mesh.h; path = ../../../src/agt/agta/agta_mesh.h; sourceTree = "<group>"; };
 		636A9C8D1DC3D7C300F49E12 /* agtg_shaderprogram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtg_shaderprogram.cpp; path = ../../../src/agt/agtg/agtg_shaderprogram.cpp; sourceTree = "<group>"; };
 		636A9C8E1DC3D7C300F49E12 /* agtg_shaderprogram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtg_shaderprogram.h; path = ../../../src/agt/agtg/agtg_shaderprogram.h; sourceTree = "<group>"; };
-		FA0E039F1ACEEE2400386511 /* agta_sprite2dmaterial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_sprite2dmaterial.cpp; path = ../../../src/agt/agta/agta_sprite2dmaterial.cpp; sourceTree = "<group>"; };
-		FA0E03A01ACEEE2400386511 /* agta_sprite2dmaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_sprite2dmaterial.h; path = ../../../src/agt/agta/agta_sprite2dmaterial.h; sourceTree = "<group>"; };
+		63D7054E1E7F2A6C0007672F /* agtg_vertexarray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agtg_vertexarray.cpp; path = ../../../src/agt/agtg/agtg_vertexarray.cpp; sourceTree = "<group>"; };
+		63D7054F1E7F2A6C0007672F /* agtg_vertexarray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtg_vertexarray.h; path = ../../../src/agt/agtg/agtg_vertexarray.h; sourceTree = "<group>"; };
+		FA0E039F1ACEEE2400386511 /* agta_material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = agta_material.cpp; path = ../../../src/agt/agta/agta_material.cpp; sourceTree = "<group>"; };
+		FA0E03A01ACEEE2400386511 /* agta_material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agta_material.h; path = ../../../src/agt/agta/agta_material.h; sourceTree = "<group>"; };
 		FA14A0A919E6088C0058A4CA /* agtr_resource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agtr_resource.h; path = ../../../src/agt/agtr/agtr_resource.h; sourceTree = "<group>"; };
 		FA1962651BC98CD300B94BC2 /* aunit_fixture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = aunit_fixture.cpp; path = ../../../src/aunit/aunit_fixture.cpp; sourceTree = "<group>"; };
 		FA1962661BC98CD300B94BC2 /* aunit_fixture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aunit_fixture.h; path = ../../../src/aunit/aunit_fixture.h; sourceTree = "<group>"; };
@@ -1348,8 +1354,8 @@
 		FA8E01BD1DA946AA00CFB06B /* agta */ = {
 			isa = PBXGroup;
 			children = (
-				FA0E039F1ACEEE2400386511 /* agta_sprite2dmaterial.cpp */,
-				FA0E03A01ACEEE2400386511 /* agta_sprite2dmaterial.h */,
+				FA0E039F1ACEEE2400386511 /* agta_material.cpp */,
+				FA0E03A01ACEEE2400386511 /* agta_material.h */,
 				636A9C871DC1513300F49E12 /* agta_mesh.cpp */,
 				636A9C881DC1513300F49E12 /* agta_mesh.h */,
 			);
@@ -1522,6 +1528,8 @@
 				FA19D6871AC24FDC007C91E1 /* agtg_gl.h */,
 				636A9C8D1DC3D7C300F49E12 /* agtg_shaderprogram.cpp */,
 				636A9C8E1DC3D7C300F49E12 /* agtg_shaderprogram.h */,
+				63D7054E1E7F2A6C0007672F /* agtg_vertexarray.cpp */,
+				63D7054F1E7F2A6C0007672F /* agtg_vertexarray.h */,
 			);
 			name = agtg;
 			sourceTree = "<group>";
@@ -1623,6 +1631,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA2318B3178DD3B00050DE3A /* agtg_colorrgba.h in Headers */,
+				63D705531E7F2A6C0007672F /* agtg_vertexarray.h in Headers */,
 				FA2318B5178DD3B90050DE3A /* agtg_renderingcontext.h in Headers */,
 				FA2318B6178DD3BD0050DE3A /* agtg_texture.h in Headers */,
 				FA2318B7178DD3C10050DE3A /* agtg_vertex.h in Headers */,
@@ -1655,7 +1664,7 @@
 				FA3E4D541A32BB5600E58703 /* agte_rendersystem.h in Headers */,
 				FADE7DCB1AE47D3D00280A14 /* agte_camera.h in Headers */,
 				FADE7DD11AE482CE00280A14 /* agte_orthographiccamera.h in Headers */,
-				FA0E03A41ACEEE2400386511 /* agta_sprite2dmaterial.h in Headers */,
+				FA0E03A41ACEEE2400386511 /* agta_material.h in Headers */,
 				FA4C5FBA1AF54D7500BD4B55 /* agtui_glview.h in Headers */,
 				FA14A0AB19E6088C0058A4CA /* agtr_resource.h in Headers */,
 				FAF8FDFB1D7DD4FD006D9ED6 /* agte_surface.h in Headers */,
@@ -1854,6 +1863,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA424AB516F4D7CC00622AED /* agtg_colorrgba.h in Headers */,
+				63D705521E7F2A6C0007672F /* agtg_vertexarray.h in Headers */,
 				FACBACA7170723ED008B2004 /* agtg_renderingcontext.h in Headers */,
 				FACBAC8D16FE6742008B2004 /* agtg_texture.h in Headers */,
 				FA424AB116F4D74600622AED /* agtg_vertex.h in Headers */,
@@ -1884,7 +1894,7 @@
 				FACBAC9116FE6F03008B2004 /* agtr_image.h in Headers */,
 				FADE7DCA1AE47D3D00280A14 /* agte_camera.h in Headers */,
 				FADE7DD01AE482CE00280A14 /* agte_orthographiccamera.h in Headers */,
-				FA0E03A31ACEEE2400386511 /* agta_sprite2dmaterial.h in Headers */,
+				FA0E03A31ACEEE2400386511 /* agta_material.h in Headers */,
 				FA4C5FB91AF54D7500BD4B55 /* agtui_glview.h in Headers */,
 				FAFD77CE189D466300734186 /* agtui_widget.h in Headers */,
 				FA4C5FC51AFE827900BD4B55 /* agte_eventsystem.h in Headers */,
@@ -2148,6 +2158,7 @@
 				FA3E4D361A2D45CF00E58703 /* agte_engine.cpp in Sources */,
 				FA90ECAF1AAB7B5300DB0A34 /* agtui_displaytimer.cpp in Sources */,
 				FAD3F6BE1AA23D24005455B2 /* agte_platform.cpp in Sources */,
+				63D705511E7F2A6C0007672F /* agtg_vertexarray.cpp in Sources */,
 				FAA99BCC1A6AF60900A0A52E /* agte_componentpool.cpp in Sources */,
 				FAFD77D2189D4B6200734186 /* agtui_widget.cpp in Sources */,
 				FA4C5FC41AFE827900BD4B55 /* agte_eventsystem.cpp in Sources */,
@@ -2162,7 +2173,7 @@
 				FA2318AD178DD2480050DE3A /* agtm_matrix4.cpp in Sources */,
 				FA3E4D421A2EAA3100E58703 /* agtc_visual2dcomponent.cpp in Sources */,
 				FAF8FDF91D7DD4FD006D9ED6 /* agte_surface.cpp in Sources */,
-				FA0E03A21ACEEE2400386511 /* agta_sprite2dmaterial.cpp in Sources */,
+				FA0E03A21ACEEE2400386511 /* agta_material.cpp in Sources */,
 				FA3E4D3C1A2D482400E58703 /* agte_system.cpp in Sources */,
 				FA2318AE178DD24D0050DE3A /* agtm_matrixutil.cpp in Sources */,
 				FA2318B8178DD3D60050DE3A /* agtm_point2d.cpp in Sources */,
@@ -2417,6 +2428,7 @@
 				FA3E4D351A2D45CF00E58703 /* agte_engine.cpp in Sources */,
 				FA90ECAE1AAB7B5300DB0A34 /* agtui_displaytimer.cpp in Sources */,
 				FAD3F6BD1AA23D24005455B2 /* agte_platform.cpp in Sources */,
+				63D705501E7F2A6C0007672F /* agtg_vertexarray.cpp in Sources */,
 				FAA99BCB1A6AF60900A0A52E /* agte_componentpool.cpp in Sources */,
 				FAFD77D1189D4B6200734186 /* agtui_widget.cpp in Sources */,
 				FA4C5FC31AFE827900BD4B55 /* agte_eventsystem.cpp in Sources */,
@@ -2431,7 +2443,7 @@
 				FA5E9774176D0B760035F4D0 /* agtui_mouseevent.cpp in Sources */,
 				FA3E4D411A2EAA3100E58703 /* agtc_visual2dcomponent.cpp in Sources */,
 				FAF8FDF81D7DD4FD006D9ED6 /* agte_surface.cpp in Sources */,
-				FA0E03A11ACEEE2400386511 /* agta_sprite2dmaterial.cpp in Sources */,
+				FA0E03A11ACEEE2400386511 /* agta_material.cpp in Sources */,
 				FA3E4D3B1A2D482400E58703 /* agte_system.cpp in Sources */,
 				FAA6CDD015DDB37400F480F0 /* agtm_matrix4.cpp in Sources */,
 				FAA6CDD215DDB37400F480F0 /* agtm_matrixutil.cpp in Sources */,

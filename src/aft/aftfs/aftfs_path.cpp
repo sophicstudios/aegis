@@ -33,28 +33,31 @@ Path::Path(std::string const& pathString)
     bool foundSep = false;
     std::string pathEntry;
 
-    while (it1 != beg)
+    if (it1 != beg)
     {
-        if ((*it1) == '/')
+        do
         {
-            if (it1 != it2)
+            if ((*it1) == '/')
             {
-                pathEntry.assign(it1+1, it2);
-            }
+                if (it1 != it2)
+                {
+                    pathEntry.assign(it1+1, it2);
+                }
 
-            foundSep = true;
-            break;
-        }
-        else if ((*it1) == '.')
-        {
-            if (it1 != it2)
-            {
-                //m_extension.assign(it1+1, it2);
-                it2 = it1;
+                foundSep = true;
+                break;
             }
-        }
-        
-        --it1;
+            else if ((*it1) == '.')
+            {
+                if (it1 != it2)
+                {
+                    //m_extension.assign(it1+1, it2);
+                    it2 = it1;
+                }
+            }
+            
+            --it1;
+        } while (it1 != beg);
     }
 
     if (foundSep && !pathEntry.empty())

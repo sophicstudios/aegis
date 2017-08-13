@@ -1,6 +1,6 @@
 #include <agte_rendersystem.h>
 #include <agte_platform.h>
-#include <agta_sprite2dmaterial.h>
+//#include <agta_sprite2dmaterial.h>
 #include <agtc_transformcomponent.h>
 #include <agtc_visual2dcomponent.h>
 #include <agtr_image.h>
@@ -135,20 +135,29 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
     // get list of entities with visual and transform components
     Space::EntityView entityView = space->getEntitiesForComponents(m_componentSet);
 
-    // Loop through the entities and sort them by visual component material. Using
-    // a std::multimap gives us a weak ordering of entities by material id
-    typedef std::multimap<afth::UUID, Entity> MaterialEntityMap;
-    MaterialEntityMap materialEntityMap;
+    // Loop through the entities and sort them by visual component material.
+    typedef std::vector<Entity> EntityList;
+    typedef std::map<afth::UUID, EntityList> MaterialEntityListMap;
+    MaterialEntityListMap materialEntityListMap;
 
     Space::EntityView::Iterator it = entityView.begin();
     Space::EntityView::Iterator end = entityView.end();
     for (; it != end; ++it)
     {
-        agtc::Visual2dComponent& visual2dComponent = visual2dComponents->componentForEntity(*it);
-        std::shared_ptr<agta::Sprite2dMaterial> material = visual2dComponent.material();
-        materialEntityMap.insert(std::make_pair(material->id(), *it));
+        //agtc::Visual2dComponent& visual2dComponent = visual2dComponents->componentForEntity(*it);
+        //std::shared_ptr<agta::Sprite2dMaterial> material = visual2dComponent.material();
+
+        //materialEntityListMap.insert(std::make_pair(material->id(), *it));
     }
 
+    // rendering logic:
+    //  for each material in the material entitylist map
+    //    bind the material to the renderer
+    //    bind the projection matrix to the material
+    //    for each entity in the entity list
+    //      get/create a batch drawer for the mesh
+    //      add mesh to drawer
+    //      add modelview matrix to drawer
     for (cameraIter = spaceCameraIter->second.begin(); cameraIter != cameraEnd; ++cameraIter)
     {
         std::shared_ptr<agtg::RenderingContext> renderingContext = context.platform()->glView()->renderingContext();
@@ -174,9 +183,9 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
 
         // Loop though material-entity map to iterate through all entities, sorted
         // by material, then draw each entity
+        /*
         MaterialEntityMap::iterator it = materialEntityMap.begin();
         MaterialEntityMap::iterator end = materialEntityMap.end();
-        afth::UUID prevMaterialId;
         for (; it != end; ++it)
         {
             Entity& entity = it->second;
@@ -185,34 +194,12 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
             agtc::TransformComponent& transformComponent = transformComponents->componentForEntity(entity);
             agtm::Matrix4<float> modelViewMatrix = transformComponent.transform() * viewMatrix;
 
-            std::cout << "modelViewMatrix: " << modelViewMatrix << std::endl;
-            
             agtc::Visual2dComponent& visual2dComponent = visual2dComponents->componentForEntity(entity);
 
-            // get the material
-            std::shared_ptr<agta::Sprite2dMaterial> material = visual2dComponent.material();
-            agtg::ShaderProgram& program = material->shaderProgram();
-
-            if (material->id() != prevMaterialId)
-            {
-                prevMaterialId = material->id();
-
-                // bind the material's shader program if different than the previous material
-                program.bind();
-                program.bindProjectionMatrix(projectionMatrix);
-            }
-
-            program.bindModelViewMatrix(modelViewMatrix);
-
-            // get the mesh and bind the vertex array
-            visual2dComponent.mesh()->bind();
-
-            glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+            visual2dComponent.projectionMatrix(projectionMatrix);
+            visual2dComponent.modelViewMatrix(modelViewMatrix);
         }
-
-        glBindVertexArray(0);
-        glUseProgram(0);
-
+*/
         renderingContext->postRender();
     }
 }

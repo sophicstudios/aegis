@@ -16,11 +16,13 @@ public:
 
     ~ShaderProgram();
 
-    bool addVertexShader(aftfs::Filesystem& filesystem, std::string const& path);
+    GLuint id() const;
+    
+    bool addVertexShader(aftfs::FileSystem& filesystem, std::string const& path);
 
     bool addVertexShader(std::string const& source);
 
-    bool addFragmentShader(aftfs::Filesystem& filesystem, std::string const& path);
+    bool addFragmentShader(aftfs::FileSystem& filesystem, std::string const& path);
 
     bool addFragmentShader(std::string const& source);
 
