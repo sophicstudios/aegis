@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.9)
 
+# We do not want build artifacts to be put in the source tree
 set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
 set(CMAKE_DISABLE_SOURCE_CHANGES ON)
 
@@ -7,8 +8,8 @@ if ("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
     message(SEND_ERROR "In Source builds are not allowed.")
 endif()
 
-set(CMAKE_VERBOSE_MAKEFILE ON)
-set(CMAKE_COLOR_MAKEFILE ON)
+# Uncomment to use verbose build outpu
+#set(CMAKE_VERBOSE_MAKEFILE ON)
 
 project(aegis
         VERSION 0.1.0
