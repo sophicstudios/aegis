@@ -1,0 +1,37 @@
+project(aunit)
+
+set(AUNIT_SOURCES
+    aunit.h
+    aunit_assert.cpp
+    aunit_assert.h
+    aunit_commandlineoptions.cpp
+    aunit_commandlineoptions.h
+    aunit_commandlineparser.cpp
+    aunit_commandlineparser.h
+    aunit_consolereporter.cpp
+    aunit_consolereporter.h
+    aunit_describe.cpp
+    aunit_describe.h
+    aunit_expect.cpp
+    aunit_expect.h
+    aunit_fixture.cpp
+    aunit_fixture.h
+    aunit_fixtureregistry.cpp
+    aunit_fixtureregistry.h
+    aunit_reporter.cpp
+    aunit_reporter.h
+    aunit_stringutil.cpp
+    aunit_stringutil.h
+    aunit_testconfiguration.cpp
+    aunit_testconfiguration.h
+    aunit_testmanager.cpp
+    aunit_testmanager.h
+    aunit_testresult.cpp
+    aunit_testresult.h
+)
+
+include_directories(.)
+
+add_library(aunit ${AUNIT_SOURCES})
+
+target_compile_features(aunit PUBLIC cxx_std_11)
