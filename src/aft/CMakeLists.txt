@@ -1,7 +1,7 @@
 project(aft)
 
 ################################################################################
-# AFTC
+# aftc group
 ################################################################################
 
 set(AFTC_SOURCES
@@ -20,10 +20,8 @@ set(AFTC_SOURCES_TEST
 
 source_group(aftc FILES ${AFTC_SOURCES})
 
-include_directories(aftc)
-
 ################################################################################
-# AFTFS
+# aftfs group
 ################################################################################
 
 set(AFTFS_SOURCES
@@ -44,8 +42,6 @@ set(AFTFS_SOURCES_TEST
 
 source_group(aftfs FILES ${AFTFS_SOURCES})
 
-include_directories(aftfs)
-
 ################################################################################
 # afth group
 ################################################################################
@@ -63,8 +59,6 @@ set(AFTH_SOURCES_TEST
 )
 
 source_group(afth FILES ${AFTH_SOURCES})
-
-include_directories(afth)
 
 ################################################################################
 # aftio group
@@ -86,8 +80,6 @@ set(AFTIO_SOURCES
 set(AFTIO_SOURCES_TEST)
 
 source_group(aftio FILES ${AFTIO_SOURCES})
-
-include_directories(aftio)
 
 ################################################################################
 # aftipc group
@@ -113,8 +105,6 @@ set(AFTIPC_SOURCES_TEST
 
 source_group(aftipc FILES ${AFTIPC_SOURCES})
 
-include_directories(aftipc)
-
 ################################################################################
 # aftm group
 ################################################################################
@@ -127,8 +117,6 @@ set(AFTM_SOURCES
 set(AFTM_SOURCES_TEST)
 
 source_group(aftm FILES ${AFTM_SOURCES})
-
-include_directories(aftm)
 
 ################################################################################
 # aftma group
@@ -144,8 +132,6 @@ set(AFTMA_SOURCES
 set(AFTMA_SOURCES_TEST)
 
 source_group(aftma FILES ${AFTMA_SOURCES})
-
-include_directories(aftma)
 
 ################################################################################
 # afts group
@@ -183,8 +169,6 @@ set(AFTS_SOURCES_TEST
 )
 
 source_group(afts FILES ${AFTS_SOURCES})
-
-include_directories(afts)
 
 ################################################################################
 # aftt group
@@ -240,8 +224,6 @@ set(AFTT_SOURCES_TEST
 
 source_group(aftt FILES ${AFTT_SOURCES})
 
-include_directories(aftt)
-
 ################################################################################
 # aftu group
 ################################################################################
@@ -279,10 +261,8 @@ set(AFTU_SOURCES_TEST
 
 source_group(aftu   FILES ${AFTU_SOURCES})
 
-include_directories(aftu)
-
 ################################################################################
-# AFT library
+# aft library
 ################################################################################
 
 set(AFT_SOURCES
@@ -298,10 +278,25 @@ set(AFT_SOURCES
     ${AFTU_SOURCES}
 )
 
-add_library(aft SHARED ${AFT_SOURCES})
+set(${PROJECT_NAME}_INCLUDE_DIRS
+    ${PROJECT_SOURCE_DIR}/aftc
+    ${PROJECT_SOURCE_DIR}/aftfs
+    ${PROJECT_SOURCE_DIR}/afth
+    ${PROJECT_SOURCE_DIR}/aftio
+    ${PROJECT_SOURCE_DIR}/aftipc
+    ${PROJECT_SOURCE_DIR}/aftm
+    ${PROJECT_SOURCE_DIR}/aftma
+    ${PROJECT_SOURCE_DIR}/afts
+    ${PROJECT_SOURCE_DIR}/aftt
+    ${PROJECT_SOURCE_DIR}/aftu
+    CACHE INTERNAL "${PROJECT_NAME}: Include dirs" FORCE)
+
+include_directories(${${PROJECT_NAME}_INCLUDE_DIRS})
+
+add_library(${PROJECT_NAME} SHARED ${AFT_SOURCES})
 
 ################################################################################
-# AFT test
+# aft unit tests
 ################################################################################
 
 set(AFT_SOURCES_TEST
@@ -318,9 +313,10 @@ set(AFT_SOURCES_TEST
     aft.t.cpp
 )
 
-include_directories(../aunit)
+include_directories(${aunit_INCLUDE_DIRS})
 
-add_executable(test_aft ${AFT_SOURCES_TEST})
-target_link_libraries(test_aft aft aunit)
+add_executable(test_${PROJECT_NAME} ${AFT_SOURCES_TEST})
 
-target_compile_features(aft PUBLIC cxx_std_11)
+target_link_libraries(test_${PROJECT_NAME} ${PROJECT_NAME} aunit)
+
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_11)

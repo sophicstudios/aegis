@@ -30,8 +30,12 @@ set(AUNIT_SOURCES
     aunit_testresult.h
 )
 
-include_directories(.)
+set(${PROJECT_NAME}_INCLUDE_DIRS
+    ${PROJECT_SOURCE_DIR}
+    CACHE INTERNAL "${PROJECT_NAME}: Include dirs" FORCE)
 
-add_library(aunit ${AUNIT_SOURCES})
+include_directories(${${PROJECT_NAME}_INCLUDE_DIRS})
 
-target_compile_features(aunit PUBLIC cxx_std_11)
+add_library(${PROJECT_NAME} SHARED ${AUNIT_SOURCES})
+
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_11)
