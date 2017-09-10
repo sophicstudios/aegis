@@ -168,7 +168,7 @@ private:
     BoxSizer::Direction m_direction;
     WidgetList m_widgets;
     WidgetMap m_widgetMap;
-    float m_totalProportion;
+    //float m_totalProportion;
     agtm::Size2d<float> m_cachedSize;
 };
 

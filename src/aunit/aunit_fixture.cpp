@@ -8,9 +8,8 @@ Reporter* s_activeReporter = nullptr;
 
 Fixture::Fixture(std::string const& name, std::function<void ()> const& func, std::string const& filename, int line)
 : m_name(name),
-  m_descFunc(func),
   m_fixtureFilename(filename),
-  m_fixtureLine(line)
+  m_descFunc(func)
 {
 }
 

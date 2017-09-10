@@ -24,7 +24,7 @@ private:
     GLuint m_textureId;
     GLsizei m_width;
     GLsizei m_height;
-    GLfloat m_frameWidth;
+    //GLfloat m_frameWidth;
 };
 
 } // namespace

@@ -7,8 +7,8 @@
 namespace aftipc {
 
 MappedRegion::MappedRegion(aftipc::Mappable& mappable, off_t offset, size_t length)
-: m_data(0),
-  m_mappable(mappable)
+: m_mappable(mappable),
+  m_data(0)
 {
     aftipc::ResultCode result = mappable.map(&m_regionInfo, offset, length);
     if (result != aftipc::ResultCode_SUCCESS) {

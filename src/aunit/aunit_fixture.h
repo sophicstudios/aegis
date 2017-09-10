@@ -32,7 +32,6 @@ private:
     bool m_hasError;
     std::string m_name;
     std::string m_fixtureFilename;
-    int m_fixtureLine;
     std::string m_beforeEachFilename;
     int m_beforeEachLine;
     std::string m_afterEachFilename;

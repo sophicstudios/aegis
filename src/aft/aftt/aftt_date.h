@@ -86,6 +86,6 @@ bool operator>=(Date const& lhs, Date const& rhs);
 
 std::ostream& operator<<(std::ostream& os, Date const& date);
 
-} // namespace\
+} // namespace
 
 #endif // INCLUDED

@@ -8,9 +8,9 @@ Camera::Camera()
 
 Camera::Camera(SurfacePtr surface)
 : m_id(afth::UUID::v4()),
-  m_dirty(true),
-  m_boundsDirty(true),
   m_surface(surface),
+  m_boundsDirty(true),
+  m_dirty(true),
   m_projection(agtm::Matrix4<float>::identity()),
   m_view(agtm::Matrix4<float>::identity())
 {

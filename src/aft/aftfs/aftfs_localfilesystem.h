@@ -27,7 +27,7 @@ public:
     virtual FileSystem::FileReaderPtr openFileReader(aftu::URL const& url, FileSystem::Status* status = NULL);
 
 private:
-    class Impl;
+    struct Impl;
     Impl* m_impl;
 };
 

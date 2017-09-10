@@ -56,9 +56,9 @@ Engine::PlatformPtr Engine::Context::platform() const
 }
 
 Engine::Engine(PlatformPtr platform)
-: m_context(platform, m_mutex, m_condition),
-  m_platform(platform),
-  m_running(true)
+: m_running(true),
+  m_context(platform, m_mutex, m_condition),
+  m_platform(platform)
 {
     std::cout << "Engine::Engine starting thread" << std::endl;
     m_thread = std::make_shared<actp::Thread>(std::bind(&Engine::threadFunc, this));
