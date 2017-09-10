@@ -8,7 +8,7 @@ if ("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
     message(SEND_ERROR "In Source builds are not allowed.")
 endif()
 
-# Uncomment to use verbose build outpu
+# Uncomment to use verbose build output
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)

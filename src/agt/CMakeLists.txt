@@ -215,6 +215,14 @@ set(AGT_SOURCES
     ${AGTUI_SOURCES}
 )
 
+add_library(${PROJECT_NAME} SHARED ${AGT_SOURCES})
+
+find_package(PNG REQUIRED)
+message(STATUS "PNG_INCLUDE_DIRS: " ${PNG_INCLUDE_DIRS})
+
+find_package(OpenGL REQUIRED)
+message(STATUS "OPENGL_INCLUDE_DIR: " ${OPENGL_INCLUDE_DIR})
+
 set(${PROJECT_NAME}_INCLUDE_DIRS
     ${PROJECT_SOURCE_DIR}/agta
     ${PROJECT_SOURCE_DIR}/agtc
@@ -224,16 +232,17 @@ set(${PROJECT_NAME}_INCLUDE_DIRS
     ${PROJECT_SOURCE_DIR}/agtr
     ${PROJECT_SOURCE_DIR}/agtu
     ${PROJECT_SOURCE_DIR}/agtui
+    ${PNG_INCLUDE_DIRS}
+    ${OPENGL_INCLUDE_DIR}
     CACHE INTERNAL "${PROJECT_NAME}: Include dirs" FORCE)
 
-include_directories(${${PROJECT_NAME}_INCLUDE_DIRS}
+include_directories(
+    ${${PROJECT_NAME}_INCLUDE_DIRS}
     ${act_INCLUDE_DIRS}
-    ${aft_INCLUDE_DIRS})
+    ${aft_INCLUDE_DIRS}
+)
 
-add_library(${PROJECT_NAME} SHARED ${AGT_SOURCES})
-find_library(PNG_LIBRARY png)
-find_library(OPENGL_LIBRARY OpenGL)
-target_link_libraries(${PROJECT_NAME} act aft ${OPENGL_LIBRARY} ${PNG_LIBRARY})
+target_link_libraries(${PROJECT_NAME} act aft ${PNG_LIBRARIES} ${OPENGL_LIBRARIES})
 
 ################################################################################
 # agt unit tests
@@ -247,7 +256,8 @@ set(AGT_SOURCES_TEST
 include_directories(${${PROJECT_NAME}_INCLUDE_DIRS}
     ${act_INCLUDE_DIRS}
     ${aft_INCLUDE_DIRS}
-    ${aunit_INCLUDE_DIRS})
+    ${aunit_INCLUDE_DIRS}
+)
 
 add_executable(test_${PROJECT_NAME} ${AGT_SOURCES_TEST})
 target_link_libraries(test_${PROJECT_NAME} ${PROJECT_NAME} act aft aunit)
