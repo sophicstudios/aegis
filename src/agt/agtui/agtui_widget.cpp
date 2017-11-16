@@ -34,7 +34,7 @@ void shrink(agtm::Size2d<float>& best, agtm::Size2d<float> const& max)
 
 } // namespace
 
-const agtm::Point2d<float> Widget::DEFAULT_POSITION = agtm::Point2d<float>(0.0f, 0.0f);
+const agtm::Vector2<float> Widget::DEFAULT_POSITION = agtm::Vector2<float>(0.0f, 0.0f);
 const agtm::Size2d<float> Widget::DEFAULT_SIZE = agtm::Size2d<float>(-1.0f, -1.0f);
 
 Widget::Widget()
@@ -105,12 +105,12 @@ void Widget::size(agtm::Size2d<float> const& size)
     onBounds(m_bounds);
 }
 
-agtm::Point2d<float> Widget::position() const
+agtm::Vector2<float> Widget::position() const
 {
     return m_bounds.origin();
 }
 
-void Widget::position(agtm::Point2d<float> const& position)
+void Widget::position(agtm::Vector2<float> const& position)
 {
     m_bounds.origin(position);
 }

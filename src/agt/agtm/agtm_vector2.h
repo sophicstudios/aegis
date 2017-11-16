@@ -7,6 +7,7 @@
 #include <array>
 #include <cmath>
 #include <ostream>
+#include <type_traits>
 #include <vector>
 
 namespace agtm {
@@ -15,267 +16,251 @@ namespace agtm {
  * @class Vector2
  *
  * Represents a 2-dimensional Vector with magnitude and direction (x, y).
+ *
+ * Example code:
+ *
+ * @code
+ * // Create a Vector with (x=0, y=0)
+ * Vector2<float> v1;
+ *
+ * // Create a Vector with (x=3, y=4)
+ * Vector2<float> v2(3, 4);
+ *
+ * // Add two Vectors
+ * Vector2<float> v3 = v1 + v2;
+ *
+ * // Normalize a Vector so length == 1
+ * Vector2<float> v4 = normalize(v2);
+ * @endcode
  */
 template<typename T>
 class Vector2
 {
 public:
     /**
-     * Constructs a Vector2 with magnitude and direction (0, 0).
+     * Constructs a Vector with magnitude and direction (0, 0).
      */
     Vector2();
 
     /**
-     * Constructs a position Vector2 with magnitude and direction (x, y).
+     * Constructs a Vector with magnitude and direction (x, y).
      *
-     * @param x The x value.
-     * @param y The y value.
+     * @param x The x component of the Vector.
+     * @param y The y component of the Vector.
      */
-    Vector2(T const& x, T const& y);
+    Vector2(T x, T y);
 
     /**
-     * Constructs a Vector2 with magnitude and direction (arr[0], arr[1]).
+     * Constructs a Vector with magnitude and direction (arr[0], arr[1]).
      *
-     * @param arr std::array<T, 2> to be copied from.
+     * @param arr A std::array with two elements specifying the x and y components.
      */
     Vector2(std::array<T, 2> const& arr);
 
     /**
-     * Constructs a Vector2 with magnitude and direction (arr[0], arr[1]).
-     * If the length of arr != 2, the results are undefined.
-     *
-     * @param vec std::vector<T> to be copied from.
-     */
-    Vector2(std::vector<T> const& vec);
-    
-    /**
      * Copy constructor.
      *
-     * @param vec Vector2 to be copied from.
+     * @param vec The input Vector.
      */
     Vector2(Vector2<T> const& vec);
 
     /**
-     * Destructor
+     * Destructor.
      */
     ~Vector2();
 
     /**
-     * Assignment operator. Assigns the supplied Vector2 to this.
+     * Assignment operator.
      *
-     * @param rhs Vector2 to be assigned from.
+     * @param rhs The input Vector.
      * @return A reference to this.
      */
     Vector2<T>& operator=(Vector2<T> const& vec);
 
     /**
-     * Assignment operator. Assigns the supplied std::array to this. The first and
-     * second elements of the array are assigned to the x and y values of this.
+     * Assignment operator.
+     * Assigns the input std::array to this, where arr[0] and arr[1] are
+     * assigned to the x and y components of this, respectively.
      *
-     * @param arr std::array<T, 2> to be copied from.
+     * @param arr A std::array with two elements specifying the x and y components.
      * @return A reference to this.
      */
     Vector2<T>& operator=(std::array<T, 2> const& arr);
 
     /**
-     * Assignment operator. Assigns the supplied std::vector to this. The first
-     * and second elements of the vector are assigned to the x andy y values
-     * of this. If the vector length is less than 2, an exception is thrown. If
-     * the vector length is greater than 2, only the first two values are copied.
+     * Addition assignment operator.
+     * Performs a geometric addition of this Vector with the input Vector in 2D
+     * space. This Vector then has magnitude and direction
+     * (this.x() + vec.x(), this.y() + vec.y()).
      *
-     * @param vec std::vector<T> to be copied from.
-     * @return A reference to this.
-     */
-    Vector2<T>& operator=(std::vector<T> const& vec);
-
-    /**
-     * Assigns x and y to this.x and this.y
-     *
-     * @param x The x value.
-     * @param y The y value.
-     * @return A reference to this.
-     */
-    Vector2<T>& assign(T const& x, T const& y);
-
-    /**
-     * Addition assignment operator. Piecewise addition of vec.x and vec.y to
-     * this.x and this.y
-     *
-     * @param vec Vector2<T> to be added.
+     * @param vec The Vector2 to add to this.
      * @return A reference to this.
      */
     Vector2<T>& operator+=(Vector2<T> const& vec);
 
     /**
-     * Addition assignment operator. Adds a scalar to both x and y.
+     * Subtraction assignment operator.
+     * Performs a geometric subtraction of this Vector with another Vector in
+     * 2D space. This Vector then has magnitude and direction
+     * (this.x() - vec.x(), this.y() - vec.y()).
      *
-     * @param scalar The value to be added.
-     * @return A reference to this.
-     */
-    Vector2<T>& operator+=(T scalar);
-
-    /**
-     * Subtraction assignment operator. Piecewise subtraction of vec.x and
-     * vec.y from this.x and this.y.
-     *
-     * @param vec Vector2<T> to be subtracted.
+     * @param vec The Vector to be subtracted from this.
      * @return A reference to this.
      */
     Vector2<T>& operator-=(Vector2<T> const& vec);
 
     /**
-     * Subtraction assignment operator. Subtracts a scalar from both x and y.
+     * Multiplication assignment operator.
+     * Performs a geometric scaling of this Vector. This Vector then has
+     * magnitude and direction (this.x() * scalar, this.y() * scalar).
      *
-     * @param scalar The value to be subtracted.
-     * @return A reference to this.
-     */
-    Vector2<T>& operator-=(T scalar);
-
-    /**
-     * Multiplication assignment operator. Multiplies both x and y by a scalar.
-     *
-     * @param scalar The value to be multiplied
+     * @param scalar The value to multiply with the x and y components of this.
      * @return A reference to this.
      */
     Vector2<T>& operator*=(T scalar);
 
     /**
-     * Division assignment operator. Divides both x and y by scalar.
+     * Division assignment operator.
+     * Performs a geometric inverse scaling of this Vector. This Vector then
+     * has magnitude and direction (this.x() / scalar, this.y() / scalar).
      *
-     * @param scalar The value to be divided by.
+     * @param scalar The value to divide with the x and y components of this.
      * @return A reference to this.
      */
     Vector2<T>& operator/=(T scalar);
 
     /**
-     * Gets the value of x.
+     * Gets the x component of the Vector.
      *
-     * @return The x value.
+     * @return The x component.
      */
-    T const& x() const;
+    T x() const;
 
     /**
-     * Gets the value of y.
+     * Sets the x component of the Vector.
      *
-     * @return The y value.
+     * @param value The value to assign to the x component.
+     * @return A reference to this.
      */
-    T const& y() const;
+    Vector2<T>& x(T value);
+
+    /**
+     * Gets the y component of the Vector.
+     *
+     * @return The y component.
+     */
+    T y() const;
+
+    /**
+     * Sets the y component of the Vector.
+     *
+     * @param value The value to assign to the y component.
+     * @return A reference to this.
+     */
+    Vector2<T>& y(T value);
 
     /**
      * Gets a const reference to an array representation of the x and y
-     * values, where arr[0] is x and arr[1] is y.
+     * components, where arr[0] is x and arr[1] is y.
      *
-     * @return The array
+     * @return A C-array containing the x and y components.
      */
-    T const* const arr() const;
+    std::array<T, 2> const& arr() const;
 
-    /**
-     * Returns the geometric length of the Vector2<T> which equates to the
-     * formula: sqrt(x^2 + y^2)
-     *
-     * @return The geometric length of the Vector2<T>
-     */
-    double length() const;
-
-    /**
-     * Returns the squared value of the geometric length of the Vector2<T>, 
-     * which equates to the formula x^2 + y^2.
-     *
-     * @return The squared geometric length of the Vector2<T>.
-     */
-    double lengthSquared() const;
-
-    /**
-     * Normalizes the Vector2<T> to a unit vector (i.e. length() == 1).
-     */
-    void normalize();
-        
 private:
-    union {
-        T m_arr[2];
-        struct {
-            T m_x;
-            T m_y;
-        };
-    };
+    std::array<T, 2> m_arr;
 };
 
 /**
- * Equality operator. Returns true if the Vectors are equal, false otherwise.
+ * Equality operator.
+ * Returns true if the Vectors are equal, false otherwise.
  *
- * @param vec1 Vector2 on the left side of the equation.
- * @param vec2 Vector2 on the right side of the equation.
- * @return true if equal, or false if not equal
+ * @param vec1 A Vector2.
+ * @param vec2 A Vector2.
+ * @return true if equal, or false if not equal.
  */
 template<typename T>
 bool operator==(Vector2<T> const& vec1, Vector2<T> const& vec2);
 
 /**
- * Inequality operator. Returns true if the Vectors are not equal, false otherwise.
+ * Inequality operator.
+ * Returns true if the Vectors are not equal, false otherwise.
  *
- * @param vec1 Vector2 on the left side of the equation.
- * @param vec2 Vector2 on the right side of the euqation.
- * @return true if not equal, or false if equal
+ * @param vec1 A Vector2.
+ * @param vec2 A Vector2.
+ * @return true if not equal, or false if equal.
  */
 template<typename T>
 bool operator!=(Vector2<T> const& vec1, Vector2<T> const& vec2);
 
 /**
- * Unary negation operator. Returns a Vector2 that contains the negated
- * x and y of the original Vector2.
+ * Unary negation operator.
+ * Returns a Vector2 that contains the negated
+ * x and y of the input Vector2.
  *
  * @param vec The Vector2 to negate.
- * @return A Vector2.
+ * @return A Vector2 which is the negated input Vector2.
  */
 template<typename T>
 Vector2<T> operator-(Vector2<T> const& vec);
 
 /**
- * Addition operator. Piecewise addition of vec1 with vec2.
+ * Addition operator.
+ * Performs a geometric addition of two Vector2s in 2D
+ * space. The result Vector2 has magnitude and direction
+ * (vec1.x() + vec2.x(), vec1.y() + vec2.y()).
  *
- * @param vec1 A Vector2
- * @param vec2 A Vector2
- * @return A Vector2
+ * @param vec1 A Vector2.
+ * @param vec2 A Vector2.
+ * @return A Vector2 with is the sum of the two input Vector2s.
  */
 template<typename T>
 Vector2<T> operator+(Vector2<T> const& vec1, Vector2<T> const& vec2);
 
 /**
- * Addition operator. Piecewise addition of vec with scalar.
+ * Subtraction operator.
+ * Performs a geometric subtraction of two Vector2s in 2D
+ * space. The result Vector2 has magnitude and direction
+ * (vec1/x() - vec2.x(), vec1.y() - vec2.y()).
  *
- * @param vec A Vector2
- * @param scalar Scalar value
- * @return A Vector2
- */
-template<typename T>
-Vector2<T> operator+(Vector2<T> const& vec, T const& scalar);
-
-/**
- * Subtraction operator. Piecewise subtraction of vec2 from vec1.
+ * @param vec1 A Vector2.
+ * @param vec2 A Vector2.
+ * @return A Vector2 which is the difference of the two input Vector2s.
  */
 template<typename T>
 Vector2<T> operator-(Vector2<T> const& vec1, Vector2<T> const& vec2);
 
 /**
- * Subtraction operator. Piecewise subtaction of scalar from vec.
- */
-template<typename T>
-Vector2<T> operator-(Vector2<T>const& vec, T const& scalar);
-
-/**
- * Multiplication operator. Scales the x and y components of vec by scalar.
+ * Multiplication operator.
+ * Performs a geometric scaling of a Vector2 by a scalar value, where
+ * the result Vector2 is equal to (vec.x() * scalar, vec.y() * scalar).
+ *
+ * @param vec A Vector2.
+ * @param scalar A scalar value to multiply with vec.
+ * @return A Vector2 which has been scaled by scalar.
  */
 template<typename T>
 Vector2<T> operator*(Vector2<T> const& vec, T const& scalar);
 
 /**
- * Division operator. Inverse scales the x and y components of vec by scalar.
+ * Division operator.
+ * Performs a geometric inverse scaling of a Vector2 by a scalar value, where
+ * the result Vector2 is equal to (vec.x() / scalar, vec.y() / scalar).
+ *
+ * @param vec A Vector2.
+ * @param scalar A scalar value to divide with vec.
+ * @return A Vector2 which has been inverse scaled by scalar.
  */
 template<typename T>
 Vector2<T> operator/(Vector2<T> const& vec, T const& scalar);
 
 /**
- * Stream operator. Prints the Vector2 vec to the ostream os.
+ * Stream operator.
+ * Prints the Vector2 vec to the ostream os.
+ *
+ * @param os The output stream.
+ * @param vec The Vector2 to stream.
+ * @return A reference to the output stream.
  */
 template<typename T>
 std::ostream& operator<<(std::ostream& os, Vector2<T> const& vec);
@@ -286,33 +271,28 @@ std::ostream& operator<<(std::ostream& os, Vector2<T> const& vec);
 
 template<typename T>
 inline Vector2<T>::Vector2()
-: m_x(T()),
-  m_y(T())
-{}
-
-template<typename T>
-inline Vector2<T>::Vector2(T const& x, T const& y)
-: m_x(x),
-  m_y(y)
-{}
-
-template<typename T>
-inline Vector2<T>::Vector2(std::array<T, 2> const& arr)
+: m_arr{{ T(), T() }}
 {
-    std::copy(arr.begin(), arr.end(), m_arr);
-};
-
-template<typename T>
-inline Vector2<T>::Vector2(std::vector<T> const& vec)
-{
-    AFTS_ASSERT_DEBUG(vec.size() == 2);
-    std::copy(vec.begin(), vec.end(), m_arr);
+    static_assert(std::is_floating_point<T>::value, "Vector2 only supports floating point types");
 }
 
 template<typename T>
+inline Vector2<T>::Vector2(T x, T y)
+: m_arr{{ x, y }}
+{
+    static_assert(std::is_floating_point<T>::value, "Vector2 only supports floating point types");
+}
+
+template<typename T>
+inline Vector2<T>::Vector2(std::array<T, 2> const& arr)
+: m_arr(arr)
+{
+    static_assert(std::is_floating_point<T>::value, "Vector2 only supports floating point types");
+};
+
+template<typename T>
 inline Vector2<T>::Vector2(Vector2<T> const& vec)
-: m_x(vec.m_x),
-  m_y(vec.m_y)
+: m_arr(vec.m_arr)
 {}
 
 template<typename T>
@@ -322,34 +302,15 @@ Vector2<T>::~Vector2()
 template<typename T>
 inline Vector2<T>& Vector2<T>::operator=(Vector2<T> const& vec)
 {
-    m_x = vec.m_x;
-    m_y = vec.m_y;
-    
+    m_arr = vec.m_arr;
+
     return *this;
 }
 
 template<typename T>
 inline Vector2<T>& Vector2<T>::operator=(std::array<T, 2> const& arr)
 {
-    std::copy(arr.begin(), arr.end(), m_arr);
-
-    return *this;
-}
-
-template<typename T>
-inline Vector2<T>& Vector2<T>::operator=(std::vector<T> const& vec)
-{
-    AFTS_ASSERT_DEBUG(vec.size() == 2);
-    std::copy(vec.begin(), vec.end(), m_arr);
-
-    return *this;
-}
-
-template<typename T>
-inline Vector2<T>& Vector2<T>::assign(T const& x, T const& y)
-{
-    m_x = x;
-    m_y = y;
+    m_arr = arr;
 
     return *this;
 }
@@ -357,94 +318,71 @@ inline Vector2<T>& Vector2<T>::assign(T const& x, T const& y)
 template<typename T>
 inline Vector2<T>& Vector2<T>::operator+=(Vector2<T> const& vec)
 {
-    m_x += vec.m_x;
-    m_y += vec.m_y;
-    
-    return *this;
-}
-    
-template<typename T>
-inline Vector2<T>& Vector2<T>::operator+=(T scalar)
-{
-    m_x += scalar;
-    m_y += scalar;
-    
+    m_arr[0] += vec.m_arr[0];
+    m_arr[1] += vec.m_arr[1];
+
     return *this;
 }
     
 template<typename T>
 inline Vector2<T>& Vector2<T>::operator-=(Vector2<T> const& vec)
 {
-    m_x -= vec.m_x;
-    m_y -= vec.m_y;
-    
-    return *this;
-}
-    
-template<typename T>
-inline Vector2<T>& Vector2<T>::operator-=(T scalar)
-{
-    m_x -= scalar;
-    m_y -= scalar;
-    
+    m_arr[0] -= vec.m_arr[0];
+    m_arr[1] -= vec.m_arr[1];
+
     return *this;
 }
     
 template<typename T>
 inline Vector2<T>& Vector2<T>::operator*=(T scalar)
 {
-    m_x *= scalar;
-    m_y *= scalar;
-    
+    m_arr[0] *= scalar;
+    m_arr[1] *= scalar;
+
     return *this;
 }
     
 template<typename T>
 inline Vector2<T>& Vector2<T>::operator/=(T scalar)
 {
-    m_x /= scalar;
-    m_y /= scalar;
-    
+    m_arr[0] /= scalar;
+    m_arr[1] /= scalar;
+
     return *this;
 }
 
 template<typename T>
-inline T const& Vector2<T>::x() const
+inline T Vector2<T>::x() const
 {
-    return m_x;
-}
-    
-template<typename T>
-inline T const& Vector2<T>::y() const
-{
-    return m_y;
+    return m_arr[0];
 }
 
 template<typename T>
-inline T const* const Vector2<T>::arr() const
+inline Vector2<T>& Vector2<T>::x(T value)
+{
+    m_arr[0] = value;
+
+    return *this;
+}
+
+template<typename T>
+inline T Vector2<T>::y() const
+{
+    return m_arr[1];
+}
+
+template<typename T>
+inline Vector2<T>& Vector2<T>::y(T value)
+{
+    m_arr[1] = value;
+
+    return *this;
+}
+
+template<typename T>
+inline std::array<T, 2> const& Vector2<T>::arr() const
 {
     return m_arr;
-}
-
-template<typename T>
-inline double Vector2<T>::length() const
-{
-    return std::sqrt((m_x * m_x) + (m_y * m_y));
-}
-
-template<typename T>
-inline double Vector2<T>::lengthSquared() const
-{
-    return (m_x * m_x) + (m_y * m_y);
-}
-
-template<typename T>
-inline void Vector2<T>::normalize()
-{
-    T len = length();
-    
-    m_x /= len;
-    m_y /= len;
 }
 
 template<typename T>
@@ -474,29 +412,12 @@ inline Vector2<T> operator+(Vector2<T> const& vec1, Vector2<T> const& vec2)
         vec1.x() + vec2.x(),
         vec1.y() + vec2.y());
 }
-
-template<typename T>
-inline Vector2<T> operator+(Vector2<T> const& vec, T const& scalar)
-{
-    return Vector2<T>(
-        vec.x() + scalar,
-        vec.y() + scalar);
-}
-
 template<typename T>
 inline Vector2<T> operator-(Vector2<T> const& vec1, Vector2<T> const& vec2)
 {
     return Vector2<T>(
         vec1.x() - vec2.x(),
         vec1.y() - vec2.y());
-}
-
-template<typename T>
-inline Vector2<T> operator-(Vector2<T>const& vec, T const& scalar)
-{
-    return Vector2<T>(
-        vec.x() - scalar,
-        vec.y() - scalar);
 }
 
 template<typename T>

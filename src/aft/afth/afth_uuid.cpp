@@ -38,7 +38,7 @@ UUID::UUID()
 }
 
 UUID::UUID(uint64_t a, uint64_t b)
-: m_uuid({a, b})
+: m_uuid{a, b}
 {}
 
 UUID::~UUID()

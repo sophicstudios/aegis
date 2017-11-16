@@ -2,7 +2,7 @@
 #define INCLUDED_AGTUI_WIDGET_H
 
 #include <agtm_rect.h>
-#include <agtm_point2d.h>
+#include <agtm_vector2.h>
 #include <agtm_size2d.h>
 #include <afth_uuid.h>
 
@@ -11,7 +11,7 @@ namespace agtui {
 class Widget
 {
 public:
-    static const agtm::Point2d<float> DEFAULT_POSITION;
+    static const agtm::Vector2<float> DEFAULT_POSITION;
     static const agtm::Size2d<float> DEFAULT_SIZE;
 
     Widget();
@@ -40,9 +40,9 @@ public:
 
     void size(agtm::Size2d<float> const& size);
 
-    agtm::Point2d<float> position() const;
+    agtm::Vector2<float> position() const;
 
-    void position(agtm::Point2d<float> const& position);
+    void position(agtm::Vector2<float> const& position);
     
     agtm::Size2d<float> minSize() const;
 

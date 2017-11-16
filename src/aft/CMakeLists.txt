@@ -295,6 +295,8 @@ include_directories(${${PROJECT_NAME}_INCLUDE_DIRS})
 
 add_library(${PROJECT_NAME} SHARED ${AFT_SOURCES})
 
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
+
 ################################################################################
 # aft unit tests
 ################################################################################
@@ -318,5 +320,3 @@ include_directories(${aunit_INCLUDE_DIRS})
 add_executable(test_${PROJECT_NAME} ${AFT_SOURCES_TEST})
 
 target_link_libraries(test_${PROJECT_NAME} ${PROJECT_NAME} aunit)
-
-target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_11)

@@ -61,6 +61,9 @@ include_directories(${${PROJECT_NAME}_INCLUDE_DIRS} ${aft_INCLUDE_DIRS})
 add_library(${PROJECT_NAME} SHARED ${ACT_SOURCES})
 target_link_libraries(${PROJECT_NAME} aft)
 
+target_compile_options(${PROJECT_NAME} PRIVATE "-Wall")
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
+
 ################################################################################
 # act unit tests
 ################################################################################
@@ -75,5 +78,3 @@ include_directories(${${PROJECT_NAME}_INCLUDE_DIRS} ${aft_INCLUDE_DIRS} ${aunit_
 
 add_executable(test_${PROJECT_NAME} ${ACT_SOURCES_TEST})
 target_link_libraries(test_${PROJECT_NAME} ${PROJECT_NAME} aft aunit)
-
-target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_11)

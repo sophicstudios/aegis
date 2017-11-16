@@ -10,7 +10,7 @@ Mesh::Mesh(VertexList const& vertices)
     VertexList::const_iterator it = vertices.begin(), end = vertices.end();
     for (size_t i = 0; it != end; ++it, i += 3)
     {
-        std::memcpy(arr + i, (*it).coordinates().arr(), 3 * sizeof(float));
+        std::memcpy(arr + i, (*it).coordinates().arr().data(), 3 * sizeof(float));
     }
 
     //glGenVertexArrays(1, &m_vertexArray);

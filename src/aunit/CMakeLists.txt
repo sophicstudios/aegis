@@ -37,5 +37,3 @@ set(${PROJECT_NAME}_INCLUDE_DIRS
 include_directories(${${PROJECT_NAME}_INCLUDE_DIRS})
 
 add_library(${PROJECT_NAME} SHARED ${AUNIT_SOURCES})
-
-target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_11)

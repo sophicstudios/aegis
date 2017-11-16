@@ -7,11 +7,24 @@
 #include <agtm_vector2.h>
 #include <agtm_vector3.h>
 #include <agtm_vector4.h>
+#include <array>
 
 namespace agtm {
 
 struct MatrixUtil
 {
+    template<typename T>
+    static std::array<T, 4> toRowMajor(Matrix2<T> const& m);
+
+    template<typename T>
+    static std::array<T, 4> toColMajor(Matrix2<T> const& m);
+
+    template<typename T>
+    static std::array<T, 9> toRowMajor(Matrix3<T> const& m);
+
+    template<typename T>
+    static std::array<T, 9> toColMajor(Matrix3<T> const& m);
+
     template<typename T>
     static Matrix2<T> fromColVectors(
         Vector2<T> const& col0,
@@ -66,6 +79,44 @@ struct MatrixUtil
     template<typename T>
     static T determinant(Matrix4<T> const& m);
 };
+
+template<typename T>
+std::array<T, 4> MatrixUtil::toRowMajor(Matrix2<T> const& m)
+{
+    return std::array<T, 4>{{
+        m(0, 0), m(0, 1),
+        m(1, 0), m(1, 1)
+    }};
+}
+
+template<typename T>
+std::array<T, 4> MatrixUtil::toColMajor(Matrix2<T> const& m)
+{
+    return std::array<T, 4>{{
+        m(0, 0), m(1, 0),
+        m(0, 1), m(1, 1)
+    }};
+}
+
+template<typename T>
+std::array<T, 9> MatrixUtil::toRowMajor(Matrix3<T> const& m)
+{
+    return std::array<T, 9>{{
+        m(0, 0), m(0, 1), m(0, 2),
+        m(1, 0), m(1, 1), m(1, 2),
+        m(2, 0), m(2, 1), m(2, 2)
+    }};
+}
+
+template<typename T>
+std::array<T, 9> MatrixUtil::toColMajor(Matrix3<T> const& m)
+{
+    return std::array<T, 9>{{
+        m(0, 0), m(1, 0), m(2, 0),
+        m(0, 1), m(1, 1), m(2, 1),
+        m(0, 2), m(1, 2), m(2, 2)
+    }};
+}
 
 template<typename T>
 inline Matrix2<T> MatrixUtil::fromColVectors(
