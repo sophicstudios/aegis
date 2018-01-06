@@ -106,12 +106,16 @@ source_group(agtg FILES ${AGTG_SOURCES} ${AGTG_SOURCES_TEST})
 set(AGTM_SOURCES
     agtm/agtm_matrix2.cpp
     agtm/agtm_matrix2.h
+    agtm/agtm_matrix2util.cpp
+    agtm/agtm_matrix2util.h
     agtm/agtm_matrix3.cpp
     agtm/agtm_matrix3.h
+    agtm/agtm_matrix3util.cpp
+    agtm/agtm_matrix3util.h
     agtm/agtm_matrix4.cpp
     agtm/agtm_matrix4.h
-    agtm/agtm_matrixutil.cpp
-    agtm/agtm_matrixutil.h
+    agtm/agtm_matrix4util.cpp
+    agtm/agtm_matrix4util.h
     agtm/agtm_quaternion.cpp
     agtm/agtm_quaternion.h
     agtm/agtm_rect.cpp
@@ -120,23 +124,29 @@ set(AGTM_SOURCES
     agtm/agtm_size2d.h
     agtm/agtm_vector2.cpp
     agtm/agtm_vector2.h
+    agtm/agtm_vector2util.cpp
+    agtm/agtm_vector2util.h
     agtm/agtm_vector3.cpp
     agtm/agtm_vector3.h
+    agtm/agtm_vector3util.cpp
+    agtm/agtm_vector3util.h
     agtm/agtm_vector4.cpp
     agtm/agtm_vector4.h
-    agtm/agtm_vectorutil.cpp
-    agtm/agtm_vectorutil.h
 )
 
 set(AGTM_SOURCES_TEST
     agtm/agtm_matrix2.t.cpp
+    agtm/agtm_matrix2util.t.cpp
     agtm/agtm_matrix3.t.cpp
+    agtm/agtm_matrix3util.t.cpp
     agtm/agtm_matrix4.t.cpp
+    agtm/agtm_matrix4util.t.cpp
     agtm/agtm_quaternion.t.cpp
     agtm/agtm_vector2.t.cpp
+    agtm/agtm_vector2util.t.cpp
     agtm/agtm_vector3.t.cpp
+    agtm/agtm_vector3util.t.cpp
     agtm/agtm_vector4.t.cpp
-    agtm/agtm_vectorutil.t.cpp
 )
 
 source_group(agtm FILES ${AGTM_SOURCES})

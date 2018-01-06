@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <array>
 #include <ostream>
+#include <iomanip>
 
 namespace agtm {
 
@@ -13,14 +14,16 @@ template<typename T>
 class Matrix3
 {
 public:
+    static Matrix3<T> identity();
+
     Matrix3();
     
     Matrix3(
         T r0c0, T r0c1, T r0c2,
         T r1c0, T r1c1, T r1c2,
         T r2c0, T r2c1, T r2c2);
-    
-    Matrix3(std::array<T, 9> const& arr);
+
+    Matrix3(std::array<std::array<T, 3>, 3> const& arr);
 
     Matrix3(Matrix3<T> const& m);
     
@@ -64,13 +67,13 @@ template<typename T>
 Matrix3<T> operator+(Matrix3<T> const& lhs, Matrix3<T> const& rhs);
 
 template<typename T>
-Matrix3<T> operator+(Matrix3<T> const& lhs, T const& scalar);
+Matrix3<T> operator+(Matrix3<T> const& lhs, T scalar);
 
 template<typename T>
 Matrix3<T> operator-(Matrix3<T> const& lhs, Matrix3<T> const& rhs);
 
 template<typename T>
-Matrix3<T> operator-(Matrix3<T> const& lhs, T const& scalar);
+Matrix3<T> operator-(Matrix3<T> const& lhs, T scalar);
 
 template<typename T>
 Matrix3<T> operator*(Matrix3<T> const& lhs, Matrix3<T> const& rhs);
@@ -82,19 +85,28 @@ template<typename T>
 Vector3<T> operator*(Vector3<T> const& lhs, Matrix3<T> const& rhs);
 
 template<typename T>
-Matrix3<T> operator*(Matrix3<T> const& lhs, T const& rhs);
+Matrix3<T> operator*(Matrix3<T> const& lhs, T scalar);
 
 template<typename T>
-Matrix3<T> operator*(T const& lhs, Matrix3<T> const& rhs);
+Matrix3<T> operator*(T scalar, Matrix3<T> const& rhs);
 
 template<typename T>
-Matrix3<T> operator/(Matrix3<T> const& lhs, T const& rhs);
+Matrix3<T> operator/(Matrix3<T> const& lhs, T scalar);
 
 template<typename T>
-Matrix3<T> operator/(T const& lhs, Matrix3<T> const& rhs);
+Matrix3<T> operator/(T scalar, Matrix3<T> const& rhs);
 
 template<typename T>
 std::ostream& operator<<(std::ostream& os, Matrix3<T> const& m);
+
+template<typename T>
+inline Matrix3<T> Matrix3<T>::identity()
+{
+    return Matrix3<T>(
+        static_cast<T>(1), static_cast<T>(0), static_cast<T>(0),
+        static_cast<T>(0), static_cast<T>(1), static_cast<T>(0),
+        static_cast<T>(0), static_cast<T>(0), static_cast<T>(1));
+}
 
 template<typename T>
 inline Matrix3<T>::Matrix3()
@@ -103,7 +115,9 @@ inline Matrix3<T>::Matrix3()
     {{T(), T(), T()}},
     {{T(), T(), T()}}
 }}
-{}
+{
+    static_assert(std::is_floating_point<T>::value, "Matrix3 only supports floating point types");
+}
 
 template<typename T>
 inline Matrix3<T>::Matrix3(
@@ -115,16 +129,16 @@ inline Matrix3<T>::Matrix3(
     {{r1c0, r1c1, r1c2}},
     {{r2c0, r2c1, r2c2}}
 }}
-{}
+{
+    static_assert(std::is_floating_point<T>::value, "Matrix3 only supports floating point types");
+}
 
 template<typename T>
-inline Matrix3<T>::Matrix3(std::array<T, 9> const& arr)
-: m_arr{{
-    {{arr[0], arr[1], arr[2]}},
-    {{arr[3], arr[4], arr[5]}},
-    {{arr[6], arr[7], arr[8]}}
-}}
-{}
+inline Matrix3<T>::Matrix3(std::array<std::array<T, 3>, 3> const& arr)
+: m_arr(arr)
+{
+    static_assert(std::is_floating_point<T>::value, "Matrix3 only supports floating point types");
+}
 
 template<typename T>
 inline Matrix3<T>::Matrix3(Matrix3<T> const& m)
@@ -315,12 +329,12 @@ inline Matrix3<T> operator+(Matrix3<T> const& lhs, Matrix3<T> const& rhs)
 }
 
 template<typename T>
-inline Matrix3<T> operator+(Matrix3<T> const& lhs, T const& rhs)
+inline Matrix3<T> operator+(Matrix3<T> const& lhs, T scalar)
 {
     return Matrix3<T>(
-        lhs(0, 0) + rhs, lhs(0, 1) + rhs, lhs(0, 2) + rhs,
-        lhs(1, 0) + rhs, lhs(1, 1) + rhs, lhs(1, 2) + rhs,
-        lhs(2, 0) + rhs, lhs(2, 1) + rhs, lhs(2, 2) + rhs);
+        lhs(0, 0) + scalar, lhs(0, 1) + scalar, lhs(0, 2) + scalar,
+        lhs(1, 0) + scalar, lhs(1, 1) + scalar, lhs(1, 2) + scalar,
+        lhs(2, 0) + scalar, lhs(2, 1) + scalar, lhs(2, 2) + scalar);
 }
 
 template<typename T>
@@ -333,12 +347,12 @@ inline Matrix3<T> operator-(Matrix3<T> const& lhs, Matrix3<T> const& rhs)
 }
 
 template<typename T>
-inline Matrix3<T> operator-(Matrix3<T> const& lhs, T const& rhs)
+inline Matrix3<T> operator-(Matrix3<T> const& lhs, T scalar)
 {
     return Matrix3<T>(
-        lhs(0, 0) - rhs, lhs(0, 1) - rhs, lhs(0, 2) - rhs,
-        lhs(1, 0) - rhs, lhs(1, 1) - rhs, lhs(1, 2) - rhs,
-        lhs(2, 0) - rhs, lhs(2, 1) - rhs, lhs(2, 2) - rhs);
+        lhs(0, 0) - scalar, lhs(0, 1) - scalar, lhs(0, 2) - scalar,
+        lhs(1, 0) - scalar, lhs(1, 1) - scalar, lhs(1, 2) - scalar,
+        lhs(2, 0) - scalar, lhs(2, 1) - scalar, lhs(2, 2) - scalar);
 }
 
 template<typename T>
@@ -368,55 +382,58 @@ inline Vector3<T> operator*(Matrix3<T> const& lhs, Vector3<T> const& rhs)
 template<typename T>
 inline Vector3<T> operator*(Vector3<T> const& lhs, Matrix3<T> const& rhs)
 {
-    return Matrix3<T>(
+    return Vector3<T>(
         (lhs.x() * rhs(0, 0)) + (lhs.y() * rhs(1, 0)) + (lhs.z() * rhs(2, 0)),
         (lhs.x() * rhs(0, 1)) + (lhs.y() * rhs(1, 1)) + (lhs.z() * rhs(2, 1)),
         (lhs.x() * rhs(0, 2)) + (lhs.y() * rhs(1, 2)) + (lhs.z() * rhs(2, 2)));
 }
 
 template<typename T>
-inline Matrix3<T> operator*(Matrix3<T> const& lhs, T const& rhs)
+inline Matrix3<T> operator*(Matrix3<T> const& lhs, T scalar)
 {
     return Matrix3<T>(
-        lhs(0, 0) * rhs, lhs(0, 1) * rhs, lhs(0, 2) * rhs,
-        lhs(1, 0) * rhs, lhs(1, 1) * rhs, lhs(1, 2) * rhs,
-        lhs(2, 0) * rhs, lhs(2, 1) * rhs, lhs(2, 2) * rhs);
+        lhs(0, 0) * scalar, lhs(0, 1) * scalar, lhs(0, 2) * scalar,
+        lhs(1, 0) * scalar, lhs(1, 1) * scalar, lhs(1, 2) * scalar,
+        lhs(2, 0) * scalar, lhs(2, 1) * scalar, lhs(2, 2) * scalar);
 }
 
 template<typename T>
-inline Matrix3<T> operator*(T const& lhs, Matrix3<T> const& rhs)
+inline Matrix3<T> operator*(T scalar, Matrix3<T> const& rhs)
 {
     return Matrix3<T>(
-        lhs * rhs(0, 0), lhs * rhs(0, 1), lhs * rhs(0, 2),
-        lhs * rhs(1, 0), lhs * rhs(1, 1), lhs * rhs(1, 2),
-        lhs * rhs(2, 0), lhs * rhs(2, 1), lhs * rhs(2, 2));
+        scalar * rhs(0, 0), scalar * rhs(0, 1), scalar * rhs(0, 2),
+        scalar * rhs(1, 0), scalar * rhs(1, 1), scalar * rhs(1, 2),
+        scalar * rhs(2, 0), scalar * rhs(2, 1), scalar * rhs(2, 2));
 }
 
 template<typename T>
-inline Matrix3<T> operator/(Matrix3<T> const& lhs, T const& rhs)
+inline Matrix3<T> operator/(Matrix3<T> const& lhs, T scalar)
 {
     return Matrix3<T>(
-        lhs(0, 0) / rhs, lhs(0, 1) / rhs, lhs(0, 2) / rhs,
-        lhs(1, 0) / rhs, lhs(1, 1) / rhs, lhs(1, 2) / rhs,
-        lhs(2, 0) / rhs, lhs(2, 1) / rhs, lhs(2, 2) / rhs);
+        lhs(0, 0) / scalar, lhs(0, 1) / scalar, lhs(0, 2) / scalar,
+        lhs(1, 0) / scalar, lhs(1, 1) / scalar, lhs(1, 2) / scalar,
+        lhs(2, 0) / scalar, lhs(2, 1) / scalar, lhs(2, 2) / scalar);
 }
 
 template<typename T>
-inline Matrix3<T> operator/(T const& lhs, Matrix3<T> const& rhs)
+inline Matrix3<T> operator/(T scalar, Matrix3<T> const& rhs)
 {
     return Matrix3<T>(
-        lhs / rhs(0, 0), lhs / rhs(0, 1), lhs / rhs(0, 2),
-        lhs / rhs(1, 0), lhs / rhs(1, 1), lhs / rhs(1, 2),
-        lhs / rhs(2, 0), lhs / rhs(2, 1), lhs / rhs(2, 2));
+        scalar / rhs(0, 0), scalar / rhs(0, 1), scalar / rhs(0, 2),
+        scalar / rhs(1, 0), scalar / rhs(1, 1), scalar / rhs(1, 2),
+        scalar / rhs(2, 0), scalar / rhs(2, 1), scalar / rhs(2, 2));
 }
 
 template<typename T>
 inline std::ostream& operator<<(std::ostream& os, Matrix3<T> const& m)
 {
+    std::streamsize i = os.width();
+
     os << std::endl
-        << "|" << m(0, 0) << " " << m(0, 1) << " " << m(0, 2) << "|" << std::endl
-        << "|" << m(1, 0) << " " << m(1, 1) << " " << m(1, 2) << "|" << std::endl
-        << "|" << m(2, 0) << " " << m(2, 1) << " " << m(2, 2) << "|" << std::endl;
+        << std::setw(1)
+        << "|" << std::setw(i) << m(0, 0) << " " << std::setw(i) << m(0, 1) << " " << std::setw(i) << m(0, 2) << "|" << std::endl
+        << "|" << std::setw(i) << m(1, 0) << " " << std::setw(i) << m(1, 1) << " " << std::setw(i) << m(1, 2) << "|" << std::endl
+        << "|" << std::setw(i) << m(2, 0) << " " << std::setw(i) << m(2, 1) << " " << std::setw(i) << m(2, 2) << "|" << std::endl;
     
     return os;
 }

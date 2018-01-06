@@ -1,4 +1,6 @@
 #include <agtg_shaderprogram.h>
+#include <agtm_matrix4.h>
+#include <agtm_matrix4util.h>
 #include <aftfs_filesystem.h> 
 #include <iostream>
 
@@ -184,7 +186,7 @@ void ShaderProgram::bind()
 
 void ShaderProgram::bindUniformMatrix(GLint location, agtm::Matrix4<float> const& matrix)
 {
-    glUniformMatrix4fv(location, 1 /*count*/, true /*transpose*/, matrix.arr());
+    glUniformMatrix4fv(location, 1 /*count*/, true /*transpose*/, agtm::Matrix4Util::toColMajor(matrix).data());
 }
 
 } // namespace

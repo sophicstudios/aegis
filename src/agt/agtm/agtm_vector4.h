@@ -331,9 +331,7 @@ inline Vector4<T>::Vector4(std::array<T, 4> const& arr)
 template<typename T>
 inline Vector4<T>::Vector4(Vector4<T> const& vec)
 : m_arr(vec.m_arr)
-{
-    static_assert(std::is_floating_point<T>::value, "Vector4 only supports floating point types");
-}
+{}
 
 template<typename T>
 Vector4<T>::~Vector4()

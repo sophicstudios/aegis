@@ -7,6 +7,7 @@
 #include <array>
 #include <algorithm>
 #include <ostream>
+#include <iomanip>
 
 namespace agtm {
 
@@ -22,8 +23,8 @@ public:
         T const& r0c0, T const& r0c1,
         T const& r1c0, T const& r1c1);
 
-    Matrix2(std::array<T, 4> const& arr);
-    
+    Matrix2(std::array<std::array<T, 2>, 2> const& arr);
+
     Matrix2(Matrix2<T> const& m);
     
     ~Matrix2();
@@ -32,17 +33,17 @@ public:
     
     Matrix2<T>& operator+=(Matrix2<T> const& m);
     
-    Matrix2<T>& operator+=(T const& scalar);
+    Matrix2<T>& operator+=(T scalar);
     
     Matrix2<T>& operator-=(Matrix2<T> const& m);
     
-    Matrix2<T>& operator-=(T const& scalar);
+    Matrix2<T>& operator-=(T scalar);
     
     Matrix2<T>& operator*=(Matrix2<T> const& m);
 
-    Matrix2<T>& operator*=(T const& scalar);
+    Matrix2<T>& operator*=(T scalar);
     
-    Matrix2<T>& operator/=(T const& scalar);
+    Matrix2<T>& operator/=(T scalar);
 
     T operator()(size_t i, size_t j) const;
     
@@ -84,22 +85,22 @@ template<typename T>
 Vector2<T> operator*(Matrix2<T> const& lhs, Vector2<T> const& rhs);
 
 template<typename T>
-Matrix2<T> operator*(Matrix2<T> const& lhs, T rhs);
+Matrix2<T> operator*(Matrix2<T> const& lhs, T scalar);
 
 template<typename T>
-Matrix2<T> operator*(T const& lhs, Matrix2<T> const& rhs);
+Matrix2<T> operator*(T scalar, Matrix2<T> const& rhs);
 
 template<typename T>
-Matrix2<T> operator/(Matrix2<T> const& lhs, T rhs);
+Matrix2<T> operator/(Matrix2<T> const& lhs, T scalar);
 
 template<typename T>
-Matrix2<T> operator/(T const& lhs, Matrix2<T> const& rhs);
+Matrix2<T> operator/(T scalar, Matrix2<T> const& rhs);
 
 template<typename T>
 std::ostream& operator<<(std::ostream& os, Matrix2<T> const& m);
 
 template<typename T>
-Matrix2<T> Matrix2<T>::identity()
+inline Matrix2<T> Matrix2<T>::identity()
 {
     return Matrix2<T>(
         static_cast<T>(1), static_cast<T>(0),
@@ -112,7 +113,9 @@ inline Matrix2<T>::Matrix2()
     {{T(), T()}},
     {{T(), T()}}
 }}
-{}
+{
+    static_assert(std::is_floating_point<T>::value, "Matrix2 only supports floating point types");
+}
 
 template<typename T>
 inline Matrix2<T>::Matrix2(
@@ -122,15 +125,16 @@ inline Matrix2<T>::Matrix2(
     {{r0c0, r0c1}},
     {{r1c0, r1c1}}
 }}
-{}
+{
+    static_assert(std::is_floating_point<T>::value, "Matrix2 only supports floating point types");
+}
 
 template<typename T>
-inline Matrix2<T>::Matrix2(std::array<T, 4> const& arr)
-: m_arr{{
-    {{arr[0], arr[1]}},
-    {{arr[2], arr[3]}}
-}}
-{}
+inline Matrix2<T>::Matrix2(std::array<std::array<T, 2>, 2> const& arr)
+: m_arr(arr)
+{
+    static_assert(std::is_floating_point<T>::value, "Matrix2 only supports floating point types");
+}
 
 template<typename T>
 inline Matrix2<T>::Matrix2(Matrix2<T> const& m)
@@ -164,7 +168,7 @@ inline Matrix2<T>& Matrix2<T>::operator+=(Matrix2<T> const& m)
 }
 
 template<typename T>
-inline Matrix2<T>& Matrix2<T>::operator+=(T const& scalar)
+inline Matrix2<T>& Matrix2<T>::operator+=(T scalar)
 {
     for (size_t i = 0; i < 2; ++i)
     {
@@ -192,7 +196,7 @@ inline Matrix2<T>& Matrix2<T>::operator-=(Matrix2<T> const& m)
 }
 
 template<typename T>
-inline Matrix2<T>& Matrix2<T>::operator-=(T const& scalar)
+inline Matrix2<T>& Matrix2<T>::operator-=(T scalar)
 {
     for (size_t i = 0; i < 2; ++i)
     {
@@ -220,7 +224,7 @@ inline Matrix2<T>& Matrix2<T>::operator*=(Matrix2<T> const& m)
 }
 
 template<typename T>
-inline Matrix2<T>& Matrix2<T>::operator*=(T const& scalar)
+inline Matrix2<T>& Matrix2<T>::operator*=(T scalar)
 {
     for (size_t i = 0; i < 2; ++i)
     {
@@ -234,7 +238,7 @@ inline Matrix2<T>& Matrix2<T>::operator*=(T const& scalar)
 }
 
 template<typename T>
-inline Matrix2<T>& Matrix2<T>::operator/=(T const& scalar)
+inline Matrix2<T>& Matrix2<T>::operator/=(T scalar)
 {
     for (size_t i = 0; i < 2; ++i)
     {
@@ -302,7 +306,7 @@ inline Matrix2<T> operator+(Matrix2<T> const& lhs, Matrix2<T> const& rhs)
 }
 
 template<typename T>
-inline Matrix2<T> operator+(Matrix2<T> const& lhs, T const& scalar)
+inline Matrix2<T> operator+(Matrix2<T> const& lhs, T scalar)
 {
     return Matrix2<T>(
         lhs(0, 0) + scalar, lhs(0, 1) + scalar,
@@ -318,7 +322,7 @@ inline Matrix2<T> operator-(Matrix2<T> const& lhs, Matrix2<T> const& rhs)
 }
 
 template<typename T>
-inline Matrix2<T> operator-(Matrix2<T> const& lhs, T const& scalar)
+inline Matrix2<T> operator-(Matrix2<T> const& lhs, T scalar)
 {
     return Matrix2<T>(
         lhs(0, 0) - scalar, lhs(0, 1) - scalar,
@@ -347,12 +351,12 @@ template<typename T>
 inline Vector2<T> operator*(Matrix2<T> const& lhs, Vector2<T> const& rhs)
 {
     return Vector2<T>(
-        (lhs(0, 0) * lhs.x()) + (lhs(0, 1) * lhs.y()),
-        (lhs(1, 0) * lhs.x()) + (lhs(1, 1) * lhs.y()));
+        (lhs(0, 0) * rhs.x()) + (lhs(0, 1) * rhs.y()),
+        (lhs(1, 0) * rhs.x()) + (lhs(1, 1) * rhs.y()));
 }
 
 template<typename T>
-inline Matrix2<T> operator*(Matrix2<T> const& lhs, T const& scalar)
+inline Matrix2<T> operator*(Matrix2<T> const& lhs, T scalar)
 {
     return Matrix2<T>(
         lhs(0, 0) * scalar, lhs(0, 1) * scalar,
@@ -360,7 +364,7 @@ inline Matrix2<T> operator*(Matrix2<T> const& lhs, T const& scalar)
 }
 
 template<typename T>
-inline Matrix2<T> operator*(T const& scalar, Matrix2<T>const& rhs)
+inline Matrix2<T> operator*(T scalar, Matrix2<T> const& rhs)
 {
     return Matrix2<T>(
         scalar * rhs(0, 0), scalar * rhs(0, 1),
@@ -368,7 +372,7 @@ inline Matrix2<T> operator*(T const& scalar, Matrix2<T>const& rhs)
 }
 
 template<typename T>
-inline Matrix2<T> operator/(Matrix2<T> const& lhs, T const& scalar)
+inline Matrix2<T> operator/(Matrix2<T> const& lhs, T scalar)
 {
     return Matrix2<T>(
         lhs(0, 0) / scalar, lhs(0, 1) / scalar,
@@ -376,7 +380,7 @@ inline Matrix2<T> operator/(Matrix2<T> const& lhs, T const& scalar)
 }
 
 template<typename T>
-inline Matrix2<T> operator/(T const& scalar, Matrix2<T>const& rhs)
+inline Matrix2<T> operator/(T scalar, Matrix2<T> const& rhs)
 {
     return Matrix2<T>(
         scalar / rhs(0, 0), scalar / rhs(0, 1),
@@ -386,9 +390,12 @@ inline Matrix2<T> operator/(T const& scalar, Matrix2<T>const& rhs)
 template<typename T>
 inline std::ostream& operator<<(std::ostream& os, Matrix2<T> const& m)
 {
+    std::streamsize i = os.width();
+
     os << std::endl
-        << "|" << m(0, 0) << " " << m(0, 1) << "|" << std::endl
-        << "|" << m(1, 0) << " " << m(1, 1) << "|" << std::endl;
+        << std::setw(1)
+        << "|" << std::setw(i) << m(0, 0) << " " << std::setw(i) << m(0, 1) << "|" << std::endl
+        << "|" << std::setw(i) << m(1, 0) << " " << std::setw(i) << m(1, 1) << "|" << std::endl;
     
     return os;
 }

@@ -1,4 +1,4 @@
-#include <agtm_matrixutil.h>
+#include <agtm_matrix4util.h>
 
 namespace agtm {
 
