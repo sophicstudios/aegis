@@ -7,6 +7,8 @@ message(STATUS "CMAKE_CXX_COMPILER: " ${CMAKE_CXX_COMPILER})
 ################################################################################
 
 set(AGTA_SOURCES
+    agta/agta_assetpool.cpp
+    agta/agta_assetpool.h
     agta/agta_material.cpp
     agta/agta_material.h
     agta/agta_mesh.cpp
@@ -14,6 +16,7 @@ set(AGTA_SOURCES
 )
 
 set(AGTA_SOURCES_TEST
+    agta/agta_assetpool.t.cpp
 )
 
 source_group(agta FILES ${AGTA_SOURCES} ${AGTA_SOURCES_TEST})

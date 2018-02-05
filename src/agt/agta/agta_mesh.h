@@ -14,23 +14,22 @@ class Mesh
 public:
     typedef std::vector<agtg::Vertex<float> > VertexList;
     typedef std::vector<int> IndexList;
-    typedef std::shared_ptr<agtg::ShaderProgram> ShaderProgramPtr;
 
-    Mesh(VertexList const& vertices);
-    
-    Mesh(VertexList const& vertices, IndexList const& indices);
+    Mesh();
     
     ~Mesh();
 
-    afth::UUID const& id() const;
+    void vertices(VertexList const& vertices);
 
     VertexList const& vertices() const;
 
+    void indices(IndexList const& indices);
+
     IndexList const& indices() const;
 
+    void bind(agtg::ShaderProgram& shaderProgram);
 
 private:
-    afth::UUID m_id;
     VertexList m_vertices;
     IndexList m_indices;
     GLuint m_vertexBuffer;

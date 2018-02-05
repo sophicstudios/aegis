@@ -1,5 +1,5 @@
-#ifndef INCLUDED_AGTC_VISUAL2dCOMPONENT_H
-#define INCLUDED_AGTC_VISUAL2dCOMPONENT_H
+#ifndef INCLUDED_AEGIS_AGTC_VISUAL2dCOMPONENT_H
+#define INCLUDED_AEGIS_AGTC_VISUAL2dCOMPONENT_H
 
 #include <agta_mesh.h>
 #include <agtg_renderingcontext.h>
@@ -22,14 +22,23 @@ public:
 
     afth::UUID const& id() const;
 
-    void projectionMatrix(agtm::Matrix4<float> const& matrix);
+    void shaderId(size_t shaderId);
 
-    void modelViewMatrix(agtm::Matrix4<float> const& matrix);
+    size_t shaderId() const;
 
+    void meshId(size_t meshId);
+
+    size_t meshId() const;
+
+    void materialId(size_t materialId);
+
+    size_t materialId() const;
+    
 private:
     afth::UUID m_id;
-    ShaderProgramPtr m_shaderProgrem;
-    MeshPtr m_mesh;
+    size_t m_shaderId;
+    size_t m_meshId;
+    size_t m_materialId;
 };
 
 bool operator<(Visual2dComponent const& lhs, Visual2dComponent const& rhs);
