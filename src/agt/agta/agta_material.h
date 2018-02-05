@@ -1,5 +1,5 @@
-#ifndef INCLUDED_AGTA_MATERIAL_H
-#define INCLUDED_AGTA_MATERIAL_H
+#ifndef INCLUDED_AEGIS_AGTA_MATERIAL_H
+#define INCLUDED_AEGIS_AGTA_MATERIAL_H
 
 #include <afth_uuid.h>
 #include <memory>
@@ -13,10 +13,7 @@ public:
 
     ~Material();
 
-    afth::UUID const& id() const;
-
 private:
-    afth::UUID m_id;
 };
 
 } // namespace
