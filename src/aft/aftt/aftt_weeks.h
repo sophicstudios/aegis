@@ -10,7 +10,7 @@ class Weeks
 public:
     Weeks();
     
-    Weeks(int32_t weeks);
+    explicit Weeks(int32_t weeks);
     
     ~Weeks();
     

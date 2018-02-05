@@ -1,5 +1,5 @@
-#ifndef INCLUDED_AGTE_SPACE_H
-#define INCLUDED_AGTE_SPACE_H
+#ifndef INCLUDED_AEGIS_AGTE_SPACE_H
+#define INCLUDED_AEGIS_AGTE_SPACE_H
 
 #include <agte_entity.h>
 #include <agte_camera.h>

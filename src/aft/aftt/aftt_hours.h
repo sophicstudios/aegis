@@ -2,7 +2,7 @@
 #define INCLUDED_AEGIS_AFTT_HOURS_H
 
 #include <afts_stdint.h>
-#include <iosfwd>
+#include <ostream>
 
 namespace aftt {
 
@@ -13,7 +13,7 @@ class Hours
 public:
     Hours();
     
-    Hours(int64_t hours);
+    explicit Hours(int64_t hours);
     
     explicit Hours(Days const& days);
     

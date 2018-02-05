@@ -1,5 +1,5 @@
 #include <aunit_testresult.h>
-#include <iostream>
+#include <ostream>
 
 namespace aunit {
 

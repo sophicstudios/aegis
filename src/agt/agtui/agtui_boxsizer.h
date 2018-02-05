@@ -1,5 +1,5 @@
-#ifndef INCLUDED_AGTUI_BOXSIZER_H
-#define INCLUDED_AGTUI_BOXSIZER_H
+#ifndef INCLUDED_AEGIS_AGTUI_BOXSIZER_H
+#define INCLUDED_AEGIS_AGTUI_BOXSIZER_H
 
 #include <agtui_sizer.h>
 #include <agtui_widget.h>

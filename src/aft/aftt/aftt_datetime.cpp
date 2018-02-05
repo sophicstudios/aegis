@@ -10,7 +10,38 @@ Datetime::Datetime(Date const& date, Time const& time)
 : m_date(date),
   m_time(time)
 {}
-    
+
+Datetime::Datetime(
+    Year const& year,
+    Month const& month,
+    Day const& day)
+: m_date(year, month, day),
+  m_time(Hour(0), Minute(0), Second(0), Nanosecond(0))
+{}
+
+Datetime::Datetime(
+    Year const& year,
+    Month const& month,
+    Day const& day,
+    Hour const& hour,
+    Minute const& minute,
+    Second const& second)
+: m_date(year, month, day),
+  m_time(hour, minute, second, Nanosecond(0))
+{}
+
+Datetime::Datetime(
+    Year const& year,
+    Month const& month,
+    Day const& day,
+    Hour const& hour,
+    Minute const& minute,
+    Second const& second,
+    Millisecond const& millisecond)
+: m_date(year, month, day),
+  m_time(hour, minute, second, Nanosecond(millisecond.value() * 1000000))
+{}
+
 Datetime::Datetime(
     Year const& year,
     Month const& month,
@@ -149,9 +180,9 @@ bool operator>=(Datetime const& lhs, Datetime const& rhs)
         || (rhs.m_date == lhs.m_date && rhs.m_time <= lhs.m_time);
 }
 
-std::ostream& operator<<(std::ostream& os, Datetime const& dateTime)
+std::ostream& operator<<(std::ostream& os, Datetime const& datetime)
 {
-    return os << dateTime.m_date << " " << dateTime.m_time;
+    return os << datetime.m_date << "T" << datetime.m_time;
 }
 
 } // namespace

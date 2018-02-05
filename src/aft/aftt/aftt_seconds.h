@@ -2,7 +2,7 @@
 #define INCLUDED_AEGIS_AFTT_SECONDS_H
 
 #include <afts_stdint.h>
-#include <iosfwd>
+#include <ostream>
 
 namespace aftt {
 
@@ -15,7 +15,7 @@ class Seconds
 public:
     Seconds();
     
-    Seconds(int64_t seconds);
+    explicit Seconds(int64_t seconds);
 
     explicit Seconds(Minutes const& minutes);
 

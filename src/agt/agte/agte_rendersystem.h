@@ -1,5 +1,5 @@
-#ifndef INCLUDED_AGTE_RENDERSYSTEM_H
-#define INCLUDED_AGTE_RENDERSYSTEM_H
+#ifndef INCLUDED_AEGIS_AGTE_RENDERSYSTEM_H
+#define INCLUDED_AEGIS_AGTE_RENDERSYSTEM_H
 
 #include <agte_entity.h>
 #include <agte_system.h>
@@ -14,7 +14,6 @@
 #include <aftfs_filesystem.h>
 #include <afth_uuid.h>
 #include <agtm_matrix4.h>
-#include <actp_mutex.h>
 #include <atomic>
 #include <memory>
 #include <bitset>

@@ -1,5 +1,5 @@
-#ifndef INCLUDED_AGTG_GL_H
-#define INCLUDED_AGTG_GL_H
+#ifndef INCLUDED_AEGIS_AGTG_GL_H
+#define INCLUDED_AEGIS_AGTG_GL_H
 
 #include <afts_platform.h>
 

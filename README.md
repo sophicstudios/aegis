@@ -1,8 +1,8 @@
-= Aegis C++ Library
+# Aegis C++ Library
 
-Copyright &copy; 2001-2015 Sophic Studios, LLC
+Copyright &copy; 2017 Sophic Studios, LLC
 
-== Introduction
+## Introduction
 
 This directory and its subdirectories contain the Aegis C++ Library. Aegis is
 a software library that can be used to create robust, error-free,
@@ -13,7 +13,7 @@ the concurrency and networking components provide the basic building blocks
 for the most common types of applications a developer may wish to create.
 
 
-== Library directory structure
+## Library directory structure
 
 * doc           Documentation for the source code included in this distribution
 * src           All source code for the library
@@ -22,7 +22,7 @@ for the most common types of applications a developer may wish to create.
   * src/agt     Aegis Game Toolkit
   * src/aunit   Aegis Unit Testing
 
-=== Aegis Foundation Toolkit (aft)
+### Aegis Foundation Toolkit (aft)
 
 * aft/aftc      Containers
 * aft/aftfs     Filesystem directories, files, reading and writing
@@ -35,12 +35,12 @@ for the most common types of applications a developer may wish to create.
 * aft/aftt      Date and time
 * aft/aftu      General utilities
 
-=== Aegis Concurrency Toolkit (act)
+### Aegis Concurrency Toolkit (act)
 
 * act/actp      Primitives: mutexes, conditions, semaphores and threads
 * act/acts      System conditionals
 
-=== Aegis Game Toolkit (agt)
+### Aegis Game Toolkit (agt)
 
 * agt/agta      Game application and Entity-Component-System
 * agt/agtg      Graphics rendering

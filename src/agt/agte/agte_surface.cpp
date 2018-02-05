@@ -1,6 +1,4 @@
 #include <agte_surface.h>
-#include <actp_scopedlock.h>
-#include <iostream>
 
 namespace agte {
 

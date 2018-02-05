@@ -34,7 +34,7 @@
 // assert(rect.height() == 480);
 // [code]
 
-#include <agtm_point2d.h>
+#include <agtm_vector2.h>
 #include <agtm_size2d.h>
 #include <ostream>
 
@@ -52,137 +52,138 @@ template<typename T>
 class Rect
 {
 public:
-    static Rect<T> fromLeftRightBottomTop(T const& l, T const& r, T const& b, T const& t);
+    static Rect<T> fromLeftRightBottomTop(T l, T r, T b, T t);
 
-    static Rect<T> fromXYWidthHeight(T const& x, T const& y, T const& width, T const& height);
+    static Rect<T> fromXYWidthHeight(T x, T y, T width, T height);
 
     Rect();
     
-    Rect(Point2d<T> const& origin, Size2d<T> const& size);
+    Rect(Vector2<T> const& origin, Size2d<T> const& size);
     
     ~Rect();
     
-    T const& x() const;
+    T x() const;
     
-    Rect<T>& x(T const& x);
+    Rect<T>& x(T x);
     
-    T const& y() const;
+    T y() const;
     
-    Rect<T>& y(T const& y);
+    Rect<T>& y(T y);
     
-    T const& width() const;
+    T width() const;
     
-    Rect<T>& width(T const& width);
+    Rect<T>& width(T width);
     
-    T const& height() const;
+    T height() const;
     
-    Rect<T>& height(T const& height);
+    Rect<T>& height(T height);
     
-    Point2d<T> const& origin() const;
+    Vector2<T> const& origin() const;
 
-    Rect<T>& origin(Point2d<T> const& origin);
+    Rect<T>& origin(Vector2<T> const& origin);
     
     Size2d<T> const& size() const;
     
     Rect<T>& size(Size2d<T> const& size);
         
 private:
-    Point2d<T> m_origin;
+    Vector2<T> m_origin;
     Size2d<T> m_size; 
 };
-
-template<typename T>
-Rect<T> make_rect(Point2d<T> const& origin, Size2d<T> const& size);
 
 template<typename T>
 std::ostream& operator<<(std::ostream& os, Rect<T> const& rect);
 
 template<typename T>
-Rect<T> Rect<T>::fromLeftRightBottomTop(T const& l, T const& r, T const& b, T const& t)
+Rect<T> Rect<T>::fromLeftRightBottomTop(T l, T r, T b, T t)
 {
-    return Rect<T>(Point2d<T>(l, b), Size2d<float>(r - l, t - b));
+    return Rect<T>(Vector2<T>(l, b), Size2d<T>(r - l, t - b));
 }
 
 template<typename T>
-Rect<T> Rect<T>::fromXYWidthHeight(T const& x, T const& y, T const& width, T const& height)
+Rect<T> Rect<T>::fromXYWidthHeight(T x, T y, T width, T height)
 {
-    return Rect<T>(Point2d<float>(x, y), Size2d<float>(width, height));
+    return Rect<T>(Vector2<T>(x, y), Size2d<T>(width, height));
 }
 
 template<typename T>
 Rect<T>::Rect()
-{}
+{
+    static_assert(std::is_floating_point<T>::value, "Rect only supports floating point types");
+}
 
 template<typename T>
-Rect<T>::Rect(Point2d<T> const& origin, Size2d<T> const& size)
+Rect<T>::Rect(Vector2<T> const& origin, Size2d<T> const& size)
 : m_origin(origin),
   m_size(size)
-{}
+{
+    static_assert(std::is_floating_point<T>::value, "Rect only supports floating point types");
+}
 
 template<typename T>
 Rect<T>::~Rect()
 {}
 
 template<typename T>
-T const& Rect<T>::x() const
+T Rect<T>::x() const
 {
     return m_origin.x();
 }
 
 template<typename T>
-Rect<T>& Rect<T>::x(T const& x)
+Rect<T>& Rect<T>::x(T x)
 {
     m_origin.x(x);
     return *this;
 }
 
 template<typename T>
-T const& Rect<T>::y() const
+T Rect<T>::y() const
 {
     return m_origin.y();
 }
 
 template<typename T>
-Rect<T>& Rect<T>::y(T const& y)
+Rect<T>& Rect<T>::y(T y)
 {
     m_origin.y(y);
     return *this;
 }
 
 template<typename T>
-T const& Rect<T>::width() const
+T Rect<T>::width() const
 {
     return m_size.width();
 }
 
 template<typename T>
-Rect<T>& Rect<T>::width(T const& width)
+Rect<T>& Rect<T>::width(T width)
 {
     m_size.width(width);
     return *this;
 }
 
 template<typename T>
-T const& Rect<T>::height() const
+T Rect<T>::height() const
 {
     return m_size.height();
 }
 
 template<typename T>
-Rect<T>& Rect<T>::height(T const& height)
+Rect<T>& Rect<T>::height(T height)
 {
     m_size.height(height);
     return &this;
 }
 
 template<typename T>
-Point2d<T> const& Rect<T>::origin() const
+Vector2<T> const& Rect<T>::origin() const
 {
     return m_origin;
 }
 
 template<typename T>
-Rect<T>& Rect<T>::origin(Point2d<T> const& origin)
+Rect<T>& Rect<T>::origin(Vector2<T> const& origin)
 {
     m_origin = origin;
     return *this;
@@ -199,12 +200,6 @@ Rect<T>& Rect<T>::size(Size2d<T> const& size)
 {
     m_size = size;
     return *this;
-}
-
-template<typename T>
-Rect<T> make_rect(Point2d<T> const& origin, Size2d<T> const& size)
-{
-    return Rect<T>(origin, size);
 }
 
 template<typename T>

@@ -1,10 +1,9 @@
-#ifndef INCLUDED_AGTE_SURFACE_H
-#define INCLUDED_AGTE_SURFACE_H
+#ifndef INCLUDED_AEGIS_AGTE_SURFACE_H
+#define INCLUDED_AEGIS_AGTE_SURFACE_H
 
 #include <agtui_widget.h>
 #include <agtg_renderingcontext.h>
 #include <agtm_rect.h>
-#include <actp_mutex.h>
 #include <functional>
 
 

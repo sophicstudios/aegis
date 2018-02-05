@@ -1,10 +1,10 @@
-#ifndef INCLUDED_AGTE_CAMERA_H
-#define INCLUDED_AGTE_CAMERA_H
+#ifndef INCLUDED_AEGIS_AGTE_CAMERA_H
+#define INCLUDED_AEGIS_AGTE_CAMERA_H
 
 #include <agte_surface.h>
 #include <agtm_matrix4.h>
 #include <agtm_rect.h>
-#include <actp_mutex.h>
+#include <aftthr_mutex.h>
 #include <afth_uuid.h>
 #include <memory>
 
@@ -49,7 +49,7 @@ private:
 
     afth::UUID m_id;
     SurfacePtr m_surface;
-    actp::Mutex m_boundsMutex;
+    aftthr::Mutex m_boundsMutex;
     agtm::Rect<float> m_bounds;
     agtm::Rect<float> m_dirtyBounds;
     bool m_boundsDirty;

@@ -8,7 +8,7 @@ class Year
 public:
     Year();
     
-    Year(unsigned int year);
+    explicit Year(unsigned int year);
     
     ~Year();
     

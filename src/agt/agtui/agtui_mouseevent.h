@@ -1,7 +1,7 @@
 #ifndef INCLUDED_AEGIS_AGTUI_MOUSEEVENT_H
 #define INCLUDED_AEGIS_AGTUI_MOUSEEVENT_H
 
-#include <agtm_point2d.h>
+#include <agtm_vector2.h>
 #include <iosfwd>
 
 namespace agtui {
@@ -37,7 +37,7 @@ public:
         Type_MOUSEDOUBLECLICK
     };
         
-    MouseEvent(Type type, Button button, agtm::Point2d<float> const& location);
+    MouseEvent(Type type, Button button, agtm::Vector2<float> const& location);
     
     ~MouseEvent();
 
@@ -45,12 +45,12 @@ public:
     
     Button button() const;
     
-    agtm::Point2d<float> const& location() const;
+    agtm::Vector2<float> const& location() const;
     
 private:
     Type m_type;
     Button m_button;
-    agtm::Point2d<float> m_location;
+    agtm::Vector2<float> m_location;
 };
 
 std::ostream& operator<<(std::ostream& os, MouseEvent const& event);

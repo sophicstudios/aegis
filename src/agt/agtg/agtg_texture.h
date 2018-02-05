@@ -1,5 +1,5 @@
-#ifndef INCLUDED_AGTG_TEXTURE_H
-#define INCLUDED_AGTG_TEXTURE_H
+#ifndef INCLUDED_AEGIS_AGTG_TEXTURE_H
+#define INCLUDED_AEGIS_AGTG_TEXTURE_H
 
 #include <agtg_gl.h>
 #include <agtr_image.h>

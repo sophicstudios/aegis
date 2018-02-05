@@ -1,5 +1,5 @@
-#ifndef INCLUDED_AGTE_SYSTEM_H
-#define INCLUDED_AGTE_SYSTEM_H
+#ifndef INCLUDED_AEGIS_AGTE_SYSTEM_H
+#define INCLUDED_AEGIS_AGTE_SYSTEM_H
 
 #include <agte_engine.h>
 

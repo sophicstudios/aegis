@@ -1,15 +1,15 @@
 #include <agte_engine.h>
 #include <agte_platform.h>
 #include <agte_system.h>
-#include <actp_scopedlock.h>
+#include <aftthr_scopedlock.h>
 #include <aftu_exception.h>
+#include <aftl_logger.h>
 #include <functional>
-#include <iostream>
 #include <cassert>
 
 namespace agte {
 
-Engine::Context::Context(Engine::PlatformPtr platform, actp::Mutex& mutex, actp::Condition& condition)
+Engine::Context::Context(Engine::PlatformPtr platform, aftthr::Mutex& mutex, aftthr::Condition& condition)
 : m_shouldUpdate(false),
   m_platform(platform),
   m_mutex(mutex),
@@ -23,14 +23,14 @@ Engine::Context::~Context()
 
 void Engine::Context::resetShouldUpdate()
 {
-    std::cout << "resetShouldUpdate" << std::endl;
+    AFTL_LOG_TRACE << "Engine::Context::resetShouldUpdate" << AFTL_LOG_END;
 
     m_shouldUpdate = false;
 }
 
 void Engine::Context::flagUpdate()
 {
-    std::cout << "flagUpdate" << std::endl;
+    AFTL_LOG_TRACE << "Engine::Context::flagUpdate" << AFTL_LOG_END;
 
     if (m_shouldUpdate)
     {
@@ -46,7 +46,7 @@ void Engine::Context::flagUpdate()
 
 bool Engine::Context::shouldUpdate() const
 {
-    std::cout << "shouldUpdate: " << m_shouldUpdate << std::endl;
+    AFTL_LOG_TRACE << "Engine::Context::shouldUpdate: " << m_shouldUpdate << AFTL_LOG_END;
     return m_shouldUpdate;
 }
 
@@ -60,8 +60,8 @@ Engine::Engine(PlatformPtr platform)
   m_context(platform, m_mutex, m_condition),
   m_platform(platform)
 {
-    std::cout << "Engine::Engine starting thread" << std::endl;
-    m_thread = std::make_shared<actp::Thread>(std::bind(&Engine::threadFunc, this));
+    AFTL_LOG_INFO << "Engine::Engine starting thread" << AFTL_LOG_END;
+    m_thread = std::make_shared<aftthr::Thread>(std::bind(&Engine::threadFunc, this));
 }
 
 Engine::~Engine()
@@ -72,7 +72,7 @@ Engine::~Engine()
     m_condition.signalOne();
     m_mutex.unlock();
 
-    std::cout << "Engine::~Engine joining thread" << std::endl;
+    AFTL_LOG_INFO << "Engine::~Engine joining thread" << AFTL_LOG_END;
     m_thread->join();
 }
 
@@ -125,17 +125,17 @@ void Engine::update()
 
 void Engine::threadFunc()
 {
-    actp::ScopedLock<actp::Mutex> lock(m_mutex);
+    aftthr::ScopedLock<aftthr::Mutex> lock(m_mutex);
 
     while (true)
     {
-        std::cout << "Engine::threadFunc waiting..." << std::endl;
+        AFTL_LOG_TRACE << "Engine::threadFunc waiting..." << AFTL_LOG_END;
         m_condition.wait(m_mutex);
-        std::cout << "Engine::threadFunc running" << std::endl;
+        AFTL_LOG_TRACE << "Engine::threadFunc running" << AFTL_LOG_END;
 
         if (!m_running)
         {
-            std::cout << "Engine::threadFunc done" << std::endl;
+            AFTL_LOG_INFO << "Engine::threadFunc done" << AFTL_LOG_END;
             break;
         }
 

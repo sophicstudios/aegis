@@ -2,7 +2,7 @@
 #define INCLUDED_AEGIS_AFTT_NANOSECONDS_H
 
 #include <afts_stdint.h>
-#include <iosfwd>
+#include <ostream>
 
 namespace aftt {
 
@@ -19,7 +19,7 @@ class Nanoseconds
 public:
     Nanoseconds();
     
-    Nanoseconds(int64_t nanoseconds);
+    explicit Nanoseconds(int64_t nanoseconds);
     
     explicit Nanoseconds(Microseconds const& microseconds);
     

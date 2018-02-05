@@ -1,5 +1,5 @@
-#ifndef INCLUDED_AGTUI_SIZER_H
-#define INCLUDED_AGTUI_SIZER_H
+#ifndef INCLUDED_AEGIS_AGTUI_SIZER_H
+#define INCLUDED_AEGIS_AGTUI_SIZER_H
 
 #include <agtm_size2d.h>
 

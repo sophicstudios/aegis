@@ -1,5 +1,5 @@
-#ifndef INCLUDED_AGTE_PLATFORM_H
-#define INCLUDED_AGTE_PLATFORM_H
+#ifndef INCLUDED_AEGIS_AGTE_PLATFORM_H
+#define INCLUDED_AEGIS_AGTE_PLATFORM_H
 
 #include <agtui_glview.h>
 #include <aftfs_filesystem.h>

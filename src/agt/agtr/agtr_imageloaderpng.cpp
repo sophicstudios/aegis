@@ -1,6 +1,6 @@
 #include <agtr_imageloaderpng.h>
 #include <aftu_exception.h>
-#include <iostream>
+#include <aftl_logger.h>
 
 namespace agtr {
 
@@ -96,7 +96,7 @@ void ImageHandler::rowCallback(png_structp pngData, png_bytep pngRow, png_uint_3
 
 void ImageHandler::endCallback(png_structp pngData, png_infop pngInfo)
 {
-    std::cout << "ImagePNG::endCallback" << std::endl;
+    AFTL_LOG_INFO << "ImagePNG::endCallback" << AFTL_LOG_END;
 }
 
 } // namespace
@@ -122,7 +122,7 @@ void endCallback_c(png_structp pngData, png_infop pngInfo)
 ImageLoaderPNG::ImageLoaderPNG()
 {
     png_uint_32 pngVersion = png_access_version_number();
-    std::cout << "ImagePNG: libpng version is " << pngVersion << std::endl;
+    AFTL_LOG_INFO << "ImagePNG: libpng version is " << pngVersion << AFTL_LOG_END;
 }
 
 ImageLoaderPNG::~ImageLoaderPNG()
@@ -160,9 +160,8 @@ ImageLoaderPNG::ImagePtr ImageLoaderPNG::load(aftfs::FileSystem& fileSystem, aft
     // if there is an error during reading the png, control flow will
     // come to this point, so we should clean up and return null
     if (setjmp(png_jmpbuf(pngData))) {
-        std::cerr << "ImagePNG: setjmp returned non-zero" << std::endl;
         png_destroy_read_struct(&pngData, &pngInfo, NULL);
-        throw std::exception();
+        throw aftu::Exception("ImagePNG: setjmp returned non-zero");
     }
 
     ImageHandler imageHandler;

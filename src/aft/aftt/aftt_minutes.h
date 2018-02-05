@@ -2,7 +2,7 @@
 #define INCLUDED_AEGIS_AFTT_MINUTES_H
 
 #include <afts_stdint.h>
-#include <iosfwd>
+#include <ostream>
 
 namespace aftt {
 
@@ -14,7 +14,7 @@ class Minutes
 public:
     Minutes();
     
-    Minutes(int64_t minutes);
+    explicit Minutes(int64_t minutes);
 
     explicit Minutes(Hours const& hours);
 

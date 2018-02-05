@@ -1,5 +1,7 @@
 project(agt)
 
+message(STATUS "CMAKE_CXX_COMPILER: " ${CMAKE_CXX_COMPILER})
+
 ################################################################################
 # agta group
 ################################################################################
@@ -14,7 +16,7 @@ set(AGTA_SOURCES
 set(AGTA_SOURCES_TEST
 )
 
-source_group(agta FILES ${AGTA_SOURCES})
+source_group(agta FILES ${AGTA_SOURCES} ${AGTA_SOURCES_TEST})
 
 ################################################################################
 # agtc group
@@ -30,7 +32,7 @@ set(AGTC_SOURCES
 set(AGTC_SOURCES_TEST
 )
 
-source_group(agtc FILES ${AGTC_SOURCES})
+source_group(agtc FILES ${AGTC_SOURCES} ${AGTC_SOURCES_TEST})
 
 ################################################################################
 # agte group
@@ -64,7 +66,7 @@ set(AGTE_SOURCES
 set(AGTE_SOURCES_TEST
 )
 
-source_group(agte FILES ${AGTE_SOURCES})
+source_group(agte FILES ${AGTE_SOURCES} ${AGTE_SOURCES_TEST})
 
 ################################################################################
 # agtg group
@@ -95,7 +97,7 @@ set(AGTG_SOURCES_TEST
     agtg/agtg_colorrgba.t.cpp
 )
 
-source_group(agtg FILES ${AGTG_SOURCES})
+source_group(agtg FILES ${AGTG_SOURCES} ${AGTG_SOURCES_TEST})
 
 ################################################################################
 # agtm group
@@ -104,16 +106,16 @@ source_group(agtg FILES ${AGTG_SOURCES})
 set(AGTM_SOURCES
     agtm/agtm_matrix2.cpp
     agtm/agtm_matrix2.h
+    agtm/agtm_matrix2util.cpp
+    agtm/agtm_matrix2util.h
     agtm/agtm_matrix3.cpp
     agtm/agtm_matrix3.h
+    agtm/agtm_matrix3util.cpp
+    agtm/agtm_matrix3util.h
     agtm/agtm_matrix4.cpp
     agtm/agtm_matrix4.h
-    agtm/agtm_matrixutil.cpp
-    agtm/agtm_matrixutil.h
-    agtm/agtm_point2d.cpp
-    agtm/agtm_point2d.h
-    agtm/agtm_point3d.cpp
-    agtm/agtm_point3d.h
+    agtm/agtm_matrix4util.cpp
+    agtm/agtm_matrix4util.h
     agtm/agtm_quaternion.cpp
     agtm/agtm_quaternion.h
     agtm/agtm_rect.cpp
@@ -122,26 +124,33 @@ set(AGTM_SOURCES
     agtm/agtm_size2d.h
     agtm/agtm_vector2.cpp
     agtm/agtm_vector2.h
+    agtm/agtm_vector2util.cpp
+    agtm/agtm_vector2util.h
     agtm/agtm_vector3.cpp
     agtm/agtm_vector3.h
+    agtm/agtm_vector3util.cpp
+    agtm/agtm_vector3util.h
     agtm/agtm_vector4.cpp
     agtm/agtm_vector4.h
-    agtm/agtm_vectorutil.cpp
-    agtm/agtm_vectorutil.h
 )
 
 set(AGTM_SOURCES_TEST
     agtm/agtm_matrix2.t.cpp
+    agtm/agtm_matrix2util.t.cpp
     agtm/agtm_matrix3.t.cpp
+    agtm/agtm_matrix3util.t.cpp
     agtm/agtm_matrix4.t.cpp
-    agtm/agtm_point3d.t.cpp
+    agtm/agtm_matrix4util.t.cpp
     agtm/agtm_quaternion.t.cpp
     agtm/agtm_vector2.t.cpp
+    agtm/agtm_vector2util.t.cpp
     agtm/agtm_vector3.t.cpp
+    agtm/agtm_vector3util.t.cpp
     agtm/agtm_vector4.t.cpp
 )
 
 source_group(agtm FILES ${AGTM_SOURCES})
+source_group(agtm FILES ${AGTM_SOURCES_TEST})
 
 ################################################################################
 # agtr group
@@ -159,7 +168,7 @@ set(AGTR_SOURCES
 set(AGTR_SOURCES_TEST
 )
 
-source_group(agtr FILES ${AGTR_SOURCES})
+source_group(agtr FILES ${AGTR_SOURCES} ${AGTR_SOURCES_TEST})
 
 ################################################################################
 # agtu group
@@ -172,7 +181,7 @@ set(AGTU_SOURCES
 set(AGTU_SOURCES_TEST
 )
 
-source_group(agtu FILES ${AGTU_SOURCES})
+source_group(agtu FILES ${AGTU_SOURCES} ${AGTU_SOURCES_TEST})
 
 ################################################################################
 # agtui group
@@ -198,7 +207,7 @@ set(AGTUI_SOURCES
 set(AGTUI_SOURCES_TEST
 )
 
-source_group(agtui FILES ${AGTUI_SOURCES})
+source_group(agtui FILES ${AGTUI_SOURCES} ${AGTUI_SOURCES_TEST})
 
 ################################################################################
 # agt library
@@ -214,8 +223,6 @@ set(AGT_SOURCES
     ${AGTU_SOURCES}
     ${AGTUI_SOURCES}
 )
-
-add_library(${PROJECT_NAME} SHARED ${AGT_SOURCES})
 
 find_package(PNG REQUIRED)
 message(STATUS "PNG_INCLUDE_DIRS: " ${PNG_INCLUDE_DIRS})
@@ -242,7 +249,12 @@ include_directories(
     ${aft_INCLUDE_DIRS}
 )
 
-target_link_libraries(${PROJECT_NAME} act aft ${PNG_LIBRARIES} ${OPENGL_LIBRARIES})
+add_library(${PROJECT_NAME} SHARED ${AGT_SOURCES})
+target_link_libraries(${PROJECT_NAME} aft ${PNG_LIBRARIES} ${OPENGL_LIBRARIES})
+
+target_compile_options(${PROJECT_NAME} PRIVATE "-Wall")
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
+
 
 ################################################################################
 # agt unit tests
@@ -250,16 +262,27 @@ target_link_libraries(${PROJECT_NAME} act aft ${PNG_LIBRARIES} ${OPENGL_LIBRARIE
 
 set(AGT_SOURCES_TEST
     ${AGTA_SOURCES_TEST}
+    ${AGTC_SOURCES_TEST}
+    ${AGTE_SOURCES_TEST}
+    ${AGTG_SOURCES_TEST}
+    ${AGTM_SOURCES_TEST}
+    ${AGTR_SOURCES_TEST}
+    ${AGTU_SOURCES_TEST}
+    ${AGTUI_SOURCES_TEST}
     agt.t.cpp
 )
 
+source_group(driver FILES agt.t.cpp)
+
 include_directories(${${PROJECT_NAME}_INCLUDE_DIRS}
-    ${act_INCLUDE_DIRS}
     ${aft_INCLUDE_DIRS}
     ${aunit_INCLUDE_DIRS}
 )
 
 add_executable(test_${PROJECT_NAME} ${AGT_SOURCES_TEST})
-target_link_libraries(test_${PROJECT_NAME} ${PROJECT_NAME} act aft aunit)
+target_link_libraries(test_${PROJECT_NAME} ${PROJECT_NAME} aft aunit)
 
-target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_11)
+target_compile_options(test_${PROJECT_NAME} PRIVATE "-Wall")
+set_property(TARGET test_${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
+
+

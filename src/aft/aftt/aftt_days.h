@@ -2,7 +2,7 @@
 #define INCLUDED_AEGIS_AFTT_DAYS_H
 
 #include <afts_stdint.h>
-#include <iosfwd>
+#include <ostream>
 
 namespace aftt {
 
@@ -13,7 +13,7 @@ class Days
 public:
     Days();
     
-    Days(int64_t days);
+    explicit Days(int64_t days);
     
     Days(Weeks const& weeks);
     

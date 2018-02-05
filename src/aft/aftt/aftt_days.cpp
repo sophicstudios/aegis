@@ -1,6 +1,5 @@
 #include <aftt_days.h>
 #include <aftt_weeks.h>
-#include <iostream>
 
 namespace aftt {
 

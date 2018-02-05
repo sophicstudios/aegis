@@ -1,7 +1,6 @@
 #include <aftt_time.h>
 #include <aftt_datetimeinterval.h>
 #include <aunit.h>
-#include <iostream>
 
 namespace {
 

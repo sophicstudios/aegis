@@ -14,12 +14,12 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CXX_STANDARD_REQUIRED ON)
 
 project(aegis
         VERSION 0.1.0
         DESCRIPTION "Aegis Game Programming Library")
 
 add_subdirectory(src/aft)
-add_subdirectory(src/act)
 add_subdirectory(src/agt)
 add_subdirectory(src/aunit)

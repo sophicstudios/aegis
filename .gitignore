@@ -1,2 +1,4 @@
 proj/xcode/aegis/aegis.xcodeproj/xcuserdata/lhaynes6.xcuserdatad
 build
+doc/html
+*.bak

@@ -7,11 +7,10 @@
 #include <agtr_imageloaderpng.h>
 #include <agtg_renderingcontext.h>
 #include <agtg_gl.h>
-#include <actp_scopedlock.h>
 #include <aftfs_filesystem.h>
 #include <afth_uuid.h>
 #include <aftu_url.h>
-#include <iostream>
+#include <aftl_logger.h>
 #include <map>
 #include <memory>
 #include <string>
@@ -35,7 +34,7 @@ void checkError(char const* const context)
 {
     GLenum error = glGetError();
     if (error != GL_NO_ERROR) {
-        std::cerr << "glError [" << context << "]: " << translateGLenum(error) << " (" << error << ")" << std::endl;
+        AFTL_LOG_ERROR << "glError [" << context << "]: " << translateGLenum(error) << " (" << error << ")" << AFTL_LOG_END;
     }
 }
 
@@ -99,7 +98,7 @@ void RenderSystem::doPreUpdate(agte::Engine::Context& context)
 
 void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context& context)
 {
-    std::cout << "RenderSystem::doUpdate" << std::endl;
+    AFTL_LOG_TRACE << "RenderSystem::doUpdate" << AFTL_LOG_END;
 
     // get the camera for the space
     SpaceCameraMap::iterator spaceCameraIter = m_spaceCameraMap.find(space->id());
@@ -135,7 +134,7 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
     // get list of entities with visual and transform components
     Space::EntityView entityView = space->getEntitiesForComponents(m_componentSet);
 
-    // Loop through the entities and sort them by visual component material.
+    // Sort the entities according to z-order, shader, mesh and material.
     typedef std::vector<Entity> EntityList;
     typedef std::map<afth::UUID, EntityList> MaterialEntityListMap;
     MaterialEntityListMap materialEntityListMap;
@@ -165,7 +164,7 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
 
         // set the viewport from the camera
         agtm::Rect<float> const& rect = (*cameraIter)->viewport();
-        std::cout << "viewport: " << rect << std::endl;
+        AFTL_LOG_TRACE << "viewport: " << rect << AFTL_LOG_END;
         glViewport(rect.x(), rect.y(), rect.width(), rect.height());
 
         glClearColor(0.0f, 0.0f, .7f, 1.0f);
