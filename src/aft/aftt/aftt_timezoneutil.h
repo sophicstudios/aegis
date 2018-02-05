@@ -1,9 +1,9 @@
-#ifndef INCLUDED_AEGIS_AFTT_TIMEZONE
-#define INCLUDED_AEGIS_AFTT_TIMEZONE
+#ifndef INCLUDED_AEGIS_AFTT_TIMEZONEUTIL_H
+#define INCLUDED_AEGIS_AFTT_TIMEZONEUTIL_H
 
 namespace aftt {
 
-struct Timezone
+struct TimezoneUtil
 {
     enum Region {
         Region_LOCAL,

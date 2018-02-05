@@ -4,7 +4,6 @@
 #include <dirent.h>
 #include <unistd.h>
 #include <sys/stat.h>
-#include <iostream>
 #include <cerrno>
 
 namespace aftfs {

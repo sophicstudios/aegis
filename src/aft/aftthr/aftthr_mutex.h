@@ -1,17 +1,17 @@
-#ifndef INCLUDE_AEGIS_ACTP_MUTEX_H
-#define INCLUDE_AEGIS_ACTP_MUTEX_H
+#ifndef INCLUDE_AEGIS_AFTTHR_MUTEX_H
+#define INCLUDE_AEGIS_AFTTHR_MUTEX_H
 
-#include <acts_platform.h>
+#include <aftthr_platform.h>
 
-#if defined(ACTS_PLATFORM_PTHREADS)
+#if defined(AFTTHR_PLATFORM_PTHREADS)
 #include <pthread.h>
-#elif defined(ACTS_PLATFORM_WINTHREADS)
+#elif defined(AFTTHR_PLATFORM_WINTHREADS)
 #include <afts_windows.h>
 #endif
 
 #include <iosfwd>
 
-namespace actp {
+namespace aftthr {
 
 /**
  * A basic mutex class with lock and unlock semantics. Multiple threads
@@ -79,9 +79,9 @@ private:
     Mutex(Mutex const&);
     Mutex& operator=(Mutex const&);
 
-    #if defined(ACTS_PLATFORM_PTHREADS)
+    #if defined(AFTTHR_PLATFORM_PTHREADS)
         pthread_mutex_t m_mutex;
-    #elif defined(ACTS_PLATFORM_WINTHREADS)
+    #elif defined(AFTTHR_PLATFORM_WINTHREADS)
         HANDLE m_mutex;
     #endif
 };

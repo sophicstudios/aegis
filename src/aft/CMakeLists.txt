@@ -18,7 +18,7 @@ set(AFTC_SOURCES_TEST
     aftc/aftc_trie.t.cpp
 )
 
-source_group(aftc FILES ${AFTC_SOURCES})
+source_group(aftc FILES ${AFTC_SOURCES} ${AFTC_SOURCES_TEST})
 
 ################################################################################
 # aftfs group
@@ -40,7 +40,7 @@ set(AFTFS_SOURCES_TEST
     aftfs/aftfs_path.t.cpp
 )
 
-source_group(aftfs FILES ${AFTFS_SOURCES})
+source_group(aftfs FILES ${AFTFS_SOURCES} ${AFTFS_SOURCES_TEST})
 
 ################################################################################
 # afth group
@@ -58,7 +58,7 @@ set(AFTH_SOURCES_TEST
     afth/afth_uuid.t.cpp
 )
 
-source_group(afth FILES ${AFTH_SOURCES})
+source_group(afth FILES ${AFTH_SOURCES} ${AFTH_SOURCES_TEST})
 
 ################################################################################
 # aftio group
@@ -79,7 +79,7 @@ set(AFTIO_SOURCES
 
 set(AFTIO_SOURCES_TEST)
 
-source_group(aftio FILES ${AFTIO_SOURCES})
+source_group(aftio FILES ${AFTIO_SOURCES} ${AFTIO_SOURCES_TEST})
 
 ################################################################################
 # aftipc group
@@ -103,7 +103,26 @@ set(AFTIPC_SOURCES_TEST
     aftipc/aftipc_sharedmemory.t.cpp
 )
 
-source_group(aftipc FILES ${AFTIPC_SOURCES})
+source_group(aftipc FILES ${AFTIPC_SOURCES} ${AFTIPC_SOURCES_TEST})
+
+################################################################################
+# aftl group
+################################################################################
+
+set(AFTL_SOURCES
+    aftl/aftl_logger.cpp
+    aftl/aftl_logger.h
+    aftl/aftl_loglevel.cpp
+    aftl/aftl_loglevel.h
+    aftl/aftl_logobserver.cpp
+    aftl/aftl_logobserver.h
+    aftl/aftl_stdoutobserver.cpp
+    aftl/aftl_stdoutobserver.h
+)
+
+set(AFTL_SOURCES_TEST)
+
+source_group(aftl FILES ${AFTL_SOURCES} ${AFTL_SOURCES_TEST})
 
 ################################################################################
 # aftm group
@@ -116,7 +135,7 @@ set(AFTM_SOURCES
 
 set(AFTM_SOURCES_TEST)
 
-source_group(aftm FILES ${AFTM_SOURCES})
+source_group(aftm FILES ${AFTM_SOURCES} ${AFTM_SOURCES_TEST})
 
 ################################################################################
 # aftma group
@@ -131,7 +150,7 @@ set(AFTMA_SOURCES
 
 set(AFTMA_SOURCES_TEST)
 
-source_group(aftma FILES ${AFTMA_SOURCES})
+source_group(aftma FILES ${AFTMA_SOURCES} ${AFTMA_SOURCE_TEST})
 
 ################################################################################
 # afts group
@@ -168,7 +187,7 @@ set(AFTS_SOURCES_TEST
     afts/afts_comparisonutil.t.cpp
 )
 
-source_group(afts FILES ${AFTS_SOURCES})
+source_group(afts FILES ${AFTS_SOURCES} ${AFTS_SOURCES_TEST})
 
 ################################################################################
 # aftt group
@@ -181,6 +200,8 @@ set(AFTT_SOURCES
     aftt/aftt_datetime.h
     aftt/aftt_datetimeinterval.cpp
     aftt/aftt_datetimeinterval.h
+    aftt/aftt_datetimetz.cpp
+    aftt/aftt_datetimetz.h
     aftt/aftt_day.cpp
     aftt/aftt_day.h
     aftt/aftt_dayofweek.cpp
@@ -205,8 +226,10 @@ set(AFTT_SOURCES
     aftt/aftt_systemtime.h
     aftt/aftt_time.cpp
     aftt/aftt_time.h
-    aftt/aftt_timezone.cpp
-    aftt/aftt_timezone.h
+    aftt/aftt_timezoneoffset.cpp
+    aftt/aftt_timezoneoffset.h
+    aftt/aftt_timezoneutil.cpp
+    aftt/aftt_timezoneutil.h
     aftt/aftt_weeks.cpp
     aftt/aftt_weeks.h
     aftt/aftt_year.cpp
@@ -222,7 +245,38 @@ set(AFTT_SOURCES_TEST
     aftt/aftt_time.t.cpp
 )
 
-source_group(aftt FILES ${AFTT_SOURCES})
+source_group(aftt FILES ${AFTT_SOURCES} ${AFTT_SOURCES_TEST})
+
+################################################################################
+# aftthr group
+################################################################################
+
+set(AFTTHR_SOURCES
+    aftthr/aftthr_condition.cpp
+    aftthr/aftthr_condition.h
+    aftthr/aftthr_mutex.cpp
+    aftthr/aftthr_mutex.h
+    aftthr/aftthr_platform.cpp
+    aftthr/aftthr_platform.h
+    aftthr/aftthr_scopedlock.h
+    aftthr/aftthr_semaphore.cpp
+    aftthr/aftthr_semaphore.h
+    aftthr/aftthr_thread.cpp
+    aftthr/aftthr_thread.h
+    aftthr/aftthr_threadattributes.cpp
+    aftthr/aftthr_threadattributes.h
+    aftthr/aftthr_threadutil.cpp
+    aftthr/aftthr_threadutil.h
+)
+
+set(AFTTHR_SOURCES_TEST
+    aftthr/aftthr_condition.t.cpp
+    aftthr/aftthr_mutex.t.cpp
+    aftthr/aftthr_semaphore.t.cpp
+    aftthr/aftthr_thread.t.cpp
+)
+
+source_group(aftthr FILES ${AFTTHR_SOURCES} ${AFTTHR_SOURCES_TEST})
 
 ################################################################################
 # aftu group
@@ -259,7 +313,7 @@ set(AFTU_SOURCES_TEST
     aftu/aftu_url.t.cpp
 )
 
-source_group(aftu   FILES ${AFTU_SOURCES})
+source_group(aftu FILES ${AFTU_SOURCES} ${AFTU_SOURCES_TEST})
 
 ################################################################################
 # aft library
@@ -271,10 +325,12 @@ set(AFT_SOURCES
     ${AFTH_SOURCES}
     ${AFTIO_SOURCES}
     ${AFTIPC_SOURCES}
+    ${AFTL_SOURCES}
     ${AFTM_SOURCES}
     ${AFTMA_SOURCES}
     ${AFTS_SOURCES}
     ${AFTT_SOURCES}
+    ${AFTTHR_SOURCES}
     ${AFTU_SOURCES}
 )
 
@@ -284,10 +340,12 @@ set(${PROJECT_NAME}_INCLUDE_DIRS
     ${PROJECT_SOURCE_DIR}/afth
     ${PROJECT_SOURCE_DIR}/aftio
     ${PROJECT_SOURCE_DIR}/aftipc
+    ${PROJECT_SOURCE_DIR}/aftl
     ${PROJECT_SOURCE_DIR}/aftm
     ${PROJECT_SOURCE_DIR}/aftma
     ${PROJECT_SOURCE_DIR}/afts
     ${PROJECT_SOURCE_DIR}/aftt
+    ${PROJECT_SOURCE_DIR}/aftthr
     ${PROJECT_SOURCE_DIR}/aftu
     CACHE INTERNAL "${PROJECT_NAME}: Include dirs" FORCE)
 
@@ -295,6 +353,7 @@ include_directories(${${PROJECT_NAME}_INCLUDE_DIRS})
 
 add_library(${PROJECT_NAME} SHARED ${AFT_SOURCES})
 
+target_compile_options(${PROJECT_NAME} PRIVATE "-Wall")
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
 
 ################################################################################
@@ -307,16 +366,22 @@ set(AFT_SOURCES_TEST
     ${AFTH_SOURCES_TEST}
     ${AFTIO_SOURCES_TEST}
     ${AFTIPC_SOURCES_TEST}
+    ${AFTL_SOURCES_TEST}
     ${AFTM_SOURCES_TEST}
     ${AFTMA_SOURCES_TEST}
     ${AFTS_SOURCES_TEST}
     ${AFTT_SOURCES_TEST}
+    ${AFTTHR_SOURCES_TEST}
     ${AFTU_SOURCES_TEST}
     aft.t.cpp
 )
 
+source_group(driver FILES aft.t.cpp)
+
 include_directories(${aunit_INCLUDE_DIRS})
 
 add_executable(test_${PROJECT_NAME} ${AFT_SOURCES_TEST})
-
 target_link_libraries(test_${PROJECT_NAME} ${PROJECT_NAME} aunit)
+
+target_compile_options(test_${PROJECT_NAME} PRIVATE "-Wall")
+set_property(TARGET test_${PROJECT_NAME} PROPERTY CXX_STANDARD 14)

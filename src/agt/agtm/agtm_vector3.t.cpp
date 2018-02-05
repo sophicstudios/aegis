@@ -1,5 +1,7 @@
 #include <agtm_vector3.h>
 #include <aunit.h>
+#include <iomanip>
+#include <sstream>
 
 namespace {
 
@@ -112,6 +114,23 @@ Describe d("agtm_vector3", []
 
         expect(v1 == v2).toBeTrue();
         expect(v1 != v3).toBeTrue();
+    });
+
+    it("Stream", [&]
+    {
+        Vector3<double> v1(1, 2, 300);
+
+        std::stringstream s1;
+        s1 << std::setw(0) << std::fixed << std::setprecision(0) << v1;
+        expect(s1.str() == "[1 2 300]");
+
+        std::stringstream s2;
+        s2 << std::setw(3) << std::fixed << std::setprecision(0) << v1;
+        expect(s2.str() == "[  1   2 300]");
+
+        std::stringstream s3;
+        s3 << std::setw(6) << std::fixed << std::setprecision(2) << v1;
+        expect(s3.str() == "[  1.00   2.00 300.00]");
     });
 });
 

@@ -1,7 +1,7 @@
 #ifndef INCLUDED_AEGIS_AFTC_PACKEDSTRINGMAP_H
 #define INCLUDED_AEGIS_AFTC_PACKEDSTRINGMAP_H
 
-#include <iostream>
+#include <ostream>
 #include <map>
 #include <stdexcept>
 #include <string>

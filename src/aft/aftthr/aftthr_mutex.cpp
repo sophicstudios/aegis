@@ -1,13 +1,13 @@
-#include <actp_mutex.h>
+#include <aftthr_mutex.h>
 #include <aftu_exception.h>
 
-#if defined(ACTS_PLATFORM_WINTHREADS)
+#if defined(AFTTHR_PLATFORM_WINTHREADS)
 #include <afts_win32errorutil.h>
 #endif
 
-namespace actp {
+namespace aftthr {
 
-#if defined(ACTS_PLATFORM_PTHREADS)
+#if defined(AFTTHR_PLATFORM_PTHREADS)
 
 namespace {
 
@@ -48,7 +48,7 @@ Mutex::Result Mutex::unlock()
     return toMutexResult(result);
 }
 
-#elif defined(ACTS_PLATFORM_WINTHREADS)
+#elif defined(AFTTHR_PLATFORM_WINTHREADS)
 
 namespace {
 
@@ -110,7 +110,7 @@ Mutex::Result Mutex::unlock()
     return Mutex::ResultCode_OK;
 }
 
-#endif // ACTS_PLATFORM_PTHREADS ACTS_PLATFORM_WINTHREADS
+#endif // AFTTHR_PLATFORM
 
 std::ostream& operator<<(std::ostream& os, Mutex::Result const& result)
 {

@@ -1,7 +1,6 @@
 #include <aunit_describe.h>
 #include <aunit_fixture.h>
 #include <aunit_fixtureregistry.h>
-#include <iostream>
 
 namespace aunit {
 

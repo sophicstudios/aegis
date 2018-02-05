@@ -1,7 +1,7 @@
 #ifndef INCLUDED_AEGIS_AFTT_SYSTEMTIME_H
 #define INCLUDED_AEGIS_AFTT_SYSTEMTIME_H
 
-#include <aftt_datetime.h>
+#include <aftt_datetimetz.h>
 #include <aftt_datetimeinterval.h>
 
 namespace aftt {
@@ -15,19 +15,19 @@ struct SystemTime
     static DatetimeInterval now();
 
     ///
-    /// Returns a DateTime object representing now in UTC
+    /// Returns a DateTimeTz object representing now in UTC
     ///
-    static Datetime nowAsDatetimeUTC();
+    static DatetimeTz nowAsDatetimeUTC();
     
     ///
-    /// Returns a DateTime object representing now in the machine's local timezone
+    /// Returns a DateTimeTz object representing now in the machine's local timezone
     ///
-    static Datetime nowAsDatetimeLocal();
+    static DatetimeTz nowAsDatetimeLocal();
     
     ///
-    /// Returns a DateTime object representing the Unix epoch
+    /// Returns a DateTimeTz object representing the Unix epoch
     ///
-    static Datetime epochAsDatetimeUTC();
+    static DatetimeTz epochAsDatetimeUTC();
 };
 
 } // namespace

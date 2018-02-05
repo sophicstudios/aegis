@@ -1,5 +1,5 @@
-#ifndef INCLUDED_AGTE_ENTITY_H
-#define INCLUDED_AGTE_ENTITY_H
+#ifndef INCLUDED_AEGIS_AGTE_ENTITY_H
+#define INCLUDED_AEGIS_AGTE_ENTITY_H
 
 #include <bitset>
 #include <string>

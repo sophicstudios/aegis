@@ -2,7 +2,6 @@
 #include <aftfs_directoryentry.h>
 #include <aunit.h>
 #include <vector>
-#include <iostream>
 
 namespace {
 

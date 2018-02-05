@@ -9,6 +9,7 @@
 #include <cmath>
 #include <ostream>
 #include <vector>
+#include <iomanip>
 
 namespace agtm {
 
@@ -498,7 +499,10 @@ inline Vector3<T> operator/(Vector3<T> const& vec, T const& scalar)
 template<typename T>
 std::ostream& operator<<(std::ostream& os, Vector3<T> const& vec)
 {
-    os << "[" << vec.x() << " " << vec.y() << " " << vec.z() << "]";
+    std::streamsize w = os.width();
+
+    os << std::setw(0) << "[" << std::setw(w) << vec.x() << " " << std::setw(w) << vec.y() << " " << std::setw(w) << vec.z() << "]";
+
     return os;
 }
 

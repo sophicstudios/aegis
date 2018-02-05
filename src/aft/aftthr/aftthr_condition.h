@@ -1,17 +1,15 @@
-#ifndef INCLUDE_AEGIS_ACTP_CONDITION_H
-#define INCLUDE_AEGIS_ACTP_CONDITION_H
+#ifndef INCLUDE_AEGIS_AFTTHR_CONDITION_H
+#define INCLUDE_AEGIS_AFTTHR_CONDITION_H
 
-#include <acts_platform.h>
-#include <actp_mutex.h>
+#include <aftthr_platform.h>
+#include <aftthr_mutex.h>
 #include <iosfwd>
 
-#if defined(ACTS_PLATFORM_PTHREADS)
+#if defined(AFTTHR_PLATFORM_PTHREADS)
 #include <pthread.h>
-#elif defined(ACTS_PLATFORM_WINTHREADS)
-#include <actp_win32condition.h>
 #endif
 
-namespace actp {
+namespace aftthr {
 
 class Condition
 {
@@ -38,9 +36,9 @@ private:
     Condition(Condition const&);
     Condition& operator=(Condition const&);
 
-    #if defined(ACTS_PLATFORM_PTHREADS)
+    #if defined(AFTTHR_PLATFORM_PTHREADS)
         pthread_cond_t m_condition;
-    #elif defined(ACTS_PLATFORM_WINTHREADS)
+    #elif defined(AFTTHR_PLATFORM_WINTHREADS)
         HANDLE m_condition;
         HANDLE m_mutex;
     #endif

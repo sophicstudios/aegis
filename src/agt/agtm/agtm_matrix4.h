@@ -472,14 +472,14 @@ inline Matrix4<T> operator/(T scalar, Matrix4<T> const& rhs)
 template<typename T>
 inline std::ostream& operator<<(std::ostream& os, Matrix4<T> const& m)
 {
-    std::streamsize i = os.width();
+    std::streamsize w = os.width();
 
     os << std::endl
-        << std::fixed << std::setprecision(4)
-        << "|" << m(0, 0) << " " << m(0, 1) << " " << m(0, 2) << " " << m(0, 3) << "|" << std::endl
-        << "|" << m(1, 0) << " " << m(1, 1) << " " << m(1, 2) << " " << m(1, 3) << "|" << std::endl
-        << "|" << m(2, 0) << " " << m(2, 1) << " " << m(2, 2) << " " << m(2, 3) << "|" << std::endl
-        << "|" << m(3, 0) << " " << m(3, 1) << " " << m(3, 2) << " " << m(3, 3) << "|" << std::endl;
+        << std::setw(0)
+        << "|" << std::setw(w) << m(0, 0) << " " << std::setw(w) << m(0, 1) << " " << std::setw(w) << m(0, 2) << " " << std::setw(w) << m(0, 3) << "|" << std::endl
+        << "|" << std::setw(w) << m(1, 0) << " " << std::setw(w) << m(1, 1) << " " << std::setw(w) << m(1, 2) << " " << std::setw(w) << m(1, 3) << "|" << std::endl
+        << "|" << std::setw(w) << m(2, 0) << " " << std::setw(w) << m(2, 1) << " " << std::setw(w) << m(2, 2) << " " << std::setw(w) << m(2, 3) << "|" << std::endl
+        << "|" << std::setw(w) << m(3, 0) << " " << std::setw(w) << m(3, 1) << " " << std::setw(w) << m(3, 2) << " " << std::setw(w) << m(3, 3) << "|" << std::endl;
 
     return os;
 }

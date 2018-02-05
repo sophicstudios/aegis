@@ -1,10 +1,10 @@
-#ifndef INCLUDED_AGTE_EVENTSYSTEM_H
-#define INCLUDED_AGTE_EVENTSYSTEM_H
+#ifndef INCLUDED_AEGIS_AGTE_EVENTSYSTEM_H
+#define INCLUDED_AEGIS_AGTE_EVENTSYSTEM_H
 
 #include <agte_engine.h>
 #include <agte_system.h>
 #include <agtm_rect.h>
-#include <actp_mutex.h>
+#include <aftthr_mutex.h>
 #include <afth_uuid.h>
 #include <deque>
 #include <functional>
@@ -33,7 +33,7 @@ private:
 
     void swapEventLists();
     
-    actp::Mutex m_mutex;
+    aftthr::Mutex m_mutex;
     EventList* m_nextEvents;
     EventList* m_currentEvents;
 };

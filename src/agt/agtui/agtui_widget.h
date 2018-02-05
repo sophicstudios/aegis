@@ -1,5 +1,5 @@
-#ifndef INCLUDED_AGTUI_WIDGET_H
-#define INCLUDED_AGTUI_WIDGET_H
+#ifndef INCLUDED_AEGIS_AGTUI_WIDGET_H
+#define INCLUDED_AEGIS_AGTUI_WIDGET_H
 
 #include <agtm_rect.h>
 #include <agtm_vector2.h>

@@ -1,5 +1,5 @@
-#ifndef INCLUDED_AUNIT_FIXTURE_H
-#define INCLUDED_AUNIT_FIXTURE_H
+#ifndef INCLUDED_AEGIS_AUNIT_FIXTURE_H
+#define INCLUDED_AEGIS_AUNIT_FIXTURE_H
 
 #include <aunit_reporter.h>
 #include <functional>

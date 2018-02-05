@@ -1,14 +1,14 @@
 #include <agte_orthographiccamera.h>
 #include <agtm_vector3.h>
-#include <iostream>
-
+#include <aftl_logger.h>
+#include <iomanip>
 namespace agte {
 
 namespace {
 
 agtm::Matrix4<float> calculateOrthographicProjection(agtm::Rect<float> const& rect)
 {
-    std::cout << "rect: " << rect << std::endl;
+    AFTL_LOG_TRACE << "rect: " << rect << AFTL_LOG_END;
     
     float left = rect.x();
     float right = left + rect.width();
@@ -23,7 +23,7 @@ agtm::Matrix4<float> calculateOrthographicProjection(agtm::Rect<float> const& re
         0.0f,                  0.0f,                 -1.0f, 0.0,
         0.0f,                  0.0f,                  0.0f, 1.0f);
 
-    std::cout << "projection: " << projection << std::endl;
+    AFTL_LOG_TRACE << "projection: " << std::fixed << std::setprecision(4) << std::setw(9) << projection << AFTL_LOG_END;
 
     return projection;
 }

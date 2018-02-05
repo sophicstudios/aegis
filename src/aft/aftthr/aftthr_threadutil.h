@@ -1,10 +1,10 @@
-#ifndef INCLUDE_AEGIS_ACTP_THREADUTIL_H
-#define INCLUDE_AEGIS_ACTP_THREADUTIL_H
+#ifndef INCLUDE_AEGIS_AFTTHR_THREADUTIL_H
+#define INCLUDE_AEGIS_AFTTHR_THREADUTIL_H
 
-#include <actp_thread.h>
+#include <aftthr_thread.h>
 #include <aftt_datetimeinterval.h>
 
-namespace actp {
+namespace aftthr {
 
 struct ThreadUtil
 {

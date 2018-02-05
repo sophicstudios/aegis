@@ -9,6 +9,7 @@
 #include <ostream>
 #include <type_traits>
 #include <vector>
+#include <iomanip>
 
 namespace agtm {
 
@@ -439,7 +440,9 @@ inline Vector2<T> operator/(Vector2<T> const& vec, T const& scalar)
 template<typename T>
 std::ostream& operator<<(std::ostream& os, Vector2<T> const& vec)
 {
-    os << "[" << vec.x() << " " << vec.y() << "]";
+    std::streamsize w = os.width();
+
+    os << std::setw(0) << "[" << std::setw(w) << vec.x() << " " << std::setw(w) << vec.y() << "]";
 
     return os;
 }

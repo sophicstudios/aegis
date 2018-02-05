@@ -1,7 +1,7 @@
-#ifndef INCLUDED_AUNIT_EXPECT_H
-#define INCLUDED_AUNIT_EXPECT_H
+#ifndef INCLUDED_AEGIS_AUNIT_EXPECT_H
+#define INCLUDED_AEGIS_AUNIT_EXPECT_H
 
-#include <iostream>
+#include <exception>
 
 namespace aunit {
 

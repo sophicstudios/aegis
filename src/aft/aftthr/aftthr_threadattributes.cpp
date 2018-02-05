@@ -1,6 +1,6 @@
-#include <actp_threadattributes.h>
+#include <aftthr_threadattributes.h>
 
-namespace actp {
+namespace aftthr {
 
 ThreadAttributes::ThreadAttributes()
 : m_createType(CreateType_JOINABLE),

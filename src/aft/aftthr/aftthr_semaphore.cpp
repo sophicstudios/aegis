@@ -1,11 +1,11 @@
-#include <actp_semaphore.h>
+#include <aftthr_semaphore.h>
 #include <afts_win32errorutil.h>
 #include <afts_assert.h>
 #include <iostream>
 
-namespace actp {
+namespace aftthr {
 
-#if defined(ACTS_PLATFORM_APPLE)
+#if defined(AFTTHR_PLATFORM_APPLE)
 
 Semaphore::Semaphore(unsigned int initialValue)
 {
@@ -38,7 +38,7 @@ Semaphore::ResultCode Semaphore::signal()
     return ResultCode_OK;
 }
 
-#elif defined(ACTS_PLATFORM_PTHREADS)
+#elif defined(AFTTHR_PLATFORM_PTHREADS)
 
 Semaphore::Semaphore(unsigned int initialValue)
 {
@@ -76,7 +76,7 @@ Semaphore::ResultCode Semaphore::signal()
     return ResultCode_OK;
 }
 
-#elif defined(ACTS_PLATFORM_WINTHREADS)
+#elif defined(AFTTHR_PLATFORM_WINTHREADS)
 
 namespace {
 
@@ -140,6 +140,6 @@ Semaphore::ResultCode Semaphore::signal()
     return ResultCode_OK;
 }
 
-#endif // ACTS_PLATFORM
+#endif // AFTTHR_PLATFORM
 
 } // namespace

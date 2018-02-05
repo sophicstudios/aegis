@@ -1,5 +1,5 @@
-#ifndef INCLUDED_AGTG_MESHBINDING_H
-#define INCLUDED_AGTG_MESHBINDING_H
+#ifndef INCLUDED_AEGIS_AGTG_MESHBINDING_H
+#define INCLUDED_AEGIS_AGTG_MESHBINDING_H
 
 #include <agtg_shaderprogram.h>
 #include <memory>

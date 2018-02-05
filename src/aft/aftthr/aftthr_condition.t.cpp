@@ -1,12 +1,11 @@
-#include <actp_condition.h>
-#include <actp_mutex.h>
-#include <actp_scopedlock.h>
-#include <actp_thread.h>
-#include <actp_threadutil.h>
+#include <aftthr_condition.h>
+#include <aftthr_mutex.h>
+#include <aftthr_scopedlock.h>
+#include <aftthr_thread.h>
+#include <aftthr_threadutil.h>
 #include <aftt_seconds.h>
 #include <aunit.h>
 #include <functional>
-#include <iostream>
 #include <vector>
 
 namespace {
@@ -16,7 +15,7 @@ using namespace aunit;
 class Reader
 {
 public:
-    Reader(std::vector<int>& input, actp::Mutex& mutex, actp::Condition& condition)
+    Reader(std::vector<int>& input, aftthr::Mutex& mutex, aftthr::Condition& condition)
     : m_input(input),
       m_mutex(mutex),
       m_condition(condition)
@@ -27,7 +26,7 @@ public:
 
     void run()
     {
-        actp::ScopedLock<actp::Mutex> l(m_mutex);
+        aftthr::ScopedLock<aftthr::Mutex> l(m_mutex);
 
         m_condition.wait(m_mutex);
 
@@ -36,22 +35,22 @@ public:
 
     std::vector<int> const& output() const
     {
-        actp::ScopedLock<actp::Mutex> l(m_mutex);
+        aftthr::ScopedLock<aftthr::Mutex> l(m_mutex);
         return m_output;
     }
 
 private:
     std::vector<int>& m_input;
     std::vector<int> m_output;
-    actp::Mutex& m_mutex;
-    actp::Condition& m_condition;
+    aftthr::Mutex& m_mutex;
+    aftthr::Condition& m_condition;
 };
 
 
 class Writer
 {
 public:
-    Writer(std::vector<int>& input, actp::Mutex& mutex, actp::Condition& condition)
+    Writer(std::vector<int>& input, aftthr::Mutex& mutex, aftthr::Condition& condition)
     : m_input(input),
       m_mutex(mutex),
       m_condition(condition)
@@ -63,9 +62,9 @@ public:
     void run()
     {
         aftt::DatetimeInterval interval(aftt::Seconds(1));
-        actp::ThreadUtil::sleep(interval);
+        aftthr::ThreadUtil::sleep(interval);
 
-        actp::ScopedLock<actp::Mutex> l(m_mutex);
+        aftthr::ScopedLock<aftthr::Mutex> l(m_mutex);
 
         for (int i = 0; i < 10; ++i)
         {
@@ -77,12 +76,12 @@ public:
     
 private:
     std::vector<int>& m_input;
-    actp::Mutex& m_mutex;
-    actp::Condition& m_condition;
+    aftthr::Mutex& m_mutex;
+    aftthr::Condition& m_condition;
 };
 
 
-Describe d("actp_condition", []
+Describe d("aftthr_condition", []
 {
     beforeEach([&]
     {
@@ -95,14 +94,14 @@ Describe d("actp_condition", []
     it("wait", [&]
     {
         std::vector<int> vec;
-        actp::Mutex m;
-        actp::Condition c;
+        aftthr::Mutex m;
+        aftthr::Condition c;
         
         Reader r(vec, m, c);
-        actp::Thread readerThread(std::bind(&Reader::run, &r));
+        aftthr::Thread readerThread(std::bind(&Reader::run, &r));
 
         Writer w(vec, m, c);
-        actp::Thread writerThread(std::bind(&Writer::run, &w));
+        aftthr::Thread writerThread(std::bind(&Writer::run, &w));
 
         readerThread.join();
         writerThread.join();

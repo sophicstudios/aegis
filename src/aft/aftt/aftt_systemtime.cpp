@@ -22,8 +22,6 @@
 
 #endif // AFTS_OS
 
-#include <iostream>
-
 namespace aftt {
 
 namespace {
@@ -37,33 +35,39 @@ DatetimeInterval SystemTime::now()
     return DatetimeInterval();
 }
 
-Datetime SystemTime::nowAsDatetimeUTC()
+DatetimeTz SystemTime::nowAsDatetimeUTC()
 {
     SYSTEMTIME time;
     GetSystemTime(&time);
 
-    return Datetime(
-        Year(time.wYear), Month(time.wMonth), Day(time.wDay),
-        Hour(time.wHour), Minute(time.wMinute),
-        Second(time.wSecond), Millisecond(time.wMilliseconds));
+    return DatetimeTz(
+        Year(time.wYear),
+        Month(time.wMonth),
+        Day(time.wDay),
+        Hour(time.wHour),
+        Minute(time.wMinute),
+        Second(time.wSecond),
+        Millisecond(time.wMilliseconds),
+        TimezoneOffset(0));
 }
 
-Datetime SystemTime::nowAsDatetimeLocal()
+DatetimeTz SystemTime::nowAsDatetimeLocal()
 {
     SYSTEMTIME time;
     GetLocalTime(&time);
     
-    return Datetime(
-        Year(time.wYear), Month(time.wMonth), Day(time.wDay),
-        Hour(time.wHour), Minute(time.wMinute),
-        Second(time.wSecond), Millisecond(time.wMilliseconds));
+    return DatetimeTz(
+        Year(time.wYear),
+        Month(time.wMonth),
+        Day(time.wDay),
+        Hour(time.wHour),
+        Minute(time.wMinute),
+        Second(time.wSecond),
+        Millisecond(time.wMilliseconds),
+        TimezoneOffset(0));
 }
 
 #elif defined(AFTS_OS_APPLE)
-
-namespace {
-
-} // namespace
 
 DatetimeInterval SystemTime::now()
 {
@@ -94,13 +98,13 @@ DatetimeInterval SystemTime::now()
     return result;
 }
 
-Datetime SystemTime::nowAsDatetimeUTC()
+DatetimeTz SystemTime::nowAsDatetimeUTC()
 {
-    Datetime result = s_epoch + now();
-    return result;
+    Datetime d(s_epoch + now());
+    return DatetimeTz(d, TimezoneOffset(0));
 }
 
-Datetime SystemTime::nowAsDatetimeLocal()
+DatetimeTz SystemTime::nowAsDatetimeLocal()
 {
     clock_serv_t cclock;
     mach_timespec_t mts;
@@ -117,14 +121,15 @@ Datetime SystemTime::nowAsDatetimeLocal()
     time_t sec = static_cast<time_t>(mts.tv_sec);
     localtime_r(&sec, &localTm);
     
-    return Datetime(
+    return DatetimeTz(
         Year(localTm.tm_year + 1900),
         Month(localTm.tm_mon + 1),
         Day(localTm.tm_mday),
         Hour(localTm.tm_hour),
         Minute(localTm.tm_min),
         Second(localTm.tm_sec),
-        Nanosecond(mts.tv_nsec));
+        Nanosecond(mts.tv_nsec),
+        TimezoneOffset(localTm.tm_gmtoff / 60));
 }
 
 #elif defined(_POSIX_TIMERS) // POSIX
@@ -135,7 +140,8 @@ DatetimeInterval SystemTime::now()
     memset(&ts, 0, sizeof(timespec));
     
     int result = clock_gettime(CLOCK_REALTIME, &ts);
-    if (0 != result) {
+    if (0 != result)
+    {
         throw aftu::Exception() << "clock_gettime failed [ error: " << afts::ErrorUtil::translateErrno(errno) << " ]";
     }
 
@@ -147,18 +153,20 @@ DatetimeInterval SystemTime::now()
         Nanoseconds(ts.tv_nsec));
 }
 
-Datetime SystemTime::nowAsDatetimeUTC()
+DatetimeTz SystemTime::nowAsDatetimeUTC()
 {
-    return s_epoch + SystemTime::now();
+    Datetime d(s_epoch + now());
+    return DatetimeTz(d, TimezoneOffset(0));
 }
     
-Datetime SystemTime::nowAsDatetimeLocal()
+DatetimeTz SystemTime::nowAsDatetimeLocal()
 {
     timespec ts;
     memset(&ts, 0, sizeof(timespec));
     
     int result = clock_gettime(CLOCK_REALTIME, &ts);
-    if (0 != result) {
+    if (0 != result)
+    {
         throw aftu::Exception() << "clock_gettime failed [ error: " << afts::ErrorUtil::translateErrno(errno) << " ]";
     }
     
@@ -167,21 +175,22 @@ Datetime SystemTime::nowAsDatetimeLocal()
     
     localtime_r(&(ts.tv_sec), &localTm);
     
-    return Datetime(
+    return DatetimeTz(
         Year(localTm.tm_year + 1900),
         Month(localTm.tm_mon + 1),
         Day(localTm.tm_mday),
         Hour(localTm.tm_hour),
         Minute(localTm.tm_min),
         Second(localTm.tm_sec),
-        Nanosecond(ts.tv_nsec));
+        Nanosecond(ts.tv_nsec),
+        TimezoneOffset(0));
 }
 
 #endif // AFTS_OS
 
-Datetime SystemTime::epochAsDatetimeUTC()
+DatetimeTz SystemTime::epochAsDatetimeUTC()
 {
-    return s_epoch;
+    return DatetimeTz(s_epoch, TimezoneOffset(0));
 }
 
 } // namespace

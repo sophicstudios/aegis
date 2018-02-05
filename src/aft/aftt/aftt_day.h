@@ -8,7 +8,7 @@ class Day
 public:
     Day();
     
-    Day(unsigned int day);
+    explicit Day(unsigned int day);
     
     ~Day();
     

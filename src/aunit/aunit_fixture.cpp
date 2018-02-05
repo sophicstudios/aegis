@@ -1,5 +1,4 @@
 #include <aunit_fixture.h>
-#include <iostream>
 
 namespace aunit {
 

@@ -10,7 +10,7 @@ class Years
 public:
     Years();
     
-    Years(int32_t years);
+    explicit Years(int32_t years);
 
     ~Years();
     

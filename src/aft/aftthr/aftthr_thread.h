@@ -1,18 +1,18 @@
-#ifndef INCLUDE_AEGIS_ACTP_THREAD_H
-#define INCLUDE_AEGIS_ACTP_THREAD_H
+#ifndef INCLUDE_AEGIS_AFTTHR_THREAD_H
+#define INCLUDE_AEGIS_AFTTHR_THREAD_H
 
-#include <actp_threadattributes.h>
-#include <acts_platform.h>
+#include <aftthr_platform.h>
+#include <aftthr_threadattributes.h>
 
-#if defined(ACTS_PLATFORM_PTHREADS)
+#if defined(AFTTHR_PLATFORM_PTHREADS)
 #include <pthread.h>
-#elif defined(ACTS_PLATFORM_WINTHREADS)
+#elif defined(AFTTHR_PLATFORM_WINTHREADS)
 #include <afts_windows.h>
 #endif
 
 #include <functional>
 
-namespace actp {
+namespace aftthr {
 
 class Thread
 {
@@ -34,9 +34,9 @@ private:
 
     bool m_joinable;
 
-    #if defined(ACTS_PLATFORM_PTHREADS)
+    #if defined(AFTTHR_PLATFORM_PTHREADS)
         pthread_t m_thread;
-    #elif defined(ACTS_PLATFORM_WINTHREADS)
+    #elif defined(AFTTHR_PLATFORM_WINTHREADS)
         HANDLE m_thread;
         DWORD m_threadId;
     #endif

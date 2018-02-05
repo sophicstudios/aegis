@@ -1,19 +1,19 @@
-#ifndef INCLUDE_AEGIS_ACTP_SEMAPHORE_H
-#define INCLUDE_AEGIS_ACTP_SEMAPHORE_H
+#ifndef INCLUDE_AEGIS_AFTTHR_SEMAPHORE_H
+#define INCLUDE_AEGIS_AFTTHR_SEMAPHORE_H
 
-#include <acts_platform.h>
+#include <aftthr_platform.h>
 #include <iosfwd>
 
-#if defined(ACTS_PLATFORM_APPLE)
+#if defined(AFTTHR_PLATFORM_APPLE)
 #include <dispatch/dispatch.h>
-#elif defined(ACTS_PLATFORM_PTHREADS)
+#elif defined(AFTTHR_PLATFORM_PTHREADS)
 #include <semaphore.h>
 #include <pthread.h>
-#elif defined(ACTS_PLATFORM_WINTHREADS)
+#elif defined(AFTTHR_PLATFORM_WINTHREADS)
 #include <afts_windows.h>
 #endif
 
-namespace actp {
+namespace aftthr {
 
 class Semaphore
 {
@@ -35,13 +35,13 @@ public:
 private:
     Semaphore();
 
-#if defined(ACTS_PLATFORM_APPLE)
+#if defined(AFTTHR_PLATFORM_APPLE)
     dispatch_semaphore_t m_semaphore;
-#elif defined(ACTS_PLATFORM_PTHREADS)
+#elif defined(AFTTHR_PLATFORM_PTHREADS)
     sem_t m_semaphore;
-#elif defined(ACTS_PLATFORM_WINTHREADS)
+#elif defined(AFTTHR_PLATFORM_WINTHREADS)
     HANDLE m_handle;
-#endif // ACTS_PLATFORM
+#endif // AFTTHR_PLATFORM
 };
 
 std::ostream& operator<<(std::ostream& os, Semaphore::ResultCode resultCode);

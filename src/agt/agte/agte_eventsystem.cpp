@@ -1,5 +1,5 @@
 #include <agte_eventsystem.h>
-#include <actp_scopedlock.h>
+#include <aftthr_scopedlock.h>
 #include <functional>
 
 namespace agte {
@@ -18,7 +18,7 @@ EventSystem::~EventSystem()
 
 void EventSystem::queueEvent(afth::UUID const& id, EventSystem::Callback callback)
 {
-    actp::ScopedLock<actp::Mutex> lock(m_mutex);
+    aftthr::ScopedLock<aftthr::Mutex> lock(m_mutex);
     m_nextEvents->push_back(std::make_pair(id, callback));
 }
 
@@ -42,7 +42,7 @@ void EventSystem::doPostUpdate(agte::Engine::Context& context)
 
 void EventSystem::swapEventLists()
 {
-    actp::ScopedLock<actp::Mutex> lock(m_mutex);
+    aftthr::ScopedLock<aftthr::Mutex> lock(m_mutex);
     std::swap(m_currentEvents, m_nextEvents);
 }
 

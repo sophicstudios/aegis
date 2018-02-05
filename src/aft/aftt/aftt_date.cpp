@@ -415,7 +415,7 @@ std::ostream& Date::print(std::ostream& os) const
     serialToYearMonthDay(&year, &month, &day, m_serial);
     
     os << std::setw(4) << std::setfill('0') << year
-        << "-" << std::setw(2) << std::setfill('0') << MONTH_DATA_LIST[month].shortName
+        << "-" << std::setw(2) << std::setfill('0') << month
         << "-" << std::setw(2) << std::setfill('0') << day;
 
     return os;

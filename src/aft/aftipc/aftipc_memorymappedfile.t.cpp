@@ -3,7 +3,6 @@
 #include <afth_crc32.h>
 #include <aftu_hexprinter.h>
 #include <aunit.h>
-#include <iostream>
 
 namespace {
 

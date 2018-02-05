@@ -1,9 +1,9 @@
-#include <actp_threadutil.h>
-#include <acts_platform.h>
+#include <aftthr_threadutil.h>
+#include <aftthr_platform.h>
 
-namespace actp {
+namespace aftthr {
 
-#if defined(ACTS_PLATFORM_PTHREADS)
+#if defined(AFTTHR_PLATFORM_PTHREADS)
 
 ThreadUtil::ResultCode ThreadUtil::sleep(aftt::DatetimeInterval const& interval)
 {
@@ -50,13 +50,13 @@ ThreadUtil::ResultCode ThreadUtil::sleep(
     return ResultCode_OK;
 }
 
-#elif defined(ACTS_PLATFORM_WINTHREADS)
+#elif defined(AFTTHR_PLATFORM_WINTHREADS)
 
 void ThreadUtil::sleep(aftt::DatetimeInterval const& interval)
 {
     ::Sleep(static_cast<DWORD>(interval.totalSeconds() * 1000));
 }
 
-#endif // ACTS_PLATFORM
+#endif // AFTTHR_PLATFORM
 
 } // namespace

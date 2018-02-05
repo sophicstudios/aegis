@@ -1,7 +1,7 @@
-#ifndef INCLUDE_AEGIS_ACTP_SCOPEDLOCK_H
-#define INCLUDE_AEGIS_ACTP_SCOPEDLOCK_H
+#ifndef INCLUDE_AEGIS_AFTTHR_SCOPEDLOCK_H
+#define INCLUDE_AEGIS_AFTTHR_SCOPEDLOCK_H
 
-namespace actp {
+namespace aftthr {
 
 template<typename T>
 class ScopedLock

@@ -1,7 +1,6 @@
-#ifndef INCLUDED_AFTH_UUID_H
-#define INCLUDED_AFTH_UUID_H
+#ifndef INCLUDED_AEGIS_AFTH_UUID_H
+#define INCLUDED_AEGIS_AFTH_UUID_H
 
-#include <iostream>
 #include <string>
 #include <vector>
 

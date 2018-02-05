@@ -1,11 +1,11 @@
-#include <actp_condition.h>
+#include <aftthr_condition.h>
 #include <aftu_exception.h>
 #include <afts_assert.h>
 #include <afts_errorutil.h>
 
-namespace actp {
+namespace aftthr {
 
-#if defined(ACTS_PLATFORM_PTHREADS)
+#if defined(AFTTHR_PLATFORM_PTHREADS)
 
 Condition::Condition()
 {
@@ -57,7 +57,7 @@ Condition::Result Condition::signalAll()
     return Condition::Result_OK;
 }
 
-#elif defined(ACTS_PLATFORM_WINTHREADS)
+#elif defined(AFTTHR_PLATFORM_WINTHREADS)
 
 // TODO: Finish and test this implementation
 Condition::Condition()
@@ -106,7 +106,7 @@ Condition::Result Condition::signalAll()
     return Condition::Result_UNKNOWN;
 }
 
-#endif // ACTS_PLATFORM
+#endif // AFTTHR_PLATFORM
 
 std::ostream& operator<<(std::ostream& os, Condition::Result const& result)
 {

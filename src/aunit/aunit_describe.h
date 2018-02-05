@@ -1,5 +1,5 @@
-#ifndef INCLUDED_AUNIT_DESCRIBE_H
-#define INCLUDED_AUNIT_DESCRIBE_H
+#ifndef INCLUDED_AEGIS_AUNIT_DESCRIBE_H
+#define INCLUDED_AEGIS_AUNIT_DESCRIBE_H
 
 #include <functional>
 #include <string>

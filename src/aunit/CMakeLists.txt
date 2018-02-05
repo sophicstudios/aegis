@@ -37,3 +37,6 @@ set(${PROJECT_NAME}_INCLUDE_DIRS
 include_directories(${${PROJECT_NAME}_INCLUDE_DIRS})
 
 add_library(${PROJECT_NAME} SHARED ${AUNIT_SOURCES})
+
+target_compile_options(${PROJECT_NAME} PRIVATE "-Wall")
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)

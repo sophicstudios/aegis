@@ -13,15 +13,37 @@ public:
     Datetime();
     
     Datetime(Date const& date, Time const& time);
-    
+
+    Datetime(
+        Year const& year,
+        Month const& month,
+        Day const& day);
+
     Datetime(
         Year const& year,
         Month const& month,
         Day const& day,
-        Hour const& hour = Hour(0),
-        Minute const& minute = Minute(0),
-        Second const& second = Second(0),
-        Nanosecond const& nanoseond = Nanosecond(0));
+        Hour const& hour,
+        Minute const& minute,
+        Second const& second);
+
+    Datetime(
+        Year const& year,
+        Month const& month,
+        Day const& day,
+        Hour const& hour,
+        Minute const& minute,
+        Second const& second,
+        Millisecond const& millisecond);
+
+    Datetime(
+        Year const& year,
+        Month const& month,
+        Day const& day,
+        Hour const& hour,
+        Minute const& minute,
+        Second const& second,
+        Nanosecond const& nanosecond);
 
     Date const& date() const;
     

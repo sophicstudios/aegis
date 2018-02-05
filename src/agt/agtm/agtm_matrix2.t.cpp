@@ -166,31 +166,13 @@ Describe d("agtm_matrix2", []
     {
         agtm::Matrix2<float> m1(1, 2, 3, 400);
 
-        std::ostringstream s;
-        std::ios::fmtflags flags = s.flags();
-        bool boolalpha = flags & std::ios::boolalpha;
-        bool showbase = flags & std::ios::showbase;
-        bool showpoint = flags & std::ios::showpoint;
-        bool showpos = flags & std::ios::showpos;
-        bool skipws = flags & std::ios::skipws;
-        bool unitbuf = flags & std::ios::unitbuf;
-        bool uppercase = flags & std::ios::uppercase;
-        bool hex = flags & std::ios::hex;
-        bool dec = flags & std::ios::dec;
-        bool oct = flags & std::ios::oct;
-        bool fixed = flags & std::ios::fixed;
-        bool scientific = flags & std::ios::scientific;
-        bool left = flags & std::ios::left;
-        bool right = flags & std::ios::right;
-        bool internal = flags & std::ios::internal;
+        std::stringstream s1;
+        s1 << std::setw(3) << std::fixed << std::setprecision(0) << m1;
+        expect(s1.str() == "\n|  1   2|\n|  3 400|\n").toBeTrue();
 
-        s << std::setw(3);
-        size_t w = s.width();
-
-        s << "val:" << 5 << "\n";
-        w = s.width();
-
-        expect(s.str() == "\n|  1   2|\n|  3 400|\n").toBeTrue();
+        std::stringstream s2;
+        s2 << std::setw(6) << std::fixed << std::setprecision(2) << m1;
+        expect(s2.str() == "\n|  1.00   2.00|\n|  3.00 400.00|\n").toBeTrue();
     });
 });
 

@@ -2,7 +2,7 @@
 #define INCLUDED_AEGIS_AFTT_MICROSECONDS_H
 
 #include <afts_stdint.h>
-#include <iosfwd>
+#include <ostream>
 
 namespace aftt {
 
@@ -17,7 +17,7 @@ class Microseconds
 public:
     Microseconds();
     
-    Microseconds(int64_t microseconds);
+    explicit Microseconds(int64_t microseconds);
     
     explicit Microseconds(Milliseconds const& milliseconds);
     

@@ -516,7 +516,7 @@ std::ostream& Time::print(std::ostream& os) const
     os << std::setw(2) << std::setfill('0') << hour() << ":"
         << std::setw(2) << std::setfill('0') << minute() << ":"
         << std::setw(2) << std::setfill('0') << second() << "."
-        << std::setw(9) << std::setfill('0') << nanosecond();
+        << std::setw(3) << std::setfill('0') << static_cast<int>(nanosecond().value() / 1000000.0);
 
     return os;
 }

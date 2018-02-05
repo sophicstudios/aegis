@@ -3,7 +3,7 @@
 
 #include <aftt_days.h>
 #include <afts_stdint.h>
-#include <iosfwd>
+#include <ostream>
 
 // @Description This component represents a point in time, with the individual components
 // of that time, including hour, minute, second and millisecond, available as
@@ -175,12 +175,25 @@ public:
 
     Time(Time const& time);
     
+    // Constructs a Time object with the given hour, minute, second.
+    Time(
+        Hour const& hour,
+        Minute const& minute,
+        Second const& second);
+
     // Constructs a Time object with the given hour, minute, second and nanosecond.
     Time(
         Hour const& hour,
-        Minute const& minute = Minute(0),
-        Second const& second = Second(0),
-        Nanosecond const& nanosecond = Nanosecond(0));
+        Minute const& minute,
+        Second const& second,
+        Millisecond const& millsecond);
+
+    // Constructs a Time object with the given hour, minute, second and nanosecond.
+    Time(
+        Hour const& hour,
+        Minute const& minute,
+        Second const& second,
+        Nanosecond const& nanosecond);
 
     // Destructor
     ~Time();

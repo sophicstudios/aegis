@@ -1,5 +1,5 @@
-#ifndef INCLUDED_AGTUI_WINDOW_H
-#define INCLUDED_AGTUI_WINDOW_H
+#ifndef INCLUDED_AEGIS_AGTUI_WINDOW_H
+#define INCLUDED_AEGIS_AGTUI_WINDOW_H
 
 #include <agtui_displaytimer.h>
 #include <agtui_mouseevent.h>

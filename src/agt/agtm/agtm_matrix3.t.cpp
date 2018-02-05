@@ -3,6 +3,8 @@
 #include <agtm_vector3.h>
 #include <aunit.h>
 #include <array>
+#include <iomanip>
+#include <sstream>
 
 namespace {
 
@@ -181,6 +183,19 @@ Describe d("agtm_matrix3", []
 
         agtm::Vector3<float> c2 = m1.col(2);
         expect(c2.x() == 3.0f && c2.y() == 6.0f && c2.z() == 9.0f).toBeTrue();
+    });
+
+    it("Stream", [&]
+    {
+        agtm::Matrix3<float> m1(1, 2, 3, 4, 5, 6, 7, 8, 900);
+
+        std::stringstream s1;
+        s1 << std::setw(3) << std::fixed << std::setprecision(0) << m1;
+        expect(s1.str() == "\n|  1   2   3|\n|  4   5   6|\n|  7   8 900|\n").toBeTrue();
+
+        std::stringstream s2;
+        s2 << std::setw(6) << std::fixed << std::setprecision(2) << m1;
+        expect(s2.str() == "\n|  1.00   2.00   3.00|\n|  4.00   5.00   6.00|\n|  7.00   8.00 900.00|\n").toBeTrue();
     });
 });
 

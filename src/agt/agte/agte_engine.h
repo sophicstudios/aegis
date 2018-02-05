@@ -1,10 +1,10 @@
-#ifndef INCLUDED_AGTE_ENGINE_H
-#define INCLUDED_AGTE_ENGINE_H
+#ifndef INCLUDED_AEGIS_AGTE_ENGINE_H
+#define INCLUDED_AEGIS_AGTE_ENGINE_H
 
 #include <agte_space.h>
-#include <actp_condition.h>
-#include <actp_mutex.h>
-#include <actp_thread.h>
+#include <aftthr_condition.h>
+#include <aftthr_mutex.h>
+#include <aftthr_thread.h>
 #include <atomic>
 #include <memory>
 #include <vector>
@@ -25,7 +25,7 @@ public:
     class Context
     {
     public:
-        Context(PlatformPtr platform, actp::Mutex& mutex, actp::Condition& condition);
+        Context(PlatformPtr platform, aftthr::Mutex& mutex, aftthr::Condition& condition);
 
         ~Context();
 
@@ -40,8 +40,8 @@ public:
     private:
         std::atomic<bool> m_shouldUpdate;
         PlatformPtr m_platform;
-        actp::Mutex& m_mutex;
-        actp::Condition& m_condition;
+        aftthr::Mutex& m_mutex;
+        aftthr::Condition& m_condition;
     };
 
     /**
@@ -94,9 +94,9 @@ private:
     typedef std::map<std::string, SpacePtr> SpaceMap;
 
     std::atomic<bool> m_running;
-    std::shared_ptr<actp::Thread> m_thread;
-    actp::Condition m_condition;
-    actp::Mutex m_mutex;
+    std::shared_ptr<aftthr::Thread> m_thread;
+    aftthr::Condition m_condition;
+    aftthr::Mutex m_mutex;
 
     Context m_context;
     PlatformPtr m_platform;

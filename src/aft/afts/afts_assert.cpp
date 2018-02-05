@@ -1,5 +1,4 @@
 #include <afts_assert.h>
-#include <iostream>
 #include <exception>
 #include <cassert>
 

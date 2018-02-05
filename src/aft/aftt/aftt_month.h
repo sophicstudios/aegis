@@ -23,9 +23,9 @@ public:
 
     Month();
     
-    Month(Name name);
+    explicit Month(Name name);
     
-    Month(unsigned int month);
+    explicit Month(unsigned int month);
     
     ~Month();
     

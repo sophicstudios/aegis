@@ -1,7 +1,6 @@
 #include <afth_crc32.h>
 #include <aunit.h>
 #include <cstring>
-#include <iostream>
 
 namespace {
 

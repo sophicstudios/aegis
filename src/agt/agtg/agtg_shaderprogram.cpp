@@ -2,7 +2,7 @@
 #include <agtm_matrix4.h>
 #include <agtm_matrix4util.h>
 #include <aftfs_filesystem.h> 
-#include <iostream>
+#include <aftl_logger.h>
 
 namespace agtg {
 
@@ -53,10 +53,10 @@ bool createShader(std::vector<GLuint>& attachedShaders, std::string const& sourc
             char* log = new char[logLength + 1];
             glGetShaderInfoLog(shader, logLength + 1, NULL, log);
 
-            std::cerr << "Shader compiler error ["
+            AFTL_LOG_ERROR << "Shader compiler error ["
                 << " error: " << log
                 << " source: '" << source << "'"
-                << " ]" << std::endl;
+                << " ]" << AFTL_LOG_END;
 
             delete [] log;
         }
@@ -145,9 +145,9 @@ bool ShaderProgram::link()
             char* log = new char[logLength + 1];
             glGetProgramInfoLog(m_program, logLength, NULL, log);
 
-            std::cout << "Shader program link error ["
+            AFTL_LOG_ERROR << "Shader program link error ["
                 << " log: " << log
-                << " ]" << std::endl;
+                << " ]" << AFTL_LOG_END;
 
             delete [] log;
             

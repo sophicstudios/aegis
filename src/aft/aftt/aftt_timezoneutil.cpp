@@ -1,21 +1,21 @@
-#include <aftt_timezone.h>
+#include <aftt_timezoneutil.h>
 #include <ctime>
 
 namespace aftt {
 
-bool Timezone::isDST(Region region)
+bool TimezoneUtil::isDST(Region region)
 {
     return false;
 }
 
-int Timezone::currentOffset(Region region)
+int TimezoneUtil::currentOffset(Region region)
 {
     //time_t now = std::time(NULL);
     
     return 0;
 }
 
-int Timezone::currentOffset(Region region, bool& isDST)
+int TimezoneUtil::currentOffset(Region region, bool& isDST)
 {
     //time_t now = std::time(NULL);
     return 0;

@@ -250,7 +250,7 @@ include_directories(
 )
 
 add_library(${PROJECT_NAME} SHARED ${AGT_SOURCES})
-target_link_libraries(${PROJECT_NAME} act aft ${PNG_LIBRARIES} ${OPENGL_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} aft ${PNG_LIBRARIES} ${OPENGL_LIBRARIES})
 
 target_compile_options(${PROJECT_NAME} PRIVATE "-Wall")
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
@@ -275,13 +275,12 @@ set(AGT_SOURCES_TEST
 source_group(driver FILES agt.t.cpp)
 
 include_directories(${${PROJECT_NAME}_INCLUDE_DIRS}
-    ${act_INCLUDE_DIRS}
     ${aft_INCLUDE_DIRS}
     ${aunit_INCLUDE_DIRS}
 )
 
 add_executable(test_${PROJECT_NAME} ${AGT_SOURCES_TEST})
-target_link_libraries(test_${PROJECT_NAME} ${PROJECT_NAME} act aft aunit)
+target_link_libraries(test_${PROJECT_NAME} ${PROJECT_NAME} aft aunit)
 
 target_compile_options(test_${PROJECT_NAME} PRIVATE "-Wall")
 set_property(TARGET test_${PROJECT_NAME} PROPERTY CXX_STANDARD 14)

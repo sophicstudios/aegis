@@ -7,6 +7,7 @@
 #include <array>
 #include <ostream>
 #include <vector>
+#include <iomanip>
 
 namespace agtm {
 
@@ -529,7 +530,9 @@ inline Vector4<T> operator/(Vector4<T> const& vec, T const& scalar)
 template<typename T>
 std::ostream& operator<<(std::ostream& os, Vector4<T> const& vec)
 {
-    os << "[" << vec.x() << " " << vec.y() << " " << vec.z() << " " << vec.w() << "]";
+    std::streamsize w = os.width();
+
+    os << std::setw(0) << "[" << std::setw(w) << vec.x() << " " << std::setw(w) << vec.y() << " " << std::setw(w) << vec.z() << " " << std::setw(w) << vec.w() << "]";
 
     return os;
 }

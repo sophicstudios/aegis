@@ -2,7 +2,6 @@
 #include <cmath>
 #include <cstdlib>
 #include <cassert>
-#include <iostream>
 
 namespace afts {
 

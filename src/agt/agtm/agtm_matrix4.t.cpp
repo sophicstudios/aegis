@@ -3,6 +3,8 @@
 #include <agtm_vector4.h>
 #include <aunit.h>
 #include <array>
+#include <iomanip>
+#include <sstream>
 
 namespace {
 
@@ -20,7 +22,7 @@ bool verify(agtm::Matrix4<T> const& m, U v1, U v2, U v3, U v4, U v5, U v6, U v7,
            arr[12] == v13 && arr[13] == v14 && arr[14] == v15 && arr[15] == v16;
 }
 
-Describe d("agtm_matrix3", []
+Describe d("agtm_matrix4", []
 {
     it("Construction", [&]
     {
@@ -209,6 +211,19 @@ Describe d("agtm_matrix3", []
 
         agtm::Vector4<float> c3 = m1.col(3);
         expect(c3.x() == 4.0f && c3.y() == 8.0f && c3.z() == 3.0f && c3.w() == 7.0f).toBeTrue();
+    });
+
+    it("Stream", [&]
+    {
+        agtm::Matrix4<float> m1(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 160);
+
+        std::stringstream s1;
+        s1 << std::setw(3) << std::fixed << std::setprecision(0) << m1;
+        expect(s1.str() == "\n|  1   2   3   4|\n|  5   6   7   8|\n|  9  10  11  12|\n| 13  14  15 160|\n").toBeTrue();
+
+        std::stringstream s2;
+        s2 << std::setw(6) << std::fixed << std::setprecision(2) << m1;
+        expect(s2.str() == "\n|  1.00   2.00   3.00   4.00|\n|  5.00   6.00   7.00   8.00|\n|  9.00  10.00  11.00  12.00|\n| 13.00  14.00  15.00 160.00|\n").toBeTrue();
     });
 });
 

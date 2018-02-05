@@ -1,9 +1,9 @@
-#include <actp_thread.h>
+#include <aftthr_thread.h>
 #include <aftu_exception.h>
 
-namespace actp {
+namespace aftthr {
 
-#if defined(ACTS_PLATFORM_PTHREADS)
+#if defined(AFTTHR_PLATFORM_PTHREADS)
 
 namespace {
 
@@ -118,7 +118,7 @@ bool Thread::join()
     return result;
 }
 
-#elif defined(ACTS_PLATFORM_WINTHREADS)
+#elif defined(AFTTHR_PLATFORM_WINTHREADS)
 
 namespace {
 
@@ -189,6 +189,6 @@ bool Thread::join()
     return false;
 }
 
-#endif // ACTS_PLATFORM_POSIXTHREADS ACTS_PLATFORM_WINTHREADS
+#endif // AFTTHR_PLATFORM
 
 } // namespace

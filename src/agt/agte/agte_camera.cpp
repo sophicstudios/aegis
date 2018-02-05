@@ -1,5 +1,5 @@
 #include <agte_camera.h>
-#include <actp_scopedlock.h>
+#include <aftthr_scopedlock.h>
 
 namespace agte {
 
@@ -61,7 +61,7 @@ void Camera::translate(agtm::Vector3<float> const& vec)
 // dirty bounds rect and bounds dirty flag
 void Camera::onBoundsChanged(agtm::Rect<float> const& bounds)
 {
-    actp::ScopedLock<actp::Mutex> lock(m_boundsMutex);
+    aftthr::ScopedLock<aftthr::Mutex> lock(m_boundsMutex);
     m_dirtyBounds = bounds;
     m_boundsDirty = true;
 }
@@ -71,7 +71,7 @@ void Camera::update()
     // bounds rect and bounds dirty flag need to be protected since
     // they can be written to from another thread
     {
-        actp::ScopedLock<actp::Mutex> lock(m_boundsMutex);
+        aftthr::ScopedLock<aftthr::Mutex> lock(m_boundsMutex);
         if (m_boundsDirty)
         {
             m_dirty = true;

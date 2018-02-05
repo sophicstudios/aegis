@@ -119,7 +119,7 @@ Entity Space::createEntity()
     // if free entities, use one of those
     if (!m_freeEntityIds.empty())
     {
-        entityId = m_freeEntityIds[m_freeEntityIds.size() - 1];
+        entityId = m_freeEntityIds.back();
         m_freeEntityIds.pop_back();
 
         Entity entity(entityId);

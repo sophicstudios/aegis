@@ -390,12 +390,12 @@ inline Matrix2<T> operator/(T scalar, Matrix2<T> const& rhs)
 template<typename T>
 inline std::ostream& operator<<(std::ostream& os, Matrix2<T> const& m)
 {
-    std::streamsize i = os.width();
+    std::streamsize w = os.width();
 
     os << std::endl
-        << std::setw(1)
-        << "|" << std::setw(i) << m(0, 0) << " " << std::setw(i) << m(0, 1) << "|" << std::endl
-        << "|" << std::setw(i) << m(1, 0) << " " << std::setw(i) << m(1, 1) << "|" << std::endl;
+        << std::setw(0)
+        << "|" << std::setw(w) << m(0, 0) << " " << std::setw(w) << m(0, 1) << "|" << std::endl
+        << "|" << std::setw(w) << m(1, 0) << " " << std::setw(w) << m(1, 1) << "|" << std::endl;
     
     return os;
 }
