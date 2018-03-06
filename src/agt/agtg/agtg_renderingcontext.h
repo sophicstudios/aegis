@@ -19,8 +19,6 @@ public:
 
     virtual ShaderProgramPtr createShader() = 0;
 
-    virtual void useShader(ShaderProgramPtr shaderProgram) = 0;
-
     virtual void preRender() = 0;
     
     virtual void postRender() = 0;

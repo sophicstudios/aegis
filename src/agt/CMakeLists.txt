@@ -92,8 +92,6 @@ set(AGTG_SOURCES
     agtg/agtg_texture.h
     agtg/agtg_vertex.cpp
     agtg/agtg_vertex.h
-    agtg/agtg_vertexarray.cpp
-    agtg/agtg_vertexarray.h
 )
 
 set(AGTG_SOURCES_TEST

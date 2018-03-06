@@ -16,8 +16,6 @@ public:
 
     ~ShaderProgram();
 
-    GLuint id() const;
-    
     bool addVertexShader(aftfs::FileSystem& filesystem, std::string const& path);
 
     bool addVertexShader(std::string const& source);
@@ -32,11 +30,16 @@ public:
 
     GLint getAttributeLocation(std::string const& name);
 
-    void bind();
-
     void bindUniformMatrix(GLint location, agtm::Matrix4<float> const& matrix);
 
+    void bind();
+
+    void unbind();
+    
 private:
+    ShaderProgram(ShaderProgram const&);
+    ShaderProgram& operator=(ShaderProgram const&);
+    
     GLuint m_program;
     std::vector<GLuint> m_attachedShaders;
 };

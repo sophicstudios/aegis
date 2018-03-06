@@ -1,6 +1,9 @@
 #ifndef INCLUDED_AEGIS_AGTE_RENDERSYSTEM_H
 #define INCLUDED_AEGIS_AGTE_RENDERSYSTEM_H
 
+#include <agta_assetpool.h>
+#include <agta_material.h>
+#include <agta_mesh.h>
 #include <agte_entity.h>
 #include <agte_system.h>
 #include <agte_componentpool.h>
@@ -10,6 +13,7 @@
 #include <agtc_visual2dcomponent.h>
 #include <agtg_gl.h>
 #include <agtg_renderingcontext.h>
+#include <agtg_shaderprogram.h>
 #include <agtg_texture.h>
 #include <aftfs_filesystem.h>
 #include <afth_uuid.h>
@@ -28,6 +32,9 @@ public:
     typedef std::shared_ptr<agte::Camera> CameraPtr;
     typedef std::shared_ptr<ComponentPool<agtc::TransformComponent> > TransformComponentPoolPtr;
     typedef std::shared_ptr<ComponentPool<agtc::Visual2dComponent> > Visual2dComponentPoolPtr;
+    typedef std::shared_ptr<agta::AssetPool<agta::Mesh> > MeshAssetPoolPtr;
+    typedef std::shared_ptr<agta::AssetPool<agta::Material> > MaterialAssetPoolPtr;
+    typedef std::shared_ptr<agta::AssetPool<agtg::ShaderProgram> > ShaderAssetPoolPtr;
 
     RenderSystem(PlatformPtr platform, int updatePriority = 0);
 
@@ -41,6 +48,12 @@ public:
 
     void addVisual2dComponents(SpacePtr space, Visual2dComponentPoolPtr components);
 
+    void addShaderAssets(SpacePtr space, ShaderAssetPoolPtr assets);
+
+    void addMeshAssets(SpacePtr space, MeshAssetPoolPtr assets);
+
+    void addMaterialAssets(SpacePtr space, MaterialAssetPoolPtr assets);
+
 protected:
     virtual void doPreUpdate(agte::Engine::Context& context);
 
@@ -53,10 +66,16 @@ private:
     typedef std::map<afth::UUID, CameraList> SpaceCameraMap;
     typedef std::map<afth::UUID, TransformComponentPoolPtr> SpaceTransformComponentsMap;
     typedef std::map<afth::UUID, Visual2dComponentPoolPtr> SpaceVisual2dComponentsMap;
+    typedef std::map<afth::UUID, ShaderAssetPoolPtr> SpaceShaderAssetsMap;
+    typedef std::map<afth::UUID, MaterialAssetPoolPtr> SpaceMaterialAssetsMap;
+    typedef std::map<afth::UUID, MeshAssetPoolPtr> SpaceMeshAssetsMap;
 
     SpaceCameraMap m_spaceCameraMap;
     SpaceTransformComponentsMap m_spaceTransformComponentsMap;
     SpaceVisual2dComponentsMap m_spaceVisual2dComponentsMap;
+    SpaceShaderAssetsMap m_spaceShaderAssetsMap;
+    SpaceMaterialAssetsMap m_spaceMaterialAssetsMap;
+    SpaceMeshAssetsMap m_spaceMeshAssetsMap;
     Entity::ComponentSet m_componentSet;
 };
 

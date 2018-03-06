@@ -1,21 +1,13 @@
 #ifndef INCLUDED_AEGIS_AGTC_VISUAL2dCOMPONENT_H
 #define INCLUDED_AEGIS_AGTC_VISUAL2dCOMPONENT_H
 
-#include <agta_mesh.h>
-#include <agtg_renderingcontext.h>
-#include <agtg_shaderprogram.h>
-#include <agtm_matrix4.h>
 #include <afth_uuid.h>
-#include <memory>
 
 namespace agtc {
 
 class Visual2dComponent
 {
 public:
-    typedef std::shared_ptr<agta::Mesh> MeshPtr;
-    typedef std::shared_ptr<agtg::ShaderProgram> ShaderProgramPtr;
-
     Visual2dComponent();
 
     ~Visual2dComponent();

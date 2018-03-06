@@ -12,28 +12,41 @@ namespace agta {
 class Mesh
 {
 public:
-    typedef std::vector<agtg::Vertex<float> > VertexList;
+    typedef std::vector<agtm::Vector3<float> > CoordList;
+    typedef std::vector<agtm::Vector3<float> > NormalList;
+    typedef std::vector<agtm::Vector2<float> > TexCoordList;
     typedef std::vector<int> IndexList;
 
     Mesh();
     
     ~Mesh();
 
-    void vertices(VertexList const& vertices);
+    void coords(CoordList const& coords);
 
-    VertexList const& vertices() const;
+    void normals(NormalList const& normals);
+
+    void texCoords(TexCoordList const& texCoords);
 
     void indices(IndexList const& indices);
 
-    IndexList const& indices() const;
-
     void bind(agtg::ShaderProgram& shaderProgram);
 
+    void draw();
+    
+    void unbind();
+
 private:
-    VertexList m_vertices;
-    IndexList m_indices;
-    GLuint m_vertexBuffer;
+    Mesh(Mesh const&);
+    Mesh& operator=(Mesh const&);
+
+    GLuint m_coordBuffer;
+    GLuint m_normalBuffer;
+    GLuint m_texCoordBuffer;
+    GLuint m_indexBuffer;
     GLuint m_vertexArray;
+    bool m_dirty;
+    GLsizei m_coordCount;
+    GLsizei m_indexCount;
 };
 
 } // namespace 

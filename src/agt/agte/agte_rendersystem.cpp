@@ -92,6 +92,21 @@ void RenderSystem::addVisual2dComponents(SpacePtr space, Visual2dComponentPoolPt
     m_spaceVisual2dComponentsMap.insert(std::make_pair(space->id(), components));
 }
 
+void RenderSystem::addShaderAssets(SpacePtr space, ShaderAssetPoolPtr assets)
+{
+    m_spaceShaderAssetsMap.insert(std::make_pair(space->id(), assets));
+}
+
+void RenderSystem::addMaterialAssets(SpacePtr space, MaterialAssetPoolPtr assets)
+{
+    m_spaceMaterialAssetsMap.insert(std::make_pair(space->id(), assets));
+}
+
+void RenderSystem::addMeshAssets(SpacePtr space, MeshAssetPoolPtr assets)
+{
+    m_spaceMeshAssetsMap.insert(std::make_pair(space->id(), assets));
+}
+
 void RenderSystem::doPreUpdate(agte::Engine::Context& context)
 {
 }
@@ -123,7 +138,28 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
         return;
     }
     Visual2dComponentPoolPtr visual2dComponents = visual2dIter->second;
-    
+
+    SpaceShaderAssetsMap::iterator shaderIter = m_spaceShaderAssetsMap.find(space->id());
+    if (shaderIter == m_spaceShaderAssetsMap.end())
+    {
+        return;
+    }
+    ShaderAssetPoolPtr shaderAssets = shaderIter->second;
+
+    SpaceMaterialAssetsMap::iterator materialIter = m_spaceMaterialAssetsMap.find(space->id());
+    if (materialIter == m_spaceMaterialAssetsMap.end())
+    {
+        return;
+    }
+    MaterialAssetPoolPtr materialAssets = materialIter->second;
+
+    SpaceMeshAssetsMap::iterator meshIter = m_spaceMeshAssetsMap.find(space->id());
+    if (meshIter == m_spaceMeshAssetsMap.end())
+    {
+        return;
+    }
+    MeshAssetPoolPtr meshAssets = meshIter->second;
+
     // update all the cameras
     CameraList::iterator cameraIter, cameraEnd = spaceCameraIter->second.end();
     for (cameraIter = spaceCameraIter->second.begin(); cameraIter != cameraEnd; ++cameraIter)
@@ -161,20 +197,24 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
     {
         std::shared_ptr<agtg::RenderingContext> renderingContext = context.platform()->glView()->renderingContext();
         renderingContext->preRender();
+        checkError("preRender");
 
         // set the viewport from the camera
         agtm::Rect<float> const& rect = (*cameraIter)->viewport();
         AFTL_LOG_TRACE << "viewport: " << rect << AFTL_LOG_END;
         glViewport(rect.x(), rect.y(), rect.width(), rect.height());
+        checkError("glViewport");
 
-        glClearColor(0.0f, 0.0f, .7f, 1.0f);
+        glClearColor(0.8f, 1.0f, 1.0f, 1.0f);
+        checkError("glClearColor");
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        checkError("glClear");
 
         //glEnable(GL_CULL_FACE);
-        glEnable(GL_BLEND);
+        //glEnable(GL_BLEND);
 
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
         // set the projection matrix from the camera
         agtm::Matrix4<float> projectionMatrix = (*cameraIter)->projection();
@@ -199,7 +239,48 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
             visual2dComponent.modelViewMatrix(modelViewMatrix);
         }
 */
+
+        Space::EntityView::Iterator it = entityView.begin();
+        Space::EntityView::Iterator end = entityView.end();
+
+        for (; it != end; ++it)
+        {
+            agtc::Visual2dComponent& visual = visual2dComponents->componentForEntity(*it);
+            size_t shaderId = visual.shaderId();
+            agtg::ShaderProgram& shader = shaderAssets->assetForId(shaderId);
+
+            shader.bind();
+
+            GLint projMatrixLocation = shader.getUniformLocation("projectionMatrix");
+            if (projMatrixLocation != -1)
+            {
+                shader.bindUniformMatrix(projMatrixLocation, projectionMatrix);
+            }
+
+            agtc::TransformComponent& transform = transformComponents->componentForEntity(*it);
+            agtm::Matrix4<float> modelViewMatrix = transform.transform() * viewMatrix;
+
+            GLint modelViewMatrixLocation = shader.getUniformLocation("modelViewMatrix");
+            if (modelViewMatrixLocation != -1)
+            {
+                shader.bindUniformMatrix(modelViewMatrixLocation, modelViewMatrix);
+            }
+            
+            AFTL_LOG_TRACE << "modelViewMatrix: " << modelViewMatrix << AFTL_LOG_END;
+
+            size_t meshId = visual.meshId();
+            agta::Mesh& mesh = meshAssets->assetForId(meshId);
+
+            mesh.bind(shader);
+
+            mesh.draw();
+            mesh.unbind();
+
+            shader.unbind();
+        }
+
         renderingContext->postRender();
+        checkError("postRender");
     }
 }
 

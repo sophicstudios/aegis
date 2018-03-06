@@ -12,8 +12,6 @@ public:
     Material();
 
     ~Material();
-
-private:
 };
 
 } // namespace

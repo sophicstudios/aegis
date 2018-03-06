@@ -33,6 +33,7 @@ bool createShader(std::vector<GLuint>& attachedShaders, std::string const& sourc
     GLchar* buffer = new GLchar[source.length() + 1];
     memcpy(buffer, source.c_str(), source.length());
     buffer[source.length() - 1] = '\0';
+    AFTL_LOG_TRACE << "Compiling shader source [" << buffer << "]" << AFTL_LOG_END;
     glShaderSource(shader, 1, &buffer, NULL);
     delete [] buffer;
 
@@ -87,11 +88,6 @@ ShaderProgram::~ShaderProgram()
     }
 
     glDeleteProgram(m_program);
-}
-
-GLuint ShaderProgram::id() const
-{
-    return m_program;
 }
 
 bool ShaderProgram::addVertexShader(std::string const& source)
@@ -179,14 +175,19 @@ GLint ShaderProgram::getAttributeLocation(std::string const& name)
     return glGetAttribLocation(m_program, name.c_str());
 }
 
+void ShaderProgram::bindUniformMatrix(GLint location, agtm::Matrix4<float> const& matrix)
+{
+    glUniformMatrix4fv(location, 1 /*count*/, GL_FALSE /*transpose*/, agtm::Matrix4Util::toColMajor(matrix).data());
+}
+
 void ShaderProgram::bind()
 {
     glUseProgram(m_program);
 }
 
-void ShaderProgram::bindUniformMatrix(GLint location, agtm::Matrix4<float> const& matrix)
+void ShaderProgram::unbind()
 {
-    glUniformMatrix4fv(location, 1 /*count*/, true /*transpose*/, agtm::Matrix4Util::toColMajor(matrix).data());
+    glUseProgram(0);
 }
 
 } // namespace

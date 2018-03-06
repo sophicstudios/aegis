@@ -15,7 +15,7 @@ public:
 
     ~AssetPool();
 
-    size_t createAsset();
+    std::pair<size_t, T&> createAsset();
 
     void destroyAsset(size_t id);
 
@@ -51,7 +51,7 @@ AssetPool<T>::~AssetPool()
 {}
 
 template<typename T>
-size_t AssetPool<T>::createAsset()
+std::pair<size_t, T&> AssetPool<T>::createAsset()
 {
     size_t id;
 
@@ -77,7 +77,7 @@ size_t AssetPool<T>::createAsset()
     // Mark the asset as active
     p.first = true;
 
-    return id;
+    return std::pair<size_t, T&>(id, p.second);
 };
 
 template<typename T>
@@ -88,8 +88,9 @@ void AssetPool<T>::destroyAsset(size_t id)
         throw std::exception();
     }
 
-    // Mark the asset as inactive
-    m_assets[id].first = false;
+    std::pair<bool, T>& p = m_assets[id];
+    p.first = false;
+    p.second = T();
 }
 
 template<typename T>
