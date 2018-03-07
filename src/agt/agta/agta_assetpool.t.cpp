@@ -31,20 +31,20 @@ Describe d("agta_assetpool", []
     {
         agta::AssetPool<Dummy> pool;
 
-        size_t id1 = pool.createAsset();
-        size_t id2 = pool.createAsset();
-        expect(id2 != id1).toBeTrue();
+        std::pair<size_t, Dummy> asset1 = pool.createAsset();
+        std::pair<size_t, Dummy> asset2 = pool.createAsset();
+        expect(asset2.first != asset1.first).toBeTrue();
     });
 
     it("Destroy Asset", [&]
     {
         agta::AssetPool<Dummy> pool;
-        size_t id = pool.createAsset();
-        pool.destroyAsset(id);
+        std::pair<size_t, Dummy> asset = pool.createAsset();
+        pool.destroyAsset(asset.first);
 
         bool e = false;
         try {
-            pool.assetForId(id);
+            pool.assetForId(asset.first);
         } catch (...) {
             e = true;
         }
@@ -55,12 +55,12 @@ Describe d("agta_assetpool", []
     it("Get Asset", [&]
     {
         agta::AssetPool<Dummy> pool;
-        size_t id = pool.createAsset();
+        std::pair<size_t, Dummy> asset = pool.createAsset();
 
-        Dummy& dummy1 = pool.assetForId(id);
+        Dummy& dummy1 = pool.assetForId(asset.first);
         dummy1.value = 5;
 
-        Dummy& dummy2 = pool.assetForId(id);
+        Dummy& dummy2 = pool.assetForId(asset.first);
         expect(dummy2.value).toEqual(5);
     });
 });
