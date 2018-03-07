@@ -327,8 +327,24 @@ std::ostream& operator<<(std::ostream& os, Microsecond const& microsecond)
     return os;
 }
 
-Nanosecond::Nanosecond(unsigned int value)
-: m_value(value)
+Nanosecond::Nanosecond(unsigned int nanosecond)
+: m_value(nanosecond)
+{
+    if (m_value > 999999999) {
+        throw aftu::Exception() << "Invalid Nanosecond";
+    }
+}
+
+Nanosecond::Nanosecond(Millisecond const& millisecond)
+: m_value(millisecond.value() * 1000000)
+{
+    if (m_value > 999999999) {
+        throw aftu::Exception() << "Invalid Nanosecond";
+    }
+}
+
+Nanosecond::Nanosecond(Microsecond const& microsecond)
+: m_value(microsecond.value() * 1000)
 {
     if (m_value > 999999999) {
         throw aftu::Exception() << "Invalid Nanosecond";
@@ -381,6 +397,23 @@ std::ostream& operator<<(std::ostream& os, Nanosecond const& nanosecond)
 
 Time::Time()
 : m_nanoseconds(NANOSECONDS_PER_DAY)
+{}
+
+// Constructs a Time object with the given hour, minute, second.
+Time::Time(
+    Hour const& hour,
+    Minute const& minute,
+    Second const& second)
+: m_nanoseconds(fromComponents(hour, minute, second, Nanosecond(0)))
+{}
+
+// Constructs a Time object with the given hour, minute, second and nanosecond.
+Time::Time(
+    Hour const& hour,
+    Minute const& minute,
+    Second const& second,
+    Millisecond const& millisecond)
+: m_nanoseconds(fromComponents(hour, minute, second, Nanosecond(millisecond)))
 {}
 
 Time::Time(Hour const& hour,

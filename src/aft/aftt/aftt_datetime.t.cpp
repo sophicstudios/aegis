@@ -21,13 +21,13 @@ bool verify(Datetime const& dt,
     Second s = dt.second();
     Millisecond ms = dt.millisecond();
     
-    return year == y
-        && month == m
-        && day == d
-        && hour == h
-        && minute == mi
-        && second == s
-        && millisecond == ms;
+    return Year(year) == y
+        && Month(month) == m
+        && Day(day) == d
+        && Hour(hour) == h
+        && Minute(minute) == mi
+        && Second(second) == s
+        && Millisecond(millisecond) == ms;
 }
 
 } // namespace
@@ -36,17 +36,17 @@ Describe d("aftt_datetime", []
 {
     it("Construction", [&]
     {
-        Datetime dt1(2010, 10, 31);
+        Datetime dt1(Year(2010), Month(10), Day(31));
 
         expect(verify(dt1, 2010, 10, 31, 0, 0, 0, 0)).toBeTrue();
         
-        Datetime dt2(2010, 10, 31, 5);
+        Datetime dt2(Year(2010), Month(10), Day(31), Hour(5), Minute(0), Second(0));
         
-        Datetime dt3(2010, 10, 31, 5, 31);
+        Datetime dt3(Year(2010), Month(10), Day(31), Hour(5), Minute(31), Second(0));
         
-        Datetime dt4(2010, 10, 31, 5, 31, 55);
+        Datetime dt4(Year(2010), Month(10), Day(31), Hour(5), Minute(31), Second(55));
         
-        Datetime dt5(2010, 10, 31, 5, 31, 55, 999);
+        Datetime dt5(Year(2010), Month(10), Day(31), Hour(5), Minute(31), Second(55), Millisecond(999));
     });
 });
 

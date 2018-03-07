@@ -173,8 +173,6 @@ public:
     // of 00:00:00.000.
     Time();
 
-    Time(Time const& time);
-    
     // Constructs a Time object with the given hour, minute, second.
     Time(
         Hour const& hour,
@@ -186,7 +184,7 @@ public:
         Hour const& hour,
         Minute const& minute,
         Second const& second,
-        Millisecond const& millsecond);
+        Millisecond const& millisecond);
 
     // Constructs a Time object with the given hour, minute, second and nanosecond.
     Time(
@@ -194,6 +192,8 @@ public:
         Minute const& minute,
         Second const& second,
         Nanosecond const& nanosecond);
+
+    Time(Time const& time);
 
     // Destructor
     ~Time();

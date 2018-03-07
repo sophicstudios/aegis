@@ -11,10 +11,10 @@ namespace {
 
 bool verify(Time const& t, unsigned int hour, unsigned int minute, unsigned int second, unsigned int millisecond)
 {
-    return t.hour() == hour
-        && t.minute() == minute
-        && t.second() == second
-        && t.millisecond() == millisecond;
+    return t.hour() == Hour(hour)
+        && t.minute() == Minute(minute)
+        && t.second() == Second(second)
+        && t.millisecond() == Millisecond(millisecond);
 }
 
 } // namespace
@@ -27,28 +27,28 @@ Describe d("aftt_time", []
 
         expect(verify(t1, 24, 0, 0, 0)).toBeTrue();
 
-        Time t2(1, 23);
+        Time t2(Hour(1), Minute(23), Second(0));
 
         expect(verify(t2, 1, 23, 0, 0)).toBeTrue();
 
-        Time t3(1, 23, 0, 0);
+        Time t3(Hour(1), Minute(23), Second(0), Millisecond(0));
 
         expect(verify(t3, 1, 23, 0, 0)).toBeTrue();
 
         Days count = t3.add(DatetimeInterval(Seconds(60), Nanoseconds(0))); // 60 seconds
 
         expect(verify(t3, 1, 24, 0, 0)).toBeTrue();
-        expect(count).toEqual(0);
+        expect(count).toEqual(Days(0));
 
         count = t3.add(DatetimeInterval(Days(2), Hours(1), Minutes(10))); // 2 days, 1 hour, 10 minutes
 
         expect(verify(t3, 2, 34, 0, 0)).toBeTrue();
-        expect(count).toEqual(2);
+        expect(count).toEqual(Days(2));
 
         count = t3.add(DatetimeInterval(Days(1), Hours(1))); // 1 day, 1 hour
 
         expect(verify(t3, 3, 34, 0, 0)).toBeTrue();
-        expect(count).toEqual(1);
+        expect(count).toEqual(Days(1));
     });
 
     it("Assignment", [&]
@@ -76,46 +76,46 @@ Describe d("aftt_time", []
 
     it("Addition", [&]
     {
-        Time t1(1, 23, 0, 0);
+        Time t1(Hour(1), Minute(23), Second(0), Millisecond(0));
 
         expect(verify(t1, 1, 23, 0, 0)).toBeTrue();
 
         Days count = t1.add(DatetimeInterval(Days(0), Hours(0), Minutes(1)));
 
         expect(verify(t1, 1, 24, 0, 0)).toBeTrue();
-        expect(count).toEqual(0);
+        expect(count).toEqual(Days(0));
 
         count = t1.add(DatetimeInterval(Days(2), Hours(1), Minutes(10))); // 2 days, 1, hour, 10 minutes
 
         expect(verify(t1, 2, 34, 0, 0)).toBeTrue();
-        expect(count).toEqual(2);
+        expect(count).toEqual(Days(2));
 
         count = t1.add(DatetimeInterval(Days(0), Hours(25))); // 1 day, 1 hour
 
         expect(verify(t1, 3, 34, 0, 0)).toBeTrue();
-        expect(count).toEqual(1);
+        expect(count).toEqual(Days(1));
     });
 
     it("Subtraction", [&]
     {
-        Time t1(1, 23, 0 ,0);
+        Time t1(Hour(1), Minute(23), Second(0), Millisecond(0));
 
         expect(verify(t1, 1, 23, 0, 0)).toBeTrue();
         
         Days count = t1.subtract(DatetimeInterval(Days(0), Hours(0), Minutes(1)));
 
         expect(verify(t1, 1, 22, 0, 0)).toBeTrue();
-        expect(count).toEqual(0);
+        expect(count).toEqual(Days(0));
         
         count = t1.subtract(DatetimeInterval(Days(2), Hours(1), Minutes(10))); // 2 days, 1 hour, 10 minutes
 
         expect(verify(t1, 0, 12, 0, 0)).toBeTrue();
-        expect(count).toEqual(2);
+        expect(count).toEqual(Days(2));
         
         count = t1.subtract(DatetimeInterval(Days(2), Hours(1))); // 2 days, 1 hour
 
         expect(verify(t1, 23, 12, 0, 0)).toBeTrue();
-        expect(count).toEqual(3);
+        expect(count).toEqual(Days(3));
     });
 });
 

@@ -34,9 +34,9 @@ const MonthInfo MONTH_INFO[] = {
 
 bool equalDates(Date const& date, int year, int month, int day)
 {
-    return date.year() == year
-        && date.month() == month
-        && date.day() == day;
+    return date.year() == Year(year)
+        && date.month() == Month(month)
+        && date.day() == Day(day);
 }
 
 } // namespace
@@ -53,7 +53,7 @@ Describe d("aftt_date", []
                         continue;
                     }
 
-                    Date date(y, m, d);
+                    Date date((Year(y)), Month(m), Day(d));
                     allConstructionSucceeded &= equalDates(date, y, m, d);
                 }
             }
@@ -68,7 +68,7 @@ Describe d("aftt_date", []
         const int month = 2;
         const int day = 16;
         
-        Date d1(year, month, day);
+        Date d1((Year(year)), Month(month), Day(day));
         expect(equalDates(d1, year, month, day)).toBeTrue();
         
         Date d2;
@@ -80,7 +80,7 @@ Describe d("aftt_date", []
 
     it("Addition", [&]
     {
-        Date d1(1975, 2, 16);
+        Date d1(Year(1975), Month(2), Day(16));
         expect(equalDates(d1, 1975, 2, 16)).toBeTrue();
         
         d1 += Days(1);
@@ -95,7 +95,7 @@ Describe d("aftt_date", []
         d1 += Days(2);
         expect(equalDates(d1, 1975, 2, 21)).toBeTrue();
         
-        Date d2(1752, 9, 2);
+        Date d2(Year(1752), Month(9), Day(2));
 
         ++d2;
         expect(equalDates(d2, 1752, 9, 14)).toBeTrue();
@@ -103,7 +103,7 @@ Describe d("aftt_date", []
 
     it("Subtraction", [&]
     {
-        Date d1(1975, 2, 16);
+        Date d1(Year(1975), Month(2), Day(16));
         
         d1 -= Days(1);
         expect(equalDates(d1, 1975, 2, 15)).toBeTrue();
@@ -117,7 +117,7 @@ Describe d("aftt_date", []
         d1 -= Days(2);
         expect(equalDates(d1, 1975, 2, 11)).toBeTrue();
         
-        Date d2(1752, 9, 14);
+        Date d2(Year(1752), Month(9), Day(14));
         
         --d2;
         expect(equalDates(d2, 1752, 9, 2)).toBeTrue();
