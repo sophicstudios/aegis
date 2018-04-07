@@ -212,9 +212,9 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
         checkError("glClear");
 
         //glEnable(GL_CULL_FACE);
-        //glEnable(GL_BLEND);
+        glEnable(GL_BLEND);
 
-        //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
         // set the projection matrix from the camera
         agtm::Matrix4<float> projectionMatrix = (*cameraIter)->projection();
@@ -273,9 +273,14 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
 
             mesh.bind(shader);
 
-            mesh.draw();
-            mesh.unbind();
+            size_t materialId = visual.materialId();
+            agta::Material& material = materialAssets->assetForId(materialId);
+            material.bind(0);
 
+            mesh.draw();
+
+            mesh.unbind();
+            material.unbind();
             shader.unbind();
         }
 

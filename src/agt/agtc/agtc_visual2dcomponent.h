@@ -1,6 +1,10 @@
 #ifndef INCLUDED_AEGIS_AGTC_VISUAL2dCOMPONENT_H
 #define INCLUDED_AEGIS_AGTC_VISUAL2dCOMPONENT_H
 
+#include <agta_assetpool.h>
+#include <agta_mesh.h>
+#include <agta_material.h>
+#include <agtg_shaderprogram.h>
 #include <afth_uuid.h>
 
 namespace agtc {
@@ -11,8 +15,6 @@ public:
     Visual2dComponent();
 
     ~Visual2dComponent();
-
-    afth::UUID const& id() const;
 
     void shaderId(size_t shaderId);
 
@@ -27,7 +29,6 @@ public:
     size_t materialId() const;
     
 private:
-    afth::UUID m_id;
     size_t m_shaderId;
     size_t m_meshId;
     size_t m_materialId;

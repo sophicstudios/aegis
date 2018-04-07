@@ -9,17 +9,10 @@ namespace {
 } // namespace
 
 Visual2dComponent::Visual2dComponent()
-: m_id(afth::UUID::v4())
-{
-}
+{}
 
 Visual2dComponent::~Visual2dComponent()
 {}
-
-afth::UUID const& Visual2dComponent::id() const
-{
-    return m_id;
-}
 
 void Visual2dComponent::shaderId(size_t shaderId)
 {
