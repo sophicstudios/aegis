@@ -6,22 +6,22 @@
 namespace agte {
 
 Space::EntityView::Iterator::Iterator()
-: m_entities(nullptr),
-  m_componentSet(nullptr)
+: _entities(nullptr),
+  _componentSet(nullptr)
 {}
 
 Space::EntityView::Iterator::Iterator(Space::EntityInfoList* entities,
                                       Entity::ComponentSet const* componentSet,
                                       Space::EntityInfoList::iterator iter)
-: m_entities(entities),
-  m_componentSet(componentSet),
-  m_iter(iter)
+: _entities(entities),
+  _componentSet(componentSet),
+  _iter(iter)
 {}
 
 Space::EntityView::Iterator::Iterator(Space::EntityView::Iterator const& rhs)
-: m_entities(rhs.m_entities),
-  m_componentSet(rhs.m_componentSet),
-  m_iter(rhs.m_iter)
+: _entities(rhs._entities),
+  _componentSet(rhs._componentSet),
+  _iter(rhs._iter)
 {}
 
 Space::EntityView::Iterator::~Iterator()
@@ -29,19 +29,19 @@ Space::EntityView::Iterator::~Iterator()
 
 Space::EntityView::Iterator& Space::EntityView::Iterator::operator=(Space::EntityView::Iterator const& rhs)
 {
-    m_entities = rhs.m_entities;
-    m_componentSet = rhs.m_componentSet;
-    m_iter = rhs.m_iter;
+    _entities = rhs._entities;
+    _componentSet = rhs._componentSet;
+    _iter = rhs._iter;
 
     return *this;
 }
 
 Space::EntityView::Iterator& Space::EntityView::Iterator::operator++()
 {
-    ++m_iter;
-    while (m_iter != m_entities->end() && (m_iter->components & *m_componentSet) != *m_componentSet)
+    ++_iter;
+    while (_iter != _entities->end() && (_iter->components & *_componentSet) != *_componentSet)
     {
-        ++m_iter;
+        ++_iter;
     }
 
     return *this;
@@ -49,35 +49,35 @@ Space::EntityView::Iterator& Space::EntityView::Iterator::operator++()
 
 Space::EntityView::Iterator Space::EntityView::Iterator::operator++(int)
 {
-    Space::EntityInfoList::iterator iter = m_iter;
-    ++m_iter;
-    while (m_iter != m_entities->end() && (m_iter->components & *m_componentSet) != *m_componentSet)
+    Space::EntityInfoList::iterator iter = _iter;
+    ++_iter;
+    while (_iter != _entities->end() && (_iter->components & *_componentSet) != *_componentSet)
     {
-        ++m_iter;
+        ++_iter;
     }
 
-    return Iterator(m_entities, m_componentSet, iter);
+    return Iterator(_entities, _componentSet, iter);
 }
 
 Entity& Space::EntityView::Iterator::operator*()
 {
-    return m_iter->entity;
+    return _iter->entity;
 }
 
 bool Space::EntityView::Iterator::operator==(Space::EntityView::Iterator const& rhs) const
 {
-    return m_iter == rhs.m_iter;
+    return _iter == rhs._iter;
 }
 
 bool Space::EntityView::Iterator::operator!=(Space::EntityView::Iterator const& rhs) const
 {
-    return m_iter != rhs.m_iter;
+    return _iter != rhs._iter;
 }
 
 Space::EntityView::EntityView(Space::EntityInfoList& entities,
                               Entity::ComponentSet const& componentSet)
-: m_entities(entities),
-  m_componentSet(componentSet)
+: _entities(entities),
+  _componentSet(componentSet)
 {}
 
 Space::EntityView::~EntityView()
@@ -85,23 +85,23 @@ Space::EntityView::~EntityView()
 
 Space::EntityView::Iterator Space::EntityView::begin() const
 {
-    Space::EntityInfoList::iterator iter = m_entities.begin();
+    Space::EntityInfoList::iterator iter = _entities.begin();
     
-    while ((iter->components & m_componentSet) != m_componentSet && iter != m_entities.end())
+    while ((iter->components & _componentSet) != _componentSet && iter != _entities.end())
     {
         ++iter;
     }
 
-    return Iterator(&m_entities, &m_componentSet, iter);
+    return Iterator(&_entities, &_componentSet, iter);
 }
 
 Space::EntityView::Iterator Space::EntityView::end() const
 {
-    return Iterator(&m_entities, &m_componentSet, m_entities.end());
+    return Iterator(&_entities, &_componentSet, _entities.end());
 }
 
 Space::Space()
-: m_id(afth::UUID::v4())
+: _id(afth::UUID::v4())
 {}
 
 Space::~Space()
@@ -109,7 +109,7 @@ Space::~Space()
 
 afth::UUID const& Space::id() const
 {
-    return m_id;
+    return _id;
 }
 
 Entity Space::createEntity()
@@ -117,59 +117,49 @@ Entity Space::createEntity()
     size_t entityId = -1;
 
     // if free entities, use one of those
-    if (!m_freeEntityIds.empty())
+    if (!_freeEntityIds.empty())
     {
-        entityId = m_freeEntityIds.back();
-        m_freeEntityIds.pop_back();
+        entityId = _freeEntityIds.back();
+        _freeEntityIds.pop_back();
 
-        Entity entity(entityId);
+        Entity entity(this, entityId);
 
-        EntityInfo& entityInfo = m_entities[entityId];
+        EntityInfo& entityInfo = _entities[entityId];
         entityInfo.entity = entity;
         entityInfo.active = true;
         entityInfo.components = Entity::ComponentSet();
 
-        return entity;
+        return entityInfo.entity;
     }
     else
     {
-        entityId = m_entities.size();
+        entityId = _entities.size();
 
-        Entity entity(entityId);
+        Entity entity(this, entityId);
 
         EntityInfo entityInfo;
         entityInfo.entity = entity;
         entityInfo.active = true;
         entityInfo.components = Entity::ComponentSet();
-        m_entities.push_back(entityInfo);
+        _entities.push_back(entityInfo);
 
-        return entity;
+        return _entities[entityId].entity;
     }
 }
 
 void Space::destroyEntity(Entity entity)
 {
     size_t entityId = entity.id();
-    EntityInfo& entityInfo = m_entities[entityId];
+    EntityInfo& entityInfo = _entities[entityId];
     entityInfo.active = false;
-    m_freeEntityIds.push_back(entityId);
+    // TODO: Destroy all associated components
+    _freeEntityIds.push_back(entityId);
 }
 
-void Space::addComponentToEntity(Entity entity, size_t componentType)
+Space::EntityView Space::entitiesForComponents(Entity::ComponentSet const& components)
 {
-    EntityInfo& entityInfo = m_entities[entity.id()];
-    entityInfo.components.set(componentType);
+    return Space::EntityView(_entities, components);
 }
 
-void Space::removeComponentFromEntity(Entity entity, size_t componentType)
-{
-    EntityInfo& entityInfo = m_entities[entity.id()];
-    entityInfo.components.reset(componentType);
-}
-
-Space::EntityView Space::getEntitiesForComponents(Entity::ComponentSet const& components)
-{
-    return Space::EntityView(m_entities, components);
-}
 
 } // namespace

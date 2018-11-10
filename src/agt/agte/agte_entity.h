@@ -31,14 +31,31 @@ public:
 
     size_t id() const;
 
+    std::string const& name() const;
+
+    void name(std::string const& name);
+
+    template<typename T>
+    void assign(T& component);
+
+    template<typename T>
+    void remove();
+    
 protected:
-    Entity(size_t id);
+    Entity(Space* space, size_t id);
 
 private:
     Entity();
 
-    size_t m_id;
+    Space* _space;
+    size_t _id;
+    std::string _name;
 };
+
+template<typename T>
+void Entity::assign(T& component)
+{
+}
 
 bool operator==(Entity const& lhs, Entity const& rhs);
 

@@ -175,9 +175,24 @@ GLint ShaderProgram::getAttributeLocation(std::string const& name)
     return glGetAttribLocation(m_program, name.c_str());
 }
 
-void ShaderProgram::bindUniformMatrix(GLint location, agtm::Matrix4<float> const& matrix)
+void ShaderProgram::bindUniform(GLint location, agtm::Matrix4<float> const& matrix)
 {
     glUniformMatrix4fv(location, 1 /*count*/, GL_FALSE /*transpose*/, agtm::Matrix4Util::toColMajor(matrix).data());
+}
+
+void ShaderProgram::bindUniform(GLint location, agtm::Vector3<float> const& vector)
+{
+    glUniform3fv(location, 1 /*count*/, vector.arr().data());
+}
+
+void ShaderProgram::bindUniform(GLint location, agtm::Vector2<float> const& vector)
+{
+    glUniform2fv(location, 1 /*count*/, vector.arr().data());
+}
+
+void ShaderProgram::bindUniform(GLint location, float value)
+{
+    glUniform1f(location, value);
 }
 
 void ShaderProgram::bind()

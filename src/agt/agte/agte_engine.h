@@ -5,6 +5,8 @@
 #include <aftthr_condition.h>
 #include <aftthr_mutex.h>
 #include <aftthr_thread.h>
+#include <aftt_datetimeinterval.h>
+#include <aftt_systemtime.h>
 #include <atomic>
 #include <memory>
 #include <vector>
@@ -37,8 +39,13 @@ public:
 
         PlatformPtr platform() const;
 
+        void elapsedSeconds(double elapsedSeconds);
+
+        double elapsedSeconds() const;
+        
     private:
         std::atomic<bool> m_shouldUpdate;
+        double m_elapsedSeconds;
         PlatformPtr m_platform;
         aftthr::Mutex& m_mutex;
         aftthr::Condition& m_condition;
@@ -66,7 +73,7 @@ public:
      * 
      * @param system A pointer to a System to be added to the queue
      */
-    void registerSystem(SystemPtr system);
+    void addSystem(SystemPtr system);
 
     /**
      * 
@@ -101,6 +108,9 @@ private:
     Context m_context;
     PlatformPtr m_platform;
 
+    aftt::DatetimeInterval m_prevTime;
+    aftt::DatetimeInterval m_currTime;
+    
     SpaceList m_spaces;
     SpaceMap m_spaceMap;
     SystemList m_systems;

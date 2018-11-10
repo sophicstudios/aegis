@@ -11,6 +11,7 @@ namespace agte {
 
 Engine::Context::Context(Engine::PlatformPtr platform, aftthr::Mutex& mutex, aftthr::Condition& condition)
 : m_shouldUpdate(false),
+  m_elapsedSeconds(0.0),
   m_platform(platform),
   m_mutex(mutex),
   m_condition(condition)
@@ -55,6 +56,16 @@ Engine::PlatformPtr Engine::Context::platform() const
     return m_platform;
 }
 
+void Engine::Context::elapsedSeconds(double elapsedSeconds)
+{
+    m_elapsedSeconds = elapsedSeconds;
+}
+
+double Engine::Context::elapsedSeconds() const
+{
+    return m_elapsedSeconds;
+}
+
 Engine::Engine(PlatformPtr platform)
 : m_running(true),
   m_context(platform, m_mutex, m_condition),
@@ -96,12 +107,12 @@ void Engine::removeSpace(std::string const& id)
     assert(count != 0);
 }
 
-void Engine::registerSystem(SystemPtr system)
+void Engine::addSystem(SystemPtr system)
 {
     bool inserted = false;
 
     SystemList::iterator it = m_systems.begin(), end = m_systems.end();
-    while (it != end)
+    while (!inserted && it != end)
     {
         if ((*it)->updatePriority() > system->updatePriority())
         {
@@ -127,6 +138,7 @@ void Engine::threadFunc()
 {
     aftthr::ScopedLock<aftthr::Mutex> lock(m_mutex);
 
+    m_prevTime = m_currTime = aftt::SystemTime::now();
     while (true)
     {
         AFTL_LOG_TRACE << "Engine::threadFunc waiting..." << AFTL_LOG_END;
@@ -139,6 +151,11 @@ void Engine::threadFunc()
             break;
         }
 
+        m_prevTime = m_currTime;
+        m_currTime = aftt::SystemTime::now();
+        aftt::DatetimeInterval elapsedTime = m_currTime - m_prevTime;
+        m_context.elapsedSeconds(elapsedTime.totalSeconds());
+        
         SpaceList::iterator spaceIter, spaceEnd = m_spaces.end();
 
         for (spaceIter = m_spaces.begin(); spaceIter != spaceEnd; ++spaceIter)

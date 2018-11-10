@@ -9,9 +9,11 @@ namespace {
 } // namespace
 
 EventSystem::EventSystem()
-: System(0)
-{
-}
+{}
+
+EventSystem::EventSystem(int updatePriority)
+: System(updatePriority)
+{}
 
 EventSystem::~EventSystem()
 {}
