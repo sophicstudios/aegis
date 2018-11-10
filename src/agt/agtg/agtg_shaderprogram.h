@@ -30,7 +30,13 @@ public:
 
     GLint getAttributeLocation(std::string const& name);
 
-    void bindUniformMatrix(GLint location, agtm::Matrix4<float> const& matrix);
+    void bindUniform(GLint location, agtm::Matrix4<float> const& matrix);
+
+    void bindUniform(GLint location, agtm::Vector3<float> const& vector);
+
+    void bindUniform(GLint location, agtm::Vector2<float> const& vector);
+
+    void bindUniform(GLint location, float value);
 
     void bind();
 

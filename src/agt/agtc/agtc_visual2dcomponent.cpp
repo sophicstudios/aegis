@@ -44,4 +44,24 @@ size_t Visual2dComponent::materialId() const
     return m_materialId;
 }
 
+void Visual2dComponent::spriteSize(agtm::Size2d<float> const& size)
+{
+    m_spriteSize = size;
+}
+
+agtm::Size2d<float> Visual2dComponent::spriteSize() const
+{
+    return m_spriteSize;
+}
+
+void Visual2dComponent::spriteOffset(agtm::Vector2<float> const& offset)
+{
+    m_spriteOffset = offset;
+}
+
+agtm::Vector2<float> Visual2dComponent::spriteOffset() const
+{
+    return m_spriteOffset;
+}
+
 } // namespace

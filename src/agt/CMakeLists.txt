@@ -26,6 +26,10 @@ source_group(agta FILES ${AGTA_SOURCES} ${AGTA_SOURCES_TEST})
 ################################################################################
 
 set(AGTC_SOURCES
+    agtc/agtc_componenthandle.cpp
+    agtc/agtc_componenthandle.h
+    agtc/agtc_spriteanimationcomponent.cpp
+    agtc/agtc_spriteanimationcomponent.h
     agtc/agtc_transformcomponent.cpp
     agtc/agtc_transformcomponent.h
     agtc/agtc_visual2dcomponent.cpp
@@ -44,8 +48,8 @@ source_group(agtc FILES ${AGTC_SOURCES} ${AGTC_SOURCES_TEST})
 set(AGTE_SOURCES
     agte/agte_camera.cpp
     agte/agte_camera.h
-    agte/agte_componentpool.cpp
-    agte/agte_componentpool.h
+    agte/agte_pool.cpp
+    agte/agte_pool.h
     agte/agte_engine.cpp
     agte/agte_engine.h
     agte/agte_entity.cpp
@@ -60,6 +64,8 @@ set(AGTE_SOURCES
     agte/agte_rendersystem.h
     agte/agte_space.cpp
     agte/agte_space.h
+    agte/agte_spritesystem.cpp
+    agte/agte_spritesystem.h
     agte/agte_surface.cpp
     agte/agte_surface.h
     agte/agte_system.cpp
@@ -67,6 +73,7 @@ set(AGTE_SOURCES
 )
 
 set(AGTE_SOURCES_TEST
+    agte/agte_pool.t.cpp
 )
 
 source_group(agte FILES ${AGTE_SOURCES} ${AGTE_SOURCES_TEST})
@@ -230,6 +237,8 @@ message(STATUS "PNG_INCLUDE_DIRS: " ${PNG_INCLUDE_DIRS})
 
 find_package(OpenGL REQUIRED)
 message(STATUS "OPENGL_INCLUDE_DIR: " ${OPENGL_INCLUDE_DIR})
+
+add_definitions(-DGL_SILENCE_DEPRECATION)
 
 set(${PROJECT_NAME}_INCLUDE_DIRS
     ${PROJECT_SOURCE_DIR}/agta

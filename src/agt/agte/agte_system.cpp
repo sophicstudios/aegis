@@ -2,6 +2,10 @@
 
 namespace agte {
 
+System::System()
+: m_priority(0)
+{}
+
 System::System(int updatePriority)
 : m_priority(updatePriority)
 {}

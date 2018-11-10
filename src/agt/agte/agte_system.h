@@ -8,7 +8,9 @@ namespace agte {
 class System
 {
 public:
-    System(int updatePriority = 0);
+    System();
+    
+    System(int updatePriority);
 
     virtual ~System();
 
@@ -28,8 +30,6 @@ protected:
     virtual void doPostUpdate(agte::Engine::Context& context) = 0;
 
 private:
-    System();
-
     int m_priority;
 };
 

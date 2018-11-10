@@ -3,6 +3,8 @@
 
 #include <agte_entity.h>
 #include <agte_camera.h>
+#include <agte_pool.h>
+#include <agtc_componenthandle.h>
 #include <afth_uuid.h>
 #include <cstdint>
 #include <map>
@@ -75,9 +77,9 @@ public:
             bool operator!=(Iterator const& rhs) const;
 
         private:
-            Space::EntityInfoList* m_entities;
-            Entity::ComponentSet const* m_componentSet;
-            Space::EntityInfoList::iterator m_iter;
+            Space::EntityInfoList* _entities;
+            Entity::ComponentSet const* _componentSet;
+            Space::EntityInfoList::iterator _iter;
         };
 
         EntityView(
@@ -91,34 +93,110 @@ public:
         Iterator end() const;
 
     private:
-        EntityInfoList& m_entities;
-        Entity::ComponentSet const& m_componentSet;
+        EntityInfoList& _entities;
+        Entity::ComponentSet const& _componentSet;
     };
 
+    /**
+     * Constructor.
+     */
     Space();
 
+    /**
+     * Destructor.
+     */
     ~Space();
 
+    /**
+     * Returns the UUID for this Space.
+     * 
+     * @return The UUID
+     */
     afth::UUID const& id() const;
-    
+
+    /**
+     * Creates a new Entity.
+     * 
+     * @return The Entity
+     */    
     Entity createEntity();
 
+    /**
+     * Destroys an Entity.
+     *
+     * In addition to destroying the Entity, this method
+     * will also destory all associated components.
+     * 
+     * @param entity The Entity to destroy.
+     */
     void destroyEntity(Entity entity);
 
-    void addComponentToEntity(Entity entity, size_t componentType);
+    /**
+     * Associates a component with an Entity.
+     * 
+     * @param entity The Entity
+     * @param component The component to associate.
+     */
+    template<typename T>
+    void addComponentToEntity(Entity entity, T& component);
 
+    /**
+     * Disassociates a component from an Entity.
+     * 
+     * @param entity The Entity
+     */
+    template<typename T>
     void removeComponentFromEntity(Entity entity, size_t componentType);
     
-    EntityView getEntitiesForComponents(Entity::ComponentSet const& components);
+    /**
+     * 
+     */
+    EntityView entitiesForComponents(Entity::ComponentSet const& components);
 
 private:
     typedef std::vector<size_t> FreeEntityIdList;
     typedef std::vector<Entity::ComponentSet> ComponentSetList;
+    typedef std::shared_ptr<agte::BasePool> PoolPtr;
+    typedef std::vector<PoolPtr> ComponentPools;
 
-    afth::UUID m_id;
-    FreeEntityIdList m_freeEntityIds;
-    EntityInfoList m_entities;
+    template<typename T>
+    std::shared_ptr<agte::Pool<T>> _getComponentPool(size_t i);
+
+    afth::UUID _id;
+    FreeEntityIdList _freeEntityIds;
+    EntityInfoList _entities;
+    ComponentPools _componentPools;
 };
+
+template<typename T>
+void Space::addComponentToEntity(Entity entity, T& component)
+{
+    EntityInfo& entityInfo = _entities[entity.id()];
+
+    size_t componentType = agtc::ComponentHandle<T>::typeId();
+    entityInfo.components.set(componentType);
+
+    std::shared_ptr<agte::Pool<T> > pool = _getComponentPool<T>(componentType); 
+}
+
+template<typename T>
+void Space::removeComponentFromEntity(Entity entity, size_t componentType)
+{
+    EntityInfo& entityInfo = _entities[entity.id()];
+    entityInfo.components.reset(componentType);
+}
+
+template<typename T>
+std::shared_ptr<agte::Pool<T>> Space::_getComponentPool(size_t i)
+{
+    if (_componentPools.size() <= i) {
+        _componentPools.resize(i + 1);
+        PoolPtr pool = std::make_shared<agte::Pool<T> >();
+        _componentPools[i] = pool;
+    }
+
+    return static_cast<std::shared_ptr<agte::Pool<T> > >(_componentPools[i]);
+}
 
 } // namespace
 

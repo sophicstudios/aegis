@@ -6,7 +6,7 @@
 #include <agta_mesh.h>
 #include <agte_entity.h>
 #include <agte_system.h>
-#include <agte_componentpool.h>
+#include <agte_pool.h>
 #include <agte_space.h>
 #include <agte_camera.h>
 #include <agtc_transformcomponent.h>
@@ -18,9 +18,7 @@
 #include <aftfs_filesystem.h>
 #include <afth_uuid.h>
 #include <agtm_matrix4.h>
-#include <atomic>
 #include <memory>
-#include <bitset>
 
 namespace agte {
 
@@ -30,13 +28,15 @@ public:
     typedef std::shared_ptr<agte::Platform> PlatformPtr;
     typedef std::shared_ptr<agte::Space> SpacePtr;
     typedef std::shared_ptr<agte::Camera> CameraPtr;
-    typedef std::shared_ptr<ComponentPool<agtc::TransformComponent> > TransformComponentPoolPtr;
-    typedef std::shared_ptr<ComponentPool<agtc::Visual2dComponent> > Visual2dComponentPoolPtr;
+    typedef std::shared_ptr<Pool<agtc::TransformComponent> > TransformComponentPoolPtr;
+    typedef std::shared_ptr<Pool<agtc::Visual2dComponent> > Visual2dComponentPoolPtr;
     typedef std::shared_ptr<agta::AssetPool<agta::Mesh> > MeshAssetPoolPtr;
     typedef std::shared_ptr<agta::AssetPool<agta::Material> > MaterialAssetPoolPtr;
     typedef std::shared_ptr<agta::AssetPool<agtg::ShaderProgram> > ShaderAssetPoolPtr;
 
-    RenderSystem(PlatformPtr platform, int updatePriority = 0);
+    RenderSystem();
+
+    RenderSystem(int updatePriority);
 
     virtual ~RenderSystem();
 
@@ -70,13 +70,13 @@ private:
     typedef std::map<afth::UUID, MaterialAssetPoolPtr> SpaceMaterialAssetsMap;
     typedef std::map<afth::UUID, MeshAssetPoolPtr> SpaceMeshAssetsMap;
 
+    Entity::ComponentSet m_componentSet;
     SpaceCameraMap m_spaceCameraMap;
     SpaceTransformComponentsMap m_spaceTransformComponentsMap;
     SpaceVisual2dComponentsMap m_spaceVisual2dComponentsMap;
     SpaceShaderAssetsMap m_spaceShaderAssetsMap;
     SpaceMaterialAssetsMap m_spaceMaterialAssetsMap;
     SpaceMeshAssetsMap m_spaceMeshAssetsMap;
-    Entity::ComponentSet m_componentSet;
 };
 
 } // namespace

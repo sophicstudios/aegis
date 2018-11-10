@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.11)
 
-# We do not want build artifacts to be put in the source tree
+# We do not want build artifacts in the source tree
 set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
 set(CMAKE_DISABLE_SOURCE_CHANGES ON)
 

@@ -25,6 +25,11 @@ void Material::texture(agtr::Image const& image)
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.size().width(), image.size().height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, &((*image.data())[0]));
 }
 
+agtm::Size2d<float> Material::size() const
+{
+    return m_size;
+}
+
 void Material::bind(size_t textureUnit)
 {
     m_currentTextureUnit = textureUnit;

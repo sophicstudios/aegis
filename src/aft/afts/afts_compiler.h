@@ -30,6 +30,10 @@
 #define AFTS_COMPILER_SSE3
 #endif
 
+#if !defined(NDEBUG)
+#define AFTS_DEBUG
+#endif
+
 /*****************************************
  * GNU Compiler Collection
  *****************************************/

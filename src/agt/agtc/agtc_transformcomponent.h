@@ -8,7 +8,7 @@ namespace agtc {
 
 class TransformComponent
 {
-public:
+public:    
     TransformComponent();
 
     virtual ~TransformComponent();

@@ -19,6 +19,8 @@ public:
 
     EventSystem();
 
+    EventSystem(int updatePriority);
+
     virtual ~EventSystem();
 
     void queueEvent(afth::UUID const& id, Callback callback);

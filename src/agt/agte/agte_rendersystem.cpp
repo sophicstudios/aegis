@@ -1,6 +1,5 @@
 #include <agte_rendersystem.h>
 #include <agte_platform.h>
-//#include <agta_sprite2dmaterial.h>
 #include <agtc_transformcomponent.h>
 #include <agtc_visual2dcomponent.h>
 #include <agtr_image.h>
@@ -17,6 +16,8 @@
 #include <vector>
 
 namespace agte {
+
+namespace {
 
 char const* const translateGLenum(GLenum value)
 {
@@ -38,17 +39,23 @@ void checkError(char const* const context)
     }
 }
 
-RenderSystem::RenderSystem(std::shared_ptr<agte::Platform> platform, int updatePriority)
+void initComponentSet(Entity::ComponentSet& componentSet)
+{
+    //componentSet.set(agte::ComponentPool<agtc::TransformComponent>::type());
+    //componentSet.set(agte::ComponentPool<agtc::Visual2dComponent>::type());
+}
+
+} // namespace
+
+RenderSystem::RenderSystem()
+{
+    initComponentSet(m_componentSet);
+}
+
+RenderSystem::RenderSystem(int updatePriority)
 : agte::System(updatePriority)
 {
-    m_componentSet.set(agte::ComponentPool<agtc::TransformComponent>::type());
-    m_componentSet.set(agte::ComponentPool<agtc::Visual2dComponent>::type());
-
-    //aftu::URL imageUrl("images/antsprites.png");
-    //agtr::ImageLoaderPNG pngLoader;
-    //std::shared_ptr<agtr::Image> image = pngLoader.load(filesystem, imageUrl);
-
-    //m_texture = std::shared_ptr<agtg::Texture>(new agtg::Texture(image));
+    initComponentSet(m_componentSet);
 }
 
 RenderSystem::~RenderSystem()
@@ -168,7 +175,7 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
     }
 
     // get list of entities with visual and transform components
-    Space::EntityView entityView = space->getEntitiesForComponents(m_componentSet);
+    Space::EntityView entityView = space->entitiesForComponents(m_componentSet);
 
     // Sort the entities according to z-order, shader, mesh and material.
     typedef std::vector<Entity> EntityList;
@@ -186,13 +193,10 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
     }
 
     // rendering logic:
-    //  for each material in the material entitylist map
-    //    bind the material to the renderer
-    //    bind the projection matrix to the material
-    //    for each entity in the entity list
-    //      get/create a batch drawer for the mesh
-    //      add mesh to drawer
-    //      add modelview matrix to drawer
+    //   for each camera in the space
+    //     initialize the view (viewport, background, blending, etc.)
+    //     for each entity
+    //       bind its shader
     for (cameraIter = spaceCameraIter->second.begin(); cameraIter != cameraEnd; ++cameraIter)
     {
         std::shared_ptr<agtg::RenderingContext> renderingContext = context.platform()->glView()->renderingContext();
@@ -243,45 +247,64 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
         Space::EntityView::Iterator it = entityView.begin();
         Space::EntityView::Iterator end = entityView.end();
 
+        size_t prevShaderId = 0;
+        size_t currentShaderId = 0;
+        GLint projectionMatrixLocation;
+        GLint modelViewMatrixLocation;
+        GLint texOffsetLocation;
+        agtg::ShaderProgram* shader = nullptr;
+
         for (; it != end; ++it)
         {
-            agtc::Visual2dComponent& visual = visual2dComponents->componentForEntity(*it);
-            size_t shaderId = visual.shaderId();
-            agtg::ShaderProgram& shader = shaderAssets->assetForId(shaderId);
+            //agtc::Visual2dComponent& visual = visual2dComponents->componentForEntity(*it);
+            //currentShaderId = visual.shaderId();
 
-            shader.bind();
-
-            GLint projMatrixLocation = shader.getUniformLocation("projectionMatrix");
-            if (projMatrixLocation != -1)
+            if (currentShaderId != prevShaderId)
             {
-                shader.bindUniformMatrix(projMatrixLocation, projectionMatrix);
+                if (shader)
+                {
+                    shader->unbind();
+                }
+
+                shader = &(shaderAssets->assetForId(currentShaderId));
+
+                prevShaderId = currentShaderId;
+                shader->bind();
+
+                projectionMatrixLocation = shader->getUniformLocation("projectionMatrix");
+                modelViewMatrixLocation = shader->getUniformLocation("modelViewMatrix");
+                texOffsetLocation = shader->getUniformLocation("texOffset");
+
+                shader->bindUniform(projectionMatrixLocation, projectionMatrix);
             }
 
-            agtc::TransformComponent& transform = transformComponents->componentForEntity(*it);
-            agtm::Matrix4<float> modelViewMatrix = transform.transform() * viewMatrix;
+            //shader->bindUniform(texOffsetLocation, visual.spriteOffset());
 
-            GLint modelViewMatrixLocation = shader.getUniformLocation("modelViewMatrix");
-            if (modelViewMatrixLocation != -1)
-            {
-                shader.bindUniformMatrix(modelViewMatrixLocation, modelViewMatrix);
-            }
-            
-            AFTL_LOG_TRACE << "modelViewMatrix: " << modelViewMatrix << AFTL_LOG_END;
+            //agtc::TransformComponent& transform = transformComponents->componentForEntity(*it);
+            //agtm::Matrix4<float> modelViewMatrix = transform.transform() * viewMatrix;
 
-            size_t meshId = visual.meshId();
-            agta::Mesh& mesh = meshAssets->assetForId(meshId);
+            //shader->bindUniform(modelViewMatrixLocation, modelViewMatrix);
 
-            mesh.bind(shader);
+            //AFTL_LOG_TRACE << "modelViewMatrix: " << modelViewMatrix << AFTL_LOG_END;
 
-            size_t materialId = visual.materialId();
-            agta::Material& material = materialAssets->assetForId(materialId);
-            material.bind(0);
+            //size_t meshId = visual.meshId();
+            //agta::Mesh& mesh = meshAssets->assetForId(meshId);
 
-            mesh.draw();
+            //mesh.bind(*shader);
 
-            mesh.unbind();
-            material.unbind();
-            shader.unbind();
+            //size_t materialId = visual.materialId();
+            //agta::Material& material = materialAssets->assetForId(materialId);
+            //material.bind(0);
+
+            //mesh.draw();
+
+            //mesh.unbind();
+            //material.unbind();
+        }
+
+        if (shader)
+        {
+            shader->unbind();
         }
 
         renderingContext->postRender();
