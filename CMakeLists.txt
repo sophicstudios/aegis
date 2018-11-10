@@ -20,6 +20,6 @@ project(aegis
         VERSION 0.1.0
         DESCRIPTION "Aegis Game Programming Library")
 
+add_subdirectory(src/aunit)
 add_subdirectory(src/aft)
 add_subdirectory(src/agt)
-add_subdirectory(src/aunit)
