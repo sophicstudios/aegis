@@ -63,6 +63,7 @@ public:
 private:
     int m_fd;
     aftio::Permissions m_permissions;
+    std::string m_filename;
 };
 
 } // namespace

@@ -77,6 +77,7 @@ MemoryMappedFile::MemoryMappedFile(
     size_t size,
     aftio::Permissions const& permissions)
 : m_permissions(permissions)
+, m_filename(filename)
 {
     int oflag = O_RDWR | O_CREAT | O_EXCL;
     
@@ -84,7 +85,7 @@ MemoryMappedFile::MemoryMappedFile(
         oflag |= O_TRUNC;
     }
     
-    m_fd = createOrOpen(filename, size, oflag, permissions);
+    m_fd = createOrOpen(m_filename, size, oflag, permissions);
 }
 
 MemoryMappedFile::MemoryMappedFile(
@@ -94,6 +95,7 @@ MemoryMappedFile::MemoryMappedFile(
     size_t size,
     aftio::Permissions const& permissions)
 : m_permissions(permissions)
+, m_filename(filename)
 {
     int oflag = O_RDONLY | O_CREAT | O_EXCL;
     
@@ -101,7 +103,7 @@ MemoryMappedFile::MemoryMappedFile(
         oflag |= O_TRUNC;
     }
     
-    m_fd = createOrOpen(filename, size, oflag, permissions);
+    m_fd = createOrOpen(m_filename, size, oflag, permissions);
 }
 
 MemoryMappedFile::MemoryMappedFile(
@@ -111,6 +113,7 @@ MemoryMappedFile::MemoryMappedFile(
     size_t size,
     aftio::Permissions const& permissions)
 : m_permissions(permissions)
+, m_filename(filename)
 {
     int oflag = O_RDWR | O_CREAT;
     
@@ -118,7 +121,7 @@ MemoryMappedFile::MemoryMappedFile(
         oflag |= O_TRUNC;
     }
     
-    m_fd = createOrOpen(filename, size, oflag, permissions);
+    m_fd = createOrOpen(m_filename, size, oflag, permissions);
 }
 
 MemoryMappedFile::MemoryMappedFile(
@@ -127,6 +130,7 @@ MemoryMappedFile::MemoryMappedFile(
     std::string const& filename,
     size_t size,
     aftio::Permissions const& permissions)
+: m_filename(filename)
 {
     int oflag = O_RDONLY | O_CREAT;
 
@@ -134,32 +138,35 @@ MemoryMappedFile::MemoryMappedFile(
         oflag |= O_TRUNC;
     }
 
-    m_fd = createOrOpen(filename, size, oflag, permissions);
+    m_fd = createOrOpen(m_filename, size, oflag, permissions);
 }
     
 MemoryMappedFile::MemoryMappedFile(
     aftio::AccessFlags::ReadWrite accessFlag,
     std::string const& filename)
 : m_permissions(aftio::Permission(true, true, false)) // read, write, non-exec
+, m_filename(filename)
 {
     int oflag = O_RDWR;
     
-    m_fd = openOnly(filename, oflag);
+    m_fd = openOnly(m_filename, oflag);
 }
     
 MemoryMappedFile::MemoryMappedFile(
     aftio::AccessFlags::ReadOnly accessFlag,
     std::string const& filename)
 : m_permissions(aftio::Permission(true, false, false)) // read, non-write, non-exec
+, m_filename(filename)
 {
     int oflag = O_RDONLY;
 
-    m_fd = openOnly(filename, oflag);
+    m_fd = openOnly(m_filename, oflag);
 }
     
 MemoryMappedFile::~MemoryMappedFile()
 {
     close(m_fd);
+    unlink(m_filename.c_str());
 }
 
 ResultCode MemoryMappedFile::map(
