@@ -6,7 +6,6 @@
 #include <agta_material.h>
 #include <agtg_shaderprogram.h>
 #include <afth_uuid.h>
-#include <aftu_ref.h>
 
 namespace agtc {
 
