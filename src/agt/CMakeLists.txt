@@ -1,7 +1,5 @@
 project(agt)
 
-message(STATUS "CMAKE_CXX_COMPILER: " ${CMAKE_CXX_COMPILER})
-
 ################################################################################
 # agta group
 ################################################################################
@@ -157,8 +155,7 @@ set(AGTM_SOURCES_TEST
     agtm/agtm_vector4.t.cpp
 )
 
-source_group(agtm FILES ${AGTM_SOURCES})
-source_group(agtm FILES ${AGTM_SOURCES_TEST})
+source_group(agtm FILES ${AGTM_SOURCES} ${AGTM_SOURCES_TEST})
 
 ################################################################################
 # agtr group
@@ -221,7 +218,7 @@ source_group(agtui FILES ${AGTUI_SOURCES} ${AGTUI_SOURCES_TEST})
 # agt library
 ################################################################################
 
-set(AGT_SOURCES
+set(${PROJECT_NAME}_SOURCES_LOCAL
     ${AGTA_SOURCES}
     ${AGTC_SOURCES}
     ${AGTE_SOURCES}
@@ -232,14 +229,6 @@ set(AGT_SOURCES
     ${AGTUI_SOURCES}
 )
 
-find_package(PNG REQUIRED)
-message(STATUS "PNG_INCLUDE_DIRS: " ${PNG_INCLUDE_DIRS})
-
-find_package(OpenGL REQUIRED)
-message(STATUS "OPENGL_INCLUDE_DIR: " ${OPENGL_INCLUDE_DIR})
-
-add_definitions(-DGL_SILENCE_DEPRECATION)
-
 set(${PROJECT_NAME}_INCLUDE_DIRS
     ${PROJECT_SOURCE_DIR}/agta
     ${PROJECT_SOURCE_DIR}/agtc
@@ -249,22 +238,24 @@ set(${PROJECT_NAME}_INCLUDE_DIRS
     ${PROJECT_SOURCE_DIR}/agtr
     ${PROJECT_SOURCE_DIR}/agtu
     ${PROJECT_SOURCE_DIR}/agtui
-    ${PNG_INCLUDE_DIRS}
-    ${OPENGL_INCLUDE_DIR}
     CACHE INTERNAL "${PROJECT_NAME}: Include dirs" FORCE)
 
 include_directories(
     ${${PROJECT_NAME}_INCLUDE_DIRS}
-    ${act_INCLUDE_DIRS}
     ${aft_INCLUDE_DIRS}
+    ${PNG_INCLUDE_DIRS}
+    ${OPENGL_INCLUDE_DIR}
 )
 
-add_library(${PROJECT_NAME} SHARED ${AGT_SOURCES})
-target_link_libraries(${PROJECT_NAME} aft ${PNG_LIBRARIES} ${OPENGL_LIBRARIES})
+add_library(${PROJECT_NAME} OBJECT ${${PROJECT_NAME}_SOURCES_LOCAL})
+target_link_libraries(${PROJECT_NAME} PUBLIC aft ${PNG_LIBRARIES} ${OPENGL_LIBRARIES})
 
 target_compile_options(${PROJECT_NAME} PRIVATE "-Wall")
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
 
+file(GLOB_RECURSE ${PROJECT_NAME}_HEADERS_GLOB ${${PROJECT_NAME}_INCLUDE_DIRS} "*.h")
+set(${PROJECT_NAME}_HEADERS ${${PROJECT_NAME}_HEADERS_GLOB} PARENT_SCOPE)
+set(${PROJECT_NAME}_SOURCES ${${PROJECT_NAME}_SOURCES_LOCAL} PARENT_SCOPE)
 
 ################################################################################
 # agt unit tests

@@ -319,7 +319,7 @@ source_group(aftu FILES ${AFTU_SOURCES} ${AFTU_SOURCES_TEST})
 # aft library
 ################################################################################
 
-set(AFT_SOURCES
+set(${PROJECT_NAME}_SOURCES_LOCAL
     ${AFTC_SOURCES}
     ${AFTFS_SOURCES}
     ${AFTH_SOURCES}
@@ -351,10 +351,14 @@ set(${PROJECT_NAME}_INCLUDE_DIRS
 
 include_directories(${${PROJECT_NAME}_INCLUDE_DIRS})
 
-add_library(${PROJECT_NAME} SHARED ${AFT_SOURCES})
+add_library(${PROJECT_NAME} OBJECT ${${PROJECT_NAME}_SOURCES_LOCAL})
 
 target_compile_options(${PROJECT_NAME} PRIVATE "-Wall")
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
+
+file(GLOB_RECURSE ${PROJECT_NAME}_HEADERS_GLOB ${${PROJECT_NAME}_INCLUDE_DIRS} "*.h")
+set(${PROJECT_NAME}_HEADERS ${${PROJECT_NAME}_HEADERS_GLOB} PARENT_SCOPE)
+set(${PROJECT_NAME}_SOURCES ${${PROJECT_NAME}_SOURCES_LOCAL} PARENT_SCOPE)
 
 ################################################################################
 # aft unit tests
