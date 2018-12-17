@@ -39,7 +39,7 @@ void checkError(char const* const context)
     }
 }
 
-void initComponentSet(Entity::ComponentSet& componentSet)
+void initComponentSet(Space::Entity::ComponentSet& componentSet)
 {
     //componentSet.set(agte::ComponentPool<agtc::TransformComponent>::type());
     //componentSet.set(agte::ComponentPool<agtc::Visual2dComponent>::type());
@@ -178,7 +178,7 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
     Space::EntityView entityView = space->entitiesForComponents(m_componentSet);
 
     // Sort the entities according to z-order, shader, mesh and material.
-    typedef std::vector<Entity> EntityList;
+    typedef std::vector<Space::Entity> EntityList;
     typedef std::map<afth::UUID, EntityList> MaterialEntityListMap;
     MaterialEntityListMap materialEntityListMap;
 
@@ -231,7 +231,7 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
         MaterialEntityMap::iterator end = materialEntityMap.end();
         for (; it != end; ++it)
         {
-            Entity& entity = it->second;
+            Space::Entity& entity = it->second;
 
             // for each entity, get its transform and visual compoonents
             agtc::TransformComponent& transformComponent = transformComponents->componentForEntity(entity);

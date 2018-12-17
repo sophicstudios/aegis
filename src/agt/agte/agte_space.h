@@ -1,7 +1,6 @@
 #ifndef INCLUDED_AEGIS_AGTE_SPACE_H
 #define INCLUDED_AEGIS_AGTE_SPACE_H
 
-#include <agte_entity.h>
 #include <agte_camera.h>
 #include <agte_pool.h>
 #include <agtc_componenthandle.h>
@@ -22,6 +21,54 @@ namespace agte {
  */
 class Space
 {
+public:
+    class Entity
+    {
+        friend class Space;
+
+        friend bool operator==(Entity const& lhs, Entity const& rhs);
+        friend bool operator<(Entity const& lhs, Entity const& rhs);
+        friend bool operator>(Entity const& lhs, Entity const& rhs);
+        friend bool operator<=(Entity const& lhs, Entity const& rhs);
+        friend bool operator>=(Entity const& lhs, Entity const& rhs);
+
+    public:
+        static const int MAX_COMPONENTS = sizeof(size_t);
+        typedef std::bitset<MAX_COMPONENTS> ComponentSet;
+
+        struct Hash
+        {
+            size_t operator()(Entity const& entity);
+        };
+
+        ~Entity();
+
+        size_t id() const;
+
+        std::string const& name() const;
+
+        void name(std::string const& name);
+
+        template<typename T>
+        void assign(T const& component);
+
+        template<typename T>
+        void remove(T const& component);
+
+        template<typename T>
+        T& get();
+        
+    protected:
+        Entity(Space* space, size_t id);
+
+    private:
+        Entity();
+
+        Space* _space;
+        size_t _id;
+        std::string _name;
+    };
+
 private:
     struct EntityInfo
     {
@@ -33,8 +80,6 @@ private:
     typedef std::vector<EntityInfo> EntityInfoList;
 
 public:
-    typedef std::shared_ptr<Space> Ptr;
-
     /**
      * @class EntityView
      *
@@ -138,7 +183,7 @@ public:
      * @param component The component to associate.
      */
     template<typename T>
-    void addComponentToEntity(Entity entity, T& component);
+    void addComponentToEntity(Entity const& entity, T const& component);
 
     /**
      * Disassociates a component from an Entity.
@@ -146,8 +191,11 @@ public:
      * @param entity The Entity
      */
     template<typename T>
-    void removeComponentFromEntity(Entity entity, size_t componentType);
+    void removeComponentFromEntity(Entity const& entity, T const& component);
     
+    template<typename T>
+    T& getComponentForEntity(Entity const& entity);
+
     /**
      * 
      */
@@ -169,25 +217,93 @@ private:
 };
 
 template<typename T>
-void Space::addComponentToEntity(Entity entity, T& component)
+void Space::Entity::assign(T const& component)
 {
-    EntityInfo& entityInfo = _entities[entity.id()];
-
-    size_t componentType = agtc::ComponentHandle<T>::typeId();
-    entityInfo.components.set(componentType);
-
-    std::shared_ptr<agte::Pool<T> > pool = _getComponentPool<T>(componentType); 
+    _space->addComponentToEntity(*this, component);
 }
 
 template<typename T>
-void Space::removeComponentFromEntity(Entity entity, size_t componentType)
+void Space::Entity::remove(T const& component)
 {
-    EntityInfo& entityInfo = _entities[entity.id()];
+    _space->removeComponentFromEntity(*this, component);
+}
+
+template<typename T>
+T& Space::Entity::get()
+{
+    return _space->getComponentForEntity<T>(*this);
+}
+
+bool operator==(Space::Entity const& lhs, Space::Entity const& rhs);
+
+bool operator<(Space::Entity const& lhs, Space::Entity const& rhs);
+
+bool operator>(Space::Entity const& lhs, Space::Entity const& rhs);
+
+bool operator<=(Space::Entity const& lhs, Space::Entity const& rhs);
+
+bool operator>=(Space::Entity const& lhs, Space::Entity const& rhs);
+
+template<typename T>
+void Space::addComponentToEntity(Space::Entity const& entity, T const& component)
+{
+    size_t entityId = entity.id();
+    EntityInfo& entityInfo = _entities[entityId];
+
+    size_t componentType = agtc::ComponentHandle<T>::typeId();
+
+    // If component type is already associated with this Entity, that's an error
+    if (entityInfo.components.test(componentType)) {
+        throw std::exception();
+    }
+
+    std::shared_ptr<agte::Pool<T> > pool = _getComponentPool<T>(componentType);
+    pool->resize(entityId + 1);
+
+    T* c = static_cast<T*>(pool->at(entityId));
+    *c = component;
+
+    entityInfo.components.set(componentType);
+}
+
+template<typename T>
+void Space::removeComponentFromEntity(Space::Entity const& entity, T const& component)
+{
+    size_t entityId = entity.id();
+    EntityInfo& entityInfo = _entities[entityId];
+
+    size_t componentType = agtc::ComponentHandle<T>::typeId();
+
+    if (!entityInfo.components.test(componentType)) {
+        throw std::exception();
+    }
+
+    std::shared_ptr<agte::Pool<T> > pool = _getComponentPool<T>(componentType);
+    pool->destroy(entityId);
+
     entityInfo.components.reset(componentType);
 }
 
 template<typename T>
-std::shared_ptr<agte::Pool<T>> Space::_getComponentPool(size_t i)
+T& Space::getComponentForEntity(Space::Entity const& entity)
+{
+    size_t entityId = entity.id();
+    EntityInfo& entityInfo = _entities[entityId];
+
+    size_t componentType = agtc::ComponentHandle<T>::typeId();
+
+    if (!entityInfo.components.test(componentType)) {
+        throw std::exception();
+    }
+
+    std::shared_ptr<agte::Pool<T> > pool = _getComponentPool<T>(componentType);
+
+    T* c = static_cast<T*>(pool->at(entityId));
+    return *c;
+}
+
+template<typename T>
+std::shared_ptr<agte::Pool<T> > Space::_getComponentPool(size_t i)
 {
     if (_componentPools.size() <= i) {
         _componentPools.resize(i + 1);
@@ -195,7 +311,7 @@ std::shared_ptr<agte::Pool<T>> Space::_getComponentPool(size_t i)
         _componentPools[i] = pool;
     }
 
-    return static_cast<std::shared_ptr<agte::Pool<T> > >(_componentPools[i]);
+    return std::static_pointer_cast<agte::Pool<T> >(_componentPools[i]);
 }
 
 } // namespace

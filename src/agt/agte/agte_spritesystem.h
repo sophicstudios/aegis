@@ -3,7 +3,6 @@
 
 #include <agte_pool.h>
 #include <agte_engine.h>
-#include <agte_entity.h>
 #include <agte_space.h>
 #include <agte_system.h>
 #include <agta_assetpool.h>
@@ -37,7 +36,7 @@ protected:
 private:
     typedef std::map<afth::UUID, SpriteAnimationComponentPoolPtr> SpaceSpriteAnimationComponentsMap;
 
-    Entity::ComponentSet m_componentSet;
+    Space::Entity::ComponentSet m_componentSet;
     SpaceSpriteAnimationComponentsMap m_spaceSpriteAnimationComponentsMap;
 };
 

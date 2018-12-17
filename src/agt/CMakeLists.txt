@@ -50,8 +50,6 @@ set(AGTE_SOURCES
     agte/agte_pool.h
     agte/agte_engine.cpp
     agte/agte_engine.h
-    agte/agte_entity.cpp
-    agte/agte_entity.h
     agte/agte_eventsystem.cpp
     agte/agte_eventsystem.h
     agte/agte_orthographiccamera.cpp
@@ -72,6 +70,7 @@ set(AGTE_SOURCES
 
 set(AGTE_SOURCES_TEST
     agte/agte_pool.t.cpp
+    agte/agte_space.t.cpp
 )
 
 source_group(agte FILES ${AGTE_SOURCES} ${AGTE_SOURCES_TEST})

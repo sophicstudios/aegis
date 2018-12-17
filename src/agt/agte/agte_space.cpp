@@ -5,6 +5,61 @@
 
 namespace agte {
 
+Space::Entity::Entity() {}
+
+Space::Entity::Entity(Space* space, size_t id)
+: _space(space)
+, _id(id)
+{
+}
+
+Space::Entity::~Entity() {}
+
+size_t Space::Entity::id() const
+{
+    return _id;
+}
+
+std::string const& Space::Entity::name() const
+{
+    return _name;
+}
+
+void Space::Entity::name(std::string const& name)
+{
+    _name = name;
+}
+
+size_t Space::Entity::Hash::operator()(Space::Entity const& entity)
+{
+    return std::hash<size_t>()(entity._id);
+}
+
+bool operator==(Space::Entity const& lhs, Space::Entity const& rhs)
+{
+    return lhs._id == rhs._id;
+}
+
+bool operator<(Space::Entity const& lhs, Space::Entity const& rhs)
+{
+    return lhs._id < rhs._id;
+}
+
+bool operator>(Space::Entity const& lhs, Space::Entity const& rhs)
+{
+    return lhs._id > rhs._id;
+}
+
+bool operator<=(Space::Entity const& lhs, Space::Entity const& rhs)
+{
+    return lhs._id <= rhs._id;
+}
+
+bool operator>=(Space::Entity const& lhs, Space::Entity const& rhs)
+{
+    return lhs._id >= rhs._id;
+}
+
 Space::EntityView::Iterator::Iterator()
 : _entities(nullptr),
   _componentSet(nullptr)
@@ -59,7 +114,7 @@ Space::EntityView::Iterator Space::EntityView::Iterator::operator++(int)
     return Iterator(_entities, _componentSet, iter);
 }
 
-Entity& Space::EntityView::Iterator::operator*()
+Space::Entity& Space::EntityView::Iterator::operator*()
 {
     return _iter->entity;
 }
@@ -112,7 +167,7 @@ afth::UUID const& Space::id() const
     return _id;
 }
 
-Entity Space::createEntity()
+Space::Entity Space::createEntity()
 {
     size_t entityId = -1;
 
@@ -147,7 +202,7 @@ Entity Space::createEntity()
     }
 }
 
-void Space::destroyEntity(Entity entity)
+void Space::destroyEntity(Space::Entity entity)
 {
     size_t entityId = entity.id();
     EntityInfo& entityInfo = _entities[entityId];
@@ -156,7 +211,7 @@ void Space::destroyEntity(Entity entity)
     _freeEntityIds.push_back(entityId);
 }
 
-Space::EntityView Space::entitiesForComponents(Entity::ComponentSet const& components)
+Space::EntityView Space::entitiesForComponents(Space::Entity::ComponentSet const& components)
 {
     return Space::EntityView(_entities, components);
 }

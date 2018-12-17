@@ -4,7 +4,7 @@ namespace agte {
 
 namespace {
 
-void initComponentSet(Entity::ComponentSet& componentSet)
+void initComponentSet(Space::Entity::ComponentSet& componentSet)
 {
     //componentSet.set(agte::ComponentPool<agtc::SpriteAnimationComponent>::type());
 }

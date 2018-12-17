@@ -4,7 +4,6 @@
 #include <agta_assetpool.h>
 #include <agta_material.h>
 #include <agta_mesh.h>
-#include <agte_entity.h>
 #include <agte_system.h>
 #include <agte_pool.h>
 #include <agte_space.h>
@@ -70,7 +69,7 @@ private:
     typedef std::map<afth::UUID, MaterialAssetPoolPtr> SpaceMaterialAssetsMap;
     typedef std::map<afth::UUID, MeshAssetPoolPtr> SpaceMeshAssetsMap;
 
-    Entity::ComponentSet m_componentSet;
+    Space::Entity::ComponentSet m_componentSet;
     SpaceCameraMap m_spaceCameraMap;
     SpaceTransformComponentsMap m_spaceTransformComponentsMap;
     SpaceVisual2dComponentsMap m_spaceVisual2dComponentsMap;
