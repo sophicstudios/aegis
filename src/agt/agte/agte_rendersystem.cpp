@@ -1,14 +1,12 @@
 #include <agte_rendersystem.h>
 #include <agte_platform.h>
+#include <agtc_componenthandle.h>
 #include <agtc_transformcomponent.h>
 #include <agtc_visual2dcomponent.h>
-#include <agtr_image.h>
-#include <agtr_imageloaderpng.h>
 #include <agtg_renderingcontext.h>
 #include <agtg_gl.h>
 #include <aftfs_filesystem.h>
 #include <afth_uuid.h>
-#include <aftu_url.h>
 #include <aftl_logger.h>
 #include <map>
 #include <memory>
@@ -27,7 +25,8 @@ char const* const translateGLenum(GLenum value)
     case GL_INVALID_ENUM: return "GL_INVALID_VALUE";
     case GL_INVALID_OPERATION: return "GL_INVALID_OPERATION";
     case GL_INVALID_FRAMEBUFFER_OPERATION: return "GL_INVALID_FRAMEBUFFER_OPERATION";
-    default: return "UNKNOWN GL error";
+    case GL_FRAMEBUFFER_UNDEFINED: return "GL_FRAMEBUFFER_UNDEFINED";
+    default: return "Unhandled GLenum";
     }
 }
 
@@ -35,14 +34,22 @@ void checkError(char const* const context)
 {
     GLenum error = glGetError();
     if (error != GL_NO_ERROR) {
-        AFTL_LOG_ERROR << "glError [" << context << "]: " << translateGLenum(error) << " (" << error << ")" << AFTL_LOG_END;
+        std::stringstream s;
+        s << "glError [" << context << "]: " << translateGLenum(error) << " (" << error << ")";
+
+        if (error == GL_INVALID_FRAMEBUFFER_OPERATION) {
+            GLenum stat = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+            s << " framebuffer status: " << translateGLenum(stat) << " (" << stat << ")";
+        }
+
+        AFTL_LOG_ERROR << s.str() << AFTL_LOG_END;
     }
 }
 
 void initComponentSet(Space::Entity::ComponentSet& componentSet)
 {
-    //componentSet.set(agte::ComponentPool<agtc::TransformComponent>::type());
-    //componentSet.set(agte::ComponentPool<agtc::Visual2dComponent>::type());
+    componentSet.set(agtc::ComponentHandle<agtc::TransformComponent>::typeId());
+    componentSet.set(agtc::ComponentHandle<agtc::Visual2dComponent>::typeId());
 }
 
 } // namespace
@@ -61,7 +68,7 @@ RenderSystem::RenderSystem(int updatePriority)
 RenderSystem::~RenderSystem()
 {}
 
-void RenderSystem::addCamera(SpacePtr space, CameraPtr camera)
+void RenderSystem::addCamera(agte::Engine::SpacePtr space, CameraPtr camera)
 {
     SpaceCameraMap::iterator it = m_spaceCameraMap.find(space->id());
     if (it == m_spaceCameraMap.end())
@@ -72,7 +79,7 @@ void RenderSystem::addCamera(SpacePtr space, CameraPtr camera)
     it->second.push_back(camera);
 }
 
-void RenderSystem::removeCamera(SpacePtr space, CameraPtr camera)
+void RenderSystem::removeCamera(agte::Engine::SpacePtr space, CameraPtr camera)
 {
     SpaceCameraMap::iterator it = m_spaceCameraMap.find(space->id());
     if (it != m_spaceCameraMap.end())
@@ -89,27 +96,17 @@ void RenderSystem::removeCamera(SpacePtr space, CameraPtr camera)
     }
 }
 
-void RenderSystem::addTransformComponents(SpacePtr space, TransformComponentPoolPtr components)
-{
-    m_spaceTransformComponentsMap.insert(std::make_pair(space->id(), components));
-}
-
-void RenderSystem::addVisual2dComponents(SpacePtr space, Visual2dComponentPoolPtr components)
-{
-    m_spaceVisual2dComponentsMap.insert(std::make_pair(space->id(), components));
-}
-
-void RenderSystem::addShaderAssets(SpacePtr space, ShaderAssetPoolPtr assets)
+void RenderSystem::addShaderAssets(agte::Engine::SpacePtr space, ShaderAssetPoolPtr assets)
 {
     m_spaceShaderAssetsMap.insert(std::make_pair(space->id(), assets));
 }
 
-void RenderSystem::addMaterialAssets(SpacePtr space, MaterialAssetPoolPtr assets)
+void RenderSystem::addMaterialAssets(agte::Engine::SpacePtr space, MaterialAssetPoolPtr assets)
 {
     m_spaceMaterialAssetsMap.insert(std::make_pair(space->id(), assets));
 }
 
-void RenderSystem::addMeshAssets(SpacePtr space, MeshAssetPoolPtr assets)
+void RenderSystem::addMeshAssets(agte::Engine::SpacePtr space, MeshAssetPoolPtr assets)
 {
     m_spaceMeshAssetsMap.insert(std::make_pair(space->id(), assets));
 }
@@ -129,22 +126,6 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
         // if no camera, skip this update
         return;
     }
-
-    // get the transform components for the space
-    SpaceTransformComponentsMap::iterator transformIter = m_spaceTransformComponentsMap.find(space->id());
-    if (transformIter == m_spaceTransformComponentsMap.end())
-    {
-        return;
-    }
-    TransformComponentPoolPtr transformComponents = transformIter->second;
-
-    // get the visual2d components for the space
-    SpaceVisual2dComponentsMap::iterator visual2dIter = m_spaceVisual2dComponentsMap.find(space->id());
-    if (visual2dIter == m_spaceVisual2dComponentsMap.end())
-    {
-        return;
-    }
-    Visual2dComponentPoolPtr visual2dComponents = visual2dIter->second;
 
     SpaceShaderAssetsMap::iterator shaderIter = m_spaceShaderAssetsMap.find(space->id());
     if (shaderIter == m_spaceShaderAssetsMap.end())
@@ -256,8 +237,8 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
 
         for (; it != end; ++it)
         {
-            //agtc::Visual2dComponent& visual = visual2dComponents->componentForEntity(*it);
-            //currentShaderId = visual.shaderId();
+            agtc::Visual2dComponent& visual = it->get<agtc::Visual2dComponent>();
+            currentShaderId = visual.shaderId();
 
             if (currentShaderId != prevShaderId)
             {
@@ -278,28 +259,28 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
                 shader->bindUniform(projectionMatrixLocation, projectionMatrix);
             }
 
-            //shader->bindUniform(texOffsetLocation, visual.spriteOffset());
+            shader->bindUniform(texOffsetLocation, visual.spriteOffset());
 
-            //agtc::TransformComponent& transform = transformComponents->componentForEntity(*it);
-            //agtm::Matrix4<float> modelViewMatrix = transform.transform() * viewMatrix;
+            agtc::TransformComponent& transform = it->get<agtc::TransformComponent>();
+            agtm::Matrix4<float> modelViewMatrix = transform.transform() * viewMatrix;
 
-            //shader->bindUniform(modelViewMatrixLocation, modelViewMatrix);
+            shader->bindUniform(modelViewMatrixLocation, modelViewMatrix);
 
             //AFTL_LOG_TRACE << "modelViewMatrix: " << modelViewMatrix << AFTL_LOG_END;
 
-            //size_t meshId = visual.meshId();
-            //agta::Mesh& mesh = meshAssets->assetForId(meshId);
+            size_t meshId = visual.meshId();
+            agta::Mesh& mesh = meshAssets->assetForId(meshId);
 
-            //mesh.bind(*shader);
+            mesh.bind(*shader);
 
-            //size_t materialId = visual.materialId();
-            //agta::Material& material = materialAssets->assetForId(materialId);
-            //material.bind(0);
+            size_t materialId = visual.materialId();
+            agta::Material& material = materialAssets->assetForId(materialId);
+            material.bind(0);
 
-            //mesh.draw();
+            mesh.draw();
 
-            //mesh.unbind();
-            //material.unbind();
+            mesh.unbind();
+            material.unbind();
         }
 
         if (shader)

@@ -33,7 +33,7 @@ bool createShader(std::vector<GLuint>& attachedShaders, std::string const& sourc
     GLchar* buffer = new GLchar[source.length() + 1];
     memcpy(buffer, source.c_str(), source.length());
     buffer[source.length() - 1] = '\0';
-    AFTL_LOG_TRACE << "Compiling shader source [" << buffer << "]" << AFTL_LOG_END;
+    AFTL_LOG_DEBUG << "Compiling shader source [" << buffer << "]" << AFTL_LOG_END;
     glShaderSource(shader, 1, &buffer, NULL);
     delete [] buffer;
 
@@ -185,9 +185,9 @@ void ShaderProgram::bindUniform(GLint location, agtm::Vector3<float> const& vect
     glUniform3fv(location, 1 /*count*/, vector.arr().data());
 }
 
-void ShaderProgram::bindUniform(GLint location, agtm::Vector2<float> const& vector)
+void ShaderProgram::bindUniform(GLint location, agtm::Vector2<float> const& vec)
 {
-    glUniform2fv(location, 1 /*count*/, vector.arr().data());
+    glUniform2fv(location, 1 /*count*/, vec.arr().data());
 }
 
 void ShaderProgram::bindUniform(GLint location, float value)

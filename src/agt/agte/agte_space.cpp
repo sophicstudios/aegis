@@ -119,6 +119,11 @@ Space::Entity& Space::EntityView::Iterator::operator*()
     return _iter->entity;
 }
 
+Space::Entity* Space::EntityView::Iterator::operator->()
+{
+    return &(_iter->entity);
+}
+
 bool Space::EntityView::Iterator::operator==(Space::EntityView::Iterator const& rhs) const
 {
     return _iter == rhs._iter;
@@ -140,6 +145,11 @@ Space::EntityView::~EntityView()
 
 Space::EntityView::Iterator Space::EntityView::begin() const
 {
+    // if no components are set, return the end iterator
+    if (!_componentSet.any()) {
+        return end();
+    }
+
     Space::EntityInfoList::iterator iter = _entities.begin();
     
     while ((iter->components & _componentSet) != _componentSet && iter != _entities.end())

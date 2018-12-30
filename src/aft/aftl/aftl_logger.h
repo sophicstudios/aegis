@@ -13,14 +13,14 @@
 namespace aftl {
 
 #define AFTL_LOG(level) { \
-    aftl::Logger& l = aftl::Logger::instance(); \
-    if ((level) <= l.logLevel()) { \
-        aftl::LogLevel lev = (level); \
-        aftt::DatetimeTz d = aftt::SystemTime::nowAsDatetimeLocal(); \
-        std::stringstream s; s 
+    aftl::Logger& __aFtL_lOg_l = aftl::Logger::instance(); \
+    if ((level) <= __aFtL_lOg_l.logLevel()) { \
+        aftl::LogLevel __aFtL_lOg_lev = (level); \
+        aftt::DatetimeTz __aFtL_lOg_d = aftt::SystemTime::nowAsDatetimeLocal(); \
+        std::stringstream __aFtL_lOg_s; __aFtL_lOg_s 
 
 #define AFTL_LOG_END \
-        ""; l.log(lev, d, s); \
+        ""; __aFtL_lOg_l.log(__aFtL_lOg_lev, __aFtL_lOg_d, __aFtL_lOg_s); \
     } \
 }
 

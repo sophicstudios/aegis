@@ -117,6 +117,8 @@ public:
 
             Entity& operator*();
 
+            Entity* operator->();
+
             bool operator==(Iterator const& rhs) const;
 
             bool operator!=(Iterator const& rhs) const;
@@ -202,10 +204,22 @@ public:
     EntityView entitiesForComponents(Entity::ComponentSet const& components);
 
 private:
+    struct PoolInfo
+    {
+        PoolInfo()
+        : active(false)
+        {}
+
+        ~PoolInfo()
+        {}
+
+        bool active;
+        std::shared_ptr<agte::BasePool> pool;
+    };
+
     typedef std::vector<size_t> FreeEntityIdList;
     typedef std::vector<Entity::ComponentSet> ComponentSetList;
-    typedef std::shared_ptr<agte::BasePool> PoolPtr;
-    typedef std::vector<PoolPtr> ComponentPools;
+    typedef std::vector<PoolInfo> ComponentPools;
 
     template<typename T>
     std::shared_ptr<agte::Pool<T>> _getComponentPool(size_t i);
@@ -307,11 +321,15 @@ std::shared_ptr<agte::Pool<T> > Space::_getComponentPool(size_t i)
 {
     if (_componentPools.size() <= i) {
         _componentPools.resize(i + 1);
-        PoolPtr pool = std::make_shared<agte::Pool<T> >();
-        _componentPools[i] = pool;
     }
 
-    return std::static_pointer_cast<agte::Pool<T> >(_componentPools[i]);
+    PoolInfo& poolInfo = _componentPools[i];
+    if (!poolInfo.active) {
+        poolInfo.pool = std::make_shared<agte::Pool<T>>();
+        poolInfo.active = true;
+    }
+
+    return std::static_pointer_cast<agte::Pool<T> >(poolInfo.pool);
 }
 
 } // namespace

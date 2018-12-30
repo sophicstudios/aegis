@@ -1,4 +1,7 @@
 #include <agte_spritesystem.h>
+#include <agtc_componenthandle.h>
+#include <agtc_spriteanimationcomponent.h>
+#include <agtc_visual2dcomponent.h>
 
 namespace agte {
 
@@ -6,7 +9,8 @@ namespace {
 
 void initComponentSet(Space::Entity::ComponentSet& componentSet)
 {
-    //componentSet.set(agte::ComponentPool<agtc::SpriteAnimationComponent>::type());
+    componentSet.set(agtc::ComponentHandle<agtc::SpriteAnimationComponent>::typeId());
+    componentSet.set(agtc::ComponentHandle<agtc::Visual2dComponent>::typeId());
 }
 
 } // namespace
@@ -25,25 +29,12 @@ SpriteSystem::SpriteSystem(int updatePriority)
 SpriteSystem::~SpriteSystem()
 {}
 
-void SpriteSystem::addSpriteAnimationComponents(SpacePtr space, SpriteAnimationComponentPoolPtr components)
-{
-    m_spaceSpriteAnimationComponentsMap.insert(std::make_pair(space->id(), components));
-}
-
 void SpriteSystem::doPreUpdate(agte::Engine::Context& context)
 {
 }
 
 void SpriteSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context& context)
 {
-    // get the SpriteAnimation components for the space
-    SpaceSpriteAnimationComponentsMap::iterator spriteAnimationIter = m_spaceSpriteAnimationComponentsMap.find(space->id());
-    if (spriteAnimationIter == m_spaceSpriteAnimationComponentsMap.end())
-    {
-        return;
-    }
-    SpriteAnimationComponentPoolPtr spriteAnimationComponents = spriteAnimationIter->second;
-
     // get all entities with sprite animation components
     Space::EntityView entityView = space->entitiesForComponents(m_componentSet);
 
@@ -51,9 +42,14 @@ void SpriteSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
     Space::EntityView::Iterator end = entityView.end();
     for (; it != end; ++it)
     {
-        //agtc::SpriteAnimationComponent& spriteAnimation = spriteAnimationComponents->componentForEntity(*it);
+        agtc::SpriteAnimationComponent& spriteAnimation = it->get<agtc::SpriteAnimationComponent>();
 
-        //spriteAnimation.update(context.elapsedSeconds());
+        spriteAnimation.update(context.elapsedSeconds());
+
+        agtc::Visual2dComponent& visual = it->get<agtc::Visual2dComponent>();
+        float offsetX = visual.spriteSize().width() * spriteAnimation.currentFrame();
+        float offsetY = visual.spriteOffset().y();
+        visual.spriteOffset(agtm::Vector2<float>(offsetX, offsetY));
     }
 }
 
