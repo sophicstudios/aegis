@@ -72,7 +72,7 @@ size_t AssetPool<T>::createAsset()
     }
 
     // Get the asset info at location 'id'
-    std::pair<bool, T>& p = m_assets[id];
+    std::pair<bool, T>& p = m_assets[id - 1];
 
     // Mark the asset as active
     p.first = true;
@@ -88,7 +88,7 @@ void AssetPool<T>::destroyAsset(size_t id)
         throw std::exception();
     }
 
-    std::pair<bool, T>& p = m_assets[id];
+    std::pair<bool, T>& p = m_assets[id - 1];
     p.first = false;
     p.second = T();
 
@@ -103,7 +103,7 @@ T& AssetPool<T>::assetForId(size_t id)
         throw std::exception();
     }
 
-    std::pair<bool, T>& p = m_assets[id];
+    std::pair<bool, T>& p = m_assets[id - 1];
 
     // Verify the asset is active
     if (!p.first)
