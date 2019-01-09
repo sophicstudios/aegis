@@ -103,8 +103,7 @@ void Engine::addSpace(std::string const& id, SpacePtr space)
 
 void Engine::removeSpace(std::string const& id)
 {
-    SpaceMap::size_type count = m_spaceMap.erase(id);
-    assert(count != 0);
+    m_spaceMap.erase(id);
 }
 
 void Engine::addSystem(SystemPtr system)
