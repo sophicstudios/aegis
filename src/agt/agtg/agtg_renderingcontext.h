@@ -17,8 +17,6 @@ public:
     
     virtual void makeCurrent() = 0;
 
-    virtual ShaderProgramPtr createShader() = 0;
-
     virtual void preRender() = 0;
     
     virtual void postRender() = 0;
