@@ -225,66 +225,102 @@ void RenderSystem::doUpdate(agte::Engine::SpacePtr space, agte::Engine::Context&
         }
 */
 
-        Space::EntityView::Iterator it = entityView.begin();
-        Space::EntityView::Iterator end = entityView.end();
+        GLint projectionMatrixLocation;
+        GLint viewMatrixLocation;
 
         size_t prevShaderId = 0;
-        size_t currentShaderId = 0;
-        GLint projectionMatrixLocation;
-        GLint modelViewMatrixLocation;
-        GLint texOffsetLocation;
+        size_t currShaderId = 0;
         agtg::ShaderProgram* shader = nullptr;
 
-        for (; it != end; ++it)
-        {
-            agtc::Visual2dComponent& visual = it->get<agtc::Visual2dComponent>();
-            currentShaderId = visual.shaderId();
+        size_t prevMaterialId = 0;
+        size_t currMaterialId = 0;
+        agta::Material* material = nullptr;
 
-            if (currentShaderId != prevShaderId)
-            {
+        size_t prevMeshId = 0;
+        size_t currMeshId = 0;
+        agta::Mesh* mesh = nullptr;
+
+        std::vector<agtm::Vector2<float> > texOffsets;
+        std::vector<agtm::Matrix4<float> > modelMatrices;
+
+        Space::EntityView::Iterator it = entityView.begin();
+        Space::EntityView::Iterator end = entityView.end();
+        for (; it != end; ++it) {
+            agtc::Visual2dComponent& visual = it->get<agtc::Visual2dComponent>();
+
+            // Update the shader to use for drawing
+            currShaderId = visual.shaderId();
+            if (!shader || currShaderId != prevShaderId) {
                 if (shader)
                 {
                     shader->unbind();
                 }
 
-                shader = &(shaderAssets->assetForId(currentShaderId));
+                shader = &(shaderAssets->assetForId(currShaderId));
 
-                prevShaderId = currentShaderId;
+                prevShaderId = currShaderId;
                 shader->bind();
 
                 projectionMatrixLocation = shader->getUniformLocation("projectionMatrix");
-                modelViewMatrixLocation = shader->getUniformLocation("modelViewMatrix");
-                texOffsetLocation = shader->getUniformLocation("texOffset");
+                viewMatrixLocation = shader->getUniformLocation("viewMatrix");
 
                 shader->bindUniform(projectionMatrixLocation, projectionMatrix);
+                shader->bindUniform(viewMatrixLocation, viewMatrix);
             }
 
-            shader->bindUniform(texOffsetLocation, visual.spriteOffset());
+            // Update the Material used for drawing
+            currMaterialId = visual.materialId();
+            if (!material || currMaterialId != prevMaterialId) {
+                if (material) {
+                    material->unbind();
+                }
+    
+                material = &(materialAssets->assetForId(currMaterialId));
+                prevMaterialId = currMaterialId;
+                material->bind(0);
+            }
+
+            // Update the Mesh used for drawing, sending the previous Mesh
+            // to the GPU if it exists
+            currMeshId = visual.meshId();
+            if (!mesh || currMeshId != prevMeshId) {
+                if (mesh) {
+                    mesh->texOffsets(texOffsets);
+                    mesh->modelMatrices(modelMatrices);
+                    mesh->bind(*shader);
+                    mesh->drawInstanced();
+                    mesh->unbind();
+
+                    texOffsets.clear();
+                    modelMatrices.clear();
+                }
+
+                mesh = &(meshAssets->assetForId(currMeshId));
+                prevMeshId = currMeshId;
+            }
 
             agtc::TransformComponent& transform = it->get<agtc::TransformComponent>();
-            agtm::Matrix4<float> modelViewMatrix = transform.transform() * viewMatrix;
+            modelMatrices.push_back(transform.transform());
 
-            shader->bindUniform(modelViewMatrixLocation, modelViewMatrix);
-
-            //AFTL_LOG_TRACE << "modelViewMatrix: " << modelViewMatrix << AFTL_LOG_END;
-
-            size_t meshId = visual.meshId();
-            agta::Mesh& mesh = meshAssets->assetForId(meshId);
-
-            mesh.bind(*shader);
-
-            size_t materialId = visual.materialId();
-            agta::Material& material = materialAssets->assetForId(materialId);
-            material.bind(0);
-
-            mesh.draw();
-
-            mesh.unbind();
-            material.unbind();
+            texOffsets.push_back(visual.spriteOffset());
         }
 
-        if (shader)
-        {
+        if (mesh) {
+            mesh->texOffsets(texOffsets);
+            mesh->modelMatrices(modelMatrices);
+            mesh->bind(*shader);
+            mesh->drawInstanced();
+            mesh->unbind();
+
+            texOffsets.clear();
+            modelMatrices.clear();
+        }
+
+        if (material) {
+            material->unbind();
+        }
+
+        if (shader) {
             shader->unbind();
         }
 
